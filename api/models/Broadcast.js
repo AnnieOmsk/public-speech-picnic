@@ -1,0 +1,26 @@
+/**
+ * Broadcast
+ *
+ * @module      :: Model
+ * @description :: Broadcast for Picnic
+ * @docs		:: http://sailsjs.org/#!documentation/models
+ */
+
+module.exports = {
+  tableName: 'broadcast',
+  migrate: 'safe',
+  attributes: {
+    time: 'datetime',
+    journalistId: {
+      type: 'integer',
+      columnName: 'journalist_id'
+    },
+    likes: {
+      type: 'integer',
+      defaultsTo: 0
+    },
+    content: 'text',
+    accepted: 'boolean',
+    lead: 'string'
+  }
+};
