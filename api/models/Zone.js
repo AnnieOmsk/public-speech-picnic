@@ -9,6 +9,8 @@
 module.exports = {
   tableName: 'zone',
   migrate: 'safe',
+  autoCreatedAt: false,
+  autoUpdatedAt: false,
   attributes: {
     name: 'string'
   }

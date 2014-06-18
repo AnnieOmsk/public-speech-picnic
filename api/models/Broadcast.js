@@ -9,6 +9,8 @@
 module.exports = {
   tableName: 'broadcast',
   migrate: 'safe',
+  autoCreatedAt: false,
+  autoUpdatedAt: false,
   attributes: {
     time: 'datetime',
     journalistId: {
