@@ -24,7 +24,6 @@ module.exports = {
    *    `/home`
    */
   index: function (req, res) {
-      var teasers;
       TeasersService.fetchTeasers(function (teasers) {
           console.log(teasers);
           return res.view();

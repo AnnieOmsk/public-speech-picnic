@@ -1,20 +1,6 @@
 var http = require('http');
 
-exports.fetchTeasers = function(func) {
-    that = this;
-    json = "";
-    http.get("http://ps.whereco.in/api/teasers", function(res) {
-        res.on('data', function (data){
-            json = json + data;
-        }).on('end', function () {
-            func(that.parseTeasers(json));
-        });
-    }).on('error', function(e) {
-        console.log("Got error: " + e.message);
-    });
-};
-
-exports.parseTeasers = function(json) {
+var parseTeasers = function(json) {
     var teasers = JSON.parse(json);
     var events = [];
     var articles = [];
@@ -32,4 +18,17 @@ exports.parseTeasers = function(json) {
         events: events,
         articles: articles
     };
+};
+
+exports.fetchTeasers = function(func) {
+    var json = "";
+    http.get("http://ps.whereco.in/api/teasers", function(res) {
+        res.on('data', function (data){
+            json = json + data;
+        }).on('end', function () {
+            func(parseTeasers(json));
+        });
+    }).on('error', function(e) {
+        console.log("Got error: " + e.message);
+    });
 };
