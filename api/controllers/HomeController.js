@@ -23,11 +23,12 @@ module.exports = {
    *    `/home/index`
    *    `/home`
    */
-   index: function (req, res) {
-//    TeasersService.fetchTeasers(function (chunk) {
-//        console.log('BODY: ' + chunk);
-//    });
-    return res.view();
+  index: function (req, res) {
+      var teasers;
+      TeasersService.fetchTeasers(function (teasers) {
+          console.log(teasers);
+          return res.view();
+      });
   },
 
 
