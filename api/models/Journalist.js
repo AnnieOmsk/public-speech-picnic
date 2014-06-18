@@ -9,6 +9,8 @@
 module.exports = {
   tableName: 'journalist',
   migrate: 'safe',
+  autoCreatedAt: false,
+  autoUpdatedAt: false,
   attributes: {
     firstName: {
       columnName: 'first_name',

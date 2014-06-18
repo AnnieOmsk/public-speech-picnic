@@ -9,6 +9,8 @@
 module.exports = {
   tableName: 'organizer',
   migrate: 'safe',
+  autoCreatedAt: false,
+  autoUpdatedAt: false,
   attributes: {
     name: 'string'
   }
