@@ -24,3 +24,18 @@ Run app
 $ npm install
 $ sails lift
 ```
+
+Deploy app
+----------
+
+```
+$ npm -g install forever
+$ cd www/public-speech-picnic
+$ forever start -a -l /home/picnic/www/public-speech-picnic/logs/forever.log -o /home/picnic/www/public-speech-picnic/logs/out.log -e /home/picnic/www/public-speech-picnic/logs/err.log app.js
+```
+
+To stop app
+```
+$ forever stop app.js
+```
+
