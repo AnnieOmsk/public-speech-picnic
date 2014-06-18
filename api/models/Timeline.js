@@ -9,6 +9,8 @@
 module.exports = {
   tableName: 'timeline',
   migrate: 'safe',
+  autoCreatedAt: false,
+  autoUpdatedAt: false,
   attributes: {
     title: 'string',
     organizerId: {

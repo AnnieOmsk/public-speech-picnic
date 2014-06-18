@@ -9,8 +9,14 @@
 module.exports = {
   tableName: 'image',
   migrate: 'safe',
+  autoCreatedAt: false,
+  autoUpdatedAt: false,
   attributes: {
-    filename: 'string',
+    url: 'string',
+    previewUrl: {
+      type: 'string',
+      columnName: 'preview_url'
+    },
     broadcastId: {
       type: 'integer',
       columnName: 'broadcast_id'
