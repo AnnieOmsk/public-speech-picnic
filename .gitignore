@@ -1,11 +1,4 @@
-########################
-# sails
-########################
-.sails
-.waterline
-.rigging
 .tmp
-
 
 ########################
 # node.js / npm
@@ -37,9 +30,4 @@ npm-debug.log
 .netbeans
 nbproject
 .idea
-
-
-########################
-# local config
-########################
-config/local.js
+.git
