@@ -1,5 +1,11 @@
 var http = require('http');
+var dateTime = require('./DateTimeService');
 
+/**
+ * Parsing teasers json
+ * @param json Json with teasers
+ * @returns {{events: Array, articles: Array}}
+ */
 var parseTeasers = function(json) {
     var teasers = JSON.parse(json);
     var events = [];
@@ -7,9 +13,14 @@ var parseTeasers = function(json) {
     for (var i=0; i < teasers.length; i++) {
         var item = teasers[i];
         if (item.entity == 'event') {
+            item.start = dateTime.dateMonthTime(item.start);
+            if (item.end != null) {
+                item.end = dateTime.dateMonthTime(item.end);
+            }
             events.push(item);
         }
         if (item.entity == 'article') {
+            item.published = dateTime.dateMonthYear(item.published);
             articles.push(item);
         }
 
@@ -20,6 +31,10 @@ var parseTeasers = function(json) {
     };
 };
 
+/**
+ * Fetching teasers from remote host
+ * @param func Function to call with parsed teasers object
+ */
 exports.fetchTeasers = function(func) {
     var json = "";
     http.get("http://ps.whereco.in/api/teasers", function(res) {
