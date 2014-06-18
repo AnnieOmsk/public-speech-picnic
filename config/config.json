@@ -1,0 +1,15 @@
+{
+    "mysql": {
+        "database": "picnic",
+        "user": "root",
+        "password": "mysql"
+    },
+    "server": {
+        "port": 2000
+    },
+    "app": {
+        "layouts": true,
+        "themes": true,
+        "languages": true
+    }
+}
