@@ -11,6 +11,13 @@ Now you can check your node version
 ```
 $ node -v
 ```
+
+Sails install
+-------------
+```
+$ npm -g install sails
+```
+
 Run app
 -------
 ```
