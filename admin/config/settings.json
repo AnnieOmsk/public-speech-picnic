@@ -441,7 +441,7 @@
             },
             {
                 "name": "organizer_id",
-                "verbose": "organizer_id",
+                "verbose": "organizer",
                 "control": {
                     "text": true
                 },
@@ -453,6 +453,13 @@
                 },
                 "editview": {
                     "show": true
+                },
+                "oneToMany": {
+                    "table": "organizer",
+                    "pk": "id",
+                    "columns": [
+                        "name"
+                    ]
                 }
             },
             {
