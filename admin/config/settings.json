@@ -4,7 +4,7 @@
         "table": {
             "name": "broadcast",
             "pk": "id",
-            "verbose": "Трансляции"
+            "verbose": "broadcast"
         },
         "columns": [
             {
@@ -20,14 +20,14 @@
                     "show": true
                 },
                 "editview": {
-                    "show": false
+                    "show": true
                 }
             },
             {
                 "name": "time",
-                "verbose": "Время",
+                "verbose": "time",
                 "control": {
-                    "datetime": true
+                    "text": true
                 },
                 "type": "datetime",
                 "allowNull": false,
@@ -41,9 +41,9 @@
             },
             {
                 "name": "likes",
-                "verbose": "Лайки",
+                "verbose": "likes",
                 "control": {
-                    "number": true
+                    "text": true
                 },
                 "type": "int(11)",
                 "allowNull": false,
@@ -57,9 +57,9 @@
             },
             {
                 "name": "content",
-                "verbose": "Текст",
+                "verbose": "content",
                 "control": {
-                    "textarea": true
+                    "text": true
                 },
                 "type": "text",
                 "allowNull": false,
@@ -73,13 +73,9 @@
             },
             {
                 "name": "accepted",
-                "verbose": "Принять",
+                "verbose": "accepted",
                 "control": {
-                    "radio": true,
-                    "options": [
-                        "Да",
-                        "Нет"
-                    ]
+                    "text": true
                 },
                 "type": "tinyint(1)",
                 "allowNull": true,
@@ -93,7 +89,7 @@
             },
             {
                 "name": "lead",
-                "verbose": "Заголовок",
+                "verbose": "lead",
                 "control": {
                     "text": true
                 },
@@ -109,17 +105,9 @@
             },
             {
                 "name": "journalist_id",
-                "verbose": "Журналист",
+                "verbose": "journalist_id",
                 "control": {
-                    "select": true
-                },
-                "oneToMany": {
-                    "table": "journalist",
-                    "pk": "id",
-                    "columns": [
-                        "first_name",
-                        "last_name"
-                    ]
+                    "text": true
                 },
                 "type": "int(11)",
                 "allowNull": false,
@@ -469,7 +457,7 @@
             },
             {
                 "name": "zone_id",
-                "verbose": "zone_id",
+                "verbose": "zone",
                 "control": {
                     "text": true
                 },
@@ -481,6 +469,13 @@
                 },
                 "editview": {
                     "show": true
+                },
+                "oneToMany": {
+                    "table": "zone",
+                    "pk": "id",
+                    "columns": [
+                        "name"
+                    ]
                 }
             }
         ],
