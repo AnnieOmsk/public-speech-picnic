@@ -1,0 +1,169 @@
+@color-main: #53b93a;
+@color-light: #fff;
+@color-red: #bc1e1d;
+@color-text-light: @color-light;
+@color-hover-text:@color-main;
+@color-border:@color-main;
+@color-border-light:@color-light;
+
+@nav-li-margin: 1.5%;
+
+@font-header-family: PFDinTextCondPro-Regular;
+@font-subheader-family: PFDinTextCondPro-Medium;
+@font-paragraf-family: PFAgoraSansPro;
+@font-paragraf-bolder-family: PFAgoraSansPro-Bold;
+
+@font-size-main: 24px;
+@font-size-lower: 20px;
+
+/*  position  */
+.promo {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-image: url(../../images/picknic.jpg);
+}
+
+.navbar {
+  min-height: 40px;
+  margin-top: 25px;
+  margin-bottom: 80px;
+  .navbar-collapse{
+    padding-left: 0;
+    padding-right: 0;
+    .nav {
+      width: 100%;
+      li {
+        width: 17%;
+        margin-left: @nav-li-margin;
+        margin-right: @nav-li-margin;
+      &:first-child {
+        margin-left:0px;
+      }
+      &:last-child {
+        margin-right:0px;
+      }
+      }
+    }
+  }
+}
+
+.logo {
+  margin-bottom: 85px;
+  .date {
+    margin-bottom: 15px;
+  }
+  .event-title {
+    width: 265px;
+  }
+}
+
+.about {
+  margin-bottom: 55px;
+  .question {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    margin-left: 20px;
+    margin-bottom: -12px;
+  }
+}
+
+.help {
+  .call {
+    margin-bottom: 10px;
+  }
+  .pay-item {
+    display: inline-block;
+    margin-right: 10px;
+    margin-top: 10px;
+  }
+  .pay-item-group {
+    margin-bottom: 35px;
+  }
+}
+
+/*  view  */
+
+
+.navbar-default {
+  background:none;
+  border: none;
+  .navbar-nav {
+    li {
+      a {
+        padding-top: 10px;
+        padding-bottom: 10px;
+        text-align: center;
+        font-size: @font-size-main;
+        color: @color-text-light;
+        border: transparent 2px solid;
+        &:hover {
+          background: none;
+          color: @color-hover-text;
+          border: @color-border 2px solid;
+        }
+      }
+    }
+  }
+}
+
+.logo {
+  .date {
+    padding-left: 18px;
+    font-size: @font-size-lower;
+  }
+  .event-title {
+    padding: 18px 20px;
+    background-color: @color-red;
+    font-size: 18px;
+    span {
+      font-family: @font-paragraf-bolder-family;
+      font-size: 52.34px;
+    }
+  }
+}
+
+.about {
+  .question {
+    background-image: url(../../images/question.png);
+  }
+  .question:hover {
+    background-image: url(../../images/question-red.png);
+  }
+}
+
+.help {
+  .pay-item {
+    border: 2px @color-border-light solid;
+    padding: 12px 15px 10px 15px;
+    &:hover {
+      background-color: @color-light;
+      // border-color: @color-border;
+      color: @color-hover-text;
+    }
+  }
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+.border {
+  border: @color-border 2px solid;
+}
+
+.header-font {
+  font-family: @font-header-family;
+  letter-spacing: 0.06em;
+}
+
+.color-text-light {
+  color: @color-text-light;
+}
+
+.main-font-size {
+  font-size: @font-size-main;
+}
+.lower-font-size {
+  font-size: @font-size-lower;
+}
