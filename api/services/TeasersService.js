@@ -1,5 +1,6 @@
 var http = require('http');
 var dateTime = require('./DateTimeUtils');
+var q = require('q');
 
 /**
  * Parsing teasers json
@@ -33,17 +34,19 @@ var parseTeasers = function(json) {
 
 /**
  * Fetching teasers from remote host
- * @param func Function to call with parsed teasers object
  */
-exports.fetchTeasers = function(func) {
+exports.fetchTeasers = function() {
+    var deferred = q.defer();
     var json = "";
     http.get("http://ps.whereco.in/api/teasers", function(res) {
         res.on('data', function (data){
             json = json + data;
         }).on('end', function () {
-            func(parseTeasers(json));
+            deferred.resolve(parseTeasers(json));
         });
     }).on('error', function(e) {
-        console.log("Got error: " + e.message);
+        console.log("TeaserService error: " + e.message);
+        deferred.reject(e);
     });
+    return deferred.promise;
 };

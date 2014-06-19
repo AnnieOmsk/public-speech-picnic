@@ -1,14 +1,17 @@
 /**
  * Finds all timelines in database
- * @param func Function to call with list of timelines
  */
-exports.findTimelines = function(func) {
+var q = require('q');
+exports.findTimelines = function() {
+    var deferred = q.defer();
     console.log("Searching for timelines");
     Timeline.find({}).sort("start ASC").done(function(err, timelines){
         if (err) {
-            return console.log(err);
+            console.log("TimelineService error:" + err);
+            deferred.reject(err);
         } else {
-            func(timelines);
+            deferred.resolve(timelines);
         }
     });
+    return deferred.promise;
 };
