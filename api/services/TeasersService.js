@@ -1,5 +1,5 @@
 var http = require('http');
-var dateTime = require('./DateTimeService');
+var dateTime = require('./DateTimeUtils');
 
 /**
  * Parsing teasers json
