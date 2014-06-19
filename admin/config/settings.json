@@ -388,7 +388,7 @@
                     "show": true
                 },
                 "editview": {
-                    "show": true
+                    "show": false
                 }
             },
             {
@@ -411,7 +411,7 @@
                 "name": "start",
                 "verbose": "start",
                 "control": {
-                    "text": true
+                    "datetime": true
                 },
                 "type": "datetime",
                 "allowNull": false,
@@ -427,7 +427,7 @@
                 "name": "end",
                 "verbose": "end",
                 "control": {
-                    "text": true
+                    "datetime": true
                 },
                 "type": "datetime",
                 "allowNull": false,
@@ -443,7 +443,7 @@
                 "name": "organizer_id",
                 "verbose": "organizer",
                 "control": {
-                    "text": true
+                    "select": true
                 },
                 "type": "int(11)",
                 "allowNull": false,
@@ -466,7 +466,7 @@
                 "name": "zone_id",
                 "verbose": "zone",
                 "control": {
-                    "text": true
+                    "select": true
                 },
                 "type": "int(11)",
                 "allowNull": false,
