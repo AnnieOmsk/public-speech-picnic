@@ -22,13 +22,21 @@ module.exports = {
    * Main controller for / page
    */
   index: function (req, res) {
-      var allPromise = q.all([TeasersService.fetchTeasers(), TimelineService.findTimelines() ]);
+      var allPromise = q.all([
+          TeasersService.fetchTeasers(),
+          TimelineService.findTimelines(),
+          BroadcastService.findBroadcasts()
+      ]);
       allPromise.then(function(data){
-              var teasers = data[0];
-              var timelines = data[1];
-              return res.view();
+          return res.view({
+              events: data[0].events,
+              articles: data[0].articles,
+              timelines: data[1],
+              broadcasts: data[2]
+          });
       }, function(err) {
-              console.error("Promise error:" + err);
+          console.error("Promise error:" + err);
+          return res.send(err, 500)
       });
   },
 
