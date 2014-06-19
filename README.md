@@ -46,3 +46,8 @@ To stop app
 $ forever stop app.js
 ```
 
+Deploy admin
+------------
+```
+$ forever start -a -l /home/picnic/www/public-speech-picnic/logs/admin/forever.log -o /home/picnic/www/public-speech-picnic/logs/admin/out.log -e /home/picnic/www/public-speech-picnic/logs/admin/err.log node_modules/express-admin/app.js admin/config/
+```
