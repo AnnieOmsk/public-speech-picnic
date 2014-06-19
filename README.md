@@ -3,6 +3,7 @@ Requirements
 node 0.10.x
 npm 1.4.14
 mysql 5.5.x
+redis 2.2.12
 
 NVM install
 ------------
