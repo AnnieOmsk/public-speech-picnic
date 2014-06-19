@@ -14,19 +14,21 @@
  *
  * @docs        :: http://sailsjs.org/#!documentation/controllers
  */
-
+var q = require('q');
 module.exports = {
     
   
   /**
-   * Action blueprints:
-   *    `/home/index`
-   *    `/home`
+   * Main controller for / page
    */
   index: function (req, res) {
-      TeasersService.fetchTeasers(function (teasers) {
-          console.log(teasers);
-          return res.view();
+      var allPromise = q.all([TeasersService.fetchTeasers(), TimelineService.findTimelines() ]);
+      allPromise.then(function(data){
+              var teasers = data[0];
+              var timelines = data[1];
+              return res.view();
+      }, function(err) {
+              console.error("Promise error:" + err);
       });
   },
 
