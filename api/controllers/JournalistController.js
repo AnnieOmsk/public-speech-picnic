@@ -78,7 +78,7 @@ module.exports = {
             function(err) {
                 console.log("Cannot save broadcast:" + err);
                 return res.view('journalist/create',{
-                    error: 'Ошибка сервиса, пожалуйста, повторите попозже',
+                    error: 'Ошибка сервиса, невозможно сохранить данные',
                     form: {
                         lead: lead,
                         content: content

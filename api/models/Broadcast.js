@@ -21,8 +21,14 @@ module.exports = {
       type: 'integer',
       defaultsTo: 0
     },
-    content: 'text',
+    content: {
+        type: 'text',
+        required: true
+    },
     accepted: 'boolean',
-    lead: 'string'
+    lead: {
+        type: 'string',
+        required: true
+    }
   }
 };
