@@ -1,7 +1,8 @@
+var q = require('q');
+
 /**
  * Finds all timelines in database
  */
-var q = require('q');
 exports.findTimelines = function() {
     var deferred = q.defer();
     console.log("Searching for timelines");

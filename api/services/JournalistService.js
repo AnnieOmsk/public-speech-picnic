@@ -1,9 +1,10 @@
+var q = require('q');
+
 /**
  * Finds Journalist by login an password in database.
  * If password is omitted, finds journalist by login only
  * Nullifies password for returned journalist
  */
-var q = require('q');
 exports.findJournalist = function(login, password) {
     var deferred = q.defer();
     console.log("Searching for journalist");

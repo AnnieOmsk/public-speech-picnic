@@ -1,9 +1,9 @@
-/**
- * Finds all broadcasts in database
- */
 var q = require('q');
 var dateTime = require('./DateTimeUtils');
 
+/**
+ * Finds all broadcasts in database
+ */
 exports.findBroadcasts = function() {
     var deferred = q.defer();
     console.log("Searching for broadcasts");
