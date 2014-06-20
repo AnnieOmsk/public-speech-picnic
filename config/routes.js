@@ -39,7 +39,11 @@ module.exports.routes = {
       controller: 'home'
   },
 
-  '/journalist': 'JournalistController.login'
+    'get /journalist': 'JournalistController.login',
+    'post /journalist': {
+        controller: 'JournalistController',
+        action: 'loginPost'
+    }
 
   /*
   // But what if you want your home page to display

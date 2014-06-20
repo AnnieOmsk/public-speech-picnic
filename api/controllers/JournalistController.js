@@ -5,47 +5,49 @@
 module.exports = {
 
     /**
-    *    `/journalist/login`
+    *   GET `/journalist/login`
     */
     login: function (req, res) {
-
-      if (req.method == 'POST') {
-          var login = req.param('login');
-          var password = req.param('password');
-          if (login == null || password == null) {
-              return res.view({
-                  error: 'Введите имя пользователя и пароль'
-              });
-          } else {
-              var promise = JournalistService.findJournalist(login, password);
-              promise.then(
-                  function(journalist){
-                      console.log(journalist);
-                      if (journalist !== undefined) {
-                          req.session.authenticated = true;
-                          req.session.user = journalist;
-                          return res.redirect('/journalist/create');
-                      } else {
-                          return res.view({
-                              error: 'Пароль и имя пользвателя некорректны'
-                          });
-                      }
-                  },
-                  function(err){
-                      console.log("Cannot lookup journalist:" + err);
-                      return res.view({
-                          error: 'Ошибка сервиса, пожалуйста, повторите попозже'
-                      });
-                  });
-          }
-      } else {
-          if (req.session.user != null) {
-              return res.redirect('/journalist/create');
-          }
-          return res.view();
-      }
+        if (req.session.user != null) {
+          return res.redirect('/journalist/create');
+        }
+        return res.view();
     },
 
+
+    /**
+     *   POST `/journalist/login`
+     */
+    loginPost: function (req, res) {
+        var login = req.param('login');
+        var password = req.param('password');
+        if (login == null || password == null) {
+            return res.view('journalist/login', {
+                error: 'Введите имя пользователя и пароль'
+            });
+        } else {
+            var promise = JournalistService.findJournalist(login, password);
+            promise.then(
+                function(journalist){
+                    console.log(journalist);
+                    if (journalist !== undefined) {
+                        req.session.authenticated = true;
+                        req.session.user = journalist;
+                        return res.redirect('/journalist/create');
+                    } else {
+                        return res.view('journalist/login',{
+                            error: 'Пароль и имя пользвателя некорректны'
+                        });
+                    }
+                },
+                function(err){
+                    console.log("Cannot lookup journalist:" + err);
+                    return res.view('journalist/login',{
+                        error: 'Ошибка сервиса, пожалуйста, повторите попозже'
+                    });
+                });
+        }
+    },
 
 
     /**
