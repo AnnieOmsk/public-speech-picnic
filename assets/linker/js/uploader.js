@@ -5,6 +5,6 @@ UPLOADCARE_PUBLIC_KEY = "264908b8fcf4b91d058f";
 $(function(){
     var widget = uploadcare.MultipleWidget('[role=uploadcare-uploader][data-multiple]');
     widget.onUploadComplete(function(info) {
-        $('#').info.uuid
+        $('#group-uuid').attr('value', info.uuid);
     });
 })

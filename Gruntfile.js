@@ -57,6 +57,7 @@ module.exports = function (grunt) {
     'linker/js/app.js',
 
     // *->    put other dependencies here   <-*
+    'linker/js/uploadcare-1.2.2.min.js',
 
     // All of the rest of your app scripts imported here
     'linker/**/*.js'
