@@ -25,14 +25,16 @@ module.exports = {
       var allPromise = q.all([
           TeasersService.fetchTeasers(),
           TimelineService.findTimelines(),
-          BroadcastService.findBroadcasts()
+          BroadcastService.findBroadcasts(),
+          TwitterService.findTwits()
       ]);
       allPromise.then(function(data){
           return res.view({
               events: data[0].events,
               articles: data[0].articles,
               timelines: data[1],
-              broadcasts: data[2]
+              broadcasts: data[2],
+              twits: data[3]
           });
       }, function(err) {
           console.error("Promise error:" + err);
