@@ -3,16 +3,16 @@
  */
 
 module.exports = {
-  
-  /**
-   *    `/journalist/login`
-   */
-   login: function (req, res) {
+
+    /**
+    *    `/journalist/login`
+    */
+    login: function (req, res) {
 
       if (req.method == 'POST') {
           var login = req.param('login');
           var password = req.param('password');
-          if (login === undefined || password === undefined || login == null || password == null) {
+          if (login == null || password == null) {
               return res.view({
                   error: 'Введите имя пользователя и пароль'
               });
@@ -44,15 +44,16 @@ module.exports = {
           }
           return res.view();
       }
-  },
+    },
 
 
-  /**
-   *    `/journalist/create`
-   */
-   create: function (req, res) {
+
+    /**
+    *    `/journalist/create`
+    */
+    create: function (req, res) {
       return res.view();
-  },
+    },
 
 
     /**
@@ -61,15 +62,15 @@ module.exports = {
     logout: function (req, res) {
         req.session.user = undefined;
         req.session.authenticated = false;
-        return res.redirect('/journalist/login');
+        return res.redirect('/journalist/');
     },
 
 
-  /**
-   * Overrides for the settings in `config/controllers.js`
-   * (specific to JournalistController)
-   */
-  _config: {}
+    /**
+    * Overrides for the settings in `config/controllers.js`
+    * (specific to JournalistController)
+    */
+    _config: {}
 
   
 };

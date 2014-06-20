@@ -36,8 +36,10 @@ module.exports.routes = {
   //   view: 'home/index'
   // }
   '/': {
-    controller: 'home'
+      controller: 'home'
   },
+
+  '/journalist': 'JournalistController.login'
 
   /*
   // But what if you want your home page to display
