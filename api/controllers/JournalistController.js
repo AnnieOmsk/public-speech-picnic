@@ -22,6 +22,7 @@ module.exports = {
                   function(journalist){
                       console.log(journalist);
                       if (journalist !== undefined) {
+                          req.session.authenticated = true;
                           req.session.user = journalist;
                           return res.redirect('/journalist/create');
                       } else {
@@ -50,11 +51,7 @@ module.exports = {
    *    `/journalist/create`
    */
    create: function (req, res) {
-      if (req.session.user != null) {
-          return res.view();
-      } else {
-          return res.send("Не авторизован", 500);
-      }
+      return res.view();
   },
 
 
@@ -62,12 +59,9 @@ module.exports = {
      *    `/journalist/logout`
      */
     logout: function (req, res) {
-        if (req.session.user != null) {
-            req.session.user = undefined;
-            return res.redirect('/journalist/login');
-        } else {
-            return res.send("Не авторизован", 500);
-        }
+        req.session.user = undefined;
+        req.session.authenticated = false;
+        return res.redirect('/journalist/login');
     },
 
 
