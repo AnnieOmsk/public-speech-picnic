@@ -1,4 +1,5 @@
 var months = ["Января", "Февраля", "Марта", "Апреля", "Мая", "Июня", "Июля", "Августа", "Сентября", "Октября", "Ноября", "Декабря"];
+var moment = require('moment');
 
 /**
  * Converts Javascript dateTime to human-readable format showing date, month and year
@@ -24,3 +25,11 @@ exports.dateMonthTime = function(dateText) {
     russianDate = date.getDate() + " " + months[date.getMonth()] + " " + date.getHours() + ":" + minutes;
     return russianDate;
 };
+
+/**
+ * Returns current datetime
+ */
+exports.now = function() {
+    var date = moment().format();
+    return date;
+}

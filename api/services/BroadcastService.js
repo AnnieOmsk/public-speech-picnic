@@ -2,6 +2,8 @@
  * Finds all broadcasts in database
  */
 var q = require('q');
+var dateTime = require('./DateTimeUtils');
+
 exports.findBroadcasts = function() {
     var deferred = q.defer();
     console.log("Searching for broadcasts");
@@ -27,7 +29,7 @@ exports.save = function(journalistId, lead, content) {
     var deferred = q.defer();
     console.log("Saving broadcast with following params. JournalistId:" + journalistId + " lead:" + lead + " content:" + content);
     Broadcast.create({
-        time: new Date(),
+        time: dateTime.now(),
         journalistId: journalistId,
         content: content,
         lead: lead

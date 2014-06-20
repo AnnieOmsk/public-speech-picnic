@@ -11,7 +11,8 @@
         "optimist": "0.3.4",
         "sails-mysql": "0.9.10",
         "express-admin": "1.2.3",
-        "q": "1.0.1"
+        "q": "1.0.1",
+        "moment": "2.7.0"
     },
     "scripts": {
         "start": "node app.js",
