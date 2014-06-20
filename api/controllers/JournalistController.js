@@ -1,13 +1,10 @@
 /**
  * JournalistController
  */
-var q = require('q');
 
 module.exports = {
-    
   
   /**
-   * Action blueprints:
    *    `/journalist/login`
    */
    login: function (req, res) {
@@ -17,52 +14,61 @@ module.exports = {
           var password = req.param('password');
           if (login === undefined || password === undefined || login == null || password == null) {
               return res.view({
-                  error: 'Enter login and password'
+                  error: 'Введите имя пользователя и пароль'
               });
           } else {
-              var promise = JournalistService.findJournalist(login);
+              var promise = JournalistService.findJournalist(login, password);
               promise.then(
                   function(journalist){
                       console.log(journalist);
-                      if (journalist !== undefined && journalist.password == password) {
+                      if (journalist !== undefined) {
                           req.session.user = journalist;
                           return res.redirect('/journalist/create');
                       } else {
                           return res.view({
-                              error: 'Incorrect login and password'
+                              error: 'Пароль и имя пользвателя некорректны'
                           });
                       }
                   },
                   function(err){
                       console.log("Cannot lookup journalist:" + err);
                       return res.view({
-                          error: 'Database error'
+                          error: 'Ошибка сервиса, пожалуйста, повторите попозже'
                       });
                   });
           }
       } else {
-          return res.view({
-              hello: 'world'
-          });
+          if (req.session.user != null) {
+              return res.redirect('/journalist/create');
+          }
+          return res.view();
       }
   },
 
 
   /**
-   * Action blueprints:
    *    `/journalist/create`
    */
    create: function (req, res) {
       if (req.session.user != null) {
-          return res.view({
-              hello: 'world'
-          });
+          return res.view();
       } else {
-          return res.send("Not authorized", 500);
+          return res.send("Не авторизован", 500);
       }
   },
 
 
+    /**
+     *    `/journalist/logout`
+     */
+    logout: function (req, res) {
+        if (req.session.user != null) {
+            req.session.user = undefined;
+            return res.redirect('/journalist/login');
+        } else {
+            return res.send("Не авторизован", 500);
+        }
+    },
 
 
   /**

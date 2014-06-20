@@ -2,14 +2,11 @@
 <div class="container col-xs-2">
     <br/><br/><br/><br/><br/><br/>
     <form class="form-signin" role="form" method="post">
-        <h2 class="form-signin-heading">Please sign in</h2>
-        <input name="login" type="text" class="form-control" placeholder="Login" required autofocus>
-        <input name="password" type="password" class="form-control" placeholder="Password" required>
+        <h2 class="form-signin-heading">Вход для журналистов</h2>
+        <input name="login" type="text" class="form-control" placeholder="Имя пользователя" required autofocus>
+        <input name="password" type="password" class="form-control" placeholder="Пароль" required>
         <% if(typeof(error) != "undefined"){ %> <%= error%> <%}%>
-        <label class="checkbox">
-            <input type="checkbox" value="remember-me"> Remember me
-        </label>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Вход</button>
     </form>
 
 </div> <!-- /container -->

@@ -1,8 +1,10 @@
 /**
- * Finds Journalist by login in database
+ * Finds Journalist by login an password in database.
+ * If password is omitted, finds journalist by login only
+ * Nullifies password for returned journalist
  */
 var q = require('q');
-exports.findJournalist = function(login) {
+exports.findJournalist = function(login, password) {
     var deferred = q.defer();
     console.log("Searching for journalist");
     Journalist.findOneByLogin(login).done(function(err, journalist){
@@ -10,7 +12,20 @@ exports.findJournalist = function(login) {
             console.log("JournalistService error:" + err);
             deferred.reject(err);
         } else {
-            deferred.resolve(journalist);
+            var journalistPassword;
+            if (journalist !== undefined) {
+                journalistPassword = journalist.password;
+                journalist.password = null;
+            }
+            if (password !== undefined) {
+                if (journalistPassword === password) {
+                    deferred.resolve(journalist);
+                } else {
+                    deferred.resolve(undefined);
+                }
+            } else {
+                deferred.resolve(journalist);
+            }
         }
     });
     return deferred.promise;
