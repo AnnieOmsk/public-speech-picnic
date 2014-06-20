@@ -15,6 +15,11 @@
  * @docs        :: http://sailsjs.org/#!documentation/controllers
  */
 var q = require('q');
+var teaserService = require('../services/TeaserService');
+var timelineService = require('../services/TimelineService');
+var broadcastService = require('../services/BroadcastService');
+var twitterService = require('../services/TwitterService');
+
 module.exports = {
     
   
@@ -23,10 +28,10 @@ module.exports = {
    */
   index: function (req, res) {
       var allPromise = q.all([
-          TeasersService.fetchTeasers(),
-          TimelineService.findTimelines(),
-          BroadcastService.findBroadcasts(),
-          TwitterService.findTwits()
+          teaserService.fetchTeasers(),
+          timelineService.findTimelines(),
+          broadcastService.findBroadcasts(),
+          twitterService.findTweets()
       ]);
       allPromise.then(function(data){
           return res.view({
@@ -34,7 +39,7 @@ module.exports = {
               articles: data[0].articles,
               timelines: data[1],
               broadcasts: data[2],
-              twits: data[3]
+              tweets: data[3]
           });
       }, function(err) {
           console.error("Promise error:" + err);
