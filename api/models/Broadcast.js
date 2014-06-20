@@ -22,13 +22,17 @@ module.exports = {
       defaultsTo: 0
     },
     content: {
-        type: 'text',
-        required: true
+      type: 'text',
+      required: true
     },
     accepted: 'boolean',
     lead: {
-        type: 'string',
-        required: true
+      type: 'string',
+      required: true
+    },
+    images: {
+      type: 'string',
+      required: false
     }
   }
 };
