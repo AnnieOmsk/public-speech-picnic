@@ -26,8 +26,8 @@ module.exports = {
                 error: 'Введите имя пользователя и пароль'
             });
         } else {
-            var promise = JournalistService.findJournalist(login, password);
-            promise.then(
+            var findPromise = JournalistService.findJournalist(login, password);
+            findPromise.then(
                 function(journalist){
                     console.log(journalist);
                     if (journalist !== undefined) {
@@ -45,7 +45,8 @@ module.exports = {
                     return res.view('journalist/login',{
                         error: 'Ошибка сервиса, пожалуйста, повторите попозже'
                     });
-                });
+                }
+            );
         }
     },
 
@@ -54,7 +55,37 @@ module.exports = {
     *    `/journalist/create`
     */
     create: function (req, res) {
-      return res.view();
+      return res.view({form:{}});
+    },
+
+
+    /**
+     *    `/journalist/save`
+     */
+    save: function (req, res) {
+        var lead = req.param('lead');
+        var content = req.param('content');
+        var journalistId = req.session.user.id;
+        var savePromise = BroadcastService.save(journalistId, lead, content);
+        savePromise.then(
+            function(broadcast) {
+                console.log("Broadcast saved:" + broadcast);
+                return res.view('journalist/create',{
+                    success: 'Трансляция сохранена',
+                    form: {}
+                });
+            },
+            function(err) {
+                console.log("Cannot save broadcast:" + err);
+                return res.view('journalist/create',{
+                    error: 'Ошибка сервиса, пожалуйста, повторите попозже',
+                    form: {
+                        lead: lead,
+                        content: content
+                    }
+                });
+            }
+        );
     },
 
 

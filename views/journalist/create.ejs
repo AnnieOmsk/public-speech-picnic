@@ -2,29 +2,30 @@
 <div class="container col-xl-5">
     Здесь будет форма сабмита трансляции
     <a href="logout">Выйти</a>
+    <% if(typeof(error) != "undefined"){ %>
+    <div class="alert alert-danger">
+        <%= error %>
+    </div>
+    <%}%>
+    <% if(typeof(success) != "undefined"){ %>
+    <div class="alert alert-success">
+        <%= success %>
+    </div>
+    <%}%>
     <form class="form-add-broadcast" role="form" method="post">
         <h2>Добавить трансляцию</h2>
         <div class="form-group">
             <label for="lead" class="col-xl-1">Заголовок</label>
             <div class="col-xl-4">
-                <input name="lead" id="lead" type="text" class="form-control" placeholder="Заголовок трансляции" required autofocus />
+                <input name="lead" id="lead" type="text" class="form-control" placeholder="Заголовок трансляции" required autofocus value="<%= form.lead ? form.lead : '' %>"/>
             </div>
             <div>
-                <% if(typeof(error) != "undefined"){ %>
-                <%= error.lead %>
-                <%}%>
             </div>
         </div>
         <div class="form-group">
             <label for="content" class="col-xl-1">Текст</label>
             <div class="col-xl-4">
-                <textarea name="content" id="content" class="form-control" placeholder="Текст трансляции" required>
-                </textarea>
-            </div>
-            <div>
-                <% if(typeof(error) != "undefined"){ %>
-                <%= error.content %>
-                <%}%>
+                <textarea name="content" id="content" class="form-control" placeholder="Текст трансляции" required><%= form.content ? form.content : '' %></textarea>
             </div>
         </div>
         <div class="form-group">

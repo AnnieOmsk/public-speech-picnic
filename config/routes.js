@@ -40,9 +40,15 @@ module.exports.routes = {
   },
 
     'get /journalist': 'JournalistController.login',
+
     'post /journalist': {
         controller: 'JournalistController',
         action: 'loginPost'
+    },
+
+    'post /journalist/create': {
+        controller: 'JournalistController',
+        action: 'save'
     }
 
   /*
