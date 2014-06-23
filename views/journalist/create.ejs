@@ -1,15 +1,10 @@
 <div class="col-xl-2"></div>
 <div class="container col-xl-5">
-    Здесь будет форма сабмита трансляции
+    <a href="list">Мои трансляции</a>
     <a href="logout">Выйти</a>
     <% if(typeof(error) != "undefined"){ %>
     <div class="alert alert-danger">
         <%= error %>
-    </div>
-    <%}%>
-    <% if(typeof(success) != "undefined"){ %>
-    <div class="alert alert-success">
-        <%= success %>
     </div>
     <%}%>
     <form class="form-add-broadcast" role="form" method="post">

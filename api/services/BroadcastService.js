@@ -3,11 +3,18 @@ var dateTime = require('./DateTimeUtils');
 
 /**
  * Finds all broadcasts in database
+ * @param journalistId    Journalist id, can be omitted
  */
-exports.findBroadcasts = function() {
+exports.findBroadcasts = function(journalistId) {
     var deferred = q.defer();
     console.log("Searching for broadcasts");
-    Broadcast.find({}).sort("time ASC").done(function(err, broadcasts){
+    var options = {};
+    if (journalistId != null) {
+        options = {
+            journalistId: journalistId
+        };
+    }
+    Broadcast.find(options).sort("time ASC").done(function(err, broadcasts){
         if (err) {
             console.log("BroadcastService error:" + err);
             deferred.reject(err);

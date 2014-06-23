@@ -2,6 +2,7 @@
  * JournalistController
  */
 var broadcastService = require('../services/BroadcastService');
+var presenterService = require('../services/PresenterService');
 
 module.exports = {
 
@@ -76,10 +77,7 @@ module.exports = {
         savePromise.then(
             function(broadcast) {
                 console.log("Broadcast saved:" + broadcast);
-                return res.view('journalist/create',{
-                    success: 'Трансляция сохранена',
-                    form: {}
-                });
+                return res.redirect('/journalist/list?success');
             },
             function(err) {
                 console.log("Cannot save broadcast:" + err);
@@ -103,6 +101,31 @@ module.exports = {
         req.session.user = undefined;
         req.session.authenticated = false;
         return res.redirect('/journalist/');
+    },
+
+    /**
+     *    `/journalist/list`
+     */
+    list: function (req, res) {
+        var journalistId = req.session.user.id;
+        var response = {};
+        if (req.param('success') != null) {
+            response.success = 'Ваша трансляция сохранена';
+        }
+        var listPromise = broadcastService.findBroadcasts(journalistId);
+        listPromise.then(
+            function(broadcasts) {
+                response.broadcasts = presenterService.presentBroadcasts(broadcasts);
+                return res.view(response);
+            },
+            function(err) {
+                console.log("Couldn't retrieve broadcasts for journalist with id:" + journalistId +
+                    " because of error:" + err);
+                response.error = 'Ошибка сервиса: невозможно получить спискок трансляций';
+                response.broadcasts = {};
+                return res.view(response);
+            }
+        );
     },
 
 
