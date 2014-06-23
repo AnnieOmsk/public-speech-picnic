@@ -1,0 +1,1 @@
+alter table broadcast add column images_count int;

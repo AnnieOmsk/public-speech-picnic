@@ -33,6 +33,12 @@ module.exports = {
     images: {
       type: 'string',
       required: false
+    },
+    imagesCount: {
+      type: 'integer',
+      required: false,
+      columnName: 'images_count'
+
     }
   }
 };
