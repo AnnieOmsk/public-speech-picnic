@@ -1,29 +1,32 @@
 /**
  * JournalistController
  */
+var broadcastService = require('../services/BroadcastService');
+var presenterService = require('../services/PresenterService');
 
 module.exports = {
 
     /**
-    *   GET `/journalist/login`
+    *   GET `/journalist/`
     */
     login: function (req, res) {
         if (req.session.user != null) {
           return res.redirect('/journalist/create');
         }
-        return res.view();
+        return res.view({form: {}});
     },
 
 
     /**
-     *   POST `/journalist/login`
+     *   POST `/journalist/`
      */
     loginPost: function (req, res) {
         var login = req.param('login');
         var password = req.param('password');
         if (login == null || password == null) {
             return res.view('journalist/login', {
-                error: 'Введите имя пользователя и пароль'
+                error: 'Введите имя пользователя и пароль',
+                form: {login: login}
             });
         } else {
             var findPromise = JournalistService.findJournalist(login, password);
@@ -36,14 +39,16 @@ module.exports = {
                         return res.redirect('/journalist/create');
                     } else {
                         return res.view('journalist/login',{
-                            error: 'Пароль и имя пользвателя некорректны'
+                            error: 'Пароль или имя пользвателя некорректны',
+                            form: {login: login}
                         });
                     }
                 },
                 function(err){
                     console.log("Cannot lookup journalist:" + err);
                     return res.view('journalist/login',{
-                        error: 'Ошибка сервиса, пожалуйста, повторите попозже'
+                        error: 'Ошибка сервиса, пожалуйста, повторите попозже',
+                        form: {login: login}
                     });
                 }
             );
@@ -63,24 +68,24 @@ module.exports = {
      *    `/journalist/save`
      */
     save: function (req, res) {
+        var title = req.param('title')
         var lead = req.param('lead');
         var content = req.param('content');
         var images = req.param('group-uuid');
+        var imagesCount = req.param('images-count');
         var journalistId = req.session.user.id;
-        var savePromise = BroadcastService.save(journalistId, lead, content, images);
+        var savePromise = BroadcastService.save(journalistId, title, lead, content, images, imagesCount);
         savePromise.then(
             function(broadcast) {
                 console.log("Broadcast saved:" + broadcast);
-                return res.view('journalist/create',{
-                    success: 'Трансляция сохранена',
-                    form: {}
-                });
+                return res.redirect('/journalist/list?success');
             },
             function(err) {
                 console.log("Cannot save broadcast:" + err);
                 return res.view('journalist/create',{
                     error: 'Ошибка сервиса, невозможно сохранить данные',
                     form: {
+                        title: title,
                         lead: lead,
                         content: content
                     }
@@ -97,6 +102,31 @@ module.exports = {
         req.session.user = undefined;
         req.session.authenticated = false;
         return res.redirect('/journalist/');
+    },
+
+    /**
+     *    `/journalist/list`
+     */
+    list: function (req, res) {
+        var journalistId = req.session.user.id;
+        var response = {};
+        if (req.param('success') != null) {
+            response.success = 'Ваша трансляция сохранена';
+        }
+        var listPromise = broadcastService.findBroadcasts(journalistId);
+        listPromise.then(
+            function(broadcasts) {
+                response.broadcasts = presenterService.presentBroadcasts(broadcasts);
+                return res.view(response);
+            },
+            function(err) {
+                console.log("Couldn't retrieve broadcasts for journalist with id:" + journalistId +
+                    " because of error:" + err);
+                response.error = 'Ошибка сервиса: невозможно получить спискок трансляций';
+                response.broadcasts = {};
+                return res.view(response);
+            }
+        );
     },
 
 

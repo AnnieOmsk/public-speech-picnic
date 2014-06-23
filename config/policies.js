@@ -20,9 +20,11 @@ module.exports.policies = {
 
   JournalistController: {
       login: true,
+      loginPost: true,
       create: 'isAuthenticated',
       logout: 'isAuthenticated',
-      save: 'isAuthenticated'
+      save: 'isAuthenticated',
+      list: 'isAuthenticated'
   }
 
   /*

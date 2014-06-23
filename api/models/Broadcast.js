@@ -30,9 +30,18 @@ module.exports = {
       type: 'string',
       required: true
     },
+    title: {
+        type: 'string'
+    },
     images: {
       type: 'string',
       required: false
+    },
+    imagesCount: {
+      type: 'integer',
+      required: false,
+      columnName: 'images_count'
+
     }
   }
 };
