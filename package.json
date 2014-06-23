@@ -10,7 +10,7 @@
         "ejs": "0.8.4",
         "optimist": "0.3.4",
         "sails-mysql": "0.9.10",
-        "express-admin": "1.2.3",
+        "express-admin": "git+https://github.com/kkolotyuk/express-admin.git",
         "q": "1.0.1",
         "moment": "2.7.0",
         "twitter": "0.2.9"

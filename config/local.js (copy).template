@@ -57,8 +57,8 @@ module.exports = {
   // Database credentials
   adapters: {
     mysql: {
-      user: 'username',
-      password: 'password'
+      user: 'picnic',
+      password: 'picnicmysql'
     }
   }
 
