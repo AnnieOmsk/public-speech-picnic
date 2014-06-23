@@ -107,7 +107,11 @@
                 "name": "accepted",
                 "verbose": "accepted",
                 "control": {
-                    "text": true
+                    "radio": true,
+                    "options": [
+                        "True",
+                        "False"
+                    ]
                 },
                 "type": "tinyint(1)",
                 "allowNull": true,
