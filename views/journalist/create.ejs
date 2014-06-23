@@ -30,7 +30,12 @@
             <div class="col-xl-4">
                 <textarea name="content" id="content" class="form-control" placeholder="Текст трансляции" rows="10"><%= form.content ? form.content : '' %></textarea>
                 <script type="text/javascript">
-                    CKEDITOR.replace( 'content' );
+                    CKEDITOR.replace( 'content',{
+                        toolbarGroups: [
+                            { name: 'basicstyles', groups: [ 'basicstyles', 'cleanup' ] },
+                            { name: 'styles' }
+                        ]
+                        });
                 </script>
             </div>
         </div>
