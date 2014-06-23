@@ -15,14 +15,30 @@
 <table class="table table-striped">
     <thead>
     <tr>
-        <td>Дата создания</td><td>Заголовок</td><td>Краткое описание</td><td>Текст</td><td>Изображения</td><td>Статус</td>
+        <td>Дата создания</td>
+        <td>Заголовок</td>
+        <td>Краткое описание</td>
+        <td>Текст</td>
+        <td>Изображения</td>
+        <td>Статус</td>
     </tr>
     </thead>
     <tbody>
     <% for (var i = 0; i < broadcasts.length; i++) {
         var item = broadcasts[i]; %>
     <tr>
-        <td><%= item.time %></td><td><%= item.title %></td><td><%= item.lead %></td><td><%= item.content %></td><td><%= item.images %></td><td><%= item.accepted %></td>
+        <td><%= item.time %></td>
+        <td><%= item.title %></td>
+        <td><%= item.lead %></td>
+        <td><%= item.content %></td>
+        <td>
+            <% if(item.images != null){ %>
+              <a href="<%= item.imagesLink %>" target="_blank">Фото</a>
+            <%} else {%>
+              Нет фото
+            <%}%>
+        </td>
+        <td><%= item.accepted %></td>
     </tr>
     <%}%>
     </tbody>

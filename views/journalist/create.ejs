@@ -20,7 +20,16 @@
         <div class="form-group">
             <label for="lead" class="col-xl-1">Краткое описание</label>
             <div class="col-xl-4">
-                <input name="lead" id="lead" type="text" class="form-control" placeholder="Краткое описание" required value="<%= form.lead ? form.lead : '' %>"/>
+                <textarea name="lead" id="lead" class="form-control" placeholder="Краткое описание" rows="3"><%= form.lead ? form.lead : '' %></textarea>
+                <script type="text/javascript">
+                    CKEDITOR.replace( 'lead',{
+                        toolbarGroups: [
+                            { name: 'basicstyles', groups: [ 'basicstyles', 'cleanup' ] },
+                            { name: 'styles' }
+                        ],
+                        height: 80
+                    });
+                </script>
             </div>
             <div>
             </div>
@@ -28,7 +37,15 @@
         <div class="form-group">
             <label for="content" class="col-xl-1">Текст</label>
             <div class="col-xl-4">
-                <textarea name="content" id="content" class="form-control" placeholder="Текст трансляции" required><%= form.content ? form.content : '' %></textarea>
+                <textarea name="content" id="content" class="form-control" placeholder="Текст трансляции" rows="10"><%= form.content ? form.content : '' %></textarea>
+                <script type="text/javascript">
+                    CKEDITOR.replace( 'content',{
+                        toolbarGroups: [
+                            { name: 'basicstyles', groups: [ 'basicstyles', 'cleanup' ] },
+                            { name: 'styles' }
+                        ]
+                        });
+                </script>
             </div>
         </div>
         <div class="form-group">
@@ -45,10 +62,11 @@
         </div>
     </form>
 </div>
-
 <!--<iframe-->
         <!--src="http://ucarecdn.com/cf272a92-2bf4-40e6-803e-6f320af4ea43~2/gallery/-/nav/thumbs/-/fit/cover/-/loop/true/-/allowfullscreen/native/-/thumbwidth/100/"-->
         <!--width="100%" height="450" allowfullscreen="true"frameborder="0"-->
         <!-->
+
+<!--http://ucarecdn.com/cf272a92-2bf4-40e6-803e-6f320af4ea43~2/gallery/-/nav/thumbs/-/fit/cover/-/loop/true/-/allowfullscreen/native/-/thumbwidth/100/-->
 
 <!--http://ucarecdn.com/8854d92f-1239-44be-8940-1408c6454c0d~2/nth/0/-/preview/300x500/-->
