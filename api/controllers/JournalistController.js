@@ -6,7 +6,7 @@ var broadcastService = require('../services/BroadcastService');
 module.exports = {
 
     /**
-    *   GET `/journalist/login`
+    *   GET `/journalist/`
     */
     login: function (req, res) {
         if (req.session.user != null) {
@@ -17,7 +17,7 @@ module.exports = {
 
 
     /**
-     *   POST `/journalist/login`
+     *   POST `/journalist/`
      */
     loginPost: function (req, res) {
         var login = req.param('login');
