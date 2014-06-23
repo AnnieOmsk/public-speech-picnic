@@ -32,9 +32,10 @@ exports.findBroadcasts = function(journalistId) {
  * @param lead             Lead
  * @param content          Content
  * @param images           group uuid from uploadcare
+ * @param imagesCount      count of images in group
  * @returns created broadcast
  */
-exports.save = function(journalistId, title, lead, content, images) {
+exports.save = function(journalistId, title, lead, content, images, imagesCount) {
     var deferred = q.defer();
     console.log("Saving broadcast with following params. JournalistId:" + journalistId + " title:" + title +
         " lead:" + lead + " content:" + content);
@@ -44,7 +45,8 @@ exports.save = function(journalistId, title, lead, content, images) {
         title: title,
         content: content,
         lead: lead,
-        images: images
+        images: images,
+        imagesCount: imagesCount
     }).done(function(err, broadcast) {
         if (err) {
             console.log("BroadcastService error:" + err);

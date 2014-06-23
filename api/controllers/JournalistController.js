@@ -72,8 +72,9 @@ module.exports = {
         var lead = req.param('lead');
         var content = req.param('content');
         var images = req.param('group-uuid');
+        var imagesCount = req.param('images-count');
         var journalistId = req.session.user.id;
-        var savePromise = broadcastService.save(journalistId, title, lead, content, images);
+        var savePromise = BroadcastService.save(journalistId, title, lead, content, images, imagesCount);
         savePromise.then(
             function(broadcast) {
                 console.log("Broadcast saved:" + broadcast);
