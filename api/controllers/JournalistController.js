@@ -3,6 +3,7 @@
  */
 var broadcastService = require('../services/BroadcastService');
 var presenterService = require('../services/PresenterService');
+var injectedScripts = "<script src=\"//cdn.ckeditor.com/4.4.1/standard/ckeditor.js\"></script>";
 
 module.exports = {
 
@@ -63,7 +64,7 @@ module.exports = {
      *    Shows form for new broadcast
     */
     create: function (req, res) {
-      return res.view({form:{}});
+      return res.view({form:{}, injectedScripts: injectedScripts});
     },
 
 
@@ -92,7 +93,8 @@ module.exports = {
                         title: title,
                         lead: lead,
                         content: content
-                    }
+                    },
+                    injectedScripts: injectedScripts
                 });
             }
         );
