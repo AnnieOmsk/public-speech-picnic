@@ -20,14 +20,14 @@
                     "show": true
                 },
                 "editview": {
-                    "show": true
+                    "show": false
                 }
             },
             {
                 "name": "time",
                 "verbose": "time",
                 "control": {
-                    "text": true
+                    "datetime": true
                 },
                 "type": "datetime",
                 "allowNull": false,
@@ -40,44 +40,12 @@
                 }
             },
             {
-                "name": "likes",
-                "verbose": "likes",
+                "name": "title",
+                "verbose": "title",
                 "control": {
                     "text": true
                 },
-                "type": "int(11)",
-                "allowNull": false,
-                "defaultValue": "0",
-                "listview": {
-                    "show": true
-                },
-                "editview": {
-                    "show": true
-                }
-            },
-            {
-                "name": "content",
-                "verbose": "content",
-                "control": {
-                    "text": true
-                },
-                "type": "text",
-                "allowNull": false,
-                "defaultValue": null,
-                "listview": {
-                    "show": true
-                },
-                "editview": {
-                    "show": true
-                }
-            },
-            {
-                "name": "accepted",
-                "verbose": "accepted",
-                "control": {
-                    "text": true
-                },
-                "type": "tinyint(1)",
+                "type": "varchar(255)",
                 "allowNull": true,
                 "defaultValue": null,
                 "listview": {
@@ -104,10 +72,66 @@
                 }
             },
             {
-                "name": "journalist_id",
-                "verbose": "journalist_id",
+                "name": "content",
+                "verbose": "content",
                 "control": {
                     "text": true
+                },
+                "type": "text",
+                "allowNull": false,
+                "defaultValue": null,
+                "listview": {
+                    "show": true
+                },
+                "editview": {
+                    "show": true
+                }
+            },
+            {
+                "name": "likes",
+                "verbose": "likes",
+                "control": {
+                    "text": true
+                },
+                "type": "int(11)",
+                "allowNull": false,
+                "defaultValue": "0",
+                "listview": {
+                    "show": true
+                },
+                "editview": {
+                    "show": true
+                }
+            },
+            {
+                "name": "accepted",
+                "verbose": "accepted",
+                "control": {
+                    "text": true
+                },
+                "type": "tinyint(1)",
+                "allowNull": true,
+                "defaultValue": null,
+                "listview": {
+                    "show": true
+                },
+                "editview": {
+                    "show": true
+                }
+            },
+            {
+                "name": "journalist_id",
+                "verbose": "journalist",
+                "control": {
+                    "select": true
+                },
+                "oneToMany": {
+                    "table": "journalist",
+                    "pk": "id",
+                    "columns": [
+                        "first_name",
+                        "last_name"
+                    ]
                 },
                 "type": "int(11)",
                 "allowNull": false,
@@ -142,22 +166,6 @@
                     "text": true
                 },
                 "type": "int(11)",
-                "allowNull": true,
-                "defaultValue": null,
-                "listview": {
-                    "show": true
-                },
-                "editview": {
-                    "show": true
-                }
-            },
-            {
-                "name": "title",
-                "verbose": "title",
-                "control": {
-                    "text": true
-                },
-                "type": "varchar(255)",
                 "allowNull": true,
                 "defaultValue": null,
                 "listview": {
