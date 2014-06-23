@@ -32,22 +32,43 @@ $ npm install
 $ sails lift
 ```
 
-Deploy app
+Start app
 ----------
-
+Once
 ```
 $ npm -g install forever
+```
+
+```
 $ cd www/public-speech-picnic
 $ forever start -a -l /home/picnic/www/public-speech-picnic/logs/forever.log -o /home/picnic/www/public-speech-picnic/logs/out.log -e /home/picnic/www/public-speech-picnic/logs/err.log app.js
 ```
 
-To stop app
+Stop app
+--------
+
 ```
 $ forever stop app.js
 ```
 
-Deploy admin
+Start admin
 ------------
 ```
+$ forever start -a -l /home/picnic/www/public-speech-picnic/logs/admin/forever.log -o /home/picnic/www/public-speech-picnic/logs/admin/out.log -e /home/picnic/www/public-speech-picnic/logs/admin/err.log node_modules/express-admin/app.js admin/config/
+```
+
+Redeploy app
+------------
+Deploy as picnic user
+```
+$ cd www/public-speech-picnic
+$ nvm use
+$ forever stop app.js
+$ forever stop node_modules/express-admin/app.js
+$ git checkout .
+$ git pull origin master
+$ npm install
+// may be some sql migrations
+$ forever start -a -l /home/picnic/www/public-speech-picnic/logs/forever.log -o /home/picnic/www/public-speech-picnic/logs/out.log -e /home/picnic/www/public-speech-picnic/logs/err.log app.js
 $ forever start -a -l /home/picnic/www/public-speech-picnic/logs/admin/forever.log -o /home/picnic/www/public-speech-picnic/logs/admin/out.log -e /home/picnic/www/public-speech-picnic/logs/admin/err.log node_modules/express-admin/app.js admin/config/
 ```
