@@ -1,6 +1,7 @@
 var q = require('q');
 var twitter = require('twitter');
-/** TODO: Change in production to client's twitter production auth settings */
+var dateTimeUtils = require('./DateTimeUtils');
+/** TODO: Change in production to client's twitter auth settings */
 var twit = new twitter({
     consumer_key: 'Kl5X1fTkRsCPQrQqVXUZo3lyN',
     consumer_secret: 'XNVyyEqlS4oxl3AT5aEuBXhb3qeUmvmds6EVExAGHjkfPUO1LY',
@@ -20,16 +21,18 @@ var parseTweets = function(tweetsArray) {
     for(var i=0; i<tweetsArray.length; i++) {
         var item = {};
         var inputTweet = tweetsArray[i];
-        item.retweet_url = 'https://twitter.com/intent/retweet?tweet_id=' + inputTweet.id_str;
-        item.retweet_count = inputTweet.retweet_count;
-        item.favorite_url = 'https://twitter.com/intent/favorite?tweet_id=' + inputTweet.id_str;
-        item.favorite_count = inputTweet.favorite_count;
+        item.id = inputTweet.id_str;
+        item.retweetUrl = 'https://twitter.com/intent/retweet?tweet_id=' + inputTweet.id_str;
+        item.retweetCount = inputTweet.retweet_count;
+        item.favoriteUrl = 'https://twitter.com/intent/favorite?tweet_id=' + inputTweet.id_str;
+        item.favoriteCount = inputTweet.favorite_count;
+        item.replyUrl = 'https://twitter.com/intent/tweet?in_reply_to=' + inputTweet.id_str;
         item.url = 'https://twitter.com/' + inputTweet.user.screen_name + '/status/' + inputTweet.id_str;
-        item.user_account = inputTweet.user.screen_name;
-        item.user_name = inputTweet.user.name;
-        item.user_icon = inputTweet.user.profile_image_url;
-        item.created_at = inputTweet.created_at;
-        item.content = inputTweet.text;
+        item.userAccount = inputTweet.user.screen_name;
+        item.userName = inputTweet.user.name;
+        item.userIcon = inputTweet.user.profile_image_url;
+        item.createdAt = dateTimeUtils.dateMonth(inputTweet.created_at);
+        item.text = inputTweet.text;
         tweets.push(item);
     }
     return tweets;
@@ -37,12 +40,14 @@ var parseTweets = function(tweetsArray) {
 
 /**
  * Finds tweets with setup search parameters
+ * Each tweet contains: id, retweetUrl, retweetCount, favoriteUrl, favoriteCount,
+ * replyUrl, url, userAccount, userName, userIcon, createdAt, text
  */
-exports.findTweets = function() {
+exports.findTweets = function(query, count) {
     var deferred = q.defer();
     console.log("Searching for twitter messages");
-    twit.search('#пикник', {
-        count: 50
+    twit.search(query, {
+        count: count
     }, function(data) {
         deferred.resolve(parseTweets(data.statuses));
     });

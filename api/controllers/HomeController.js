@@ -31,7 +31,7 @@ module.exports = {
           teaserService.fetchTeasers(),
           timelineService.findTimelines(),
           broadcastService.findBroadcasts(),
-          twitterService.findTweets()
+          twitterService.findTweets('#пикник', 50)
       ]);
       allPromise.then(function(data){
           return res.view({
