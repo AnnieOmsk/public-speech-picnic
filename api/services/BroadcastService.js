@@ -14,7 +14,7 @@ exports.findBroadcasts = function(journalistId) {
             journalistId: journalistId
         };
     }
-    Broadcast.find(options).sort("time ASC").done(function(err, broadcasts){
+    Broadcast.find(options).sort("time DESC").done(function(err, broadcasts){
         if (err) {
             console.log("BroadcastService error:" + err);
             deferred.reject(err);
