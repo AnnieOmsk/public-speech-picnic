@@ -21,17 +21,20 @@ exports.findBroadcasts = function() {
 /**
  * Creates and saves Broadcast with following parameters
  * @param journalistId     Journalist id
+ * @param title            Title
  * @param lead             Lead
  * @param content          Content
  * @param images           group uuid from uploadcare
  * @returns created broadcast
  */
-exports.save = function(journalistId, lead, content, images) {
+exports.save = function(journalistId, title, lead, content, images) {
     var deferred = q.defer();
-    console.log("Saving broadcast with following params. JournalistId:" + journalistId + " lead:" + lead + " content:" + content);
+    console.log("Saving broadcast with following params. JournalistId:" + journalistId + " title:" + title +
+        " lead:" + lead + " content:" + content);
     Broadcast.create({
         time: dateTime.now(),
         journalistId: journalistId,
+        title: title,
         content: content,
         lead: lead,
         images: images
