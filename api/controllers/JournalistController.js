@@ -1,29 +1,31 @@
 /**
  * JournalistController
  */
+var broadcastService = require('../services/BroadcastService');
 
 module.exports = {
 
     /**
-    *   GET `/journalist/login`
+    *   GET `/journalist/`
     */
     login: function (req, res) {
         if (req.session.user != null) {
           return res.redirect('/journalist/create');
         }
-        return res.view();
+        return res.view({form: {}});
     },
 
 
     /**
-     *   POST `/journalist/login`
+     *   POST `/journalist/`
      */
     loginPost: function (req, res) {
         var login = req.param('login');
         var password = req.param('password');
         if (login == null || password == null) {
             return res.view('journalist/login', {
-                error: 'Введите имя пользователя и пароль'
+                error: 'Введите имя пользователя и пароль',
+                form: {login: login}
             });
         } else {
             var findPromise = JournalistService.findJournalist(login, password);
@@ -36,14 +38,16 @@ module.exports = {
                         return res.redirect('/journalist/create');
                     } else {
                         return res.view('journalist/login',{
-                            error: 'Пароль и имя пользвателя некорректны'
+                            error: 'Пароль или имя пользвателя некорректны',
+                            form: {login: login}
                         });
                     }
                 },
                 function(err){
                     console.log("Cannot lookup journalist:" + err);
                     return res.view('journalist/login',{
-                        error: 'Ошибка сервиса, пожалуйста, повторите попозже'
+                        error: 'Ошибка сервиса, пожалуйста, повторите попозже',
+                        form: {login: login}
                     });
                 }
             );
@@ -63,12 +67,13 @@ module.exports = {
      *    `/journalist/save`
      */
     save: function (req, res) {
+        var title = req.param('title')
         var lead = req.param('lead');
         var content = req.param('content');
         var images = req.param('group-uuid');
         var imagesCount = req.param('images-count');
         var journalistId = req.session.user.id;
-        var savePromise = BroadcastService.save(journalistId, lead, content, images, imagesCount);
+        var savePromise = BroadcastService.save(journalistId, title, lead, content, images, imagesCount);
         savePromise.then(
             function(broadcast) {
                 console.log("Broadcast saved:" + broadcast);
@@ -82,6 +87,7 @@ module.exports = {
                 return res.view('journalist/create',{
                     error: 'Ошибка сервиса, невозможно сохранить данные',
                     form: {
+                        title: title,
                         lead: lead,
                         content: content
                     }
