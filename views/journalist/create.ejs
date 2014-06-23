@@ -20,7 +20,16 @@
         <div class="form-group">
             <label for="lead" class="col-xl-1">Краткое описание</label>
             <div class="col-xl-4">
-                <input name="lead" id="lead" type="text" class="form-control" placeholder="Краткое описание" required value="<%= form.lead ? form.lead : '' %>"/>
+                <textarea name="lead" id="lead" class="form-control" placeholder="Краткое описание" rows="3"><%= form.lead ? form.lead : '' %></textarea>
+                <script type="text/javascript">
+                    CKEDITOR.replace( 'lead',{
+                        toolbarGroups: [
+                            { name: 'basicstyles', groups: [ 'basicstyles', 'cleanup' ] },
+                            { name: 'styles' }
+                        ],
+                        height: 80
+                    });
+                </script>
             </div>
             <div>
             </div>
