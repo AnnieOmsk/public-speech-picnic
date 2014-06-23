@@ -41,7 +41,11 @@ module.exports = {
       type: 'integer',
       required: false,
       columnName: 'images_count'
-
+    },
+    imagesLink: {
+      type: 'string',
+      required: false,
+      columnName: 'images_link'
     }
   }
 };

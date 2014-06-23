@@ -75,13 +75,13 @@
                 "name": "content",
                 "verbose": "content",
                 "control": {
-                    "text": true
+                    "textarea": true
                 },
                 "type": "text",
                 "allowNull": false,
                 "defaultValue": null,
                 "listview": {
-                    "show": true
+                    "show": false
                 },
                 "editview": {
                     "show": true
@@ -160,7 +160,7 @@
                     "show": true
                 },
                 "editview": {
-                    "show": true
+                    "show": false
                 }
             },
             {
@@ -176,7 +176,23 @@
                     "show": true
                 },
                 "editview": {
+                    "show": false
+                }
+            },
+            {
+                "name": "images_link",
+                "verbose": "images link",
+                "control": {
+                    "text": true
+                },
+                "type": "varchar(255)",
+                "allowNull": true,
+                "defaultValue": null,
+                "listview": {
                     "show": true
+                },
+                "editview": {
+                    "show": false
                 }
             }
         ],
@@ -184,7 +200,9 @@
             "show": true
         },
         "listview": {
-            "order": {},
+            "order": {
+                "id": "desc"
+            },
             "page": 25
         },
         "editview": {

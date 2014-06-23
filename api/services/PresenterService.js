@@ -12,6 +12,7 @@ exports.presentBroadcasts = function(broadcasts) {
         item.title = broadcast.title;
         item.lead = broadcast.lead;
         item.content = broadcast.content;
+        item.imagesLink = broadcast.imagesLink;
         if (broadcast.accepted == null) {
             item.accepted = 'Не рассмотрено';
         } else if (broadcast.accepted == true){
