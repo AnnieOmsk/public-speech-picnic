@@ -1,4 +1,4 @@
-cd www/public-speech-picnic
+#!/bin/bash
 nvm use
 forever stop app.js
 forever stop node_modules/express-admin/app.js
