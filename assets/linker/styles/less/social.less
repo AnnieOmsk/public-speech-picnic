@@ -72,6 +72,13 @@
   margin: auto;
 }
 
+.content-twitter {
+  display: none;
+}
+.content-instagram {
+  // display: none;
+}
+
 .item {
   width:24%;
   display: block;
@@ -133,7 +140,58 @@
   }
 }
 
-
+.twitter-item {
+  margin-bottom: 50px;
+  .user {
+    .avatar {
+      float: left;
+      margin-right: 10px;
+    }
+    .nic {
+      margin-bottom: 5px;
+    }
+  }
+  .post {
+    margin-top: 20px;
+    margin-bottom: 12px;
+    a {
+      color: @color-main;
+      &:hover {
+        color: @color-main;
+        text-decoration: none;
+      }
+    }
+  }
+  .post-img {
+      margin-bottom: 10px;
+    }
+  .retwitts {
+    display: inline-block;
+    .img {
+      .social-ico(20px, 13px);
+    }
+  }
+  .favorites {
+    .margin-left;
+    display: inline-block;
+    .img {
+      .social-ico(18px, 18px);
+    }
+  }
+  .twitting {
+    .margin-left;
+    display: inline-block;
+    .img {
+      .social-ico(16px, 14px);
+    }
+  }
+  .counter {
+    display: block;
+    float: right;
+    margin-top: 3px;
+    margin-left: 4px;
+  }
+}
 
 /*  view: ;*/
 .social-news {
@@ -208,60 +266,6 @@ a {
   }
   .comment {
     .social-action ('../../images/comment.png', '../../images/comment-hover.png');
-  }
-}
-
-.twitter-item {
-  display: none;
-  margin-bottom: 50px;
-  .user {
-    .avatar {
-      float: left;
-      margin-right: 10px;
-    }
-    .nic {
-      margin-bottom: 5px;
-    }
-  }
-  .post {
-    margin-top: 20px;
-    margin-bottom: 12px;
-    a {
-      color: @color-main;
-      &:hover {
-        color: @color-main;
-        text-decoration: none;
-      }
-    }
-  }
-  .post-img {
-      margin-bottom: 10px;
-    }
-  .retwitts {
-    display: inline-block;
-    .img {
-      .social-ico(20px, 13px);
-    }
-  }
-  .favorites {
-    .margin-left;
-    display: inline-block;
-    .img {
-      .social-ico(18px, 18px);
-    }
-  }
-  .twitting {
-    .margin-left;
-    display: inline-block;
-    .img {
-      .social-ico(16px, 14px);
-    }
-  }
-  .counter {
-    display: block;
-    float: right;
-    margin-top: 3px;
-    margin-left: 4px;
   }
 }
 
