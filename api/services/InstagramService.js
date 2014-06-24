@@ -21,7 +21,8 @@ var parseInstagrams = function(instagramsArray) {
         item.username = inputMedia.user.username;
         item.time = dateTimeUtils.dateMonthTS(inputMedia.created_time);
         if (inputMedia.caption != null) {
-            item.text = inputMedia.caption.text;
+            var text = inputMedia.caption.text;
+            item.text = text.replace(/(#[^\s#]+)/g, "<span>$1</span>");
         }
         item.likesCount = inputMedia.likes.count;
         item.commentsCount = inputMedia.comments.count;
