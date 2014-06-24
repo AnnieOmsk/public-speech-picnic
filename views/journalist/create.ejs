@@ -18,7 +18,7 @@
             </div>
         </div>
         <div class="form-group">
-            <label for="lead" class="col-xl-1">Краткое описание</label>
+            <label for="lead" class="col-xl-1">Lead</label>
             <div class="col-xl-4">
                 <textarea name="lead" id="lead" class="form-control" placeholder="Краткое описание" rows="3"><%= form.lead ? form.lead : '' %></textarea>
                 <script type="text/javascript">
@@ -51,7 +51,8 @@
         <div class="form-group">
             <input type="hidden" role="uploadcare-uploader"
                    data-images-only="true"
-                   data-multiple="true" />
+                   data-multiple="true"
+                   data-multiple-max="3"/>
         </div>
         <input id="group-uuid" type="hidden" name="group-uuid" value="" />
         <input id="images-count" type="hidden" name="images-count" value="" />
