@@ -34,8 +34,8 @@ module.exports = {
           teaserService.fetchTeasers(),
           timelineService.findTimelines(),
           broadcastService.findBroadcasts(),
-          twitterService.findTweets('#пикник', 50),
-          instagramService.findInstagrams('пикник', 20)
+          twitterService.findTweets('#picnicomsk', 50),
+          instagramService.findInstagrams('picnicomsk', 20)
       ]);
       allPromise.then(function(data){
           return res.view({
