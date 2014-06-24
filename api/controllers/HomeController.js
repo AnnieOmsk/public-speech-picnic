@@ -21,6 +21,8 @@ var broadcastService = require('../services/BroadcastService');
 var twitterService = require('../services/TwitterService');
 var instagramService = require('../services/InstagramService');
 
+var injectedScripts = '<script src="http://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>';
+
 module.exports = {
     
   
@@ -42,7 +44,8 @@ module.exports = {
               timelines: data[1],
               broadcasts: data[2],
               tweets: data[3],
-              instagrams: data[4]
+              instagrams: data[4],
+              injectedScripts: injectedScripts
           });
       }, function(err) {
           console.error("Promise error:" + err);
