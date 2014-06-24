@@ -44,7 +44,7 @@ exports.dateMonth = function(dateText) {
  * @returns human-readable dateTime like "05 June" in russian
  */
 exports.dateMonthTS = function(timestamp) {
-    var date = new Date(parseInt(timestamp, 10));
+    var date = new Date(timestamp*1000);
     var russianDate = "";
     russianDate = date.getDate() + " " + months[date.getMonth()];
     return russianDate;
