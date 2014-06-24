@@ -72,14 +72,17 @@
   margin: auto;
 }
 
-.instagramm-item {
+.item {
   width:24%;
   display: block;
   float: left;
   margin-left: 3.8px;
   margin-right: 3.8px;
+}
+
+.instagramm-item {
 /*  to debug*/
-  // display: none;
+  display: none;
 /**/
   .nick {
     margin-top: 0px;
@@ -209,25 +212,27 @@ a {
 
 .twitter-item {
   .user {
-
+    
   }
   .post {
 
   }
-  /*fixed размер*/
   .retwitts {
+    display: inline-block;
     .img {
-      .social-ico(14px, 16px);
+      .social-ico(20px, 13px);
     }
   }
   .favorites {
+    display: inline-block;
     .img {
-      .social-ico(14px, 16px);
+      .social-ico(18px, 18px);
     }
   }
   .twitting {
+    display: inline-block;
     .img {
-      .social-ico(14px, 16px);
+      .social-ico(16px, 14px);
     }
   }
   .counter {
@@ -235,5 +240,29 @@ a {
     float: right;
     margin-top: 3px;
     margin-left: 4px;
+  }
+}
+
+.twitter-item {
+  font-family: @font-paragraf-family;
+  font-size: 18px;
+  text-transform: none;
+  .user {
+    .nic {
+      font-family: @font-paragraf-bolder-family;
+    }
+    .date-post {
+      font-size: 16px;
+      color: @color-gray;
+    }
+  }
+  .retwitts {
+    .social-action ('../../images/retwitts.png', '../../images/retwitts-hover.png');
+  }
+  .favorites {
+    .social-action ('../../images/favorites.png', '../../images/favorites-hover.png');
+  }
+  .twitting {
+    .social-action ('../../images/twitte.png', '../../images/twitte-hover.png');
   }
 }
