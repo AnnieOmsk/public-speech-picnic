@@ -6,6 +6,21 @@
   height: @height;
 }
 
+.social-action (@img, @img-hover) {
+  cursor: pointer;
+    color: @color-gray;
+    font-size: 14px;
+    .img {
+      background-image: url(@img);
+      }
+    &:hover {
+      color: @color-main;
+      .img {
+        background-image: url(@img-hover);
+      }
+    }
+}
+
 /*  end mixins*/
 
 /*  position  */
@@ -58,7 +73,7 @@
 }
 
 .instagramm-item {
-  width:24.2%;
+  width:24%;
   display: block;
   float: left;
   margin-left: 3.8px;
@@ -95,14 +110,14 @@
   .like {
     .margin-left;
     display: inline-block;
-    .heart {
+    .img {
       .social-ico(14px, 16px);
     }
   }
   .comment {
     .margin-left;
     display: inline-block;
-    .mention {
+    .img {
       .social-ico (16px, 16px);
     }
   }
@@ -177,42 +192,48 @@ a {
     font-family: @font-paragraf-family;
     font-size: 16px;
     text-transform:none; 
-    a {
+    span {
       color: @color-main;
-      &:hover {
-        text-decoration: none;
-      }
+      // &:hover {
+      //   text-decoration: none;
+      // }
     }
   }
   .like {
-    cursor: pointer;
-    color: @color-gray;
-    font-size: 14px;
-    .heart {
-      background-image: url('../../images/heart.png');
-      }
-    &:hover {
-      color: @color-main;
-      .heart {
-        background-image: url('../../images/heart-hover.png');
-      }
-    }
-    .counter {
-    }
+    .social-action ('../../images/heart.png', '../../images/heart-hover.png');
   }
   .comment {
-    cursor: pointer;
-    color: @color-gray;
-    font-size: 14px;
-    .mention {
-        background-image: url('../../images/comment.png');
-    }
-    &:hover {
-        color: @color-main;
-        .mention {
-          background-image: url('../../images/comment-hover.png');
-      }
+    .social-action ('../../images/comment.png', '../../images/comment-hover.png');
+  }
+}
+
+.twitter-item {
+  .user {
+
+  }
+  .post {
+
+  }
+  /*fixed размер*/
+  .retwitts {
+    .img {
+      .social-ico(14px, 16px);
     }
   }
-
+  .favorites {
+    .img {
+      .social-ico(14px, 16px);
+    }
+  }
+  .twitting {
+    .img {
+      .social-ico(14px, 16px);
+    }
+  }
+  .counter {
+    display: block;
+    float: right;
+    margin-top: 3px;
+    margin-left: 4px;
+  }
 }
