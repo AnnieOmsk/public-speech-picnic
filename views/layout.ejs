@@ -33,6 +33,11 @@
       If necessary, shut down and then lift your app again.
       
     -->
+    <!-- INJECTED SCRIPTS -->
+    <% if(typeof(injectedScripts) != "undefined"){ %>
+      <%- injectedScripts %>
+    <%}%>
+    <!-- INJECTED SCRIPTS END -->
     <!--SCRIPTS-->
     <script src="/linker/js/socket.io.js"></script>
     <script src="/linker/js/sails.io.js"></script>
@@ -40,14 +45,9 @@
     <script src="/linker/js/a-jquery-2.1.1.js"></script>
     <script src="/linker/js/bootstrap.js"></script>
     <script src="/linker/js/collapse.js"></script>
-    <script src="/linker/js/slider.js"></script>
+    <script src="/linker/js/map.js"></script>
     <script src="/linker/js/uploader.js"></script>
     <!--SCRIPTS END-->
-    <!-- INJECTED SCRIPTS -->
-    <% if(typeof(injectedScripts) != "undefined"){ %>
-        <%- injectedScripts %>
-    <%}%>
-    <!-- INJECTED SCRIPTS END -->
 
     <!--STYLES-->
     <link rel="stylesheet" href="/linker/styles/importer.css">
