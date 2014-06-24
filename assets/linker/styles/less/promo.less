@@ -1,22 +1,4 @@
-@color-main: #53b93a;
-@color-light: #fff;
-@color-red: #bc1e1d;
-@color-text-light: @color-light;
-@color-hover-text:@color-main;
-@color-border:@color-main;
-@color-border-light:@color-light;
-
-@nav-li-margin: 1.5%;
-
-@font-header-family: PFDinTextCondPro-Regular;
-@font-subheader-family: PFDinTextCondPro-Medium;
-@font-paragraf-family: PFAgoraSansPro;
-@font-paragraf-bolder-family: PFAgoraSansPro-Bold;
-
-@font-size-main: 24px;
-@font-size-lower: 20px;
-
-/*  position  */
+/*color  position  */
 .promo {
   background-size: cover;
   background-repeat: no-repeat;
@@ -95,12 +77,12 @@
         padding-bottom: 6px;
         text-align: center;
         font-size: @font-size-main;
-        color: @color-text-light;
+        color: @color-light;
         border: transparent 2px solid;
         &:hover {
           background: none;
-          color: @color-hover-text;
-          border: @color-border 2px solid;
+          color: @color-main;
+          border: @color-main 2px solid;
         }
       }
     }
@@ -133,37 +115,5 @@
 }
 
 .help {
-  .pay-item {
-    border: 2px @color-border-light solid;
-    padding: 12px 15px 10px 15px;
-    &:hover {
-      background-color: @color-light;
-      // border-color: @color-border;
-      color: @color-hover-text;
-    }
-  }
-}
-
-.uppercase {
-  text-transform: uppercase;
-}
-
-.border {
-  border: @color-border 2px solid;
-}
-
-.header-font {
-  font-family: @font-header-family;
-  letter-spacing: 0.06em;
-}
-
-.color-text-light {
-  color: @color-text-light;
-}
-
-.main-font-size {
-  font-size: @font-size-main;
-}
-.lower-font-size {
-  font-size: @font-size-lower;
+    
 }

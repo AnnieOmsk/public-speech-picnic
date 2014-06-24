@@ -1,11 +1,32 @@
 @import "variables.less";
 @import "promo.less";
 @import "nav.less";
+@import "social.less";
 @import "fonts.less";
+
+
+.margin-left {
+  margin-left: 8px;
+}
 
 body {
   line-height: 1; 
 }
+
+.headered (@fz){
+  font-size: @fz;
+  font-family:@font-subheader-family;
+  letter-spacing: 0.06em;
+  line-height: 1;
+}
+h1 {
+  .headered(36px);
+
+}
+h2 {
+  .headered(@font-size-main);
+}
+
 .col-centred {
     float: none;
     margin: 0 auto;
@@ -15,7 +36,7 @@ body {
     width: 100%;
     min-width: 320px;
 }
-.container {
+.container-main {
     max-width: 1030px;
 }
 .row {
@@ -25,10 +46,11 @@ body {
 .relative-container {
   position: relative;
 }
-
 .full-width {
   width:100%;
 }
+
+
 .uppercase {
   text-transform: uppercase;
 }
@@ -36,18 +58,61 @@ body {
   font-family: @font-header-family;
   letter-spacing: 0.06em;
 }
-
-.color-text-light {
-  color: @color-text-light;
+.subheader-font {
+  font-family:@font-subheader-family;
+  letter-spacing: 0.06em;
 }
-
+.color-text-light {
+  color: @color-light;
+}
+.color-text-dark {
+  color: @color-dark;
+}
+.color-text-main {
+  color: @color-main;
+}
 .main-font-size {
   font-size: @font-size-main;
 }
 .lower-font-size {
   font-size: @font-size-lower;
 }
+
+
+
 .border {
-  border: @color-border 2px solid;
+  border: @color-main 2px solid;
 }
 
+.button (@color-border, @color-background-hover, @color-hover) {
+  border: 2px @color-border solid;
+  padding: 12px 15px 8px 15px;
+  cursor: pointer;
+  &:hover {
+    background-color: @color-background-hover;
+    color: @color-hover;
+  a {
+    color:@color-hover;
+    &:hover {
+      text-decoration: none;
+      color:@color-hover;
+      }
+    }
+  }
+}
+
+.pay-item {
+  .button(@color-light, @color-light,@color-main);
+}
+.social-btn, {
+  color: @color-main;
+  .button(@color-main, @color-main,@color-light);
+}
+
+.reload-btn, {
+  color: @color-main;
+  .button(@color-main, @color-main,@color-light);
+  padding: 10px 15px 6px 15px;
+  font-size: 15px;
+  font-family: @font-header-family;
+}

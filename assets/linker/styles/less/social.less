@@ -1,0 +1,209 @@
+/*  mixins  */
+.social-ico (@width,@height){
+  display: block;
+  float:left;
+  width: @width;
+  height: @height;
+}
+
+/*  end mixins*/
+
+/*  position  */
+.social-switch {
+  margin-top: 60px;
+  display: block;
+  .social-buttons {
+    display: inline-block;
+  }
+}
+
+.reload {
+  height: 34px;
+  margin-top: 60px;
+  .reload-img {
+    width: 22px;
+    height: 17px;
+    margin-right: 6px;
+    margin-bottom: -3px;
+    display: inline-block;
+  }
+}
+
+
+.social-container {
+  max-width: 1160px;
+  height: 490px;
+  margin-top: 45px;
+  position: relative;
+}
+
+.arrow {
+  position: absolute;
+  top:110px;
+  width:50px;
+  height: 94px;
+  display: block;
+}
+
+.arrow-left {
+  left:0px;
+}
+.arrow-right {
+  right: 0px;
+}
+
+.content {
+  width: 85%;
+  margin: auto;
+  .instagramm-item {
+    width:24.2%;
+    display: inline-block;
+    .nick {
+      margin-top: 0px;
+      margin-bottom: 2px;
+      .margin-left;
+    }
+    .time-ago {
+      .margin-left;
+      margin-bottom: 10px;
+    }
+    .post-img {
+      position: relative;
+      width: 100%;
+      img {
+        width: 100%;
+      }
+      .overlay {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top:0;
+      }
+    }
+    .post-text {
+      margin-top: 20px;
+      .margin-left;
+    }
+    .like {
+      .margin-left;
+      display: inline-block;
+      .heart {
+        .social-ico(14px, 16px);
+      }
+    }
+    .comment {
+      .margin-left;
+      display: inline-block;
+      .mention {
+        .social-ico (16px, 16px);
+      }
+    }
+    .counter {
+      display: block;
+      float: right;
+      margin-top: 3px;
+      margin-left: 4px;
+    }
+  }
+}
+
+/*  view: ;*/
+.social-news {
+  padding-top: 80px;
+}
+.hash-tag{
+  color: @color-main;
+  &:hover {
+    color:@color-main;
+  }
+}
+
+
+a {
+  .reload-img {
+    background-image: url('../../images/reload.png');
+  }
+  &:hover {
+    text-decoration: none;
+    .reload-img {
+      background-image: url('../../images/reload-hover.png'); 
+    }
+  }
+}
+
+.arrow {
+  cursor:pointer;
+}
+.arrow-left {
+  background-image: url('../../images/left-arrow.png');
+  &:hover {
+    background-image: url('../../images/left-arrow-hover.png');
+  }
+}
+.arrow-right {
+  background-image: url('../../images/right-arrow.png');
+  &:hover {
+    background-image: url('../../images/right-arrow-hover.png');
+  }
+}
+.instagramm-item {
+  color: @color-dark;
+  font-family: @font-subheader-family;
+  
+  .nick {
+    font-size: 18px;
+  }
+  .time-ago {
+    font-size: 12px;
+    color: @color-gray;
+  }
+  .post-img {
+    &:hover {
+      .overlay {
+        background-color: @color-main-translucent;
+      }
+    }
+  }
+  .post-text {
+    font-family: @font-paragraf-family;
+    font-size: 16px;
+    text-transform:none; 
+    a {
+      color: @color-main;
+      &:hover {
+        text-decoration: none;
+      }
+    }
+  }
+  .like {
+    cursor: pointer;
+    color: @color-gray;
+    font-size: 14px;
+    .heart {
+      background-image: url('../../images/heart.png');
+      }
+    &:hover {
+      color: @color-main;
+      .heart {
+        background-image: url('../../images/heart-hover.png');
+      }
+    }
+    .counter {
+    }
+  }
+  .comment {
+    cursor: pointer;
+    color: @color-gray;
+    font-size: 14px;
+    .mention {
+        background-image: url('../../images/comment.png');
+    }
+    &:hover {
+        color: @color-main;
+        .mention {
+          background-image: url('../../images/comment-hover.png');
+      }
+    }
+  }
+
+}
