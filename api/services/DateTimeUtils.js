@@ -39,6 +39,18 @@ exports.dateMonth = function(dateText) {
 };
 
 /**
+ * Converts unix timestamp to human-readable format showing date and month
+ * @param timestamp like  "1400674716"
+ * @returns human-readable dateTime like "05 June" in russian
+ */
+exports.dateMonthTS = function(timestamp) {
+    var date = new Date(parseInt(timestamp, 10));
+    var russianDate = "";
+    russianDate = date.getDate() + " " + months[date.getMonth()];
+    return russianDate;
+};
+
+/**
  * Returns current datetime
  */
 exports.now = function() {

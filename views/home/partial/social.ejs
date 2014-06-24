@@ -18,88 +18,28 @@
     <div class="container social-container">
       <span class="js-arrow-left arrow arrow-left pull-left"></span>
       <div class="content color-text-dark">
-
-        <div class="js-instagramm-item instagramm-item">
-          <h3 class="js-nick nick">@gegr</h3>
-          <div class="js-time-ago time-ago">11 month</div>
-          <a href="" class="js-href-post">
-            <div class="post-img">
-              <div class="overlay"></div>
-              <img src="../images/sample.jpg" alt="" class="js-img-post">
-            </div>
-          </a>
-          <p class="js-post-text post-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi est adipisci molestias, consequuntur assumenda vitae incidunt architecto provident aliquam necessitatibus libero ea perferendis explicabo aliquid eaque error praesentium? Porro, vero. <a href="">#lorem</a></p>
-        <div class="js-like like">
-          <span class="heart"></span>
-          <span class="js-counter-like counter">0</span>
-        </div>
-        <div class="js-comment comment">
-          <span class="mention"></span>
-          <span class="js-counter-comment counter">0</span>
-        </div>
-        </div>
-
-     <div class="js-instagramm-item instagramm-item">
-          <h3 class="js-nick nick">@gegr</h3>
-          <div class="js-time-ago time-ago">11 month</div>
-          <a href="" class="js-href-post">
-            <div class="post-img">
-              <div class="overlay"></div>
-              <img src="../images/sample.jpg" alt="" class="js-img-post">
-            </div>
-          </a>
-          <p class="js-post-text post-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi est adipisci molestias, consequuntur assumenda vitae incidunt architecto provident aliquam necessitatibus libero ea perferendis explicabo aliquid eaque error praesentium? Porro, vero. <a href="">#lorem</a></p>
-        <div class="js-like like">
-          <span class="heart"></span>
-          <span class="js-counter-like counter">0</span>
-        </div>
-        <div class="js-comment comment">
-          <span class="mention"></span>
-          <span class="js-counter-comment counter">0</span>
-        </div>
-        </div>
-
-     <div class="js-instagramm-item instagramm-item">
-          <h3 class="js-nick nick">@gegr</h3>
-          <div class="js-time-ago time-ago">11 month</div>
-          <a href="" class="js-href-post">
-            <div class="post-img">
-              <div class="overlay"></div>
-              <img src="../images/sample.jpg" alt="" class="js-img-post">
-            </div>
-          </a>
-          <p class="js-post-text post-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi est adipisci molestias, consequuntur assumenda vitae incidunt architecto provident aliquam necessitatibus libero ea perferendis explicabo aliquid eaque error praesentium? Porro, vero. <a href="">#lorem</a></p>
-        <div class="js-like like">
-          <span class="heart"></span>
-          <span class="js-counter-like counter">0</span>
-        </div>
-        <div class="js-comment comment">
-          <span class="mention"></span>
-          <span class="js-counter-comment counter">0</span>
-        </div>
-        </div>
-
-     <div class="js-instagramm-item instagramm-item">
-          <h3 class="js-nick nick">@gegr</h3>
-          <div class="js-time-ago time-ago">11 month</div>
-          <a href="" class="js-href-post">
-            <div class="post-img">
-              <div class="overlay"></div>
-              <img src="../images/sample.jpg" alt="" class="js-img-post">
-            </div>
-          </a>
-          <p class="js-post-text post-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi est adipisci molestias, consequuntur assumenda vitae incidunt architecto provident aliquam necessitatibus libero ea perferendis explicabo aliquid eaque error praesentium? Porro, vero. <a href="">#lorem</a></p>
-        <div class="js-like like">
-          <span class="heart"></span>
-          <span class="js-counter-like counter">0</span>
-        </div>
-        <div class="js-comment comment">
-          <span class="mention"></span>
-          <span class="js-counter-comment counter">0</span>
-        </div>
-        </div>
-
-     
+          <% for (var i = 0; i < instagrams.length; i++) {
+              var item = instagrams[i]; %>
+          <div class="js-instagramm-item instagramm-item">
+              <h3 class="js-nick nick">@<%= item.username %></h3>
+              <div class="js-time-ago time-ago"><%= item.time %></div>
+              <a href="<%= item.url %>" class="js-href-post">
+                  <div class="post-img">
+                      <div class="overlay"></div>
+                      <img src="<%= item.imageUrl %>" alt="" class="js-img-post">
+                  </div>
+              </a>
+              <p class="js-post-text post-text"><%= item.text %></p>
+              <div class="js-like like">
+                  <span class="heart"></span>
+                  <span class="js-counter-like counter"><%= item.likesCount %></span>
+              </div>
+              <div class="js-comment comment">
+                  <span class="mention"></span>
+                  <span class="js-counter-comment counter"><%= item.commentsCount %></span>
+              </div>
+          </div>
+          <%}%>
       </div>
       <span class="js-arrow-right arrow arrow-right pull-right"></span>
     </div>

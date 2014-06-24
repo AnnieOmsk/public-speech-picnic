@@ -19,14 +19,14 @@ var parseInstagrams = function(instagramsArray) {
         var inputMedia = instagramsArray[i];
         item.id = inputMedia.id;
         item.username = inputMedia.user.username;
-        item.time = dateTimeUtils.dateMonth(inputMedia.created_time);
+        item.time = dateTimeUtils.dateMonthTS(inputMedia.created_time);
         if (inputMedia.caption != null) {
             item.text = inputMedia.caption.text;
         }
         item.likesCount = inputMedia.likes.count;
         item.commentsCount = inputMedia.comments.count;
-        item.link = inputMedia.link;
-        item.imageUrl = inputMedia.images.low_resolution;
+        item.url = inputMedia.link;
+        item.imageUrl = inputMedia.images.low_resolution.url;
         instagrams.push(item);
     }
     return instagrams;
@@ -37,7 +37,7 @@ var parseInstagrams = function(instagramsArray) {
  * @param tag       Tag to search for
  * @param count     Number of instagram medias
  * @returns Array of instagram medias prepared with following params:
- * id, username, time, text, likesCount, commentsCount, link, imageUrl
+ * id, username, time, text, likesCount, commentsCount, url, imageUrl
  */
 exports.findInstagrams = function(tag, count) {
     var deferred = q.defer();
