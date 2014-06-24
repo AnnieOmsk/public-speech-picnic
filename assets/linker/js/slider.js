@@ -1,7 +1,7 @@
 var LEFT_ARROW = ".js-arrow-left";
 var RIGHT_ARROW = ".js-arrow-right";
 var ELEMENTS = ".social-container";
-var ITEMS = ".js-instagramm-item";
+var ITEMS = ".js-instagram-item";
 var SHOWED_CLASS = "active";
 var ITEMS_TO_SHOW = 4;
 
