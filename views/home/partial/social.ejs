@@ -5,7 +5,7 @@
       <div class="row social-switch">
         <a href="" class="hash-tag subheader-font">#picnic</a>
         <div class="js-switch-social social-buttons pull-right">
-          <a href="" class="js-switch-instagramm instagramm-btn social-btn">Instagramm</a>
+          <a href="" class="js-switch-instagramm instagramm-btn social-btn">Instagram</a>
           <a href="" class="js-switch-twitter twitter-btn social-btn">Twitter</a>
         </div>
       </div>
@@ -17,10 +17,11 @@
   <div class="row social-row">
     <div class="container social-container">
       <span class="js-arrow-left arrow arrow-left pull-left"></span>
-      <div class="content color-text-dark">
+      <div class="content-instagram content color-text-dark">
+
         <% for (var i = 0; i < instagrams.length; i++) {
         var item = instagrams[i]; %>
-        <div class="js-instagramm-item instagramm-item item ">
+        <div class="js-instagram-item instagram-item item ">
           <h3 class="js-nick nick">@<%= item.username %></h3>
           <div class="js-time-ago time-ago"><%= item.time %></div>
           <a href="<%= item.url %>" class="js-href-post">
@@ -45,6 +46,9 @@
           </a>
         </div>
         <%}%>
+      </div>
+
+      <div class="js-content-twitter content-twitter content color-text-dark">
         <div class="item">
           <div class="twitter-item">
             <div class="row user">
@@ -53,11 +57,16 @@
               <div class="date-post">4 June</div>
             </div>
             <div class="row post">
-              <div class="row post-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex nisi, natus ipsa magnam, illum quas, nam iure dolores distinctio doloribus sunt voluptate provident dolor, debitis consequatur repudiandae. Rem, est iusto.</div>
-              <a href="" class="post-img">
-                <img src="../../images/show-photo.png" alt="">
-              </a>
+              <div class="row post-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex nisi, natus ipsa magnam, illum quas, nam iure dolores distinctio doloribus sunt voluptate provident dolor, debitis consequatur repudiandae. Rem, est iusto.
+              <a href="">#cekope</a>
+              </div>
+              <a href="" class="post-href">gfirik/vrvr</a>
             </div>
+              <div class="row post-img">
+                <a href="">
+                  <img src="../../images/show-photo.png" alt="">
+                </a>
+              </div>
             <div class="retwitts">
               <span class="img"></span>
               <span class="counter">0</span>
@@ -70,8 +79,43 @@
               <span class="img"></span>
             </div>
           </div>
+
+
+          <div class="twitter-item">
+            <div class="row user">
+              <img src="../../images/sample-small.jpg" alt="" class="avatar">
+              <div class="nic">@Ferlde</div>
+              <div class="date-post">4 June</div>
+            </div>
+            <div class="row post">
+              <div class="row post-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex nisi, natus ipsa magnam, illum quas, nam iure dolores distinctio doloribus sunt voluptate provident dolor, debitis consequatur repudiandae. Rem, est iusto.
+              <a href="">#cekope</a>
+              </div>
+              <a href="" class="post-href">gfirik/vrvr</a>
+            </div>
+              <div class="row post-img">
+                <a href="">
+                  <img src="../../images/show-photo.png" alt="">
+                </a>
+              </div>
+            <div class="retwitts">
+              <span class="img"></span>
+              <span class="counter">0</span>
+            </div>
+            <div class="favorites">
+              <span class="img"></span>
+              <span class="counter">0</span>
+            </div>
+            <div class="twitting">
+              <span class="img"></span>
+            </div>
+          </div>
+
+
+
         </div>
-      </div>
+
+      </div> 
       
       <span class="js-arrow-right arrow arrow-right pull-right"></span>
     </div>
