@@ -2,6 +2,7 @@
 @import "promo.less";
 @import "nav.less";
 @import "social.less";
+@import "translation.less";
 @import "fonts.less";
 
 
@@ -108,11 +109,29 @@ h2 {
   color: @color-main;
   .button(@color-main, @color-main,@color-light);
 }
-
-.reload-btn, {
-  color: @color-main;
-  .button(@color-main, @color-main,@color-light);
-  padding: 10px 15px 6px 15px;
-  font-size: 15px;
-  font-family: @font-header-family;
+.reload {
+  height: 34px;
+  .reload-btn {
+    color: @color-main;
+    .button(@color-main, @color-main,@color-light);
+    padding: 10px 15px 6px 15px;
+    font-size: 15px;
+    font-family: @font-header-family;
+    .reload-img {
+      width: 22px;
+      height: 17px;
+      margin-right: 6px;
+      margin-bottom: -3px;
+      display: inline-block;
+      background-image: url('../../images/reload.png');
+    }
+    &:hover {
+      text-decoration: none;
+      .reload-img {
+        background-image: url('../../images/reload-hover.png'); 
+      }
+    }
+  }
 }
+
+

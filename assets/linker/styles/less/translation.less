@@ -1,0 +1,47 @@
+.translation {
+	h2 {
+		margin-bottom: 30px;
+	}
+	.reload {
+		margin-bottom: 40px;
+	}
+	ul {
+		li {
+			// margin-bottom: 35px;
+			clear: both;
+			width: 100%;
+			.news-info {
+				float: left;
+				width: 20%;
+			}
+			.news-content {
+
+				width: 80%;
+				float: right;
+			}
+		}
+	}
+}
+
+
+ul {
+	list-style-type:none;
+	li {
+		.news-info {
+			padding-top:40px;
+		}
+		.news-content {
+			padding-top: 40px;
+			padding-left: 10px;
+			border-left: @color-gray 1px solid;
+		}
+	&:first-child {
+		.news-info {
+			padding-top:20px;
+		}
+		.news-content {
+			padding-top: 20px;
+		}
+	}
+	}
+}
