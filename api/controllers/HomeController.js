@@ -19,6 +19,7 @@ var teaserService = require('../services/TeaserService');
 var timelineService = require('../services/TimelineService');
 var broadcastService = require('../services/BroadcastService');
 var twitterService = require('../services/TwitterService');
+var instagramService = require('../services/InstagramService');
 
 module.exports = {
     
@@ -31,7 +32,8 @@ module.exports = {
           teaserService.fetchTeasers(),
           timelineService.findTimelines(),
           broadcastService.findBroadcasts(),
-          twitterService.findTweets('#пикник', 50)
+          twitterService.findTweets('#пикник', 50),
+          instagramService.findInstagrams('пикник', 4)
       ]);
       allPromise.then(function(data){
           return res.view({
@@ -39,11 +41,12 @@ module.exports = {
               articles: data[0].articles,
               timelines: data[1],
               broadcasts: data[2],
-              tweets: data[3]
+              tweets: data[3],
+              instagrams: data[4]
           });
       }, function(err) {
           console.error("Promise error:" + err);
-          return res.send(err, 500)
+          return res.serverError(err);
       });
   },
 
