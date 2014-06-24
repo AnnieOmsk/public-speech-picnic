@@ -31,14 +31,18 @@
             </div>
           </a>
           <p class="js-post-text post-text"><%- item.text %></p>
-          <div class="js-like like">
-            <span class="img"></span>
-            <span class="js-counter-like counter"><%= item.likesCount %></span>
-          </div>
-          <div class="js-comment comment">
-            <span class="img"></span>
-            <span class="js-counter-comment counter"><%= item.commentsCount %></span>
-          </div>
+          <a href="<%= item.url %>" class="js-href-post">
+              <div class="js-like like">
+                <span class="img"></span>
+                <span class="js-counter-like counter"><%= item.likesCount %></span>
+              </div>
+          </a>
+          <a href="<%= item.url %>" class="js-href-post">
+              <div class="js-comment comment">
+                <span class="img"></span>
+                <span class="js-counter-comment counter"><%= item.commentsCount %></span>
+              </div>
+          </a>
         </div>
         <%}%>
 
