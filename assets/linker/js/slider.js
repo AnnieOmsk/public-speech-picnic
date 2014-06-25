@@ -125,5 +125,6 @@ $(function(){
 
     $(document).on("click", LEFT_ARROW, scrollLeft);
     $(document).on("click", RIGHT_ARROW, scrollRight);
+    $(document).on("slider-reload", init);
     init();
 });

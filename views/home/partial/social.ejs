@@ -2,8 +2,8 @@
   <div class="container container-main color-text-main">
     <h1>Сейчас на березовой</h1>
     <div class="row social-btn-row">
-      <div class="js-reload row reload">
-        <a href="" class="reload-btn"><span class="reload-img"></span>Обновить</a>
+      <div class="row reload">
+        <a href="" class="reload-btn js-reload" data-url="instagram-list" data-container="content-instagram" data-template="instagram"><span class="reload-img"></span>Обновить</a>
       </div>
       <div class="row social-switch">
         <a href="" class="hash-tag subheader-font">#picnicomsk</a>
@@ -17,36 +17,35 @@
   <div class="row social-row">
     <div class="container social-container">
       <span class="js-arrow-left arrow arrow-left pull-left"></span>
-      <div class="content-instagram content color-text-dark">
-
-        <% for (var i = 0; i < instagrams.length; i++) {
-        var item = instagrams[i]; %>
-        <div class="js-instagram-item instagram-item item ">
-          <h3 class="js-nick nick">@<%= item.username %></h3>
-          <div class="js-time-ago time-ago"><%= item.time %></div>
-          <a href="<%= item.url %>" class="js-href-post">
-            <div class="post-img">
-              <div class="overlay"></div>
-              <!-- <img src="<%= item.imageUrl %>" alt="" class="js-img-post"> -->
-              <img src="<%= item.imageUrl %>" alt="" class="js-img-post">
-            </div>
-          </a>
-          <p class="js-post-text post-text"><%- item.text %></p>
-          <a href="<%= item.url %>" class="js-href-post">
-              <div class="js-like like">
-                <span class="img"></span>
-                <span class="js-counter-like counter"><%= item.likesCount %></span>
-              </div>
-          </a>
-          <a href="<%= item.url %>" class="js-href-post">
-              <div class="js-comment comment">
-                <span class="img"></span>
-                <span class="js-counter-comment counter"><%= item.commentsCount %></span>
-              </div>
-          </a>
-        </div>
-        <%}%>
-      </div>
+          <div class="content-instagram content color-text-dark">
+          </div>
+            <script type="text/x-handlebars-template" data-slider="instagram">
+                {{#each this}}
+                <div class="js-instagram-item instagram-item item ">
+                    <h3 class="js-nick nick">@{{username}}</h3>
+                    <div class="js-time-ago time-ago">{{time}}</div>
+                    <a href="{{url}}" class="js-href-post">
+                        <div class="post-img">
+                            <div class="overlay"></div>
+                            <img src="{{imageUrl}}" alt="" class="js-img-post">
+                        </div>
+                    </a>
+                    <p class="js-post-text post-text">{{{text}}}</p>
+                    <a href="{{url}}" class="js-href-post">
+                        <div class="js-like like">
+                            <span class="img"></span>
+                            <span class="js-counter-like counter">{{likesCount}}</span>
+                        </div>
+                    </a>
+                    <a href="{{url}}" class="js-href-post">
+                        <div class="js-comment comment">
+                            <span class="img"></span>
+                            <span class="js-counter-comment counter">{{commentsCount}}</span>
+                        </div>
+                    </a>
+                </div>
+                {{/each}}
+            </script>
 
       <div class="js-content-twitter content-twitter content color-text-dark">
         <div class="item">
