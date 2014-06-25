@@ -14,6 +14,12 @@
  *
  * @docs        :: http://sailsjs.org/#!documentation/controllers
  */
+// CONFIGURATION BEGIN
+var INSTAGRAM_KEYWORD = 'picnicomsk';
+var INSTAGRAM_COUNT = 20;
+var TWITTER_KEYWORD = '#picnicomsk';
+var TWITTER_COUNT = 50;
+// CONFIGURATION END
 var q = require('q');
 var teaserService = require('../services/TeaserService');
 var timelineService = require('../services/TimelineService');
@@ -24,18 +30,16 @@ var instagramService = require('../services/InstagramService');
 var injectedScripts = '<script src="http://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>';
 
 module.exports = {
-    
-  
-  /**
-   * Main controller for / page
-   */
-  index: function (req, res) {
+
+    /**
+    * Main controller for / page
+    */
+    index: function (req, res) {
       var allPromise = q.all([
           teaserService.fetchTeasers(),
           timelineService.findTimelines(),
           broadcastService.findBroadcasts(),
-          twitterService.findTweets('#picnicomsk', 50),
-          instagramService.findInstagrams('picnicomsk', 20)
+          twitterService.findTweets(TWITTER_KEYWORD, TWITTER_COUNT)
       ]);
       allPromise.then(function(data){
           return res.view({
@@ -44,17 +48,23 @@ module.exports = {
               timelines: data[1],
               broadcasts: data[2],
               tweets: data[3],
-              instagrams: data[4],
               injectedScripts: injectedScripts
           });
       }, function(err) {
           console.error("Promise error:" + err);
           return res.serverError(err);
       });
-  },
+    },
 
-
-
+    instagramList: function (req, res) {
+        var instagramPromise = instagramService.findInstagrams(INSTAGRAM_KEYWORD, INSTAGRAM_COUNT);
+        instagramPromise.then(function(data) {
+            return res.send(data);
+        }, function(err) {
+            console.error("Promise error:" + err);
+            return res.serverError(err);
+        });
+    },
 
   /**
    * Overrides for the settings in `config/controllers.js`

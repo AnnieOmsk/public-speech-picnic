@@ -1,4 +1,5 @@
 .translation {
+	margin-bottom: 130px;
 	h2 {
 		margin-bottom: 30px;
 	}
@@ -10,14 +11,61 @@
 			// margin-bottom: 35px;
 			clear: both;
 			width: 100%;
+			&:first-child {
+				.news-info {
+					.circle {
+						// position: absolute;
+						top:0px;
+						right:-11px;
+					}
+				}
+			}
 			.news-info {
 				float: left;
 				width: 20%;
+				position: relative;
+				.circle {
+					position: absolute;
+					top:27px;
+					right:-11px;
+					width: 21px;
+					height: 21px;
+					background-image: url('../../images/circle.png');
+					display: inline-block;
+				}
+				.news-time {
+					margin-bottom: 10px;
+				}
+				.news-author {
+					margin-bottom: 15px;
+				}
+				.news-likes {
+					.img {
+						.social-ico(14px, 16px);
+						display: inline-block;
+						float:none;
+					}
+				}
 			}
 			.news-content {
-
 				width: 80%;
 				float: right;
+				.news-title {
+					margin-bottom: 20px;
+				}
+				.news-description {
+					margin-bottom: 15px;
+					a {
+						margin-top: 15px;
+						display: block;
+					}
+				}
+				.news-photos {
+						img {
+						margin-bottom: 10px;
+						margin-right: 4px;
+					}
+				}
 			}
 		}
 	}
@@ -28,19 +76,50 @@ ul {
 	list-style-type:none;
 	li {
 		.news-info {
-			padding-top:40px;
+			padding-top:30px;
+			padding-right: 30px;
+			text-align: right;
+			.news-time {
+				.subheader-font;
+				font-size: 24px;
+			}
+			.news-author {
+				font-size: 16px;
+				letter-spacing: 0.02em;
+				color: darken(@color-gray, 15%);
+				text-transform: capitalize;
+			}
+			.news-likes {
+				.subheader-font;
+				.social-action ('../../images/heart-hover.png','../../images/heart-hover.png',@color-dark, @color-dark);
+			}
 		}
 		.news-content {
-			padding-top: 40px;
-			padding-left: 10px;
-			border-left: @color-gray 1px solid;
+			padding-top: 30px;
+			padding-left: 30px;
+			border-left: @color-gray 2px solid;
+			.news-title {
+				letter-spacing: 0.04em;
+				.paragraf-font-bold;
+				font-size: 20px;
+			}
+			.news-description {
+				letter-spacing: 0em;
+
+				font-size: 16px;
+				a {
+					.paragraf-font-bold;
+					color: @color-main;
+					text-decoration: underline;
+				}
+			}
 		}
 	&:first-child {
 		.news-info {
-			padding-top:20px;
+			padding-top:0px;
 		}
 		.news-content {
-			padding-top: 20px;
+			padding-top: 0px;
 		}
 	}
 	}

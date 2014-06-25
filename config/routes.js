@@ -35,9 +35,11 @@ module.exports.routes = {
   // '/': {
   //   view: 'home/index'
   // }
-  '/': {
-      controller: 'home'
-  },
+    '/': {
+      controller: 'HomeController'
+    },
+
+    '/instagram-list': 'HomeController.instagramList',
 
     'get /journalist': 'JournalistController.login',
 

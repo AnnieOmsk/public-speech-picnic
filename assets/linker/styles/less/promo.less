@@ -9,15 +9,17 @@
   min-height: 40px;
   margin-top: 25px;
   margin-bottom: 80px;
-  .navbar-collapse{
-    padding-left: 0;
-    padding-right: 0;
+  /*uncomment to responsive*/
+  // .navbar-collapse{
+  //   padding-left: 0;
+  //   padding-right: 0;
     .nav {
       width: 100%;
       li {
         width: 17%;
         margin-left: @nav-li-margin;
         margin-right: @nav-li-margin;
+        float:left; /*delete to responsive*/
       &:first-child {
         margin-left:0px;
       }
@@ -26,7 +28,7 @@
       }
       }
     }
-  }
+  // }
 }
 
 .logo {
