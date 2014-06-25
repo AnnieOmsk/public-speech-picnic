@@ -1,9 +1,12 @@
 @import "variables.less";
 @import "promo.less";
 @import "nav.less";
+@import "map.less";
 @import "social.less";
 @import "translation.less";
+@import "preview.less";
 @import "fonts.less";
+@import "timeline.less";
 
 /*  mixins  */
 .social-ico (@width,@height){
@@ -58,6 +61,11 @@ h1 {
 h2 {
   .headered(@font-size-main);
 }
+a {
+  &:hover {
+    text-decoration: none;
+  }
+}
 
 .col-centred {
     float: none;
@@ -72,6 +80,20 @@ h2 {
     max-width: 1030px;
     min-width: 1030px; /*delete to responsive*/
 }
+
+.social-container {
+  max-width: 1160px;
+  // height: 490px;
+  margin-top: 45px;
+  position: relative;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
 .row {
     margin-right: 0px;
     margin-left: 0px;
@@ -177,3 +199,35 @@ h2 {
 }
 
 
+
+
+.arrow {
+  position: absolute;
+  top:50%;
+  width:50px;
+  height: 94px;
+  display: block;
+}
+
+.arrow-left {
+  left:0px;
+}
+.arrow-right {
+  right: 0px;
+}
+
+.arrow {
+  cursor:pointer;
+}
+.arrow-left {
+  background-image: url('../../images/left-arrow.png');
+  &:hover {
+    background-image: url('../../images/left-arrow-hover.png');
+  }
+}
+.arrow-right {
+  background-image: url('../../images/right-arrow.png');
+  &:hover {
+    background-image: url('../../images/right-arrow-hover.png');
+  }
+}
