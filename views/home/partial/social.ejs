@@ -3,25 +3,27 @@
     <h1>Сейчас на березовой</h1>
     <div class="row social-btn-row">
       <div class="row reload">
-        <a href="" class="reload-btn js-reload" data-url="instagram-list" data-container="content-instagram" data-template="instagram"><span class="reload-img"></span>Обновить</a>
+        <a href="" class="reload-btn js-reload" data-url="instagram-list" data-container="js-content-instagram" data-template="instagram" data-items="js-instagram-item"><span class="reload-img"></span>Обновить</a>
       </div>
       <div class="row social-switch">
         <a href="" class="hash-tag subheader-font">#picnicomsk</a>
         <div class="js-switch-social social-buttons pull-right">
-          <a href="" class="js-switch-instagramm instagramm-btn social-btn">Instagram</a>
-          <a href="" class="js-switch-twitter twitter-btn social-btn">Twitter</a>
+          <a href="" class="js-toggle-instagram instagramm-btn social-btn">Instagram</a>
+          <a href="" class="js-toggle-twitter twitter-btn social-btn">Twitter</a>
         </div>
       </div>
     </div>
   </div>
   <div class="row social-row">
-    <div class="container social-container wide-container">
+
+    <div class="container js-social-container social-container wide-container">
+
       <span class="js-arrow-left arrow arrow-left pull-left"></span>
-          <div class="content-instagram content color-text-dark">
+          <div class="js-content-instagram content color-text-dark">
           </div>
             <script type="text/x-handlebars-template" data-slider="instagram">
                 {{#each this}}
-                <div class="js-instagram-item instagram-item item ">
+                <div class="js-instagram-item instagram-item item" style="display:none">
                     <h3 class="js-nick nick">@{{username}}</h3>
                     <div class="js-time-ago time-ago">{{time}}</div>
                     <a href="{{url}}" class="js-href-post">
@@ -47,74 +49,39 @@
                 {{/each}}
             </script>
 
-      <div class="js-content-twitter content-twitter content color-text-dark">
-        <div class="item">
-          <div class="twitter-item">
-            <div class="row user">
-              <img src="../../images/sample-small.jpg" alt="" class="avatar">
-              <div class="nic">@Ferlde</div>
-              <div class="date-post">4 June</div>
-            </div>
-            <div class="row post">
-              <div class="row post-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex nisi, natus ipsa magnam, illum quas, nam iure dolores distinctio doloribus sunt voluptate provident dolor, debitis consequatur repudiandae. Rem, est iusto.
-              <a href="">#cekope</a>
-              </div>
-              <a href="" class="post-href">gfirik/vrvr</a>
-            </div>
-              <div class="row post-img">
-                <a href="">
-                  <img src="../../images/show-photo.png" alt="">
+      <div class="js-content-twitter content color-text-dark" style="display:none">
+      </div>
+        <script type="text/x-handlebars-template" data-slider="twitter">
+            {{#each this}}
+            <div class="js-twitter-item twitter-item item" style="display:none">
+                <div class="row user">
+                    <img src="{{userIcon}}" alt="" class="avatar">
+                    <div class="nic">@{{userAccount}}</div>
+                    <div class="date-post">{{createdAt}}</div>
+                </div>
+                <div class="row post">
+                    <div class="row post-text">{{{text}}}</div>
+                </div>
+                <a href="{{retweetUrl}}">
+                    <div class="retwitts">
+                        <span class="img"></span>
+                        <span class="counter">{{retweetsCount}}</span>
+                    </div>
                 </a>
-              </div>
-            <div class="retwitts">
-              <span class="img"></span>
-              <span class="counter">0</span>
-            </div>
-            <div class="favorites">
-              <span class="img"></span>
-              <span class="counter">0</span>
-            </div>
-            <div class="twitting">
-              <span class="img"></span>
-            </div>
-          </div>
-
-
-          <div class="twitter-item">
-            <div class="row user">
-              <img src="../../images/sample-small.jpg" alt="" class="avatar">
-              <div class="nic">@Ferlde</div>
-              <div class="date-post">4 June</div>
-            </div>
-            <div class="row post">
-              <div class="row post-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex nisi, natus ipsa magnam, illum quas, nam iure dolores distinctio doloribus sunt voluptate provident dolor, debitis consequatur repudiandae. Rem, est iusto.
-              <a href="">#cekope</a>
-              </div>
-              <a href="" class="post-href">gfirik/vrvr</a>
-            </div>
-              <div class="row post-img">
-                <a href="">
-                  <img src="../../images/show-photo.png" alt="">
+                <a href="{{favoriteUrl}}">
+                    <div class="favorites">
+                        <span class="img"></span>
+                        <span class="counter">{{favoritesCount}}</span>
+                    </div>
                 </a>
-              </div>
-            <div class="retwitts">
-              <span class="img"></span>
-              <span class="counter">0</span>
+                <a href="{{replyUrl}}">
+                    <div class="twitting">
+                        <span class="img"></span>
+                    </div>
+                </a>
             </div>
-            <div class="favorites">
-              <span class="img"></span>
-              <span class="counter">0</span>
-            </div>
-            <div class="twitting">
-              <span class="img"></span>
-            </div>
-          </div>
-
-
-
-        </div>
-
-      </div> 
+            {{/each}}
+        </script>
       
       <span class="js-arrow-right arrow arrow-right pull-right"></span>
     </div>

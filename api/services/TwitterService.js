@@ -23,16 +23,18 @@ var parseTweets = function(tweetsArray) {
         var inputTweet = tweetsArray[i];
         item.id = inputTweet.id_str;
         item.retweetUrl = 'https://twitter.com/intent/retweet?tweet_id=' + inputTweet.id_str;
-        item.retweetCount = inputTweet.retweet_count;
+        item.retweetsCount = inputTweet.retweet_count;
         item.favoriteUrl = 'https://twitter.com/intent/favorite?tweet_id=' + inputTweet.id_str;
-        item.favoriteCount = inputTweet.favorite_count;
+        item.favoritesCount = inputTweet.favorite_count;
         item.replyUrl = 'https://twitter.com/intent/tweet?in_reply_to=' + inputTweet.id_str;
         item.url = 'https://twitter.com/' + inputTweet.user.screen_name + '/status/' + inputTweet.id_str;
         item.userAccount = inputTweet.user.screen_name;
         item.userName = inputTweet.user.name;
         item.userIcon = inputTweet.user.profile_image_url;
         item.createdAt = dateTimeUtils.dateMonth(inputTweet.created_at);
-        item.text = inputTweet.text;
+        var text = inputTweet.text;
+        text = text.replace(/((([A-Za-z]{3,9}:(?:\/\/)?)(?:[-;:&=\+\$,\w]+@)?[A-Za-z0-9.-]+|(?:www.|[-;:&=\+\$,\w]+@)[A-Za-z0-9.-]+)((?:\/[\+~%\/.\w-_]*)?\??(?:[-\+=&;%@.\w_]*)#?(?:[\w]*))?)/g, "<a href=\"$1\">$1</a>");
+        item.text = text.replace(/(#([^\s#]+))/g, "<a href=\"https://twitter.com/hashtag/$2\">$1</a>");
         tweets.push(item);
     }
     return tweets;
@@ -40,7 +42,7 @@ var parseTweets = function(tweetsArray) {
 
 /**
  * Finds tweets with setup search parameters
- * Each tweet contains: id, retweetUrl, retweetCount, favoriteUrl, favoriteCount,
+ * Each tweet contains: id, retweetUrl, retweetsCount, favoriteUrl, favoritesCount,
  * replyUrl, url, userAccount, userName, userIcon, createdAt, text
  */
 exports.findTweets = function(query, count) {
