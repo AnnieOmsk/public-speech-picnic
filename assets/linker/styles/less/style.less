@@ -38,6 +38,27 @@
   margin-left: 4px;
 }
 
+.item (@width, @margin){
+  width:@width;
+  display: block;
+  float: left;
+  margin-left: @margin;
+  margin-right: @margin;
+  .post-img {
+    position: relative;
+    width: 100%;
+    img {
+      width: 100%;
+    }
+    .overlay {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top:0;
+    }
+  }
+}
+
 /*  end mixins*/
 
 .margin-left {
@@ -81,7 +102,7 @@ a {
     min-width: 1030px; /*delete to responsive*/
 }
 
-.social-container {
+.wide-container {
   max-width: 1160px;
   // height: 490px;
   margin-top: 45px;
@@ -103,6 +124,12 @@ a {
 }
 .full-width {
   width:100%;
+}
+
+.content {
+  width: 85%;
+  margin: auto;
+  overflow: hidden;
 }
 
 
@@ -173,6 +200,7 @@ a {
   color: @color-main;
   .button(@color-main, @color-main,@color-light);
 }
+
 .reload {
   height: 34px;
   .reload-btn {
@@ -198,9 +226,6 @@ a {
   }
 }
 
-
-
-
 .arrow {
   position: absolute;
   top:50%;
@@ -208,22 +233,22 @@ a {
   height: 94px;
   display: block;
 }
+.arrow {
+  cursor:pointer;
+}
 
 .arrow-left {
   left:0px;
-}
-.arrow-right {
-  right: 0px;
-}
-
-.arrow {
-  cursor:pointer;
 }
 .arrow-left {
   background-image: url('../../images/left-arrow.png');
   &:hover {
     background-image: url('../../images/left-arrow-hover.png');
   }
+}
+
+.arrow-right {
+  right: 0px;
 }
 .arrow-right {
   background-image: url('../../images/right-arrow.png');
