@@ -4,12 +4,20 @@ if (typeof(uploadcare) !== "undefined") {
     UPLOADCARE_PUBLIC_KEY = "264908b8fcf4b91d058f";
     UPLOADCARE_AUTOSTORE = true;
 
-
     $(function () {
+        var sizeValidation = function(fileInfo) {
+            if (fileInfo !== null) {
+                if (fileInfo.size > 6000 * 1000) {
+                    throw new Error('size');
+                }
+            }
+        }
+
         var widget = uploadcare.MultipleWidget('[role=uploadcare-uploader][data-multiple]');
         widget.onUploadComplete(function (info) {
             $('#group-uuid').attr('value', info.uuid);
             $('#images-count').attr('value', info.t.length);
         });
+        widget.validators.push(sizeValidation);
     });
 }
