@@ -5,6 +5,37 @@
 @import "translation.less";
 @import "fonts.less";
 
+/*  mixins  */
+.social-ico (@width,@height){
+  display: block;
+  float:left;
+  width: @width;
+  height: @height;
+}
+
+.social-action (@img, @img-hover:@img, @color:@color-gray, @color-hover: @color-main) {
+  cursor: pointer;
+    color: @color;
+    font-size: 14px;
+    .img {
+      background-image: url(@img);
+      }
+    &:hover {
+      color: @color-hover;
+      .img {
+        background-image: url(@img-hover);
+      }
+    }
+}
+
+.counter {
+  display: block;
+  float: right;
+  margin-top: 3px;
+  margin-left: 4px;
+}
+
+/*  end mixins*/
 
 .margin-left {
   margin-left: 8px;
@@ -35,10 +66,11 @@ h2 {
 .container-fluid {
     padding: 0px;
     width: 100%;
-    min-width: 320px;
+    min-width: 1030px; /*320*/
 }
 .container-main {
     max-width: 1030px;
+    min-width: 1030px; /*delete to responsive*/
 }
 .row {
     margin-right: 0px;
@@ -52,8 +84,11 @@ h2 {
 }
 
 
-.uppercase {
+.text-uppercase {
   text-transform: uppercase;
+}
+.text-clear{
+  text-transform: none;
 }
 .header-font {
   font-family: @font-header-family;
@@ -63,6 +98,13 @@ h2 {
   font-family:@font-subheader-family;
   letter-spacing: 0.06em;
 }
+.paragraf-font {
+  font-family: @font-paragraf-family;
+}
+.paragraf-font-bold {
+  font-family: @font-paragraf-bolder-family;
+}
+
 .color-text-light {
   color: @color-light;
 }

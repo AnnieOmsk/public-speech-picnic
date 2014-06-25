@@ -1,27 +1,3 @@
-/*  mixins  */
-.social-ico (@width,@height){
-  display: block;
-  float:left;
-  width: @width;
-  height: @height;
-}
-
-.social-action (@img, @img-hover) {
-  cursor: pointer;
-    color: @color-gray;
-    font-size: 14px;
-    .img {
-      background-image: url(@img);
-      }
-    &:hover {
-      color: @color-main;
-      .img {
-        background-image: url(@img-hover);
-      }
-    }
-}
-
-/*  end mixins*/
 
 /*  position  */
 .social-news {
@@ -135,12 +111,6 @@
       .social-ico (16px, 16px);
     }
   }
-  .counter {
-    display: block;
-    float: right;
-    margin-top: 3px;
-    margin-left: 4px;
-  }
 }
 
 .twitter-item {
@@ -187,12 +157,6 @@
     .img {
       .social-ico(16px, 14px);
     }
-  }
-  .counter {
-    display: block;
-    float: right;
-    margin-top: 3px;
-    margin-left: 4px;
   }
 }
 

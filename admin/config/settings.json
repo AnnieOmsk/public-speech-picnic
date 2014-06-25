@@ -46,7 +46,7 @@
                     "text": true
                 },
                 "type": "varchar(255)",
-                "allowNull": true,
+                "allowNull": false,
                 "defaultValue": null,
                 "listview": {
                     "show": true
