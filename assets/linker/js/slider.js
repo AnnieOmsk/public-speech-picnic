@@ -3,37 +3,74 @@ var RIGHT_ARROW = ".js-arrow-right";
 var ELEMENTS = ".social-container";
 var ITEMS = ".js-instagram-item";
 var SHOWED_CLASS = "active";
+var TRANSITION_CLASS = "animating";
 var ITEMS_TO_SHOW = 4;
 var ITEM_WIDTH_IN_PERCENTS = 24;
-var ANIMATION_TIME = 250;
-
+var ANIMATION_TIME = 200;
+var STEPS = 25;
 
 $(function(){
+
     var scrollLeft = function(event) {
+        scroll(true);
+    };
+
+    var scrollRight = function(event) {
+        scroll(false);
+    };
+
+    var scroll = function(left) {
         var items = $(document).find(ELEMENTS).find(ITEMS);
         var firstFind = false;
         var activeOver = false;
         var first = {};
         var last = {};
-        for (i=items.length; i>0; i--) {
-            if (items.eq(i).hasClass(SHOWED_CLASS)) {
+        // Variables that are different for left and right scrolling
+        var start;
+        var end;
+        var increment;
+        var test;
+        // Setting up them depending on left or right scrolling
+        if (!left) {
+            start = 0;
+            end = items.length;
+            increment = 1;
+            test = function (i, end) {
+                return i<end;
+            }
+        } else {
+            start = items.length;
+            end = 0;
+            increment = -1;
+            test = function (i, end) {
+                return i>end;
+            }
+        }
+
+        i = start;
+        while (test(i, end)) {
+            var currentItem = items.eq(i);
+            if (currentItem.hasClass(SHOWED_CLASS)) {
                 if (!firstFind) {
                     firstFind = true;
                     first = items.eq(i);
                 }
             }
-            if (firstFind && !items.eq(i).hasClass(SHOWED_CLASS) && !activeOver) {
+            if (firstFind && !currentItem.hasClass(SHOWED_CLASS) && !activeOver) {
                 activeOver = true;
                 last = items.eq(i);
-                i = 0;
+                i = end;
             }
+            if (currentItem.hasClass(TRANSITION_CLASS)) {
+                activeOver = false;
+                i = end;
+            }
+            i+=increment;
         }
+
         if (activeOver) {
-            last.css("margin-left", "-" + ITEM_WIDTH_IN_PERCENTS + "%");
-            last.show();
-            last.addClass(SHOWED_CLASS);
-            for (var i=ITEM_WIDTH_IN_PERCENTS-1; i>=0; i--) {
-                animate(i, last, first, true);
+            for (var i=STEPS-1; i>=0; i--) {
+                animate(i, last, first, left);
             }
         }
     };
@@ -48,51 +85,31 @@ $(function(){
             lastMargin = "margin-right";
             firstMargin = "margin-left";
         }
-        var initialDelay = ANIMATION_TIME/ITEM_WIDTH_IN_PERCENTS;
-        var delayStep = initialDelay/ITEM_WIDTH_IN_PERCENTS;
-        var j = ITEM_WIDTH_IN_PERCENTS - i;
+        var initialDelay = ANIMATION_TIME/STEPS;
+        var delayStep = initialDelay/STEPS;
+        var j = STEPS - i;
         var delay = initialDelay*(j+1) + delayStep*j*(j+1)/2;
         setTimeout(function() {
+            if (i==(STEPS - 1)) {
+                last.show();
+                last.addClass(SHOWED_CLASS);
+                last.addClass(TRANSITION_CLASS);
+                first.addClass(TRANSITION_CLASS);
+            }
             if (i!=0) {
-                last.css(lastMargin, "-" + i + "%");
-                first.css(firstMargin, "-" + (ITEM_WIDTH_IN_PERCENTS-i) + "%");
+                var percentOffset = i*ITEM_WIDTH_IN_PERCENTS/STEPS;
+                last.css(lastMargin, "-" + percentOffset + "%");
+                first.css(firstMargin, "-" + (ITEM_WIDTH_IN_PERCENTS-percentOffset) + "%");
             }
             if (i==0) {
                 last.css(lastMargin, "");
                 first.css(firstMargin, "");
                 first.hide();
                 first.removeClass(SHOWED_CLASS);
+                first.removeClass(TRANSITION_CLASS);
+                last.removeClass(TRANSITION_CLASS);
             }
         }, delay);
-    };
-
-    var scrollRight = function(event) {
-        var items = $(document).find(ELEMENTS).find(ITEMS);
-        var firstFind = false;
-        var activeOver = false;
-        var first = {};
-        var last = {};
-        for (i=0; i<items.length; i++) {
-            if (items.eq(i).hasClass(SHOWED_CLASS)) {
-                if (!firstFind) {
-                    firstFind = true;
-                    first = items.eq(i);
-                }
-            }
-            if (firstFind && !items.eq(i).hasClass(SHOWED_CLASS) && !activeOver) {
-                activeOver = true;
-                last = items.eq(i);
-                i = items.length;
-            }
-        }
-        if (activeOver) {
-            last.css("margin-right", "-" + ITEM_WIDTH_IN_PERCENTS + "%");
-            last.show();
-            last.addClass(SHOWED_CLASS);
-            for (var i=ITEM_WIDTH_IN_PERCENTS-1; i>=0; i--) {
-                animate(i, last, first, false);
-            }
-        }
     };
 
     var init = function() {
