@@ -41,6 +41,8 @@ module.exports.routes = {
 
     '/instagram-list': 'HomeController.instagramList',
 
+    '/twitter-list': 'HomeController.twitterList',
+
     'get /journalist': 'JournalistController.login',
 
     'post /journalist': {

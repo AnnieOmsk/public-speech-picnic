@@ -1,9 +1,9 @@
 var LEFT_ARROW = ".js-arrow-left";
 var RIGHT_ARROW = ".js-arrow-right";
-var ELEMENTS = ".social-container";
+var ELEMENTS = ".js-social-container";
 var ITEMS = ".js-instagram-item";
-var SHOWED_CLASS = "active";
-var TRANSITION_CLASS = "animating";
+var SHOWED_CLASS = "js-active";
+var TRANSITION_CLASS = "js-animating";
 var ITEMS_TO_SHOW = 4;
 var ITEM_WIDTH_IN_PERCENTS = 24;
 var ANIMATION_TIME = 200;
@@ -43,7 +43,7 @@ $(function(){
             end = 0;
             increment = -1;
             test = function (i, end) {
-                return i>end;
+                return i>=end;
             }
         }
 
@@ -115,16 +115,19 @@ $(function(){
     var init = function() {
         console.log("init");
         var items = $(document).find(ELEMENTS).find(ITEMS);
-        for (i=0; i<items.length; i++) {
-            if (i<ITEMS_TO_SHOW) {
-                items.eq(i).show();
-                items.eq(i).addClass(SHOWED_CLASS);
-            }
+        for (i=0; i<ITEMS_TO_SHOW; i++) {
+            items.eq(i).show();
+            items.eq(i).addClass(SHOWED_CLASS);
         }
+    };
+
+    var reload = function(event, data) {
+        ELEMENTS = data.container;
+        ITEMS = data.items;
+        init();
     };
 
     $(document).on("click", LEFT_ARROW, scrollLeft);
     $(document).on("click", RIGHT_ARROW, scrollRight);
-    $(document).on("slider-reload", init);
-    init();
+    $(document).on("slider-reload", reload);
 });

@@ -17,7 +17,7 @@
 // CONFIGURATION BEGIN
 var INSTAGRAM_KEYWORD = 'picnicomsk';
 var INSTAGRAM_COUNT = 20;
-var TWITTER_KEYWORD = '#picnicomsk';
+var TWITTER_KEYWORD = 'picnicomsk';
 var TWITTER_COUNT = 50;
 // CONFIGURATION END
 var q = require('q');
@@ -38,8 +38,7 @@ module.exports = {
       var allPromise = q.all([
           teaserService.fetchTeasers(),
           timelineService.findTimelines(),
-          broadcastService.findBroadcasts(),
-          twitterService.findTweets(TWITTER_KEYWORD, TWITTER_COUNT)
+          broadcastService.findBroadcasts()
       ]);
       allPromise.then(function(data){
           return res.view({
@@ -47,7 +46,6 @@ module.exports = {
               articles: data[0].articles,
               timelines: data[1],
               broadcasts: data[2],
-              tweets: data[3],
               injectedScripts: injectedScripts
           });
       }, function(err) {
@@ -61,7 +59,17 @@ module.exports = {
         instagramPromise.then(function(data) {
             return res.send(data);
         }, function(err) {
-            console.error("Promise error:" + err);
+            console.error("Instagram promise error:" + err);
+            return res.serverError(err);
+        });
+    },
+
+    twitterList: function (req, res) {
+        var twitterPromise = twitterService.findTweets(TWITTER_KEYWORD, TWITTER_COUNT);
+        twitterPromise.then(function(data) {
+            return res.send(data);
+        }, function(err) {
+            console.error("Twitter promise error:" + err);
             return res.serverError(err);
         });
     },
