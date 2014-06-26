@@ -11,21 +11,64 @@
   .content-preview {
     .item {
       .point(30%,10px);
+      .img {
+        margin-bottom: 20px;
+        .preview-label {
+          position: absolute;
+          bottom: 0px;
+          left: 0px;
+        }
+      }
+      .title {
+        margin-bottom: 15px;
+      }
+      .address-row {
+        margin-bottom: 5px;
+        .address {
+          margin-top: 5px;
+        }
+        .pointer {
+          .social-ico(16px,22px);
+          margin-right: 10px;
+        }
+      }
+      .date {
+        margin-bottom: 10px;
+      }
+      .tag {
+        display: inline-block;
+      }
     }
   }
 }
 
 .content-preview {
   .text-clear;
+  .img {
+    .preview-label {
+      .header-font;
+      .text-uppercase;
+      .button (@color-light, @color-light,@color-main);
+      padding-top: 6px;
+      padding-bottom: 2px;
+      font-size: 22px;
+      cursor: default;
+  }
+  }
   .title {
     .text-uppercase;
     font-size: 24px;
     text-align: left;
   }
-  .address {
-    .paragraf-font;
-    letter-spacing: 0em;
-    font-size: 16px;
+  .address-row {
+    .pointer {
+        background-image: url('../../images/point-map.png');
+      }
+    .address {
+      .paragraf-font;
+      letter-spacing: 0em;
+      font-size: 16px;
+    }
   }
   .date {
     .paragraf-font-bold;
@@ -38,5 +81,6 @@
     font-size: 16px;
     padding-top: 4px;
     padding-bottom: 1px;
+    cursor: default;
   }
 }
