@@ -17,46 +17,8 @@
   }
 }
 
-.social-container {
-  max-width: 1160px;
-  height: 490px;
-  margin-top: 45px;
-  position: relative;
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
-
-.arrow {
-  position: absolute;
-  top:30%;
-  width:50px;
-  height: 94px;
-  display: block;
-}
-
-.arrow-left {
-  left:0px;
-}
-.arrow-right {
-  right: 0px;
-}
-
-.content {
-  width: 85%;
-  margin: auto;
-  overflow: hidden;
-}
-
 .item {
-  width:24%;
-  display: block;
-  float: left;
-  margin-left: 3.8px;
-  margin-right: 3.8px;
+  .item (24%, 3.8px);
 }
 
 .instagram-item {
@@ -72,19 +34,7 @@
     .margin-left;
     margin-bottom: 10px;
   }
-  .post-img {
-    position: relative;
-    width: 100%;
-    img {
-      width: 100%;
-    }
-    .overlay {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      top:0;
-    }
-  }
+
   .post-text {
     margin-top: 20px;
     .margin-left;
@@ -164,21 +114,6 @@
   }
 }
 
-.arrow {
-  cursor:pointer;
-}
-.arrow-left {
-  background-image: url('../../images/left-arrow.png');
-  &:hover {
-    background-image: url('../../images/left-arrow-hover.png');
-  }
-}
-.arrow-right {
-  background-image: url('../../images/right-arrow.png');
-  &:hover {
-    background-image: url('../../images/right-arrow-hover.png');
-  }
-}
 .instagram-item {
   color: @color-dark;
   font-family: @font-subheader-family;
