@@ -31,3 +31,16 @@ exports.findJournalist = function(login, password) {
     });
     return deferred.promise;
 };
+
+exports.findJournalistById = function(id) {
+    var deferred = q.defer();
+    Journalist.findOneById(id).done(function(err, journalist) {
+        if (err) {
+            console.log("JournalistService error:" + err);
+            deferred.reject(err);
+        } else {
+            deferred.resolve(journalist)
+        }
+    });
+    return deferred.promise;
+}

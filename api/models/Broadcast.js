@@ -15,6 +15,7 @@ module.exports = {
     time: 'datetime',
     journalistId: {
       type: 'integer',
+      required: true,
       columnName: 'journalist_id'
     },
     likes: {

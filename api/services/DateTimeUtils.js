@@ -27,6 +27,18 @@ exports.dateMonthTime = function(dateText) {
 };
 
 /**
+ * Converts ISO dateTime to human-readable format showing time
+ * @param dateText ISO dateTime like ""2014-05-15T10:00:00+07:00""
+ * @returns human-readable dateTime like "12:00"
+ */
+exports.dateTime = function(dateText) {
+    var date = new Date(parseInt(Date.parse(dateText), 10));
+    var minutes = (date.getMinutes() < 10) ? "0" + date.getMinutes() : date.getMinutes();
+    var russianDate = date.getHours() + ":" + minutes;
+    return russianDate;
+};
+
+/**
  * Converts ISO dateTime to human-readable format showing date and month
  * @param dateText ISO dateTime like ""2014-05-15T10:00:00+07:00""
  * @returns human-readable dateTime like "05 June" in russian
