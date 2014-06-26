@@ -24,8 +24,10 @@ $(document).ready(function () {
     }
 
     $(RELOAD_BROADCAST).on("click", reload);
+    $(RELOAD_BROADCAST).trigger("click");
 
-  $(document).on('click', '.js-news-more', function () {
+
+    $(document).on('click', '.js-news-more', function () {
       $(this).addClass('hide');
       $(this).parent().siblings('.js-news-full').removeClass('hide');
   });
