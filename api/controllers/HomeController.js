@@ -74,13 +74,22 @@ module.exports = {
         });
     },
 
-
     eventList: function (req, res) {
         var eventsPromise = teaserService.fetchTeasers();
         eventsPromise.then(function(data) {
             return res.send(presenterService.presentTeasers(data).events);
         }, function(err) {
             console.error("Events promise error:" + err);
+            return res.serverError(err);
+        });
+    },
+
+    articleList: function (req, res) {
+        var articlePromise = teaserService.fetchTeasers();
+        articlePromise.then(function(data) {
+            return res.send(presenterService.presentTeasers(data).articles);
+        }, function(err) {
+            console.error("Articles promise error:" + err);
             return res.serverError(err);
         });
     },
