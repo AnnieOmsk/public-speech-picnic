@@ -1,78 +1,41 @@
 <div class="row preview subheader-font"> 
   <div class="container container-main">
     <h1 class="color-text-main">анонсы мероприятий</h1>
-    <div class="js-reload-preview row reload">
-        <a href="" class="reload-btn" data-url="instagram-list" data-container="content-instagram" data-template="instagram"><span class="reload-img"></span>Обновить</a>
+    <div class="row reload">
+        <a href="#" class="reload-btn js-reload-preview" data-url="event-list" data-container="js-content-events" data-template="events" data-items="js-events-item"><span class="reload-img"></span>Обновить</a>
      </div>
   </div>
   <div class="container wide-container">
-    <span class="js-arrow-left arrow arrow-left pull-left"></span>
-        <div class="content-preview content color-text-dark">
-
-          <div class="item">
-            <a href="" class="to-action"><!-- link to action on public-speach site -->
-              <div class="img">
-                <div class="overlay"></div>
-                <span class="preview-label">мастер-класс</span>
-                <img src="../../images/sample-preview.jpg" alt="">
-              </div>
-            </a>
-            <div class="title">Первая кулинарная школа</div>
-            <div class="row address-row">
-              <span class="pointer"></span>
-              <div class="address">Городской пикник, Березовая, 4</div>
-            </div>
-            <div class="date">16 июля, 16:00</div>
-            <div class="row-tags">
-              <div class="tag">
-                <span>обучение</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="item">
-            <a href="" class="to-action"><!-- link to action on public-speach site -->
-              <div class="img">
-                <div class="overlay"></div>
-                <span class="preview-label">мастер-класс</span>
-                <img src="../../images/sample-preview.jpg" alt="">
-              </div>
-            </a>
-            <div class="title">Первая кулинарная школа</div>
-            <div class="row address-row">
-              <span class="pointer"></span>
-              <div class="address">Городской пикник, Березовая, 4</div>
-            </div>
-            <div class="date">16 июля, 16:00</div>
-            <div class="row-tags">
-              <div class="tag">
-                <span>обучение</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="item">
-            <a href="" class="to-action"><!-- link to action on public-speach site -->
-              <div class="img">
-                <div class="overlay"></div>
-                <span class="preview-label">мастер-класс</span>
-                <img src="../../images/sample-preview.jpg" alt="">
-              </div>
-            </a>
-            <div class="title">Первая кулинарная школа</div>
-            <div class="row address-row">
-              <span class="pointer"></span>
-              <div class="address">Городской пикник, Березовая, 4</div>
-            </div>
-            <div class="date">16 июля, 16:00</div>
-            <div class="row-tags">
-              <div class="tag">
-                <span>обучение</span>
-              </div>
-            </div>
-          </div>
-
+    <span class="js-arrow-left arrow arrow-left pull-left" data-container="js-content-events" data-items="js-events-item"></span>
+      <div class="loader js-loader" data-container="preview"></div>
+        <div class="content-preview content js-content-events color-text-dark">
         </div>
-    <span class="js-arrow-right arrow arrow-right pull-right"></span>
+          <script type="text/x-handlebars-template" data-slider="events">
+              {{#each this}}
+              <div class="item js-events-item" style="display:none">
+                  <a href="{{link}}" class="to-action"><!-- link to action on public-speach site -->
+                      <div class="img">
+                          <div class="overlay"></div>
+                          <span class="preview-label">{{type}}</span>
+                          <img src="{{photo}}" alt="">
+                      </div>
+                  </a>
+                  <div class="title">{{title}}</div>
+                  <div class="row address-row">
+                      <span class="pointer"></span>
+                      <div class="address">{{address}}</div>
+                  </div>
+                  <div class="date">{{start}}</div>
+                  <div class="row-tags">
+                      {{#each tags}}
+                          <div class="tag">
+                              <span>{{this}}</span>
+                          </div>
+                      {{/each}}
+                  </div>
+              </div>
+              {{/each}}
+          </script>
+      <span class="js-arrow-right arrow arrow-right pull-right" data-container="js-content-events" data-items="js-events-item"></span>
   </div>
 </div>

@@ -90,3 +90,33 @@ exports.presentTweets = function(tweetsArray) {
     }
     return tweets;
 };
+
+/**
+ * Presents teasers to Events and Articles
+ * @param teasersArray Teasers from remote Teasers API
+ * @returns {{events: Array, articles: Array}}
+ */
+exports.presentTeasers = function(teasersArray) {
+    var teasers = JSON.parse(teasersArray);
+    var events = [];
+    var articles = [];
+    for (var i=0; i < teasers.length; i++) {
+        var item = teasers[i];
+        if (item.entity == 'event') {
+            item.start = dateTimeUtils.dateMonthTime(item.start);
+            if (item.end != null) {
+                item.end = dateTimeUtils.dateMonthTime(item.end);
+            }
+            events.push(item);
+        }
+        if (item.entity == 'article') {
+            item.published = dateTimeUtils.dateMonthYear(item.published);
+            articles.push(item);
+        }
+
+    }
+    return {
+        events: events,
+        articles: articles
+    };
+};
