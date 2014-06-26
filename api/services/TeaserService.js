@@ -1,3 +1,4 @@
+var configuration = require('./Configuration');
 var http = require('http');
 var dateTime = require('./DateTimeUtils');
 var q = require('q');
@@ -38,7 +39,7 @@ var parseTeasers = function(json) {
 exports.fetchTeasers = function() {
     var deferred = q.defer();
     var json = "";
-    http.get("http://ps.whereco.in/api/teasers", function(res) {
+    http.get(configuration.TEASERS_API_URL, function(res) {
         res.on('data', function (data){
             json = json + data;
         }).on('end', function () {

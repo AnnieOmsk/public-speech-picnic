@@ -14,12 +14,7 @@
  *
  * @docs        :: http://sailsjs.org/#!documentation/controllers
  */
-// CONFIGURATION BEGIN
-var INSTAGRAM_KEYWORD = 'picnicomsk';
-var INSTAGRAM_COUNT = 20;
-var TWITTER_KEYWORD = 'picnicomsk';
-var TWITTER_COUNT = 50;
-// CONFIGURATION END
+var configuration = require('../services/Configuration');
 var q = require('q');
 var teaserService = require('../services/TeaserService');
 var timelineService = require('../services/TimelineService');
@@ -55,7 +50,7 @@ module.exports = {
     },
 
     instagramList: function (req, res) {
-        var instagramPromise = instagramService.findInstagrams(INSTAGRAM_KEYWORD, INSTAGRAM_COUNT);
+        var instagramPromise = instagramService.findInstagrams(configuration.INSTAGRAM_KEYWORD, configuration.INSTAGRAM_COUNT);
         instagramPromise.then(function(data) {
             return res.send(data);
         }, function(err) {
@@ -65,7 +60,7 @@ module.exports = {
     },
 
     twitterList: function (req, res) {
-        var twitterPromise = twitterService.findTweets(TWITTER_KEYWORD, TWITTER_COUNT);
+        var twitterPromise = twitterService.findTweets(configuration.TWITTER_KEYWORD, configuration.TWITTER_COUNT);
         twitterPromise.then(function(data) {
             return res.send(data);
         }, function(err) {
