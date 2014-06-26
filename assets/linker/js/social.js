@@ -13,8 +13,10 @@ $(function(){
 
     var reload = function(event) {
         event.preventDefault();
+        $(document).find(".js-loader[data-container='social']").show();
         var url = event.target.attributes[DATA_URL].value;
         var container = event.target.attributes[CONTAINER_DIV].value;
+        $(document).find("." + container).html("");
         var templateSelector = "[data-slider=" + event.target.attributes[TEMPLATE_DATA].value + "]";
         var itemsSelector = "." + event.target.attributes[ITEMS_CLASS].value;
         $.ajax({
@@ -27,6 +29,8 @@ $(function(){
             $(document).trigger("slider-reload", {container: '.js-social-container', items: itemsSelector});
         }).fail(function(jqXHR, textStatus){
             console.log("fail:" + textStatus);
+        }).always( function() {
+            $(document).find(".js-loader[data-container='social']").hide();
         });
     };
 
