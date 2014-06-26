@@ -92,6 +92,8 @@ exports.findBroadcastsFrom = function(time, n) {
             }
             q.all(journalistsPromises).then(function(data) {
                 for(var i = 0; i < broadcasts.length; i++) {
+                    delete data[i].login;
+                    delete data[i].password;
                     broadcasts[i].journalist = data[i];
                 }
                 deferred.resolve(broadcasts);
