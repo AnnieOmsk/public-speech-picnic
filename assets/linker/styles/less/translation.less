@@ -53,9 +53,12 @@
         }
         .news-description {
           margin-bottom: 15px;
-          a {
+          .href {
             margin-top: 15px;
             display: block;
+          }
+          .news-full {
+            margin-top: 10px;
           }
         }
         .news-photos {
@@ -107,7 +110,8 @@ ul {
         letter-spacing: 0em;
 
         font-size: 16px;
-        a {
+        .href {
+          cursor: pointer;
           .paragraf-font-bold;
           color: @color-main;
           text-decoration: underline;
