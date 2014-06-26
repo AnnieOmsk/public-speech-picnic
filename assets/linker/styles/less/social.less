@@ -113,6 +113,15 @@
     color:@color-main;
   }
 }
+.social-btn {
+  .button(@color-main, @color-light, @color-main);
+  .button-hovered (@color-light,@color-main);
+}
+.social-btn-active {
+  .button (@color-main, @color-main, @color-light);
+  .button-hovered (@color-main,@color-light);
+
+}
 
 .instagram-item {
   color: @color-dark;

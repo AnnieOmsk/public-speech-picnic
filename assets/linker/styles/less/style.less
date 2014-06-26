@@ -59,6 +59,32 @@
   }
 }
 
+.button (@color-border, @color-background, @color) {
+  border: 2px @color-border solid;
+  padding: 12px 15px 8px 15px;
+  cursor: pointer;
+  color: @color;
+  background-color: @color-background;
+  a {
+    color: @color;
+  }
+  
+}
+
+.button-hovered (@color-background-hover, @color-hover){
+  &:hover {
+    background-color: @color-background-hover;
+    color: @color-hover;
+  a {
+    color:@color-hover;
+    &:hover {
+      text-decoration: none;
+      color:@color-hover;
+      }
+    }
+  }
+}
+
 /*  end mixins*/
 
 .margin-left {
@@ -176,36 +202,12 @@ a {
   border: @color-main 2px solid;
 }
 
-.button (@color-border, @color-background-hover, @color-hover) {
-  border: 2px @color-border solid;
-  padding: 12px 15px 8px 15px;
-  cursor: pointer;
-  &:hover {
-    background-color: @color-background-hover;
-    color: @color-hover;
-  a {
-    color:@color-hover;
-    &:hover {
-      text-decoration: none;
-      color:@color-hover;
-      }
-    }
-  }
-}
-
-.pay-item {
-  .button(@color-light, @color-light,@color-main);
-}
-.social-btn, {
-  color: @color-main;
-  .button(@color-main, @color-main,@color-light);
-}
 
 .reload {
   height: 34px;
   .reload-btn {
-    color: @color-main;
-    .button(@color-main, @color-main,@color-light);
+    .button(@color-main,@color-light, @color-main);
+    .button-hovered (@color-main,@color-light);
     padding: 10px 15px 6px 15px;
     font-size: 15px;
     font-family: @font-header-family;
