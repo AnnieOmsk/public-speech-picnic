@@ -37,6 +37,14 @@ $(function(){
     var fillContainer = function(data, container, templateSelector) {
         var templateSource = $(document).find(templateSelector).html();
         var template = Handlebars.compile(templateSource);
+        // NOTICE: never do such things
+        if (data[0].retweetsCount != null) {
+            var tweetsByTwo = [];
+            for(var i=0;i<data.length/2;i++) {
+                tweetsByTwo.push({first: data[i*2], second: data[i*2+1]});
+            }
+            data = tweetsByTwo;
+        }
         $(document).find("." + container).html(template(data));
     };
 
@@ -50,6 +58,8 @@ $(function(){
             reloadButton.attributes[ITEMS_CLASS].value  = 'js-instagram-item';
             $(document).find('.js-content-twitter').hide();
             $(document).find('.js-content-instagram').show();
+            $(document).find('.social-btn').removeClass('social-btn-active');
+            $(event.target).addClass('social-btn-active');
             $(document).find(RELOAD_BUTTON).trigger("click");
         }
     };
@@ -64,6 +74,8 @@ $(function(){
             reloadButton.attributes[ITEMS_CLASS].value  = 'js-twitter-item';
             $(document).find('.js-content-instagram').hide();
             $(document).find('.js-content-twitter').show();
+            $(document).find('.social-btn').removeClass('social-btn-active');
+            $(event.target).addClass('social-btn-active');
             $(document).find(RELOAD_BUTTON).trigger("click");
         }
     };

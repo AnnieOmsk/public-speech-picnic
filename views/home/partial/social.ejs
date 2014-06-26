@@ -54,32 +54,61 @@
       </div>
         <script type="text/x-handlebars-template" data-slider="twitter">
             {{#each this}}
-            <div class="js-twitter-item twitter-item item" style="display:none">
-                <div class="row user">
-                    <img src="{{userIcon}}" alt="" class="avatar">
-                    <div class="nic">@{{userAccount}}</div>
-                    <div class="date-post">{{createdAt}}</div>
+            <div class="item js-twitter-item" style="display:none">
+                <div class="twitter-item">
+                    <div class="row user">
+                        <img src="{{first.userIcon}}" alt="" class="avatar">
+                        <div class="nic">@{{first.userAccount}}</div>
+                        <div class="date-post">{{first.createdAt}}</div>
+                    </div>
+                    <div class="row post">
+                        <div class="row post-text">{{{first.text}}}</div>
+                    </div>
+                    <a href="{{first.retweetUrl}}">
+                        <div class="retwitts">
+                            <span class="img"></span>
+                            <span class="counter">{{first.retweetsCount}}</span>
+                        </div>
+                    </a>
+                    <a href="{{first.favoriteUrl}}">
+                        <div class="favorites">
+                            <span class="img"></span>
+                            <span class="counter">{{first.favoritesCount}}</span>
+                        </div>
+                    </a>
+                    <a href="{{first.replyUrl}}">
+                        <div class="twitting">
+                            <span class="img"></span>
+                        </div>
+                    </a>
                 </div>
-                <div class="row post">
-                    <div class="row post-text">{{{text}}}</div>
+                <div class="twitter-item">
+                    <div class="row user">
+                        <img src="{{second.userIcon}}" alt="" class="avatar">
+                        <div class="nic">@{{second.userAccount}}</div>
+                        <div class="date-post">{{second.createdAt}}</div>
+                    </div>
+                    <div class="row post">
+                        <div class="row post-text">{{{second.text}}}</div>
+                    </div>
+                    <a href="{{second.retweetUrl}}">
+                        <div class="retwitts">
+                            <span class="img"></span>
+                            <span class="counter">{{second.retweetsCount}}</span>
+                        </div>
+                    </a>
+                    <a href="{{second.favoriteUrl}}">
+                        <div class="favorites">
+                            <span class="img"></span>
+                            <span class="counter">{{second.favoritesCount}}</span>
+                        </div>
+                    </a>
+                    <a href="{{second.replyUrl}}">
+                        <div class="twitting">
+                            <span class="img"></span>
+                        </div>
+                    </a>
                 </div>
-                <a href="{{retweetUrl}}">
-                    <div class="retwitts">
-                        <span class="img"></span>
-                        <span class="counter">{{retweetsCount}}</span>
-                    </div>
-                </a>
-                <a href="{{favoriteUrl}}">
-                    <div class="favorites">
-                        <span class="img"></span>
-                        <span class="counter">{{favoritesCount}}</span>
-                    </div>
-                </a>
-                <a href="{{replyUrl}}">
-                    <div class="twitting">
-                        <span class="img"></span>
-                    </div>
-                </a>
             </div>
             {{/each}}
         </script>
