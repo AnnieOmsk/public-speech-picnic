@@ -116,4 +116,20 @@ var buildImagesLinks = function(guuid) {
         }
     }
     return links;
-}
+};
+
+exports.like = function(id) {
+    var deferred = q.defer();
+    Broadcast.findOne(id).done(function(err, broadcast) {
+        ++broadcast.likes;
+        broadcast.save(function(err) {
+            if (err) {
+                console.log("BroadcastService error:" + err);
+                deferred.reject(err);
+            } else {
+                deferred.resolve(broadcast.likes);
+            }
+        });
+    });
+    return deferred.promise;
+};

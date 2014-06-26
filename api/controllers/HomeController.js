@@ -68,12 +68,27 @@ module.exports = {
     },
 
     broadcast: function(req, res) {
-        var broadcastPromise = broadcastService.findBroadcastsFrom(null, 6);
+        var broadcastPromise = broadcastService.findBroadcastsFrom(null, configuration.BROADCAST_SIZE);
         broadcastPromise.then(function(data) {
             return res.json(data);
         });
     },
 
+    likeNews: function(req, res) {
+        if (!req.session.broadcastLikes) {
+            req.session.broadcastLikes = {};
+        }
+        var newsId = req.param('id');
+        if (req.session.broadcastLikes.hasOwnProperty(newsId)) {
+            res.json({changed: false});
+        } else {
+            var likePromise = broadcastService.like(newsId);
+            likePromise.then(function(data) {
+                req.session.broadcastLikes[newsId] = true;
+                return res.json({changed: true, likes: data});
+            })
+        }
+    },
 
     eventList: function (req, res) {
         var eventsPromise = teaserService.fetchTeasers();

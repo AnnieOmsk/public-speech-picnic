@@ -47,6 +47,8 @@ module.exports.routes = {
 
     'get /broadcast': 'HomeController.broadcast',
 
+    'post /broadcast/:id/like': 'HomeController.likeNews',
+
     'get /journalist': 'JournalistController.login',
 
     'post /journalist': {
