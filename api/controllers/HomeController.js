@@ -23,7 +23,9 @@ var twitterService = require('../services/TwitterService');
 var instagramService = require('../services/InstagramService');
 var presenterService = require('../services/PresenterService');
 
-var injectedScripts = '<script src="http://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>';
+var injectedScripts = '<script src="http://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>\n' +
+    '<script src="http://cdnjs.cloudflare.com/ajax/libs/vis/1.1.0/vis.min.js" type="text/javascript"></script>\n' +
+    '<link href="http://cdnjs.cloudflare.com/ajax/libs/vis/1.1.0/vis.css" rel="stylesheet" type="text/css" />';
 
 module.exports = {
 
@@ -32,13 +34,11 @@ module.exports = {
     */
     index: function (req, res) {
       var allPromise = q.all([
-          timelineService.findTimelines(),
           broadcastService.findBroadcasts()
       ]);
       allPromise.then(function(data){
           return res.view({
-              timelines: data[1],
-              broadcasts: data[2],
+              broadcasts: data[0],
               injectedScripts: injectedScripts
           });
       }, function(err) {
@@ -106,6 +106,16 @@ module.exports = {
             return res.send(presenterService.presentTeasers(data).articles);
         }, function(err) {
             console.error("Articles promise error:" + err);
+            return res.serverError(err);
+        });
+    },
+
+    timelineList: function (req, res) {
+        var timelinePromise = timelineService.findTimelines();
+        timelinePromise.then(function(data) {
+            return res.send(presenterService.presentTimelines(data));
+        }, function(err) {
+            console.error("Timeline list promise error:" + err);
             return res.serverError(err);
         });
     },

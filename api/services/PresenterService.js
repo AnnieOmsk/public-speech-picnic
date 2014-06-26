@@ -120,3 +120,25 @@ exports.presentTeasers = function(teasersArray) {
         articles: articles
     };
 };
+
+/**
+ * Presents timelines for display
+ * @returns array containing timelines with following fields:
+ * id, start, end, content
+ */
+exports.presentTimelines = function(timelineArray) {
+    if (timelineArray == null) {
+        return null;
+    }
+    var timelines = [];
+    for(var i=0; i<timelineArray.length; i++) {
+        var item = {};
+        var inputTimeline = timelineArray[i];
+        item.id = inputTimeline.id;
+        item.start = inputTimeline.start;
+        item.end = inputTimeline.end;
+        item.content = inputTimeline.title;
+        timelines.push(item);
+    }
+    return timelines;
+};
