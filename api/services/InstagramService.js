@@ -1,9 +1,9 @@
+var configuration = require('./Configuration');
 var q = require('q');
 var dateTimeUtils = require('./DateTimeUtils');
 var ig = require('instagram-node').instagram();
-/** TODO: Change in production to client's instagram auth settings */
-ig.use({ client_id: '73df4600dba14edfadb5e34f38eb3a56',
-    client_secret: 'b689283affa845858ac7804484c20e4f' });
+ig.use({ client_id: configuration.INSTAGRAM_AUTH_CLIENT_ID,
+    client_secret: configuration.INSTAGRAM_AUTH_CLIENT_SECRET});
 
 /**
  * Parse Instagram API list of instagrams

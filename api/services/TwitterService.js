@@ -1,12 +1,12 @@
+var configuration = require('./Configuration');
 var q = require('q');
 var twitter = require('twitter');
 var dateTimeUtils = require('./DateTimeUtils');
-/** TODO: Change in production to client's twitter auth settings */
 var twit = new twitter({
-    consumer_key: 'Kl5X1fTkRsCPQrQqVXUZo3lyN',
-    consumer_secret: 'XNVyyEqlS4oxl3AT5aEuBXhb3qeUmvmds6EVExAGHjkfPUO1LY',
-    access_token_key: '14196672-wDH7kiSHaYijR7eMKsTky4rRVL1DV7omMPAsJRCaY',
-    access_token_secret: 'nVJD9yjrEsz1kSpG1OxngNPosVCPpihYBAX4XhOUhfBp9'
+    consumer_key: configuration.TWITTER_AUTH_CONSUMER_KEY,
+    consumer_secret: configuration.TWITTER_AUTH_CONSUMER_SECRET,
+    access_token_key: configuration.TWITTER_AUTH_ACCESS_TOKEN_KEY,
+    access_token_secret: configuration.TWITTER_AUTH_ACCESS_TOKEN_SECRET
 });
 
 /**
