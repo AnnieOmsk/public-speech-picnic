@@ -68,7 +68,7 @@ module.exports = {
     },
 
     broadcast: function(req, res) {
-        var broadcastPromise = broadcastService.findBroadcastsFrom('2014-08-15 13:00', 15);
+        var broadcastPromise = broadcastService.findBroadcastsFrom(null, 6);
         broadcastPromise.then(function(data) {
             return res.json(data);
         });
