@@ -31,20 +31,13 @@
     }
 }
 
-.counter {
-  display: block;
-  float: right;
-  margin-top: 3px;
-  margin-left: 4px;
-}
-
-.item (@width, @margin){
+.point (@width, @margin){
   width:@width;
   display: block;
   float: left;
   margin-left: @margin;
   margin-right: @margin;
-  .post-img {
+  .img {
     position: relative;
     width: 100%;
     img {
@@ -131,7 +124,7 @@ a {
 .wide-container {
   max-width: 1160px;
   // height: 490px;
-  margin-top: 45px;
+  // margin-top: 45px;
   position: relative;
   -webkit-touch-callout: none;
   -webkit-user-select: none;
@@ -159,26 +152,7 @@ a {
 }
 
 
-.text-uppercase {
-  text-transform: uppercase;
-}
-.text-clear{
-  text-transform: none;
-}
-.header-font {
-  font-family: @font-header-family;
-  letter-spacing: 0.06em;
-}
-.subheader-font {
-  font-family:@font-subheader-family;
-  letter-spacing: 0.06em;
-}
-.paragraf-font {
-  font-family: @font-paragraf-family;
-}
-.paragraf-font-bold {
-  font-family: @font-paragraf-bolder-family;
-}
+
 
 .color-text-light {
   color: @color-light;
@@ -257,4 +231,11 @@ a {
   &:hover {
     background-image: url('../../images/right-arrow-hover.png');
   }
+}
+
+.counter {
+  display: block;
+  float: right;
+  margin-top: 3px;
+  margin-left: 4px;
 }

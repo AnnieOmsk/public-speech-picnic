@@ -1,16 +1,39 @@
 .preview {
-	padding-top: 60px;
-	padding-bottom: 40px;
-	background-color: @color-gray-light;
-	h1 {
-		margin-bottom: 35px;
-	}
-	.reload {
-		margin-bottom: 35px;
-	}
-	.content-preview {
-		.item {
-			.item (30%,10px);
-		}
-	}
+  padding-top: 60px;
+  padding-bottom: 40px;
+  background-color: @color-gray-light;
+  h1 {
+    margin-bottom: 35px;
+  }
+  .reload {
+    margin-bottom: 35px;
+  }
+  .content-preview {
+    .item {
+      .point(30%,10px);
+    }
+  }
+}
+
+.content-preview {
+  .text-clear;
+  .title {
+    .text-uppercase;
+    font-size: 24px;
+    text-align: left;
+  }
+  .address {
+    .paragraf-font;
+    letter-spacing: 0em;
+    font-size: 16px;
+  }
+  .date {
+    .paragraf-font-bold;
+    font-size: 16px;
+    letter-spacing: 0em;
+  }
+  .tag {
+    .button (@color-gray, @color-gray, @color-light);
+    .text-uppercase;
+  }
 }
