@@ -45,6 +45,8 @@ module.exports.routes = {
 
     '/event-list': 'HomeController.eventList',
 
+    '/article-list': 'HomeController.articleList',
+
     'get /broadcast': 'HomeController.broadcast',
 
     'post /broadcast/:id/like': 'HomeController.likeNews',

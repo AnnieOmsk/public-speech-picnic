@@ -1,1 +1,42 @@
-<div class="row materials">Материалы</div>
+<div class="row materials subheader-font">
+  <div class="container container-main">
+    <h1 class="color-text-main">материалы о городском пикнике</h1>
+    <div class="row reload">
+        <a href="#" class="reload-btn js-reload-materials" data-url="article-list" data-container="js-content-materials" data-template="materials" data-items="js-materials-item"><span class="reload-img"></span>Обновить</a>
+     </div>
+  </div>
+  <div class="container wide-container">
+    <span class="js-arrow-left arrow arrow-left pull-left" data-container="js-content-materials" data-items="js-materials-item"></span>
+        <div class="loader js-loader" data-container="materials"></div>
+        <div class="content-materials js-content-materials content color-text-dark">
+        </div>
+          <script type="text/x-handlebars-template" data-slider="materials">
+              {{#each this}}
+                  <div class="item js-materials-item" style="display:none">
+                      <a href="{{link}}" class="to-materials"><!-- link to action on public-speach site -->
+                          <div class="img">
+                              <div class="overlay"></div>
+                              <span class="materials-label">{{category}}</span>
+                              <img src="{{photo}}" alt="">
+                          </div>
+                      </a>
+                      <div class=" row author-row">
+                          <span class="author-ico"></span>
+                          <div class="author">{{author}}</div>
+                      </div>
+                      <div class="title">{{title}}</div>
+                      <div class="date">{{published}}</div>
+                      <div class="row-tags">
+                          {{#each tags}}
+                          <div class="tag">
+                              <span>{{this}}</span>
+                          </div>
+                          {{/each}}
+                      </div>
+                  </div>
+              {{/each}}
+          </script>
+
+    <span class="js-arrow-right arrow arrow-right pull-right" data-container="js-content-materials" data-items="js-materials-item"></span>
+  </div>
+</div>

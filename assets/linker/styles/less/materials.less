@@ -1,35 +1,34 @@
-.preview {
+.materials {
   padding-top: 60px;
   padding-bottom: 40px;
-  background-color: @color-gray-light;
   h1 {
     margin-bottom: 35px;
   }
   .reload {
     margin-bottom: 35px;
   }
-  .content-preview {
+  .content-materials {
     min-height:400px;
     .item {
       .point(30%,10px);
       .img {
-        margin-bottom: 20px;
-        .preview-label {
+        margin-bottom: 10px;
+        .materials-label {
           position: absolute;
-          bottom: 0px;
-          left: 0px;
+          top: 0px;
+          right: 0px;
         }
       }
       .title {
-        margin-bottom: 15px;
+        margin-bottom: 20px;
       }
-      .address-row {
-        margin-bottom: 5px;
-        .address {
+      .author-row {
+        margin-bottom: 10px;
+        .author {
           margin-top: 5px;
         }
-        .pointer {
-          .social-ico(16px,22px);
+        .author-ico {
+          .social-ico(20px,19px);
           margin-right: 10px;
         }
       }
@@ -48,10 +47,10 @@
   }
 }
 
-.content-preview {
+.content-materials {
   .text-clear;
   .img {
-    .preview-label {
+    .materials-label {
       .header-font;
       .text-uppercase;
       .button (@color-light, @color-light,@color-main);
@@ -66,20 +65,20 @@
     font-size: 24px;
     text-align: left;
   }
-  .address-row {
-    .pointer {
-        background-image: url('../../images/point-map.png');
+  .author-row {
+    .author-ico {
+        background-image: url('../../images/author-ico.png');
       }
-    .address {
+    .author {
       .paragraf-font;
       letter-spacing: 0em;
       font-size: 16px;
     }
   }
   .date {
-    .paragraf-font-bold;
-    font-size: 16px;
+    .paragraf-font;
     letter-spacing: 0em;
+    font-size: 16px;
   }
   .tag {
     span {
