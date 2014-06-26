@@ -46,7 +46,8 @@ $(function(){
                 start: '2014-07-01 12:00:00',
                 zoomable: false,
                 zoomMin: 10000000,
-                zoomMax: 10000000
+                zoomMax: 10000000,
+                height: 400
             };
 
             // Create a Timeline
