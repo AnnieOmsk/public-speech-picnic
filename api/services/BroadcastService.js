@@ -61,3 +61,28 @@ exports.save = function(journalistId, title, lead, content, images, imagesCount)
     });
     return deferred.promise;
 };
+
+/**
+ * Finds n broadcasts from given time
+ * @param time string in format yyyy-mm-dd[ hh:mm:ss]
+ * @param n
+ */
+exports.findBroadcastsFrom = function(time, n) {
+    var deferred = q.defer();
+    var query = Broadcast.find();
+    if (time != null && time != undefined) {
+        query = query.where({time: {'<=': time}});
+    }
+    if (n != null && n != undefined) {
+        query = query.limit(n);
+    }
+    query.sort("time DESC").exec(function(err, broadcasts){
+        if (err) {
+            console.log("BroadcastService error:" + err);
+            deferred.reject(err);
+        } else {
+            deferred.resolve(broadcasts);
+        }
+    });
+    return deferred.promise;
+};
