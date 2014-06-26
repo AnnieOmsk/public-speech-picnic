@@ -21,6 +21,7 @@ var timelineService = require('../services/TimelineService');
 var broadcastService = require('../services/BroadcastService');
 var twitterService = require('../services/TwitterService');
 var instagramService = require('../services/InstagramService');
+var presenterService = require('../services/PresenterService');
 
 var injectedScripts = '<script src="http://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>';
 
@@ -52,7 +53,7 @@ module.exports = {
     instagramList: function (req, res) {
         var instagramPromise = instagramService.findInstagrams(configuration.INSTAGRAM_KEYWORD, configuration.INSTAGRAM_COUNT);
         instagramPromise.then(function(data) {
-            return res.send(data);
+            return res.send(presenterService.presentInstagrams(data));
         }, function(err) {
             console.error("Instagram promise error:" + err);
             return res.serverError(err);
@@ -62,7 +63,7 @@ module.exports = {
     twitterList: function (req, res) {
         var twitterPromise = twitterService.findTweets(configuration.TWITTER_KEYWORD, configuration.TWITTER_COUNT);
         twitterPromise.then(function(data) {
-            return res.send(data);
+            return res.send(presenterService.presentTweets(data));
         }, function(err) {
             console.error("Twitter promise error:" + err);
             return res.serverError(err);
