@@ -1,15 +1,16 @@
 /**
  * Social(instagram + twitter) javascript
  */
-var RELOAD_BUTTON = ".js-reload";
-var DATA_URL = "data-url";
-var CONTAINER_DIV = "data-container";
-var TEMPLATE_DATA = "data-template";
-var ITEMS_CLASS = "data-items";
-var INSTAGRAM_BUTTON = ".js-toggle-instagram";
-var TWITTER_BUTTON = ".js-toggle-twitter";
-
 $(function(){
+    var RELOAD_BUTTON = ".js-reload-social";
+    var DATA_URL = "data-url";
+    var CONTAINER_DIV = "data-container";
+    var TEMPLATE_DATA = "data-template";
+    var ITEMS_CLASS = "data-items";
+    var INSTAGRAM_BUTTON = ".js-toggle-instagram";
+    var TWITTER_BUTTON = ".js-toggle-twitter";
+    var ARROWS_CLASS = ".js-arrow-social";
+
 
     var reload = function(event) {
         event.preventDefault();
@@ -26,7 +27,7 @@ $(function(){
         }).done(function(data) {
             console.log("done");
             fillContainer(data, container, templateSelector);
-            $(document).trigger("slider-reload", {container: '.js-social-container', items: itemsSelector});
+            $(document).trigger("slider-reload", {containerSelector: '.js-social-container', itemSelector: itemsSelector, itemsCount:4});
         }).fail(function(jqXHR, textStatus){
             console.log("fail:" + textStatus);
         }).always( function() {
@@ -56,6 +57,11 @@ $(function(){
             reloadButton.attributes[DATA_URL].value = 'instagram-list';
             reloadButton.attributes[TEMPLATE_DATA].value  = 'instagram';
             reloadButton.attributes[ITEMS_CLASS].value  = 'js-instagram-item';
+            var socialArrows = $(document).find(ARROWS_CLASS);
+            for(var i=0; i<socialArrows.length; i++) {
+                socialArrows[i].attributes[CONTAINER_DIV].value = 'js-content-instagram';
+                socialArrows[i].attributes[ITEMS_CLASS].value  = 'js-instagram-item';
+            }
             $(document).find('.js-content-twitter').hide();
             $(document).find('.js-content-instagram').show();
             $(document).find('.social-btn').removeClass('social-btn-active');
@@ -72,6 +78,11 @@ $(function(){
             reloadButton.attributes[DATA_URL].value = 'twitter-list';
             reloadButton.attributes[TEMPLATE_DATA].value  = 'twitter';
             reloadButton.attributes[ITEMS_CLASS].value  = 'js-twitter-item';
+            var socialArrows = $(document).find(ARROWS_CLASS);
+            for(var i=0; i<socialArrows.length; i++) {
+                socialArrows[i].attributes[CONTAINER_DIV].value = 'js-content-twitter';
+                socialArrows[i].attributes[ITEMS_CLASS].value = 'js-twitter-item';
+            }
             $(document).find('.js-content-instagram').hide();
             $(document).find('.js-content-twitter').show();
             $(document).find('.social-btn').removeClass('social-btn-active');
