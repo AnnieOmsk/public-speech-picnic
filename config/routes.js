@@ -43,6 +43,8 @@ module.exports.routes = {
 
     '/twitter-list': 'HomeController.twitterList',
 
+    'get /broadcast': 'HomeController.broadcast',
+
     'get /journalist': 'JournalistController.login',
 
     'post /journalist': {
