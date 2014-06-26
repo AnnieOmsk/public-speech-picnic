@@ -32,14 +32,11 @@ module.exports = {
     */
     index: function (req, res) {
       var allPromise = q.all([
-          teaserService.fetchTeasers(),
           timelineService.findTimelines(),
           broadcastService.findBroadcasts()
       ]);
       allPromise.then(function(data){
           return res.view({
-              events: data[0].events,
-              articles: data[0].articles,
               timelines: data[1],
               broadcasts: data[2],
               injectedScripts: injectedScripts
@@ -71,9 +68,20 @@ module.exports = {
     },
 
     broadcast: function(req, res) {
-        var broadcastPromise = broadcastService.findBroadcastsFrom('2014-08-15 13:00', 15);
+        var broadcastPromise = broadcastService.findBroadcastsFrom(null, 6);
         broadcastPromise.then(function(data) {
             return res.json(data);
+        });
+    },
+
+
+    eventList: function (req, res) {
+        var eventsPromise = teaserService.fetchTeasers();
+        eventsPromise.then(function(data) {
+            return res.send(presenterService.presentTeasers(data).events);
+        }, function(err) {
+            console.error("Events promise error:" + err);
+            return res.serverError(err);
         });
     },
 

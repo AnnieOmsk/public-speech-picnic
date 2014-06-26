@@ -1,26 +1,27 @@
-var LEFT_ARROW = ".js-arrow-left";
-var RIGHT_ARROW = ".js-arrow-right";
-var ELEMENTS = ".js-social-container";
-var ITEMS = ".js-instagram-item";
-var SHOWED_CLASS = "js-active";
-var TRANSITION_CLASS = "js-animating";
-var ITEMS_TO_SHOW = 4;
-var ITEM_WIDTH_IN_PERCENTS = 24;
-var ANIMATION_TIME = 200;
-var STEPS = 25;
-
 $(function(){
+    var LEFT_ARROW = ".js-arrow-left";
+    var RIGHT_ARROW = ".js-arrow-right";
+    var CONTAINER_DIV = "data-container";
+    var ITEMS_CLASS = "data-items";
+    var SHOWED_CLASS = "js-active";
+    var TRANSITION_CLASS = "js-animating";
+    var ANIMATION_TIME = 200;
+    var STEPS = 25;
 
     var scrollLeft = function(event) {
-        scroll(true);
+        var containerSelector = "." + event.target.attributes[CONTAINER_DIV].value;
+        var itemsSelector = "." + event.target.attributes[ITEMS_CLASS].value;
+        scroll(true, containerSelector, itemsSelector);
     };
 
     var scrollRight = function(event) {
-        scroll(false);
+        var containerSelector = "." + event.target.attributes[CONTAINER_DIV].value;
+        var itemsSelector = "." + event.target.attributes[ITEMS_CLASS].value;
+        scroll(false, containerSelector, itemsSelector);
     };
 
-    var scroll = function(left) {
-        var items = $(document).find(ELEMENTS).find(ITEMS);
+    var scroll = function(left, containerSelector, itemsSelector) {
+        var items = $(document).find(containerSelector).find(itemsSelector);
         var firstFind = false;
         var activeOver = false;
         var first = {};
@@ -89,6 +90,7 @@ $(function(){
         var delayStep = initialDelay/STEPS;
         var j = STEPS - i;
         var delay = initialDelay*(j+1) + delayStep*j*(j+1)/2;
+        var ITEM_WIDTH = first.css('width').match(/[0-9]*/)[0];
         setTimeout(function() {
             if (i==(STEPS - 1)) {
                 last.show();
@@ -97,9 +99,9 @@ $(function(){
                 first.addClass(TRANSITION_CLASS);
             }
             if (i!=0) {
-                var percentOffset = i*ITEM_WIDTH_IN_PERCENTS/STEPS;
-                last.css(lastMargin, "-" + percentOffset + "%");
-                first.css(firstMargin, "-" + (ITEM_WIDTH_IN_PERCENTS-percentOffset) + "%");
+                var pixelOffset = Math.round(i*ITEM_WIDTH/STEPS);
+                last.css(lastMargin, "-" + pixelOffset + "px");
+                first.css(firstMargin, "-" + (ITEM_WIDTH-pixelOffset) + "px");
             }
             if (i==0) {
                 last.css(lastMargin, "");
@@ -112,19 +114,17 @@ $(function(){
         }, delay);
     };
 
-    var init = function() {
+    var init = function(containerSelector, itemSelector, itemsCount) {
         console.log("init");
-        var items = $(document).find(ELEMENTS).find(ITEMS);
-        for (i=0; i<ITEMS_TO_SHOW; i++) {
+        var items = $(document).find(containerSelector).find(itemSelector);
+        for (i=0; i<itemsCount; i++) {
             items.eq(i).show();
             items.eq(i).addClass(SHOWED_CLASS);
         }
     };
 
     var reload = function(event, data) {
-        ELEMENTS = data.container;
-        ITEMS = data.items;
-        init();
+        init(data.containerSelector, data.itemSelector, data.itemsCount);
     };
 
     $(document).on("click", LEFT_ARROW, scrollLeft);
