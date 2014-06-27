@@ -36,18 +36,9 @@ module.exports = {
     index: function (req, res) {
       //Optional param for the broadcast
       var from = req.param('from');
-      var allPromise = q.all([
-          broadcastService.findBroadcasts()
-      ]);
-      allPromise.then(function(data){
-          return res.view({
-              broadcasts: data[0],
-              injectedScripts: injectedScripts,
-              from: from
-          });
-      }, function(err) {
-          console.error("Promise error:" + err);
-          return res.serverError(err);
+      return res.view({
+          injectedScripts: injectedScripts,
+          from: from
       });
     },
 

@@ -21,12 +21,10 @@ $(function(){
             url: url,
             type: 'GET',
             dataType: 'json'
-        }).done(function(data) {
+        }).retry({times:3, timeout:3000}).then(function(data){
             console.log("done");
             fillContainer(data, container, templateSelector);
             $(document).trigger("slider-reload", {containerSelector: '.js-content-events', itemSelector: itemsSelector, itemsCount: 3});
-        }).fail(function(jqXHR, textStatus){
-            console.log("fail:" + textStatus);
         }).always( function() {
             $(document).find(LOADER_SELECTOR).hide();
         });
