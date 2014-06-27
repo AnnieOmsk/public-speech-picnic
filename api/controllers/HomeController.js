@@ -26,8 +26,7 @@ var instagramService = require('../services/InstagramService');
 var presenterService = require('../services/PresenterService');
 
 var injectedScripts = '<script src="http://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>\n' +
-    '<script src="http://cdnjs.cloudflare.com/ajax/libs/vis/1.1.0/vis.min.js" type="text/javascript"></script>\n' +
-    '<link href="http://cdnjs.cloudflare.com/ajax/libs/vis/1.1.0/vis.css" rel="stylesheet" type="text/css" />';
+    '<script src="http://cdnjs.cloudflare.com/ajax/libs/vis/1.1.0/vis.min.js" type="text/javascript"></script>';
 
 module.exports = {
 
@@ -37,18 +36,9 @@ module.exports = {
     index: function (req, res) {
       //Optional param for the broadcast
       var from = req.param('from');
-      var allPromise = q.all([
-          broadcastService.findBroadcasts()
-      ]);
-      allPromise.then(function(data){
-          return res.view({
-              broadcasts: data[0],
-              injectedScripts: injectedScripts,
-              from: from
-          });
-      }, function(err) {
-          console.error("Promise error:" + err);
-          return res.serverError(err);
+      return res.view({
+          injectedScripts: injectedScripts,
+          from: from
       });
     },
 
