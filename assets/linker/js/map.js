@@ -1,8 +1,5 @@
-if (typeof(ymaps) !== "undefined") {
-
-    ymaps.ready(init);
+$(function() {
     var picnicMap, border, cafe;
-
     function init() {
         picnicMap = new ymaps.Map("map", {
             center: [55.018344, 73.33375],
@@ -35,4 +32,7 @@ if (typeof(ymaps) !== "undefined") {
         picnicMap.geoObjects.add(cafe);
         picnicMap.geoObjects.add(border);
     }
-}
+    if (typeof(ymaps) !== "undefined") {
+        ymaps.ready(init);
+    }
+});

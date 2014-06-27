@@ -57,11 +57,17 @@ $(document).ready(function () {
 
 
     $(document).on('click', '.js-news-more', function () {
-      $(this).addClass('hide');
-      $(this).parent().siblings('.js-news-full').removeClass('hide');
+      $(this).hide('300');
+      $(this).parent().siblings('.js-news-full').addClass('showed');
+      $(this).parent().siblings('.js-news-full').animate({opacity: 1},1500);
+
   });
   $(document).on('click', '.js-news-less', function () {
-      $(this).parent().addClass('hide');
-      $(this).parent().siblings('.js-news-summary').find('.js-news-more').removeClass('hide');
+      
+      $(this).parent().siblings('.js-news-summary').find('.js-news-more').show('300');
+      $(this).parent().animate({opacity: 0},100);
+      $(this).parent().hide(200);
+      $(this).parent().removeClass('showed');
+
   });
 });

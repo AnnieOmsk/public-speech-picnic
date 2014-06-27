@@ -84,44 +84,58 @@ exports.presentTweets = function(tweetsArray) {
         item.userIcon = inputTweet.user.profile_image_url;
         item.createdAt = dateTimeUtils.dateMonth(inputTweet.created_at);
         var text = inputTweet.text;
-        text = text.replace(/((([A-Za-z]{3,9}:(?:\/\/)?)(?:[-;:&=\+\$,\w]+@)?[A-Za-z0-9.-]+|(?:www.|[-;:&=\+\$,\w]+@)[A-Za-z0-9.-]+)((?:\/[\+~%\/.\w-_]*)?\??(?:[-\+=&;%@.\w_]*)#?(?:[\w]*))?)/g, "<a href=\"$1\">$1</a>");
-        item.text = text.replace(/(#([^\s#]+))/g, "<a href=\"https://twitter.com/hashtag/$2\">$1</a>");
+        text = text.replace(/((([A-Za-z]{3,9}:(?:\/\/)?)(?:[-;:&=\+\$,\w]+@)?[A-Za-z0-9.-]+|(?:www.|[-;:&=\+\$,\w]+@)[A-Za-z0-9.-]+)((?:\/[\+~%\/.\w-_]*)?\??(?:[-\+=&;%@.\w_]*)#?(?:[\w]*))?)/g, "<a href=\"$1\" target=\"_blank\">$1</a>");
+        item.text = text.replace(/(#([^\s#]+))/g, "<a href=\"https://twitter.com/hashtag/$2\" target=\"_blank\">$1</a>");
         tweets.push(item);
     }
     return tweets;
 };
 
 /**
- * Presents teasers to Events and Articles
- * @param teasersArray Teasers from remote Teasers API
- * @returns {{events: Array, articles: Array}}
+ * Presents teasers to Events
+ * @param teasersJson Teasers from remote Teasers API
+ * @returns Events array
  */
-exports.presentTeasers = function(teasersArray) {
-    var teasers = JSON.parse(teasersArray);
+exports.presentEvents = function(teasersJson) {
+    var teasers = JSON.parse(teasersJson);
     var events = [];
-    var articles = [];
     for (var i=0; i < teasers.length; i++) {
         var item = teasers[i];
-        var newItem = JSON.parse(JSON.stringify(item));
-        if (item.photo == '' || item.photo == 'http://ps.whereco.in/') {
-            newItem.photo = '/images/default_pic.jpg';
-        }
         if (item.entity == 'event') {
+            var newItem = JSON.parse(JSON.stringify(item));
+            if (item.photo == '' || item.photo == 'http://ps.whereco.in/') {
+                newItem.photo = '/images/default_pic.jpg';
+            }
             newItem.start = dateTimeUtils.dateMonthTime(item.start);
             if (item.end != null) {
                 newItem.end = dateTimeUtils.dateMonthTime(item.end);
             }
             events.push(newItem);
         }
+    }
+    return events;
+};
+
+/**
+ * Presents teasers to Articles
+ * @param teasersJson Teasers from remote Teasers API
+ * @returns articles Array
+ */
+exports.presentArticles = function(teasersJson) {
+    var teasers = JSON.parse(teasersJson);
+    var articles = [];
+    for (var i=0; i < teasers.length; i++) {
+        var item = teasers[i];
         if (item.entity == 'article') {
+            var newItem = JSON.parse(JSON.stringify(item));
+            if (item.photo == '' || item.photo == 'http://ps.whereco.in/') {
+                newItem.photo = '/images/default_pic.jpg';
+            }
             newItem.published = dateTimeUtils.dateMonthYear(item.published);
             articles.push(newItem);
         }
     }
-    return {
-        events: events,
-        articles: articles
-    };
+    return articles;
 };
 
 /**
@@ -140,8 +154,10 @@ exports.presentTimelines = function(timelineArray, organizers) {
         item.id = inputTimeline.id;
         item.start = inputTimeline.start;
         item.end = inputTimeline.end;
-        item.content = "<p data-bubble=\"" + inputTimeline.description + "\">" + inputTimeline.title + "<span>" +
-            organizers.filter(function(item) {return item.id == inputTimeline.organizerId})[0].name + "</span></p>";
+        var id = "timeline-" + item.id;
+        item.content = "<p data-bubble=\"" + id + "\">" + inputTimeline.title + "<span>" +
+            organizers.filter(function(item) {return item.id == inputTimeline.organizerId})[0].name +
+            "</span><span id=\"" + id +"\" style=\"display:none\">" + inputTimeline.description + "</span></p>";
         item.description = inputTimeline.description;
         item.group = inputTimeline.zoneId;
         timelines.push(item);
