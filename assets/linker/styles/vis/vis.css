@@ -1,7 +1,3 @@
-.vis.timeline {
-}
-
-
 .vis.timeline.rootpanel {
   position: relative;
   overflow: hidden;
@@ -23,6 +19,10 @@
 }
 
 .vis.timeline .vpanel.side {
+  font-family: "PFAgoraSansPro";
+  text-transform: none;
+  font-size: 16px;
+  letter-spacing: 0em;
   border-right: 1px solid #bfbfbf;
 }
 
@@ -62,7 +62,7 @@
 
 .vis.timeline .labelset .vlabel .inner {
   display: inline-block;
-  padding: 5px;
+  /*padding: 5px;*/
 }
 
 
@@ -303,6 +303,7 @@ div.graph-manipulation-editMode {
 }
 
 div.graph-manipulation-closeDiv {
+
     height:30px;
     width:30px;
     z-index:11;
@@ -322,6 +323,7 @@ div.graph-manipulation-closeDiv {
 }
 
 span.graph-manipulationUI {
+
     font-family: verdana;
     font-size: 12px;
     -moz-border-radius: 15px;

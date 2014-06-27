@@ -43,9 +43,10 @@ $(function(){
         var groups = [];
         for (var i = 0; i < data.zones.length; i++) {
             var currentZone = data.zones[i];
+            var name = "<span class=''></span>" + currentZone.name;
             groups.push({
                id: currentZone.id,
-               content: currentZone.name
+               content: name
             });
         }
         if (timeline == null) {
@@ -64,7 +65,7 @@ $(function(){
             stack: false,
             zoomMin: 10000000,
             zoomMax: 10000000,
-            height: 600
+            height: 722
         };
         timeline.setOptions(options);
         timeline.setGroups(groups);
