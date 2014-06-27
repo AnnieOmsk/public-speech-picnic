@@ -129,7 +129,7 @@ exports.presentTeasers = function(teasersArray) {
  * @returns array containing timelines with following fields:
  * id, start, end, content
  */
-exports.presentTimelines = function(timelineArray) {
+exports.presentTimelines = function(timelineArray, organizers) {
     if (timelineArray == null) {
         return null;
     }
@@ -140,7 +140,9 @@ exports.presentTimelines = function(timelineArray) {
         item.id = inputTimeline.id;
         item.start = inputTimeline.start;
         item.end = inputTimeline.end;
-        item.content = inputTimeline.title;
+        item.content = "<p data-bubble=\"" + inputTimeline.description + "\">" + inputTimeline.title + "<span>" +
+            organizers.filter(function(item) {return item.id == inputTimeline.organizerId})[0].name + "</span></p>";
+        item.description = inputTimeline.description;
         item.group = inputTimeline.zoneId;
         timelines.push(item);
     }
