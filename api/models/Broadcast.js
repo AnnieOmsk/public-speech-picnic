@@ -39,11 +39,6 @@ module.exports = {
       type: 'string',
       required: false
     },
-    imagesCount: {
-      type: 'integer',
-      required: false,
-      columnName: 'images_count'
-    },
     imagesLink: {
       type: 'string',
       required: false,

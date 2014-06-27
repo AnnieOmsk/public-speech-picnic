@@ -74,7 +74,7 @@ module.exports = {
 
     broadcast: function(req, res) {
         var from = req.param('from');
-        var broadcastPromise = broadcastService.findBroadcastsFrom(from, configuration.BROADCAST_SIZE);
+        var broadcastPromise = broadcastService.findAcceptedBroadcastsFrom(from, configuration.BROADCAST_SIZE);
         broadcastPromise.then(function(data) {
             return res.json(data);
         });
@@ -99,7 +99,7 @@ module.exports = {
     eventList: function (req, res) {
         var eventsPromise = teaserService.fetchTeasers();
         eventsPromise.then(function(data) {
-            return res.send(presenterService.presentTeasers(data).events);
+            return res.send(presenterService.presentEvents(data));
         }, function(err) {
             console.error("Events promise error:" + err);
             return res.serverError(err);
@@ -109,7 +109,7 @@ module.exports = {
     articleList: function (req, res) {
         var articlePromise = teaserService.fetchTeasers();
         articlePromise.then(function(data) {
-            return res.send(presenterService.presentTeasers(data).articles);
+            return res.send(presenterService.presentArticles(data));
         }, function(err) {
             console.error("Articles promise error:" + err);
             return res.serverError(err);

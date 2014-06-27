@@ -164,22 +164,6 @@
                 }
             },
             {
-                "name": "images_count",
-                "verbose": "images_count",
-                "control": {
-                    "text": true
-                },
-                "type": "int(11)",
-                "allowNull": true,
-                "defaultValue": null,
-                "listview": {
-                    "show": true
-                },
-                "editview": {
-                    "show": false
-                }
-            },
-            {
                 "name": "images_link",
                 "verbose": "images link",
                 "control": {
@@ -477,6 +461,22 @@
                     "columns": [
                         "name"
                     ]
+                }
+            },
+            {
+                "name": "description",
+                "verbose": "description",
+                "control": {
+                    "text": true
+                },
+                "type": "text",
+                "allowNull": true,
+                "defaultValue": null,
+                "listview": {
+                    "show": true
+                },
+                "editview": {
+                    "show": true
                 }
             }
         ],

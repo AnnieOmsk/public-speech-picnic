@@ -10,7 +10,9 @@ $(function(){
     var INSTAGRAM_BUTTON = ".js-toggle-instagram";
     var TWITTER_BUTTON = ".js-toggle-twitter";
     var ARROWS_CLASS = ".js-arrow-social";
-
+    var OFFICIAL_CLASS = ".js-social-official";
+    var INSTAGRAM_OFFICIAL_LINK = "http://instagram.com/picnicomsk";
+    var TWITTER_OFFICIAL_LINK = "https://twitter.com/picnicomsk";
 
     var reload = function(event) {
         event.preventDefault();
@@ -66,6 +68,7 @@ $(function(){
             $(document).find('.js-content-instagram').show();
             $(document).find('.social-btn').removeClass('social-btn-active');
             $(event.target).addClass('social-btn-active');
+            $(document).find(OFFICIAL_CLASS).attr('href', INSTAGRAM_OFFICIAL_LINK);
             $(document).find(RELOAD_BUTTON).trigger("click");
         }
     };
@@ -87,6 +90,7 @@ $(function(){
             $(document).find('.js-content-twitter').show();
             $(document).find('.social-btn').removeClass('social-btn-active');
             $(event.target).addClass('social-btn-active');
+            $(document).find(OFFICIAL_CLASS).attr('href', TWITTER_OFFICIAL_LINK);
             $(document).find(RELOAD_BUTTON).trigger("click");
         }
     };

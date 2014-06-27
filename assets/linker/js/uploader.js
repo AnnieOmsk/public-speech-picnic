@@ -16,7 +16,6 @@ if (typeof(uploadcare) !== "undefined") {
         var widget = uploadcare.MultipleWidget('[role=uploadcare-uploader][data-multiple]');
         widget.onUploadComplete(function (info) {
             $('#group-uuid').attr('value', info.uuid);
-            $('#images-count').attr('value', info.t.length);
         });
         widget.validators.push(sizeValidation);
     });
