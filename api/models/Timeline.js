@@ -13,6 +13,7 @@ module.exports = {
   autoUpdatedAt: false,
   attributes: {
     title: 'string',
+    description: 'string',
     organizerId: {
       columnName: 'organizer_id',
       type: 'integer'

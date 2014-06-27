@@ -19,6 +19,7 @@ var q = require('q');
 var teaserService = require('../services/TeaserService');
 var timelineService = require('../services/TimelineService');
 var zoneService = require('../services/ZoneService');
+var organizerService = require('../services/OrganizerService');
 var broadcastService = require('../services/BroadcastService');
 var twitterService = require('../services/TwitterService');
 var instagramService = require('../services/InstagramService');
@@ -118,11 +119,16 @@ module.exports = {
     timelineList: function (req, res) {
         var timelinePromises = q.all([timelineService.findTimelines(), zoneService.findZones()]);
         timelinePromises.then(function(data) {
-            return res.send({
-                timelines: presenterService.presentTimelines(data[0]),
-                zones: data[1]
-            }
-            );
+            var organizerPromise = organizerService.findOrganizers();
+            organizerPromise.then(function(organizers) {
+                return res.send({
+                    timelines: presenterService.presentTimelines(data[0], organizers),
+                    zones: data[1]
+                });
+            }, function(err) {
+                console.error("Organizer updating promise error:" + err);
+                return res.serverError(err);
+            });
         }, function(err) {
             console.error("Timeline list promise error:" + err);
             return res.serverError(err);
