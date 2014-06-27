@@ -2,17 +2,17 @@
  * Preview (events) javascript
  */
 $(function(){
-    var RELOAD_BUTTON = ".js-reload-timeline";
+    var DATA_SELECTOR = ".js-timeline-data";
     var DATA_URL = "data-url";
     var CONTAINER_DIV = "data-container";
     var LOADER_SELECTOR = ".js-loader[data-container='timeline']";
     var timeline;
 
-    var reload = function(event) {
-        event.preventDefault();
+    var reload = function() {
+        var element = $(document).find(DATA_SELECTOR)[0];
         $(document).find(LOADER_SELECTOR).show();
-        var url = event.target.attributes[DATA_URL].value;
-        var containerSelector = "." + event.target.attributes[CONTAINER_DIV].value;
+        var url = element.attributes[DATA_URL].value;
+        var containerSelector = "." + element.attributes[CONTAINER_DIV].value;
         $.ajax({
             url: url,
             type: 'GET',
@@ -72,6 +72,5 @@ $(function(){
 
     };
 
-    $(RELOAD_BUTTON).on("click", reload);
-    $(document).find(RELOAD_BUTTON).trigger("click");
+    reload();
 });
