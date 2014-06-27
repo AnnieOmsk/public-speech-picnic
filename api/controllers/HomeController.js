@@ -18,6 +18,7 @@ var configuration = require('../services/Configuration');
 var q = require('q');
 var teaserService = require('../services/TeaserService');
 var timelineService = require('../services/TimelineService');
+var zoneService = require('../services/ZoneService');
 var broadcastService = require('../services/BroadcastService');
 var twitterService = require('../services/TwitterService');
 var instagramService = require('../services/InstagramService');
@@ -115,9 +116,13 @@ module.exports = {
     },
 
     timelineList: function (req, res) {
-        var timelinePromise = timelineService.findTimelines();
-        timelinePromise.then(function(data) {
-            return res.send(presenterService.presentTimelines(data));
+        var timelinePromises = q.all([timelineService.findTimelines(), zoneService.findZones()]);
+        timelinePromises.then(function(data) {
+            return res.send({
+                timelines: presenterService.presentTimelines(data[0]),
+                zones: data[1]
+            }
+            );
         }, function(err) {
             console.error("Timeline list promise error:" + err);
             return res.serverError(err);

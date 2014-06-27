@@ -138,6 +138,7 @@ exports.presentTimelines = function(timelineArray) {
         item.start = inputTimeline.start;
         item.end = inputTimeline.end;
         item.content = inputTimeline.title;
+        item.group = inputTimeline.zoneId;
         timelines.push(item);
     }
     return timelines;
