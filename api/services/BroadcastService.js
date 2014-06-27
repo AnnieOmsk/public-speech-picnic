@@ -67,9 +67,9 @@ exports.save = function(journalistId, title, lead, content, images) {
  * @param time string in format yyyy-mm-dd[ hh:mm:ss]
  * @param n limit
  */
-exports.findBroadcastsFrom = function(time, n) {
+exports.findAcceptedBroadcastsFrom = function(time, n) {
     var deferred = q.defer();
-    var query = Broadcast.find();
+    var query = Broadcast.find().where({accepted: 1});
     if (time != null && time != undefined) {
         query = query.where({time: {'<=': time}});
     }
