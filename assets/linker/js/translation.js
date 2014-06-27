@@ -1,31 +1,34 @@
 $(document).ready(function () {
     var RELOAD_BROADCAST = '.js-reload-broadcast';
-    var DATA_URL = "data-url";
     var CONTAINER = ".js-wrap-broadcast";
     var DATA_NEWS_ID = "data-news-id";
     var LIKES = ".js-likes-wrap";
     var LIKES_HEART = ".js-news-likes";
     var LIKES_COUNTER = ".js-counter";
+    var DATA_FROM = "data-from";
+    var BROADCAST_URL = "/broadcast";
 
-    var reload = function(event) {
-        var url = event.target.attributes[DATA_URL].value;
-        var source   = $("#broadcast-template").html();
+    var reload = function(url, from) {
+        var params = {};
+        if (from != undefined) {
+            params.from = from;
+        }
+        var source = $("#broadcast-template").html();
         var template = Handlebars.compile(source);
-        $(CONTAINER).empty();
-        $.get(url, 'json')
+        $.get(url, params, 'json')
             .done(function(data){
+                $(CONTAINER).empty();
                 drawBroadcast({broadcast: data}, CONTAINER, template);
             })
             .fail(function(jqXHR, textStatus) {
                 console.log("fail:" + textStatus);
             });
-        return false;
     };
 
     var drawBroadcast = function(data, container, template) {
         var html = template(data);
         $(container).html(html);
-    }
+    };
 
     var likeNews = function(event) {
         var id = event.target.attributes[DATA_NEWS_ID].value;
@@ -40,9 +43,15 @@ $(document).ready(function () {
                 console.log("fail:" + textStatus);
             });
         return false;
-    }
+    };
 
-    $(RELOAD_BROADCAST).on("click", reload);
+    $(RELOAD_BROADCAST).on("click", function(event) {
+        var broadcastElem = $(CONTAINER);
+        var from = broadcastElem.attr(DATA_FROM);
+        broadcastElem.removeAttr(DATA_FROM);
+        reload(BROADCAST_URL, from);
+        return false;
+    });
     $(RELOAD_BROADCAST).trigger("click");
     $(document).on("click", LIKES_HEART, likeNews);
 

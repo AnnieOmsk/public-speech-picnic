@@ -18,6 +18,8 @@ var configuration = require('../services/Configuration');
 var q = require('q');
 var teaserService = require('../services/TeaserService');
 var timelineService = require('../services/TimelineService');
+var zoneService = require('../services/ZoneService');
+var organizerService = require('../services/OrganizerService');
 var broadcastService = require('../services/BroadcastService');
 var twitterService = require('../services/TwitterService');
 var instagramService = require('../services/InstagramService');
@@ -33,13 +35,16 @@ module.exports = {
     * Main controller for / page
     */
     index: function (req, res) {
+      //Optional param for the broadcast
+      var from = req.param('from');
       var allPromise = q.all([
           broadcastService.findBroadcasts()
       ]);
       allPromise.then(function(data){
           return res.view({
               broadcasts: data[0],
-              injectedScripts: injectedScripts
+              injectedScripts: injectedScripts,
+              from: from
           });
       }, function(err) {
           console.error("Promise error:" + err);
@@ -68,7 +73,8 @@ module.exports = {
     },
 
     broadcast: function(req, res) {
-        var broadcastPromise = broadcastService.findBroadcastsFrom(null, configuration.BROADCAST_SIZE);
+        var from = req.param('from');
+        var broadcastPromise = broadcastService.findBroadcastsFrom(from, configuration.BROADCAST_SIZE);
         broadcastPromise.then(function(data) {
             return res.json(data);
         });
@@ -111,9 +117,18 @@ module.exports = {
     },
 
     timelineList: function (req, res) {
-        var timelinePromise = timelineService.findTimelines();
-        timelinePromise.then(function(data) {
-            return res.send(presenterService.presentTimelines(data));
+        var timelinePromises = q.all([timelineService.findTimelines(), zoneService.findZones()]);
+        timelinePromises.then(function(data) {
+            var organizerPromise = organizerService.findOrganizers();
+            organizerPromise.then(function(organizers) {
+                return res.send({
+                    timelines: presenterService.presentTimelines(data[0], organizers),
+                    zones: data[1]
+                });
+            }, function(err) {
+                console.error("Organizer updating promise error:" + err);
+                return res.serverError(err);
+            });
         }, function(err) {
             console.error("Timeline list promise error:" + err);
             return res.serverError(err);

@@ -84,8 +84,8 @@ exports.presentTweets = function(tweetsArray) {
         item.userIcon = inputTweet.user.profile_image_url;
         item.createdAt = dateTimeUtils.dateMonth(inputTweet.created_at);
         var text = inputTweet.text;
-        text = text.replace(/((([A-Za-z]{3,9}:(?:\/\/)?)(?:[-;:&=\+\$,\w]+@)?[A-Za-z0-9.-]+|(?:www.|[-;:&=\+\$,\w]+@)[A-Za-z0-9.-]+)((?:\/[\+~%\/.\w-_]*)?\??(?:[-\+=&;%@.\w_]*)#?(?:[\w]*))?)/g, "<a href=\"$1\">$1</a>");
-        item.text = text.replace(/(#([^\s#]+))/g, "<a href=\"https://twitter.com/hashtag/$2\">$1</a>");
+        text = text.replace(/((([A-Za-z]{3,9}:(?:\/\/)?)(?:[-;:&=\+\$,\w]+@)?[A-Za-z0-9.-]+|(?:www.|[-;:&=\+\$,\w]+@)[A-Za-z0-9.-]+)((?:\/[\+~%\/.\w-_]*)?\??(?:[-\+=&;%@.\w_]*)#?(?:[\w]*))?)/g, "<a href=\"$1\" target=\"_blank\">$1</a>");
+        item.text = text.replace(/(#([^\s#]+))/g, "<a href=\"https://twitter.com/hashtag/$2\" target=\"_blank\">$1</a>");
         tweets.push(item);
     }
     return tweets;
@@ -102,18 +102,21 @@ exports.presentTeasers = function(teasersArray) {
     var articles = [];
     for (var i=0; i < teasers.length; i++) {
         var item = teasers[i];
+        var newItem = JSON.parse(JSON.stringify(item));
+        if (item.photo == '' || item.photo == 'http://ps.whereco.in/') {
+            newItem.photo = '/images/default_pic.jpg';
+        }
         if (item.entity == 'event') {
-            item.start = dateTimeUtils.dateMonthTime(item.start);
+            newItem.start = dateTimeUtils.dateMonthTime(item.start);
             if (item.end != null) {
-                item.end = dateTimeUtils.dateMonthTime(item.end);
+                newItem.end = dateTimeUtils.dateMonthTime(item.end);
             }
-            events.push(item);
+            events.push(newItem);
         }
         if (item.entity == 'article') {
-            item.published = dateTimeUtils.dateMonthYear(item.published);
-            articles.push(item);
+            newItem.published = dateTimeUtils.dateMonthYear(item.published);
+            articles.push(newItem);
         }
-
     }
     return {
         events: events,
@@ -126,7 +129,7 @@ exports.presentTeasers = function(teasersArray) {
  * @returns array containing timelines with following fields:
  * id, start, end, content
  */
-exports.presentTimelines = function(timelineArray) {
+exports.presentTimelines = function(timelineArray, organizers) {
     if (timelineArray == null) {
         return null;
     }
@@ -137,7 +140,12 @@ exports.presentTimelines = function(timelineArray) {
         item.id = inputTimeline.id;
         item.start = inputTimeline.start;
         item.end = inputTimeline.end;
-        item.content = inputTimeline.title;
+        var id = "timeline-" + item.id;
+        item.content = "<p data-bubble=\"" + id + "\">" + inputTimeline.title + "<span>" +
+            organizers.filter(function(item) {return item.id == inputTimeline.organizerId})[0].name +
+            "</span><span id=\"" + id +"\" style=\"display:none\">" + inputTimeline.description + "</span></p>";
+        item.description = inputTimeline.description;
+        item.group = inputTimeline.zoneId;
         timelines.push(item);
     }
     return timelines;
