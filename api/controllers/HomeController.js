@@ -33,13 +33,16 @@ module.exports = {
     * Main controller for / page
     */
     index: function (req, res) {
+      //Optional param for the broadcast
+      var from = req.param('from');
       var allPromise = q.all([
           broadcastService.findBroadcasts()
       ]);
       allPromise.then(function(data){
           return res.view({
               broadcasts: data[0],
-              injectedScripts: injectedScripts
+              injectedScripts: injectedScripts,
+              from: from
           });
       }, function(err) {
           console.error("Promise error:" + err);
@@ -68,7 +71,8 @@ module.exports = {
     },
 
     broadcast: function(req, res) {
-        var broadcastPromise = broadcastService.findBroadcastsFrom(null, configuration.BROADCAST_SIZE);
+        var from = req.param('from');
+        var broadcastPromise = broadcastService.findBroadcastsFrom(from, configuration.BROADCAST_SIZE);
         broadcastPromise.then(function(data) {
             return res.json(data);
         });
