@@ -6,11 +6,13 @@ $(document).ready(function () {
                 if( $(window).scrollTop() > stickyTop ) {
                         // $('.js-nav-static').addClass('hide');
                         $('.js-nav-fixed').removeClass('un-visible');
-                        if ($(window).scrollTop() >= stickyNav ) {
+                        if ($(window).scrollTop() > stickyNav ) {
                           $('.js-nav-fixed').addClass('fixed');
                           $('.js-nav-fixed').addClass('nav-shadow');
+                          $('.js-social-news').addClass('padding-top');
                         } else {
                           $('.js-nav-fixed').removeClass('fixed');
+                          $('.js-social-news').removeClass('padding-top');
                         }
                 } else {
                         // $('.js-nav-static').removeClass('hide');
