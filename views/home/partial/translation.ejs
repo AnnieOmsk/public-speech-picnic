@@ -19,9 +19,9 @@
                 <span class="circle"></span>
                 <div class="news-time ">{{pptime}}</div>
                 <div class="news-author">{{journalist.firstName}} {{journalist.lastName}}</div>
-                <div class="news-likes">
-                    <span class="img"></span>
-                    <span class="counter">{{likes}}</span>
+                <div class="news-likes js-likes-wrap">
+                    <span class="js-news-likes img" data-news-id="{{id}}"></span>
+                    <span class="js-counter counter">{{likes}}</span>
                 </div>
             </div>
             <div class="news-content">
@@ -31,7 +31,7 @@
                         {{{lead}}}
                         <span class="js-news-more href">Подробности</span>
                     </div>
-                    <div class="news-full js-news-full hide">
+                    <div class="news-full js-news-full hided">
                         {{{content}}}
                         <span href="" class="js-news-less href">Свернуть новость</span>
                     </div>

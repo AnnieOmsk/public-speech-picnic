@@ -1,3 +1,4 @@
+exports.BROADCAST_SIZE = 6;
 exports.INSTAGRAM_KEYWORD = 'picnicomsk';
 exports.INSTAGRAM_COUNT = 20;
 exports.TWITTER_KEYWORD = 'picnicomsk';
