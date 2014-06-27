@@ -22,17 +22,16 @@ $(function(){
         $(document).find("." + container).html("");
         var templateSelector = "[data-slider=" + event.target.attributes[TEMPLATE_DATA].value + "]";
         var itemsSelector = "." + event.target.attributes[ITEMS_CLASS].value;
+
         $.ajax({
             url: url,
             type: 'GET',
             dataType: 'json'
-        }).done(function(data) {
+        }).retry({times:3, timeout:3000}).then(function(data){
             console.log("done");
             fillContainer(data, container, templateSelector);
             $(document).trigger("slider-reload", {containerSelector: '.js-social-container', itemSelector: itemsSelector, itemsCount:4});
-        }).fail(function(jqXHR, textStatus){
-            console.log("fail:" + textStatus);
-        }).always( function() {
+        }).always(function(){
             $(document).find(".js-loader[data-container='social']").hide();
         });
     };

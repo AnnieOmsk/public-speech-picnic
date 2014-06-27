@@ -17,11 +17,9 @@ $(function(){
             url: url,
             type: 'GET',
             dataType: 'json'
-        }).done(function(data) {
+        }).retry({times:3, timeout:3000}).then(function(data){
             console.log("done");
             reloadTimeline(data, containerSelector);
-        }).fail(function(jqXHR, textStatus){
-            console.log("fail:" + textStatus);
         }).always( function() {
             $(document).find(LOADER_SELECTOR).hide();
         });
