@@ -3,7 +3,9 @@ $(document).ready(function () {
     var DATA_URL = "data-url";
     var CONTAINER = ".js-wrap-broadcast";
     var DATA_NEWS_ID = "data-news-id";
-    var LIKES_COUNTER = "js-news-likes";
+    var LIKES = ".js-likes-wrap";
+    var LIKES_HEART = ".js-news-likes";
+    var LIKES_COUNTER = ".js-counter";
 
     var reload = function(event) {
         var url = event.target.attributes[DATA_URL].value;
@@ -31,7 +33,7 @@ $(document).ready(function () {
         $.post(url, 'json')
             .done(function(data){
                 if (data.changed) {
-                    $(event.target).find('js-counter').html(data.likes);
+                    $(event.target).parents(LIKES).find(LIKES_COUNTER).html(data.likes);
                 }
             })
             .fail(function(jqXHR, textStatus) {
@@ -42,7 +44,7 @@ $(document).ready(function () {
 
     $(RELOAD_BROADCAST).on("click", reload);
     $(RELOAD_BROADCAST).trigger("click");
-    $(document).on("click", LIKES_COUNTER, likeNews);
+    $(document).on("click", LIKES_HEART, likeNews);
 
 
     $(document).on('click', '.js-news-more', function () {
