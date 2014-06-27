@@ -166,6 +166,35 @@ a {
   width:100%;
 }
 
+.visible {
+  visibility: visible;
+}
+.un-visible {
+  visibility: hidden;
+}
+
+.fixed {
+  position: fixed;
+  z-index: 9999;
+  width: 100%;
+  top: 0;
+}
+
+.hided {
+  height: 0px;
+  opacity: 0;
+  display: none;
+}
+
+.showed {
+  opacity: 0;
+  display: block;
+  height: auto;
+  -webkit-transition: height 1s linear;
+  -moz-transition: height 1s linear;
+  -o-transition: height 1s linear;
+  transition: height 1s linear;
+}
 .content {
   width: 85%;
   margin: auto;
@@ -230,7 +259,7 @@ a {
   background-size: 100% auto;
   width: 32px;
   height: 32px;
-  margin: 10% 46%;
+  margin: 15% 46%;
   z-index: 100;
   display: none;
   position: absolute;
