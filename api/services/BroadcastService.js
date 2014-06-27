@@ -36,7 +36,7 @@ exports.findBroadcasts = function(journalistId) {
  * @param imagesCount      count of images in group
  * @returns created broadcast
  */
-exports.save = function(journalistId, title, lead, content, images, imagesCount) {
+exports.save = function(journalistId, title, lead, content, images) {
     var deferred = q.defer();
     console.log("Saving broadcast with following params. JournalistId:" + journalistId + " title:" + title +
         " lead:" + lead + " content:" + content);
@@ -46,8 +46,7 @@ exports.save = function(journalistId, title, lead, content, images, imagesCount)
         title: title,
         content: content,
         lead: lead,
-        images: images,
-        imagesCount: imagesCount
+        images: images
     };
     if (images != undefined && images != null && images != '') {
         broadcast.imagesLink = 'http://ucarecdn.com/' + images + '/gallery/-/nav/thumbs/-/fit/cover/-/loop/true/-/allowfullscreen/native/-/thumbwidth/100/';
