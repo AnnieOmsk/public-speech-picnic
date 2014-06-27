@@ -28,33 +28,47 @@ $(function(){
     };
 
     var reloadTimeline = function(data, containerSelector) {
-        var compiledData = [];
-        for (var i = 0; i < data.length; i++) {
-            compiledData.push({
-                start: new Date(data[i].start),
-                end: new Date(data[i].end),
-                content: data[i].content,
-                id: data[i].id
+        var timelines = [];
+        for (var i = 0; i < data.timelines.length; i++) {
+            var currentTimeline = data.timelines[i];
+            timelines.push({
+                start: new Date(currentTimeline.start),
+                end: new Date(currentTimeline.end),
+                content: currentTimeline.content,
+                id: currentTimeline.id,
+                group: currentTimeline.group
             });
         }
-        var items = new vis.DataSet(compiledData);
+        var items = new vis.DataSet(timelines);
+        var groups = [];
+        for (var i = 0; i < data.zones.length; i++) {
+            var currentZone = data.zones[i];
+            groups.push({
+               id: currentZone.id,
+               content: currentZone.name
+            });
+        }
         if (timeline == null) {
             var container = $(document).find(containerSelector)[0];
-            $(container).html("");
-            var options = {
-                autoResize: false,
-                start: '2014-07-01 12:00:00',
-                zoomable: false,
-                zoomMin: 10000000,
-                zoomMax: 10000000,
-                height: 400
-            };
-
-            // Create a Timeline
-            timeline = new vis.Timeline(container, items, options);
+            timeline = new vis.Timeline(container);
         } else {
-            timeline.setItems(items);
+            timeline.clear();
         }
+        var options = {
+            autoResize: false,
+            min: '2014-07-01 00:00:00',
+            start: '2014-07-01 12:00:00',
+            max: '2014-07-06 00:00:00',
+            zoomable: false,
+            selectable: false,
+            stack: false,
+            zoomMin: 10000000,
+            zoomMax: 10000000,
+            height: 600
+        };
+        timeline.setOptions(options);
+        timeline.setGroups(groups);
+        timeline.setItems(items);
 
     };
 
