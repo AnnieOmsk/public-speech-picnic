@@ -84,8 +84,8 @@ exports.presentTweets = function(tweetsArray) {
         item.userIcon = inputTweet.user.profile_image_url;
         item.createdAt = dateTimeUtils.dateMonth(inputTweet.created_at);
         var text = inputTweet.text;
-        text = text.replace(/((([A-Za-z]{3,9}:(?:\/\/)?)(?:[-;:&=\+\$,\w]+@)?[A-Za-z0-9.-]+|(?:www.|[-;:&=\+\$,\w]+@)[A-Za-z0-9.-]+)((?:\/[\+~%\/.\w-_]*)?\??(?:[-\+=&;%@.\w_]*)#?(?:[\w]*))?)/g, "<a href=\"$1\">$1</a>");
-        item.text = text.replace(/(#([^\s#]+))/g, "<a href=\"https://twitter.com/hashtag/$2\">$1</a>");
+        text = text.replace(/((([A-Za-z]{3,9}:(?:\/\/)?)(?:[-;:&=\+\$,\w]+@)?[A-Za-z0-9.-]+|(?:www.|[-;:&=\+\$,\w]+@)[A-Za-z0-9.-]+)((?:\/[\+~%\/.\w-_]*)?\??(?:[-\+=&;%@.\w_]*)#?(?:[\w]*))?)/g, "<a href=\"$1\" target=\"_blank\">$1</a>");
+        item.text = text.replace(/(#([^\s#]+))/g, "<a href=\"https://twitter.com/hashtag/$2\" target=\"_blank\">$1</a>");
         tweets.push(item);
     }
     return tweets;
@@ -140,8 +140,10 @@ exports.presentTimelines = function(timelineArray, organizers) {
         item.id = inputTimeline.id;
         item.start = inputTimeline.start;
         item.end = inputTimeline.end;
-        item.content = "<p data-bubble=\"" + inputTimeline.description + "\">" + inputTimeline.title + "<span>" +
-            organizers.filter(function(item) {return item.id == inputTimeline.organizerId})[0].name + "</span></p>";
+        var id = "timeline-" + item.id;
+        item.content = "<p data-bubble=\"" + id + "\">" + inputTimeline.title + "<span>" +
+            organizers.filter(function(item) {return item.id == inputTimeline.organizerId})[0].name +
+            "</span><span id=\"" + id +"\" style=\"display:none\">" + inputTimeline.description + "</span></p>";
         item.description = inputTimeline.description;
         item.group = inputTimeline.zoneId;
         timelines.push(item);
