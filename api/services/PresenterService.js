@@ -102,18 +102,21 @@ exports.presentTeasers = function(teasersArray) {
     var articles = [];
     for (var i=0; i < teasers.length; i++) {
         var item = teasers[i];
+        var newItem = JSON.parse(JSON.stringify(item));
+        if (item.photo == '' || item.photo == 'http://ps.whereco.in/') {
+            newItem.photo = '/images/default_pic.jpg';
+        }
         if (item.entity == 'event') {
-            item.start = dateTimeUtils.dateMonthTime(item.start);
+            newItem.start = dateTimeUtils.dateMonthTime(item.start);
             if (item.end != null) {
-                item.end = dateTimeUtils.dateMonthTime(item.end);
+                newItem.end = dateTimeUtils.dateMonthTime(item.end);
             }
-            events.push(item);
+            events.push(newItem);
         }
         if (item.entity == 'article') {
-            item.published = dateTimeUtils.dateMonthYear(item.published);
-            articles.push(item);
+            newItem.published = dateTimeUtils.dateMonthYear(item.published);
+            articles.push(newItem);
         }
-
     }
     return {
         events: events,
