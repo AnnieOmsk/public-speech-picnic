@@ -74,7 +74,7 @@ module.exports = {
 
     broadcast: function(req, res) {
         var from = req.param('from');
-        var broadcastPromise = broadcastService.findBroadcastsFrom(from, configuration.BROADCAST_SIZE);
+        var broadcastPromise = broadcastService.findAcceptedBroadcastsFrom(from, configuration.BROADCAST_SIZE);
         broadcastPromise.then(function(data) {
             return res.json(data);
         });
