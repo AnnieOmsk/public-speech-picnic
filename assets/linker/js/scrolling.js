@@ -9,15 +9,6 @@ $(window).scroll( function(){
   //get height of window
   var windowHeight = $(window).height();
       
-  //set position as percentage of how far the user has scrolled 
-  var position = topWindow / windowHeight;
-  //invert the percentage
-  position = 1 - position;
-
-  //define arrow opacity as based on how far up the page the user has scrolled
-  //no scrolling = 1, half-way up the page = 0
-  $('.arrow-wrap').css('opacity', position);
-
 });
 
 $(document).ready(function(){
@@ -25,8 +16,35 @@ $(document).ready(function(){
       var anchor = $(this);
       $('html, body').stop().animate({
          scrollTop: $(anchor.attr('href')).offset().top
-      }, 1000);
+      }, 2000);
       e.preventDefault();
    });
    return false;
 });
+
+// jQuery(function ($) {
+//     var $doc = $(document),
+//         ratio = $doc.height() / $(window).height()*1, //отношение окна к общей ширене блока, чтобы тянуть весь блок.
+//         mousepos, to;
+//     $doc.on('mousedown', '.js-content-timeline', dragstart);
+
+//     function dragstart(e) {
+//         e.preventDefault();
+//         mousepos = e.screenY;
+//         $doc.on('mousemove.drag', drag);
+//         $doc.on('mouseup.drag mouseout.drag', dragstop);
+//     }
+
+//     function drag(e) {
+//         clearTimeout(to);
+//         var delta = (e.screenY - mousepos) * ratio;
+//         to = setTimeout(function () { // таймаут чтобы события от мыши не перекрывали друг друга, 
+//             $doc.scrollTop($doc.scrollTop() - delta);
+//             mousepos = e.screenY;
+//         }, 0);
+//     }
+
+//     function dragstop(e) {
+//         $doc.off('mousemove.drag mouseup.drag mouseout.drag');
+//     }
+// });

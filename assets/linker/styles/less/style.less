@@ -11,6 +11,12 @@
 @import "vis-custom.less";
 
 /*  mixins  */
+.transition (@property,@time,@type) {
+  -webkit-transition:  @property @time @type;
+  -moz-transition:  @property @time @type;
+  -o-transition: @property @time @type;
+  transition:  @property @time @type;
+}
 .social-ico (@width,@height){
   display: block;
   float:left;
@@ -194,10 +200,7 @@ a {
   opacity: 0;
   display: block;
   height: auto;
-  -webkit-transition: height 1s linear;
-  -moz-transition: height 1s linear;
-  -o-transition: height 1s linear;
-  transition: height 1s linear;
+  .transition(height,1s,linear);
 }
 .content {
   width: 85%;

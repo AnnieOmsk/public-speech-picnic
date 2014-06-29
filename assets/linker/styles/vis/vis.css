@@ -2,7 +2,7 @@
   position: relative;
   overflow: hidden;
 
-  border: 1px solid #bfbfbf;
+  border: 1px dashed #bfbfbf;
   box-sizing: border-box;
 
   /* FIXME: there is an issue with the height of the items when panel height is animated
@@ -23,7 +23,7 @@
   text-transform: none;
   font-size: 16px;
   letter-spacing: 0em;
-  border-right: 1px solid #bfbfbf;
+  border-right: 1px dashed #bfbfbf;
 }
 
 .vis.timeline .vpanel.side.hidden {
@@ -57,7 +57,7 @@
 
 .vis.timeline.bottom .labelset .vlabel {
   border-top: none;
-  border-bottom: 1px solid #bfbfbf;
+  border-bottom: 1px dashed #bfbfbf;
 }
 
 .vis.timeline .labelset .vlabel .inner {
@@ -175,7 +175,7 @@
   position: absolute;
   width: 0;
   border-left-width: 1px;
-  border-left-style: solid;
+  border-left-style: dashed;
 
   /* TODO: enable css transitions
   -webkit-transition: height .4s ease-in-out, top .4s ease-in-out;
@@ -245,7 +245,7 @@
 .vis.timeline .timeaxis .grid.vertical {
   position: absolute;
   width: 0;
-  border-right: 1px solid;
+  border-right: 1px dashed;
 }
 
 .vis.timeline .timeaxis .grid.horizontal {
@@ -257,11 +257,11 @@
 }
 
 .vis.timeline .timeaxis .grid.minor {
-  border-color: #e5e5e5;
+  border-color: white;
 }
 
 .vis.timeline .timeaxis .grid.major {
-  border-color: #bfbfbf;
+  border-color: white; /*!!!*/
 }
 
 .vis.timeline .currenttime {

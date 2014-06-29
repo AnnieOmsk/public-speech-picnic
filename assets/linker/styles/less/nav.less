@@ -48,7 +48,14 @@
             color: @color-dark;
             &:hover {
               color: @color-main;
+              border-color: transparent;
             }
+          }
+          a.active-link {
+            // background: none;
+            color: @color-main;
+            border: @color-main 2px solid;
+            .transition(border,0.8s,linear);
           }
         }
       }
@@ -56,3 +63,8 @@
   }
 }
 
+.active-link {
+  background: none;
+  color: @color-main;
+  border: @color-main 2px solid;
+}

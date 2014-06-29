@@ -55,15 +55,17 @@ $(function(){
         }
         var options = {
             autoResize: false,
-            min: '2014-07-01 00:00:00',
-            start: '2014-07-01 12:00:00',
+            min: '2014-06-30 00:00:00',
+            start: '2014-06-30 00:00:00',
             max: '2014-07-06 00:00:00',
             zoomable: false,
             selectable: false,
             stack: false,
             zoomMin: 10000000,
             zoomMax: 10000000,
-            height: 722
+            orientation: 'top',
+            showCurrentTime: true,
+            height: 710
         };
         timeline.setOptions(options);
         timeline.setGroups(groups);
