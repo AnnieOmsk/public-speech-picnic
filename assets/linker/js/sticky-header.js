@@ -1,7 +1,7 @@
 $(document).ready(function () {
   var stickyTop = $('.js-promo').offset().top;
   var stickyNav = $('.js-nav-fixed').offset().top;
-  var topMenu = $(".fixed-navbar"),
+  var topMenu = $(".js-nav-fixed"),
       topMenuHeight = topMenu.outerHeight()+120, /*+15*/
       // All list items
       menuItems = topMenu.find("a"),

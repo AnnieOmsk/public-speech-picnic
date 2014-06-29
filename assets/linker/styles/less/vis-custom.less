@@ -1,112 +1,113 @@
-
-
-.vpanel.main {
-  // bottom:88px !important;
-}
-.vpanel.side {
-  bottom: 30px !important;
-  // border-right: 1px dashed @color-main !important;
-  border-right: none !important;
-  .side-content {
-    bottom:40px !important;
+.vis.timeline.rootpanel.top {
+  border: none !important;
+  .vpanel.side {
+    bottom: 30px !important;
+    width: 135px !important;
+    // border-right: 1px dashed @color-main !important;
+    border-right: none !important;
+    .vpanel.side-content {
+      bottom:40px !important;
+      .labelset {
+        .vlabel {
+          border-top: none !important;
+          height:110px !important;
+          .inner {
+            padding-top: 20px;
+            padding-left: 5px;
+            color: @color-main;
+            span {
+              .social-ico(16px,22px);
+              background-image: url('../../images/point-map.png');
+              margin-right: 5px;
+              margin-top: -5px;
+            }
+          }
+        }
+      }
+    }
   }
-}
-
-.vpanel.content {
-  height: 100% !important;
-  bottom: -60px !important;
-  font-family: "PFAgoraSansPro";
-  text-transform: none;
-  font-size: 20px;
-  letter-spacing: 0em;
-  // cursor: move !important;
-  cursor: -webkit-grab !important;
-}
-.timeaxis {
-  bottom: 10px !important;
-}
-
-.vis.timeline {
-
-  .labelset {
-    .vlabel {
-      border-top: none !important;
-      height:130px !important;
-      .inner {
-        padding-top: 20px;
-        padding-left: 5px;
+  .vpanel.main {
+    // bottom:88px !important;
+    left: 140px !important;
+    width: 830px !important;
+    .timeaxis {
+      bottom: 10px !important;
+      .text.minor {
+        color: @color-main !important;
+      }
+      .grid.vertical {
+        border-right: 1px dashed;
+        // position: relative;
+        z-index: 99;
+        
+      }
+      .grid.horizontal {
+        border-bottom: none !important;
+      }
+      .grid.minor {
+        border-color: @color-main !important;
+      }
+      .grid.major {
+        border-color: @color-main !important;
+      }
+      .group {
+       border-top: none !important; 
+      }
+    }
+    .vpanel.content {
+      height: 100% !important;
+      bottom: -60px !important;
+      font-family: "PFAgoraSansPro";
+      text-transform: none;
+      font-size: 20px;
+      letter-spacing: 0em;
+      // cursor: move !important;
+      cursor: -webkit-grab !important;
+      .itemset {
+        bottom: -50px !important;
+        .foreground {
+          .group {
+            &:nth-child(odd) {
+              background-color: @color-gray-translucent;
+            }
+            border: none !important;
+            height: 110px !important;
+            .item.range {
+              // height: 100%;
+              overflow:hidden !important;
+              top: 5px !important;
+              min-height: 100px;
+              height: 80px;
+              // border: 1px solid @color-gray-dark !important;
+              border: 1px solid @color-main !important;
+              // background-color: @color-main-more-translucent !important;
+              background-color: transparent !important;
+              .content {
+                p{
+                  padding-top: 5px;
+                  white-space: pre-wrap; /* css-3 */
+                  white-space: -moz-pre-wrap; /* Mozilla, начиная с 1999 года */
+                  white-space: -pre-wrap; /* Opera 4-6 */
+                  white-space: -o-pre-wrap; /* Opera 7 */
+                  word-wrap: break-word; /* Internet Explorer 5.5+ */
+                  .paragraf-font-bold;
+                  span{
+                    /*float:left;*/
+                    font-size: 14px;
+                    display: block;
+                    margin-top: 5px;
+                    color: @color-gray-dark;
+                    .paragraf-font;
+                  }
+                }
+              }
+            }
+          }
+        }
       }
     }
   }
 }
 
 
-.item.range {
-  .content {
-    p{
-      padding-top: 5px;
-      white-space: pre-wrap; /* css-3 */
-      white-space: -moz-pre-wrap; /* Mozilla, начиная с 1999 года */
-      white-space: -pre-wrap; /* Opera 4-6 */
-      white-space: -o-pre-wrap; /* Opera 7 */
-      word-wrap: break-word; /* Internet Explorer 5.5+ */
-      .paragraf-font-bold
-    }
-  }
-}
 
-.item.range {
-  border: 1px solid @color-main !important;
-  // background-color: @color-main-more-translucent !important;
-  background-color: transparent !important;
-  .content {
-    p {
-      span{
-        /*float:left;*/
-        font-size: 14px;
-        display: block;
-        margin-top: 5px;
-        .paragraf-font;
-      }
-    }
-  }
-}
-
-.itemset {
-      bottom: -50px !important;
-}
-.group {
-  &:nth-child(odd) {
-    background-color: @color-gray-translucent;
-  }
-  height: 130px !important;
-  .item.range {
-    // height: 100%;
-    top: 10px !important;
-    min-height: 110px;
-  }
-}
-
-  .rootpanel {
-    border: none !important;
-  }
-
-.vis.timeline .timeaxis .grid.vertical {
-  border-right: 1px dashed;
-}
-
-.vis.timeline .timeaxis .grid.horizontal {
-  border-bottom: none !important;
-}
-
-.vis.timeline .timeaxis .grid.minor {
-  border-color: @color-main !important;
-}
-
-.vis.timeline .timeaxis .grid.major {
-  border-color: @color-main !important;
-}
-
-.vis.timeline.top .group {
- border-top: none !important; 
-}
