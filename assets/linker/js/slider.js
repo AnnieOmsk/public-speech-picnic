@@ -93,6 +93,10 @@ $(function(){
         var ITEM_WIDTH = first.css('width').match(/[0-9]*/)[0];
         setTimeout(function() {
             if (i==(STEPS - 1)) {
+                if (last.find("img[src='']")[0] != null) {
+                    last.find("img[src='']")[0].attributes["src"].value =
+                        last.find("img[src='']")[0].attributes["data-src"].value;
+                }
                 last.show();
                 last.addClass(SHOWED_CLASS);
                 last.addClass(TRANSITION_CLASS);
@@ -118,8 +122,13 @@ $(function(){
         console.log("init");
         var items = $(document).find(containerSelector).find(itemSelector);
         for (i=0; i<itemsCount; i++) {
-            items.eq(i).show();
-            items.eq(i).addClass(SHOWED_CLASS);
+            var currentItem = items.eq(i);
+            if (currentItem.find("img[src='']")[0] != null) {
+                currentItem.find("img[src='']")[0].attributes['src'].value =
+                    currentItem.find("img[src='']")[0].attributes['data-src'].value;
+            }
+            currentItem.show();
+            currentItem.addClass(SHOWED_CLASS);
         }
     };
 
