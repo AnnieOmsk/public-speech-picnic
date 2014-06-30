@@ -34,6 +34,11 @@
       bottom: 10px !important;
       .text.minor {
         color: @color-main !important;
+        .transition(all,0.3s,lenear);
+        &:nth-child(4n+1) {
+          color: @color-gray !important;
+          .transition(all,0.3s,lenear);
+        }
       }
       .grid.vertical {
         border-right: 1px dashed;
