@@ -29,13 +29,17 @@
   cursor: pointer;
     color: @color;
     font-size: 14px;
+    .transition(all,0.3s,linear); 
     .img {
       background-image: url(@img);
+      .transition(all,0.3s,linear); 
       }
     &:hover {
       color: @color-hover;
+      .transition(all,0.3s,linear); 
       .img {
         background-image: url(@img-hover);
+        .transition(all,0.3s,linear); 
       }
     }
 }
