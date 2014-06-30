@@ -1,5 +1,5 @@
 $(document).ready(function () {
-  var stickyTop = $('.js-promo').offset().top;
+  var stickyTop = $('.js-nav-fixed').offset().top-80;
   var stickyNav = $('.js-nav-fixed').offset().top;
   var topMenu = $(".js-nav-fixed"),
       topMenuHeight = topMenu.outerHeight()+120, /*+15*/

@@ -40,13 +40,29 @@
 
 .logo {
   margin-bottom: 85px;
+  margin-left: -15px !important;
+  margin-right: -15px !important;
   .date {
     margin-bottom: 15px;
   }
   .event-title {
     width: 265px;
+    margin-bottom: 40px;
     span {
       margin-left: -4px;
+    }
+  }
+  .parthners {
+    .tps {
+      margin-bottom: 15px;
+      img {
+        margin-top: 20px;
+      }
+    }
+    .sevenbits {
+      img {
+        margin-top: 35px;
+      }
     }
   }
 }
@@ -80,17 +96,15 @@
   }
   .pay-item-group {
     padding-left: 0px !important;
-    padding-right: 0px !important;    
-    // .col-lg-4 {
-    //   width:33.333333%;
+    padding-right: 0px !important;
+    // @media (min-width: 768px){
+    //   .col-sm-6 {
+    //     width: 48.5%;
+    //   }
     // }
-    // .col-lg-3 {
-    //   width: 26%;
-    // }
-    @media (min-width: 1200px){
-      .col-lg-6 {
-        // width: 38.666667%; /*5*/
-        width: 49%;
+    @media (min-width: 992px){
+      .col-md-6 {
+        width: 48% !important;
       }
     }
   }
@@ -142,6 +156,9 @@
       font-family: @font-paragraf-bolder-family;
       font-size: 52.34px;
     }
+  }
+  .parthners {
+    font-size: 16px;
   }
 }
 

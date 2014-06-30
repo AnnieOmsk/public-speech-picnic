@@ -5,8 +5,120 @@
     margin-bottom: 50px;
   }
   .content-timeline {
+    // display: none;
     cursor: move !important;
     cursor: -webkit-grab !important;
     min-height: 420px;
+  } 
+  .content-timeline-2 {
+    // uncommented to responsive
+    // overflow-x:scroll;
+    overflow: visible;
+    cursor: auto !important;
+    min-height: 420px;
+    .table {
+      .paragraf-font;
+      font-size: 17px;
+      .text-clear;
+      letter-spacing: 0em;
+      line-height:0.1em;
+      a {
+        text-decoration: underline;
+        display: block;
+        margin-bottom: 5px;
+        color: @color-dark;
+      }
+      tr {
+
+          min-height:80px;
+          height: 80px;
+          &:first-child {
+            height: 20px;
+            .subheader-font;
+            .text-uppercase;
+            font-size: 14px;
+            // padding-top: 0px;
+            .year {
+              color: @color-main;
+              font-size: 20px;
+              margin-right: 10px;
+            }
+            td {
+              // padding-top: 0px;
+              padding-bottom:10px;
+              &:nth-child(4),&:nth-child(5) {
+                padding-top: 10px;
+              }
+            }
+          }
+          &:last-child {
+            height: 70px;
+          }
+          &:nth-child(4) {
+            height: 75px;
+          }
+        td {
+          border-top: none;
+          border-bottom: none;
+          border-left: 2px @color-main-translucent dashed;
+          line-height: 1em;
+          max-width: 120px;
+          .img {
+            position: absolute;
+          }
+          .place {
+            margin-top: 5px;
+            margin-left: 25px;
+          }
+          .event {
+            margin-left: 30px;
+          }
+          .rolling {
+            .social-ico (25px,25px);
+            background-image: url('../../images/rolling.png');
+          }
+          .move {
+            .social-ico (22px,22px);
+            background-image: url('../../images/move.png');
+          }
+          .basket {
+            .social-ico (25px,19px);
+            background-image: url('../../images/basket.png');
+          }
+          .snow {
+            .social-ico (24px,24px);
+            background-image: url('../../images/snow.png');
+          }
+          &:first-child {
+            border:none;
+            background: none;
+            color:@color-main;
+            max-width:160px;
+            .pointer {
+                .social-ico(16px,22px);
+                // margin-right: 5px;
+                // margin-bottom: 40px;
+                background-image: url('../../images/point-map.png');
+            }
+          }
+          &:last-child {
+            width: 175px;
+          }
+          &:nth-child(5) {
+            width: 160px;
+          }
+        }
+      }
+    }
+  }
+}
+
+.rel-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  .date {
+    position: absolute;
+    top: -15px;
   }
 }
