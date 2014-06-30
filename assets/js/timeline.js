@@ -27,6 +27,11 @@ $(function(){
 
     var reloadTimeline = function(data, containerSelector) {
         var timelines = [];
+        var start = new Date(data.timelines[0].start);
+        var current = new Date();
+        if (start == null || current > start) {
+            start = current;
+        }
         for (var i = 0; i < data.timelines.length; i++) {
             var currentTimeline = data.timelines[i];
             timelines.push({
@@ -53,11 +58,12 @@ $(function(){
         } else {
             timeline.clear();
         }
+        var min = new Date(new Date(start).setDate(start.getDate()-2)).setMinutes(start.getMinutes() + 45);
+        var max = new Date(new Date(start).setDate(start.getDate()+2)).setMinutes(start.getMinutes() + 45);
         var options = {
             autoResize: false,
-            min: '2014-06-30 00:00:00',
-            start: '2014-06-30 00:00:00',
-            max: '2014-07-06 00:00:00',
+            start: min,
+            end: max,
             zoomable: false,
             selectable: false,
             stack: false,
@@ -68,10 +74,9 @@ $(function(){
             showMajorLabels: false,
             height: 610
         };
-        timeline.setOptions(options);
         timeline.setGroups(groups);
         timeline.setItems(items);
-
+        timeline.setOptions(options);
     };
 
     reload();
