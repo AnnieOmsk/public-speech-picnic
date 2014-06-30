@@ -16,7 +16,7 @@ $(document).ready(function () {
         var source = $("#broadcast-template").html();
         var template = Handlebars.compile(source);
         $.get(url, params, 'json')
-            .done(function(data){
+            .retry({times:3, timeout:3000}).then(function(data){
                 $(CONTAINER).empty();
                 drawBroadcast({broadcast: data}, CONTAINER, template);
             })
