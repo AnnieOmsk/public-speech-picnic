@@ -95,6 +95,16 @@ ul {
       .news-likes {
         .subheader-font;
         .social-action ('../../images/heart-hover.png','../../images/heart-active.png',@color-dark, @color-dark);
+        .like-active {
+          .social-ico (14px,16px);
+          background-image: url('../../images/heart-active-red.png');
+          .transition(all,0.3s,linear);
+        }
+        .like-disable {
+          .social-ico (14px,16px);
+          background-image: url('../../images/heart.png') !important;
+          .transition(all,0.3s,linear);
+        }
       }
     }
     .news-content {
@@ -131,13 +141,3 @@ ul {
   }
 }
 
-.like-active {
-  .social-ico (14px,16px);
-  background-image: url('../../images/heart-active-red.png');
-  .transition(all,0.3s,linear);
-}
-.like-disable {
-  .social-ico (14px,16px);
-  background-image: url('../../images/heart.png');
-  .transition(all,0.3s,linear);
-}
