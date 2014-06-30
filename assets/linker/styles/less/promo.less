@@ -88,8 +88,9 @@
     //   width: 26%;
     // }
     @media (min-width: 1200px){
-      .col-lg-5 {
-        width: 38.666667%;
+      .col-lg-6 {
+        // width: 38.666667%; /*5*/
+        width: 49%;
       }
     }
   }
@@ -147,9 +148,10 @@
 .about {
   .question {
     background-image: url(../../images/question.png);
-  }
-  .question:hover {
-    background-image: url(../../images/question-red.png);
+    cursor:pointer;
+    &:hover {
+      background-image: url(../../images/question-red.png);
+    }
   }
 }
 
@@ -162,5 +164,21 @@
     padding-left: 0px;
     padding-right: 0px;
 
+  }
+}
+
+.popover.fade.in, .popover.fade {
+  // top: 210px !important;
+  // left: 697px !important;
+  border-radius: 0px !important;
+  // width:800px !important;
+  max-width: 480px !important;
+  .arrow {
+    // left:50% !important;
+  }
+  .popover-content {
+    .paragraf-font;
+    padding: 25px 20px !important;
+    font-size: 18px !important;
   }
 }

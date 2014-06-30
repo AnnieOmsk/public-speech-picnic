@@ -26,6 +26,10 @@ exports.dateMonthTime = function(dateText) {
     return russianDate;
 };
 
+exports.dateFullTime = function(date) {
+    return moment(date).format('YYYY-MM-DD HH:mm:ss');
+};
+
 /**
  * Converts ISO dateTime to human-readable format showing time
  * @param dateText ISO dateTime like ""2014-05-15T10:00:00+07:00""

@@ -29,13 +29,17 @@
   cursor: pointer;
     color: @color;
     font-size: 14px;
+    .transition(all,0.3s,linear); 
     .img {
       background-image: url(@img);
+      .transition(all,0.3s,linear); 
       }
     &:hover {
       color: @color-hover;
+      .transition(all,0.3s,linear); 
       .img {
         background-image: url(@img-hover);
+        .transition(all,0.3s,linear); 
       }
     }
 }
@@ -274,14 +278,14 @@ a {
   position: absolute;
 }
 
-.arrow {
+.arrows {
   position: absolute;
   top:30%;
   width:50px;
   height: 94px;
   display: block;
 }
-.arrow {
+.arrows {
   cursor:pointer;
 }
 

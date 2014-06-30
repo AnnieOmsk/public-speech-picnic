@@ -178,6 +178,22 @@
                 "editview": {
                     "show": false
                 }
+            },
+            {
+                "name": "direct_url",
+                "verbose": "direct url",
+                "control": {
+                    "text": true
+                },
+                "type": "varchar(255)",
+                "allowNull": false,
+                "defaultValue": "#",
+                "listview": {
+                    "show": true
+                },
+                "editview": {
+                    "show": false
+                }
             }
         ],
         "mainview": {
