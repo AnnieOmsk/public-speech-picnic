@@ -42,11 +42,20 @@ module.exports = {
     },
 
     instagramList: function (req, res) {
-        var instagramPromises = q.all([instagramService.findInstagrams(configuration.INSTAGRAM_KEYWORD, configuration.INSTAGRAM_COUNT),
+        var instagramPromises = q.all([instagramService.findInstagrams(configuration.INSTAGRAM_SEARCH_KEYWORD, configuration.INSTAGRAM_SEARCH_COUNT),
         instagramService.findInstagramsByGeo(configuration.INSTAGRAM_GEO_LAT, configuration.INSTAGRAM_GEO_LNG,
             configuration.INSTAGRAM_GEO_DISTANCE, configuration.INSTAGRAM_GEO_COUNT)]);
         instagramPromises.then(function(data) {
-            return res.send(presenterService.presentInstagrams(data));
+            var instagramsArray = [];
+            // Concat input arrays
+            for (i=0; i<data.length; i++) {
+                instagramsArray = instagramsArray.concat(data[i]);
+            }
+            // Sort by time descending
+            instagramsArray.sort(function(a, b) {
+                return b.created_time - a.created_time;
+            });
+            return res.send(presenterService.presentInstagrams(instagramsArray.slice(0, configuration.INSTAGRAM_COUNT)));
         }, function(err) {
             console.error("Instagram promise error:" + err);
             return res.serverError(err);
@@ -54,9 +63,19 @@ module.exports = {
     },
 
     twitterList: function (req, res) {
-        var twitterPromise = twitterService.findTweets(configuration.TWITTER_KEYWORD, configuration.TWITTER_COUNT);
-        twitterPromise.then(function(data) {
-            return res.send(presenterService.presentTweets(data));
+        var twitterPromises = q.all([twitterService.findTweets(configuration.TWITTER_SEARCH_KEYWORD, configuration.TWITTER_SEARCH_COUNT),
+        twitterService.findFavoriteTweets(configuration.TWITTER_FAVORITES_USER, configuration.TWITTER_FAVORITES_COUNT)]);
+        twitterPromises.then(function(data) {
+            var tweetsArray = [];
+            // Concat input arrays
+            for (i=0; i<data.length; i++) {
+                tweetsArray = tweetsArray.concat(data[i]);
+            }
+            // Sort by time descending
+            tweetsArray.sort(function(a, b) {
+                return new Date(b.created_at) > new Date(a.created_at);
+            });
+            return res.send(presenterService.presentTweets(tweetsArray.slice(0, configuration.TWITTER_COUNT)));
         }, function(err) {
             console.error("Twitter promise error:" + err);
             return res.serverError(err);
