@@ -99,11 +99,19 @@ ul {
           .social-ico (14px,16px);
           background-image: url('../../images/heart-active-red.png');
           .transition(all,0.1s,linear);
+          &:hover {
+            background-image: url('../../images/heart-active-red.png');
+            .transition(all,0.1s,linear);
+          }
         }
         .like-disable {
           .social-ico (14px,16px);
-          background-image: url('../../images/heart.png') !important;
+          background-image: url('../../images/heart.png');
           .transition(all,0.1s,linear);
+           &:hover {
+            background-image: url('../../images/heart.png');
+            .transition(all,0.1s,linear);
+          }
         }
       }
     }
