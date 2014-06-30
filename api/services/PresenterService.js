@@ -129,7 +129,7 @@ exports.presentArticles = function(teasersJson) {
         var item = teasers[i];
         if (item.entity == 'article') {
             var newItem = JSON.parse(JSON.stringify(item));
-            if (item.photo == '' || item.photo == 'http://ps.whereco.in/') {
+            if (item.photo == '' || item.photo == 'http://ps.whereco.in/' || item.photo == null) {
                 newItem.photo = '/images/default_pic.jpg';
             }
             newItem.published = dateTimeUtils.dateMonthYear(item.published);
