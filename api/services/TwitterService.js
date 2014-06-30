@@ -25,3 +25,18 @@ exports.findTweets = function(query, count) {
     return deferred.promise;
 };
 
+/**
+ * Finds favorite tweets for user
+ * @param username     User account name
+ * @param count        Number of tweets
+ * @returns Array of tweets from Twitter API
+ */
+exports.findFavoriteTweets = function(username, count) {
+    var deferred = q.defer();
+    console.log("Searching for favorite twitter messages");
+    twit.getFavorites({user_id: username, count: count}, function(data) {
+        deferred.resolve(data);
+    });
+    return deferred.promise;
+};
+

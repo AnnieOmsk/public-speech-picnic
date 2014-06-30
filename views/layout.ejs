@@ -34,11 +34,7 @@
       If necessary, shut down and then lift your app again.
       
     -->
-    <!-- INJECTED SCRIPTS -->
-    <% if(typeof(injectedScripts) != "undefined"){ %>
-      <%- injectedScripts %>
-    <%}%>
-    <!-- INJECTED SCRIPTS END -->
+
     <!--SCRIPTS-->
     <script src="/linker/js/socket.io.js"></script>
     <script src="/linker/js/sails.io.js"></script>
@@ -55,13 +51,14 @@
     <script src="/linker/js/scrolling.js"></script>
     <script src="/linker/js/slider.js"></script>
     <script src="/linker/js/social.js"></script>
-    <script src="/linker/js/sticky-header.js"></script>
-    <script src="/linker/js/timeline.js"></script>
     <script src="/linker/js/translation.js"></script>
-    <script src="/linker/js/uploader.js"></script>
-    <script src="/linker/js/vis.min.js"></script>
     <!--SCRIPTS END-->
 
+    <!-- INJECTED SCRIPTS -->
+    <% if(typeof(injectedScripts) != "undefined"){ %>
+        <%- injectedScripts %>
+    <%}%>
+    <!-- INJECTED SCRIPTS END -->
     <!--STYLES-->
     <link rel="stylesheet" href="/linker/styles/importer.css">
     <link rel="stylesheet" href="/linker/styles/vis/vis.css">

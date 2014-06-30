@@ -52,50 +52,50 @@ $(function(){
 
     var toggleInstagram = function(event) {
         event.preventDefault();
-        var reloadButton = $(document).find(RELOAD_BUTTON)[0];
-        if (reloadButton.attributes[CONTAINER_DIV].value != 'js-content-instagram') {
-            reloadButton.attributes[CONTAINER_DIV].value = 'js-content-instagram';
-            reloadButton.attributes[DATA_URL].value = 'instagram-list';
-            reloadButton.attributes[TEMPLATE_DATA].value  = 'instagram';
-            reloadButton.attributes[ITEMS_CLASS].value  = 'js-instagram-item';
-            var socialArrows = $(document).find(ARROWS_CLASS);
-            for(var i=0; i<socialArrows.length; i++) {
-                socialArrows[i].attributes[CONTAINER_DIV].value = 'js-content-instagram';
-                socialArrows[i].attributes[ITEMS_CLASS].value  = 'js-instagram-item';
+        var $reloadButton = $(RELOAD_BUTTON);
+        if ($reloadButton.attr(CONTAINER_DIV) != 'js-content-instagram') {
+            $reloadButton.attr(CONTAINER_DIV, 'js-content-instagram');
+            $reloadButton.attr(DATA_URL, 'instagram-list');
+            $reloadButton.attr(TEMPLATE_DATA, 'instagram');
+            $reloadButton.attr(ITEMS_CLASS, 'js-instagram-item');
+            var $socialArrows = $(ARROWS_CLASS);
+            for(var i=0; i<$socialArrows.length; i++) {
+                $socialArrows.eq(i).attr(CONTAINER_DIV, 'js-content-instagram');
+                $socialArrows.eq(i).attr(ITEMS_CLASS, 'js-instagram-item');
             }
-            $(document).find('.js-content-twitter').hide();
-            $(document).find('.js-content-instagram').show();
-            $(document).find('.social-btn').removeClass('social-btn-active');
+            $('.js-content-twitter').hide();
+            $('.js-content-instagram').show();
+            $('.social-btn').removeClass('social-btn-active');
             $(event.target).addClass('social-btn-active');
-            $(document).find(OFFICIAL_CLASS).attr('href', INSTAGRAM_OFFICIAL_LINK);
-            $(document).find(RELOAD_BUTTON).trigger("click");
+            $(OFFICIAL_CLASS).attr('href', INSTAGRAM_OFFICIAL_LINK);
+            $(RELOAD_BUTTON).trigger("click");
         }
     };
 
     var toggleTwitter = function(event) {
         event.preventDefault();
-        var reloadButton = $(document).find(RELOAD_BUTTON)[0];
-        if (reloadButton.attributes[CONTAINER_DIV].value != 'js-content-twitter') {
-            reloadButton.attributes[CONTAINER_DIV].value = 'js-content-twitter';
-            reloadButton.attributes[DATA_URL].value = 'twitter-list';
-            reloadButton.attributes[TEMPLATE_DATA].value  = 'twitter';
-            reloadButton.attributes[ITEMS_CLASS].value  = 'js-twitter-item';
-            var socialArrows = $(document).find(ARROWS_CLASS);
-            for(var i=0; i<socialArrows.length; i++) {
-                socialArrows[i].attributes[CONTAINER_DIV].value = 'js-content-twitter';
-                socialArrows[i].attributes[ITEMS_CLASS].value = 'js-twitter-item';
+        var $reloadButton = $(RELOAD_BUTTON);
+        if ($reloadButton.attr(CONTAINER_DIV) != 'js-content-twitter') {
+            $reloadButton.attr(CONTAINER_DIV, 'js-content-twitter');
+            $reloadButton.attr(DATA_URL, 'twitter-list');
+            $reloadButton.attr(TEMPLATE_DATA, 'twitter');
+            $reloadButton.attr(ITEMS_CLASS, 'js-twitter-item');
+            var $socialArrows = $(ARROWS_CLASS);
+            for(var i=0; i<$socialArrows.length; i++) {
+                $socialArrows.eq(i).attr(CONTAINER_DIV, 'js-content-twitter');
+                $socialArrows.eq(i).attr(ITEMS_CLASS, 'js-twitter-item');
             }
-            $(document).find('.js-content-instagram').hide();
-            $(document).find('.js-content-twitter').show();
-            $(document).find('.social-btn').removeClass('social-btn-active');
+            $('.js-content-instagram').hide();
+            $('.js-content-twitter').show();
+            $('.social-btn').removeClass('social-btn-active');
             $(event.target).addClass('social-btn-active');
-            $(document).find(OFFICIAL_CLASS).attr('href', TWITTER_OFFICIAL_LINK);
-            $(document).find(RELOAD_BUTTON).trigger("click");
+            $(OFFICIAL_CLASS).attr('href', TWITTER_OFFICIAL_LINK);
+            $(RELOAD_BUTTON).trigger("click");
         }
     };
 
     $(document).on("click", RELOAD_BUTTON, reload);
     $(document).on("click", INSTAGRAM_BUTTON, toggleInstagram);
     $(document).on("click", TWITTER_BUTTON, toggleTwitter);
-    $(document).find(RELOAD_BUTTON).trigger("click");
+    $(RELOAD_BUTTON).trigger("click");
 });

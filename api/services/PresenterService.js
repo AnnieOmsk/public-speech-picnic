@@ -27,7 +27,7 @@ exports.presentBroadcasts = function(broadcasts) {
 };
 
 /**
- * Presents list of Instagram medias from Instagram API for display
+ * Presents list of Instagram medias from Array of Instagram API responses for display
  * @returns array containing instagram objects with following fields:
  * id, username, time, text, likesCount, commentsCount, url, imageUrl
  */

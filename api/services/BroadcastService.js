@@ -48,6 +48,7 @@ exports.save = function(journalistId, title, lead, content, images) {
         lead: lead,
         images: images
     };
+    broadcast.directUrl = '?from=' + dateTime.dateFullTime(broadcast.time) + '#translation';
     if (images != undefined && images != null && images != '') {
         broadcast.imagesLink = 'http://ucarecdn.com/' + images + '/gallery/-/nav/thumbs/-/fit/cover/-/loop/true/-/allowfullscreen/native/-/thumbwidth/100/';
     }
