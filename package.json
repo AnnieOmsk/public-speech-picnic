@@ -13,7 +13,7 @@
         "express-admin": "git+https://github.com/kkolotyuk/express-admin.git",
         "q": "1.0.1",
         "moment": "2.7.0",
-        "twitter": "0.2.9",
+        "twitter": "git+https://github.com/zilm13/node-twitter.git",
         "instagram-node": "0.4.1"
     },
     "scripts": {
