@@ -27,14 +27,21 @@ exports.presentBroadcasts = function(broadcasts) {
 };
 
 /**
- * Presents list of Instagram medias from Instagram API for display
+ * Presents list of Instagram medias from Array of Instagram API responses for display
  * @returns array containing instagram objects with following fields:
  * id, username, time, text, likesCount, commentsCount, url, imageUrl
  */
-exports.presentInstagrams = function(instagramsArray) {
-    if (instagramsArray == null) {
+exports.presentInstagrams = function(instagramsArrays) {
+    if (instagramsArrays == null) {
         return null;
     }
+    var instagramsArray = [];
+    for (i=0; i<instagramsArrays.length; i++) {
+        instagramsArray = instagramsArray.concat(instagramsArrays[i]);
+    }
+    instagramsArray.sort(function(a, b) {
+       return b.created_time - a.created_time;
+    });
     var instagrams = [];
     for(var i=0; i<instagramsArray.length; i++) {
         var item = {};

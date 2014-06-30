@@ -42,8 +42,10 @@ module.exports = {
     },
 
     instagramList: function (req, res) {
-        var instagramPromise = instagramService.findInstagrams(configuration.INSTAGRAM_KEYWORD, configuration.INSTAGRAM_COUNT);
-        instagramPromise.then(function(data) {
+        var instagramPromises = q.all([instagramService.findInstagrams(configuration.INSTAGRAM_KEYWORD, configuration.INSTAGRAM_COUNT),
+        instagramService.findInstagramsByGeo(configuration.INSTAGRAM_GEO_LAT, configuration.INSTAGRAM_GEO_LNG,
+            configuration.INSTAGRAM_GEO_DISTANCE, configuration.INSTAGRAM_GEO_COUNT)]);
+        instagramPromises.then(function(data) {
             return res.send(presenterService.presentInstagrams(data));
         }, function(err) {
             console.error("Instagram promise error:" + err);

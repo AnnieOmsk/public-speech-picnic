@@ -1,6 +1,10 @@
 exports.BROADCAST_SIZE = 6;
 exports.INSTAGRAM_KEYWORD = 'picnicomsk';
 exports.INSTAGRAM_COUNT = 20;
+exports.INSTAGRAM_GEO_LAT = 55.018344;
+exports.INSTAGRAM_GEO_LNG = 73.33375;
+exports.INSTAGRAM_GEO_DISTANCE = 1000;
+exports.INSTAGRAM_GEO_COUNT = 10;
 exports.TWITTER_KEYWORD = 'picnicomsk';
 exports.TWITTER_COUNT = 40;
 exports.TEASERS_API_URL = 'http://ps.whereco.in/api/teasers';
