@@ -9,14 +9,14 @@ $(function(){
     var STEPS = 25;
 
     var scrollLeft = function(event) {
-        var containerSelector = "." + event.target.attributes[CONTAINER_DIV].value;
-        var itemsSelector = "." + event.target.attributes[ITEMS_CLASS].value;
+        var containerSelector = "." + $(this).attr(CONTAINER_DIV);
+        var itemsSelector = "." + $(this).attr(ITEMS_CLASS);
         scroll(true, containerSelector, itemsSelector);
     };
 
     var scrollRight = function(event) {
-        var containerSelector = "." + event.target.attributes[CONTAINER_DIV].value;
-        var itemsSelector = "." + event.target.attributes[ITEMS_CLASS].value;
+        var containerSelector = "." + $(this).attr(CONTAINER_DIV);
+        var itemsSelector = "." + $(this).attr(ITEMS_CLASS);
         scroll(false, containerSelector, itemsSelector);
     };
 
@@ -93,9 +93,9 @@ $(function(){
         var ITEM_WIDTH = first.css('width').match(/[0-9]*/)[0];
         setTimeout(function() {
             if (i==(STEPS - 1)) {
-                if (last.find("img[src='']")[0] != null) {
-                    last.find("img[src='']")[0].attributes["src"].value =
-                        last.find("img[src='']")[0].attributes["data-src"].value;
+                var img = last.find("img[src='']");
+                if (img.length > 0) {
+                    img.attr('src', img.attr('data-src'));
                 }
                 last.show();
                 last.addClass(SHOWED_CLASS);
@@ -123,9 +123,9 @@ $(function(){
         var items = $(document).find(containerSelector).find(itemSelector);
         for (i=0; i<itemsCount; i++) {
             var currentItem = items.eq(i);
-            if (currentItem.find("img[src='']")[0] != null) {
-                currentItem.find("img[src='']")[0].attributes['src'].value =
-                    currentItem.find("img[src='']")[0].attributes['data-src'].value;
+            var img = currentItem.find("img[src='']");
+            if (img.length > 0) {
+                img.attr('src', img.attr('data-src'));
             }
             currentItem.show();
             currentItem.addClass(SHOWED_CLASS);
