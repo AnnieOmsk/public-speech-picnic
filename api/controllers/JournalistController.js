@@ -4,7 +4,8 @@
 var broadcastService = require('../services/BroadcastService');
 var presenterService = require('../services/PresenterService');
 var injectedScripts = '<script src="http://cdn.ckeditor.com/4.4.1/standard/ckeditor.js" type="text/javascript"></script>\n' +
-    '<script src="http://ucarecdn.com/widget/1.2.2/uploadcare/uploadcare-1.2.2.min.js" charset="utf-8" type="text/javascript"></script>';
+    '<script src="http://ucarecdn.com/widget/1.2.2/uploadcare/uploadcare-1.2.2.min.js" charset="utf-8" type="text/javascript"></script>' +
+    '<script src="/js/uploader.js" charset="utf-8" type="text/javascript"></script>';
 
 module.exports = {
 
