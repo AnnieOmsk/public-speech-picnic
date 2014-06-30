@@ -1,5 +1,5 @@
 /**
- * Preview (events) javascript
+ * Timeline javascript
  */
 $(function(){
     var DATA_SELECTOR = ".js-timeline-data";
