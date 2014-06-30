@@ -12,12 +12,12 @@ $(function(){
 
     var reload = function(event) {
         event.preventDefault();
-        $(document).find(LOADER_SELECTOR).show();
-        var url = event.target.attributes[DATA_URL].value;
-        var container = event.target.attributes[CONTAINER_DIV].value;
-        $(document).find("." + container).html("");
-        var templateSelector = "[data-slider=" + event.target.attributes[TEMPLATE_DATA].value + "]";
-        var itemsSelector = "." + event.target.attributes[ITEMS_CLASS].value;
+        $(LOADER_SELECTOR).show();
+        var url = $(this).attr(DATA_URL);
+        var container = $(this).attr(CONTAINER_DIV);
+        $("." + container).html("");
+        var templateSelector = "[data-slider=" + $(this).attr(TEMPLATE_DATA) + "]";
+        var itemsSelector = "." + $(this).attr(ITEMS_CLASS);
         $.ajax({
             url: url,
             type: 'GET',
@@ -27,16 +27,16 @@ $(function(){
             fillContainer(data, container, templateSelector);
             $(document).trigger("slider-reload", {containerSelector: CONTAINER_SELECTOR, itemSelector: itemsSelector, itemsCount: 3});
         }).always( function() {
-            $(document).find(LOADER_SELECTOR).hide();
+            $(LOADER_SELECTOR).hide();
         });
     };
 
     var fillContainer = function(data, container, templateSelector) {
-        var templateSource = $(document).find(templateSelector).html();
+        var templateSource = $(templateSelector).html();
         var template = Handlebars.compile(templateSource);
-          $(document).find("." + container).html(template(data));
+        $("." + container).html(template(data));
     };
 
     $(RELOAD_BUTTON).on("click", reload);
-    $(document).find(RELOAD_BUTTON).trigger("click");
+    $(RELOAD_BUTTON).trigger("click");
 });
