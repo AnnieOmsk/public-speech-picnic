@@ -25,8 +25,7 @@ var twitterService = require('../services/TwitterService');
 var instagramService = require('../services/InstagramService');
 var presenterService = require('../services/PresenterService');
 
-var injectedScripts = '<script src="http://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>\n' +
-    '<script src="http://cdnjs.cloudflare.com/ajax/libs/vis/1.1.0/vis.min.js" type="text/javascript"></script>';
+var injectedScripts = '<script src="http://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>\n';
 
 module.exports = {
 
