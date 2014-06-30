@@ -43,6 +43,11 @@ module.exports = {
       type: 'string',
       required: false,
       columnName: 'images_link'
+    },
+    directUrl: {
+      type: 'string',
+      required: true,
+      columnName: 'direct_url'
     }
   }
 };
