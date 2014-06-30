@@ -32,6 +32,8 @@ $(document).ready(function () {
 
     var likeNews = function(event) {
         var id = event.target.attributes[DATA_NEWS_ID].value;
+        var clicked = $(event.target);
+        clicked.addClass('like-active');
         var url = '/broadcast/' + id + '/like';
         $.post(url, 'json')
             .done(function(data){
@@ -41,6 +43,11 @@ $(document).ready(function () {
             })
             .fail(function(jqXHR, textStatus) {
                 console.log("fail:" + textStatus);
+            })
+            .always(function() {
+                setTimeout(function() {
+                    clicked.removeClass('like-active')
+                }, 300);
             });
         return false;
     };
