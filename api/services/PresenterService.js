@@ -84,8 +84,8 @@ exports.presentTweets = function(tweetsArray) {
         item.userIcon = inputTweet.user.profile_image_url;
         item.createdAt = dateTimeUtils.dateMonth(inputTweet.created_at);
         var text = inputTweet.text;
-        text = text.replace(/((([A-Za-z]{3,9}:(?:\/\/)?)(?:[-;:&=\+\$,\w]+@)?[A-Za-z0-9.-]+|(?:www.|[-;:&=\+\$,\w]+@)[A-Za-z0-9.-]+)((?:\/[\+~%\/.\w-_]*)?\??(?:[-\+=&;%@.\w_]*)#?(?:[\w]*))?)/g, "<a href=\"$1\" target=\"_blank\">$1</a>");
-        text = text.replace(/(@([^\s@]+))/g, "<a href=\"https://twitter.com/$2\" target=\"_blank\">$1</a>");
+        text = text.replace(/((([A-Za-z]{3,9}:(?:\/\/)?)(?:[-;:&=\+\$,\w]+@)?[A-Za-z0-9.-]+|(?:www.)[A-Za-z0-9.-]+)((?:\/[\+~%\/.\w-_]*)?\??(?:[-\+=&;%@.\w_]*)#?(?:[\w]*))?)/g, "<a href=\"$1\" target=\"_blank\">$1</a>");
+        text = text.replace(/\W(@([\w]+))/g, "<a href=\"https://twitter.com/$2\" target=\"_blank\">$1</a>");
         item.text = text.replace(/(#([^\s#]+))/g, "<a href=\"https://twitter.com/hashtag/$2\" target=\"_blank\">$1</a>");
         tweets.push(item);
     }
