@@ -1,9 +1,53 @@
 .timeline {
-  // margin-bottom: 160px;
-  // padding-top: 20px;
   h1 {
     margin-bottom: 50px;
   }
+  .arrows {
+    width: 70px;
+    color: @color-gray;
+    font-size: 14px;
+    .text-clear;
+    .paragraf-font;
+    letter-spacing: 0em;
+    .img {
+      .social-ico(50px,94px);
+      float:none;
+    }
+    p {
+      margin-top: 10px;
+    }
+  }
+  .arrow-left {
+    background-image:none;
+    &:hover {
+      background-image:none;
+      color: @color-main;
+      .img {
+        .transition(all,0.3s,linear);
+        background-image: url('../../images/left-arrow-hover.png');
+      }
+    }
+    .img {
+      .transition(all,0.3s,linear);
+      background-image: url('../../images/left-arrow.png');
+    }
+  }
+  .arrow-right {
+    background:none;
+    &:hover {
+      background-image:none;
+      color: @color-main;
+      .img {
+        .transition(all,0.3s,linear);
+        background-image: url('../../images/right-arrow-hover.png');
+      }
+    }
+    .img {
+      .transition(all,0.3s,linear);
+      background-image: url('../../images/right-arrow.png');
+    }
+  }
+
   .content-timeline {
     // display: none;
     cursor: move !important;
@@ -16,6 +60,7 @@
     overflow: visible;
     cursor: auto !important;
     min-height: 420px;
+    height: 610px;
     .table {
       .paragraf-font;
       font-size: 17px;
