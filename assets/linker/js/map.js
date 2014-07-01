@@ -20,7 +20,6 @@ $(function() {
             ], {
                 hintContent: "Polyline"
             }, {
-                draggable: true,
                 strokeColor: '#53B93A',
                 strokeWidth: 2,
                 // The first number sets the stroke length. The second number sets the length of the gap.
