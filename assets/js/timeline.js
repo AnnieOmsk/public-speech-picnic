@@ -63,6 +63,7 @@ $(function(){
         }
         var min = new Date(new Date(start).setDate(start.getDate()-2)).setMinutes(start.getMinutes() + 45);
         var max = new Date(new Date(start).setDate(start.getDate()+2)).setMinutes(start.getMinutes() + 45);
+        var height = groups.length*110+60;
         var options = {
             autoResize: false,
             start: min,
@@ -75,7 +76,7 @@ $(function(){
             orientation: 'top',
             showCurrentTime: true,
             showMajorLabels: true,
-            height: 610
+            height: height
         };
         timeline.setGroups(groups);
         timeline.setItems(items);
