@@ -3,11 +3,11 @@
     <h1 class="color-text-main">Таймлайн</h1>
  </div>
   <div class="container wide-container js-timeline-data" data-url="timeline-list" data-container="js-content-timeline">
-    <span class="js-arrow-left arrows arrow-left pull-left"></span>
+    <span class="js-timeline-left arrows arrow-left pull-left" data-container="js-content-timeline-2" data-hide-container="js-content-timeline"></span>
       <div class="loader js-loader" data-container="timeline"></div>
         <div class="js-content-timeline content-timeline content color-text-dark">
         </div>
-        <div class="js-content-timeline-2 content-timeline-2 content color-text-dark hide">
+        <div class="js-content-timeline-2 content-timeline-2 content color-text-dark" style="display:none">
           <table class="table table-responsive">
             <tr>
               <td>
@@ -143,6 +143,6 @@
             </tr>
           </table>
         </div>
-    <span class="js-arrow-right arrows arrow-right pull-right"></span>
+    <span class="js-timeline-right arrows arrow-right pull-right" style="display:none" data-container="js-content-timeline" data-hide-container="js-content-timeline-2"></span>
   </div>
 </div>

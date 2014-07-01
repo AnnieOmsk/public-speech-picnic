@@ -5,10 +5,13 @@ $(function(){
     var DATA_SELECTOR = ".js-timeline-data";
     var DATA_URL = "data-url";
     var CONTAINER_DIV = "data-container";
+    var HIDE_CONTAINER_DIV = "data-hide-container";
     var LOADER_SELECTOR = ".js-loader[data-container='timeline']";
+    var LEFT_ARROW_SELECTOR = ".js-timeline-left";
+    var RIGHT_ARROW_SELECTOR = ".js-timeline-right";
     var timeline;
 
-    var reload = function() {
+    var load = function() {
         var element = $(document).find(DATA_SELECTOR)[0];
         $(document).find(LOADER_SELECTOR).show();
         var url = element.attributes[DATA_URL].value;
@@ -19,13 +22,13 @@ $(function(){
             dataType: 'json'
         }).retry({times:3, timeout:3000}).then(function(data){
             console.log("done");
-            reloadTimeline(data, containerSelector);
+            drawTimeline(data, containerSelector);
         }).always( function() {
             $(document).find(LOADER_SELECTOR).hide();
         });
     };
 
-    var reloadTimeline = function(data, containerSelector) {
+    var drawTimeline = function(data, containerSelector) {
         var timelines = [];
         var start = new Date(data.timelines[0].start);
         var current = new Date();
@@ -79,5 +82,51 @@ $(function(){
         timeline.setOptions(options);
     };
 
-    reload();
+    var toOld = function(event) {
+        var oldContainerSelector = "." + $(this).attr(CONTAINER_DIV);
+        var newContainerSelector = "." + $(this).attr(HIDE_CONTAINER_DIV);
+        $(newContainerSelector).animate({
+            opacity: 0,
+            marginLeft: "-=50px"
+        }, 500, function() {
+            $(newContainerSelector).hide();
+            $(newContainerSelector).css({ marginLeft: "" });
+            $(oldContainerSelector).css({ opacity: 0 });
+            $(oldContainerSelector).css({ marginLeft: "-50px" });
+            $(oldContainerSelector).show();
+            $(oldContainerSelector).animate({
+                opacity: 1,
+                marginLeft: "+=50px"
+            }, 500)
+        });
+        $(oldContainerSelector).css({ marginLeft: "" });
+        $(this).hide();
+        $(RIGHT_ARROW_SELECTOR).show();
+    };
+
+    var toNew = function(event) {
+        var newContainerSelector = "." + $(this).attr(CONTAINER_DIV);
+        var oldContainerSelector = "." + $(this).attr(HIDE_CONTAINER_DIV);
+        $(oldContainerSelector).animate({
+            opacity: 0,
+            marginLeft: "+=50px"
+        }, 500, function() {
+            $(oldContainerSelector).hide();
+            $(oldContainerSelector).css({ marginRight: "" });
+            $(newContainerSelector).css({ opacity: 0 });
+            $(newContainerSelector).css({ marginRight: "50px" });
+            $(newContainerSelector).show();
+            $(newContainerSelector).animate({
+                opacity: 1,
+                marginRight: "-=50px"
+            }, 500)
+        });
+        $(newContainerSelector).css({ marginRight: "" });
+        $(this).hide();
+        $(LEFT_ARROW_SELECTOR).show();
+    };
+
+    load();
+    $(LEFT_ARROW_SELECTOR).on("click", toOld);
+    $(RIGHT_ARROW_SELECTOR).on("click", toNew);
 });
