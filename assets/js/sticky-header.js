@@ -1,5 +1,5 @@
 $(document).ready(function () {
-  var stickyTop = $('.js-nav-fixed').offset().top-80;
+  var stickyTop = $('.js-nav-fixed').offset().top;
   var stickyNav = $('.js-nav-fixed').offset().top;
   var topMenu = $(".js-nav-fixed"),
       topMenuHeight = topMenu.outerHeight()+120, /*+15*/
@@ -13,7 +13,7 @@ $(document).ready(function () {
         
         $(window).scroll(function(){               
 
-                if( $(window).scrollTop() > stickyTop ) {
+                if( $(window).scrollTop() > stickyTop-80 ) {
                         // $('.js-nav-static').addClass('hide');
                         $('.js-nav-fixed').removeClass('un-visible');
                         if ($(window).scrollTop() > stickyNav ) {

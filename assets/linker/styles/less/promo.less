@@ -86,11 +86,13 @@
 
 .about {
   margin-bottom: 55px;
+  .text {
+    margin-right: 20px;
+  }
   .question {
     display: inline-block;
     width: 40px;
     height: 40px;
-    margin-left: 20px;
     margin-bottom: -12px;
   }
 }
@@ -140,7 +142,9 @@
         font-size: @font-size-main;
         color: @color-light;
         border: transparent 2px solid;
+        // .transition (all, 0.3s, linear);
         &:hover {
+          // .transition (all, 0.3s, linear);
           background: none;
           color: @color-main;
           border: @color-main 2px solid;
@@ -162,6 +166,9 @@
     }
   }
   .event-title {
+    -moz-box-shadow: 0 0 20px @color-dark;
+    -webkit-box-shadow: 0 0 20px @color-dark;
+    box-shadow: 0 0 20px @color-dark;
     padding: 18px 20px;
     background-color: @color-red;
     font-size: 18px;
@@ -178,6 +185,7 @@
 
 
 .social-link-block {
+  border: 1px solid @color-gray;
   color: @color-main;
   font-size: 16px;
   background-color: @color-light;
