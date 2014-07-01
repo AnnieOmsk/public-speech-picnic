@@ -30,11 +30,11 @@ $(function() {
             });
 
         big_music_scene = new ymaps.Placemark([55.018685, 73.338088], {
-                balloonContent: 'Большая музыкальная сцена'
+                balloonContent: '<span class="title">Большая музыкальная сцена</span>'
             });
 
         sign_picnic = new ymaps.Placemark([55.018771, 73.338549], {
-                balloonContent: 'Надпись Пикник'
+                balloonContent: '<span class="title">Надпись Пикник</span>'
             });
 
         souvenirs = new ymaps.Placemark([55.018404, 73.338721], {
@@ -42,43 +42,43 @@ $(function() {
         });
 
         zmei_om1 = new ymaps.Placemark([55.018537, 73.338377], {
-            balloonContent: 'Воздушные змеи Ом1'
+            balloonContent: '<span class="title">Воздушные змеи Ом1</span>'
         });
 
         fresbie = new ymaps.Placemark([55.018873, 73.338318], {
-            balloonContent: 'Фрисби<br/>Кидать диск – это искусство. Командная игра алтимат.'
+            balloonContent: '<span class="title">Фрисби</span><br/>Кидать диск – это искусство. Командная игра алтимат.'
         });
 
         plenair = new ymaps.Placemark([55.019095, 73.338372], {
-            balloonContent: 'Пленэр'
+            balloonContent: '<span class="title">Пленэр</span>'
         });
 
         doublegis = new ymaps.Placemark([55.019227, 73.338318], {
-            balloonContent: 'Дубльгис'
+            balloonContent: '<span class="title">Дубльгис</span>'
         });
 
         interactive_map = new ymaps.Placemark([55.018414, 73.338141], {
-            balloonContent: 'Интерактивная карта Омска'
+            balloonContent: '<span class="title">Интерактивная карта Омска</span>'
         });
 
         bubbles = new ymaps.Placemark([55.018264, 73.338528], {
-            balloonContent: 'Баблы'
+            balloonContent: '<span class="title">Баблы</span>'
         });
 
         fremarket = new ymaps.Placemark([55.018147, 73.338791], {
-            balloonContent: 'Фримаркет и Буккроссинг'
+            balloonContent: '<span class="title">Фримаркет и Буккроссинг</span>'
         });
 
         picnic_dom = new ymaps.Placemark([55.018517, 73.339155], {
-            balloonContent: 'Пикник с «Домашним»'
+            balloonContent: '<span class="title">Пикник с «Домашним»</span>'
         });
 
         free_bike = new ymaps.Placemark([55.018668, 73.339515], {
-            balloonContent: 'Бесплатный Велопрокат'
+            balloonContent: '<span class="title">Бесплатный Велопрокат</span>'
         });
 
         priyut_drug = new ymaps.Placemark([55.018021, 73.338962], {
-            balloonContent: 'Приют «Друг»'
+            balloonContent: '<span class="title">Приют «Друг»</span>'
         });
 
 //        picnicMap.geoObjects.add(cafe);
