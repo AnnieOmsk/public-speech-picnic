@@ -45,12 +45,12 @@ module.exports = {
     },
 
     instagramList: function (req, res) {
-        var functions = [instagramService.findInstagramsByGeo(configuration.INSTAGRAM_GEO_LAT, configuration.INSTAGRAM_GEO_LNG,
+        var serviceCalls = [instagramService.findInstagramsByGeo(configuration.INSTAGRAM_GEO_LAT, configuration.INSTAGRAM_GEO_LNG,
                 configuration.INSTAGRAM_GEO_DISTANCE, configuration.INSTAGRAM_GEO_COUNT)];
         for(var j=0; j<configuration.INSTAGRAM_SEARCH_KEYWORD.length; j++) {
-            functions.push(instagramService.findInstagrams(configuration.INSTAGRAM_SEARCH_KEYWORD[j], configuration.INSTAGRAM_SEARCH_COUNT));
+            serviceCalls.push(instagramService.findInstagrams(configuration.INSTAGRAM_SEARCH_KEYWORD[j], configuration.INSTAGRAM_SEARCH_COUNT));
         }
-        var instagramPromises = q.all(functions);
+        var instagramPromises = q.all(serviceCalls);
         instagramPromises.then(function(data) {
             var instagramsArray = [];
             // Concat input arrays
