@@ -17,11 +17,19 @@ $(function() {
                 [55.019219, 73.338454],
                 [55.019391, 73.337998],
                 [55.020396, 73.339098]
-            ]
+            ], {
+                hintContent: "Polyline"
+            }, {
+                draggable: true,
+                strokeColor: '#53B93A',
+                strokeWidth: 2,
+                // The first number sets the stroke length. The second number sets the length of the gap.
+                strokeStyle: '6 6'
+            }
         );
 
-        zone_sport = new ymaps.Polyline(
-            [
+        zone_sport = new ymaps.Polygon(
+            [[
                 [55.019225, 73.339457],
                 [55.018637, 73.339640],
                 [55.018533, 73.339205],
@@ -29,7 +37,18 @@ $(function() {
                 [55.018856, 73.339227],
                 [55.019169, 73.339211],
                 [55.019225, 73.339457]
-            ]
+
+            ]], {
+                hintContent: "Polygon"
+            }, {
+                strokeColor: '#53B93A',
+                fill: true,
+                fillOpacity: 0.2,
+                fillColor: '#53B93A',
+                strokeWidth: 2,
+                // The first number sets the stroke length. The second number sets the length of the gap.
+                strokeStyle: '6 6'
+            }
         );
 
         zone_vistavka = new ymaps.Polyline(
