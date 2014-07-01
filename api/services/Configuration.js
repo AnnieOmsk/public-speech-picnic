@@ -4,15 +4,15 @@ exports.BROADCAST_SIZE = 6;
 exports.INSTAGRAM_SEARCH_KEYWORD = 'picnicomsk';
 exports.INSTAGRAM_SEARCH_COUNT = 20;
 // Instagram search by geo location
-exports.INSTAGRAM_GEO_LAT = 55.018344;
-exports.INSTAGRAM_GEO_LNG = 73.33375;
-exports.INSTAGRAM_GEO_DISTANCE = 1000; // Distance in metres
+exports.INSTAGRAM_GEO_LAT = 55.018737;
+exports.INSTAGRAM_GEO_LNG = 73.338377;
+exports.INSTAGRAM_GEO_DISTANCE = 1000; // Distance in metres, ~200 for production
 exports.INSTAGRAM_GEO_COUNT = 10;
 // Instagram total count limit
 exports.INSTAGRAM_COUNT = 20;
 // Twitter search by keyword, for hashtag use '#hastag'
-exports.TWITTER_SEARCH_KEYWORD = '#picnicomsk';
-exports.TWITTER_SEARCH_COUNT = 20;
+exports.TWITTER_SEARCH_KEYWORD = '%23picnicomsk OR picnicomsk';
+exports.TWITTER_SEARCH_COUNT = 40;
 // Twitter search by user's favorites
 exports.TWITTER_FAVORITES_USER = 1753309994; // Number id: 967638901 for @picnicomsk, 1753309994 for @public_speech
 exports.TWITTER_FAVORITES_COUNT = 20;
