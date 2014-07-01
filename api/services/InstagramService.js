@@ -12,7 +12,7 @@ ig.use({ client_id: configuration.INSTAGRAM_AUTH_CLIENT_ID,
  */
 exports.findInstagrams = function(tag, count) {
     var deferred = q.defer();
-    console.log("Searching for instagram medias by tag");
+    console.log("Searching for instagram medias by tag:" + tag);
     ig.tag_media_recent(tag, {count: count}, function(err, result, limit) {
         if (err) {
             deferred.reject(err);
