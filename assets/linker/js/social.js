@@ -28,7 +28,7 @@ $(function(){
             type: 'GET',
             dataType: 'json'
         }).retry({times:3, timeout:3000}).then(function(data){
-            console.log("done");
+            console.log("done social");
             fillContainer(data, container, templateSelector);
             $(document).trigger("slider-reload", {containerSelector: '.js-social-container', itemSelector: itemsSelector, itemsCount:4});
         }).always(function(){
