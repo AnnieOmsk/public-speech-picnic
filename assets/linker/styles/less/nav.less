@@ -98,6 +98,8 @@
       .collapse.in, .collapsing {
         background-color: @color-light;
         .nav-shadow;
+        padding-left: 15px;
+        padding-right: 1px;
       }
     }
   }
@@ -109,3 +111,15 @@
   border: @color-main 2px solid;
 }
 
+@media (max-width:768px) {
+  .fixed-navbar-row {
+    height: 55px;
+    .navbar {
+      margin-top: 0px;
+      .navbar-toggle {
+          margin-top: 9px !important;
+         margin-bottom: 10px !important; 
+      }
+    }
+  }
+}
