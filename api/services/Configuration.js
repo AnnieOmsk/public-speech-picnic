@@ -11,10 +11,10 @@ exports.INSTAGRAM_GEO_COUNT = 10;
 // Instagram total count limit
 exports.INSTAGRAM_COUNT = 20;
 // Twitter search by keyword, for hashtag use '#hastag'
-exports.TWITTER_SEARCH_KEYWORD = 'picnicomsk';
+exports.TWITTER_SEARCH_KEYWORD = '#picnicomsk';
 exports.TWITTER_SEARCH_COUNT = 20;
 // Twitter search by user's favorites
-exports.TWITTER_FAVORITES_USER = 967638901; // Number id, 967638901 for @picnicomsk
+exports.TWITTER_FAVORITES_USER = 1753309994; // Number id: 967638901 for @picnicomsk, 1753309994 for @public_speech
 exports.TWITTER_FAVORITES_COUNT = 20;
 // Twitter total count limit
 exports.TWITTER_COUNT = 40;
