@@ -29,7 +29,18 @@ $(function() {
                 iconImageOffset: [-21, -15]
             });
 
+        big_music_scene = new ymaps.Placemark([55.018685, 73.338088], {
+                balloonContent: 'Большая музыкальная сцена'
+            });
+
+        sign_picnic = new ymaps.Placemark([55.018771, 73.338549], {
+                balloonContent: 'Надпись Пикник'
+            });
+
+
         picnicMap.geoObjects.add(cafe);
+        picnicMap.geoObjects.add(big_music_scene);
+        picnicMap.geoObjects.add(sign_picnic);
         picnicMap.geoObjects.add(border);
     }
     if (typeof(ymaps) !== "undefined") {
