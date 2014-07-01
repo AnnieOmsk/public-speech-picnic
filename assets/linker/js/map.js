@@ -8,13 +8,98 @@ $(function() {
             behaviors: ['drag']
         });
 
-        border = new ymaps.Polyline(
+        picnicMap.setType('yandex#satellite');
+
+        zone_intellect = new ymaps.Polyline(
             [
-                [55.017518, 73.338658],
-                [55.014605, 73.334801],
-                [55.017971, 73.323729],
-                [55.021263, 73.3283],
-                [55.017518, 73.338658]
+                [55.020396, 73.339098],
+                [55.019723, 73.339339],
+                [55.019219, 73.338454],
+                [55.019391, 73.337998],
+                [55.020396, 73.339098]
+            ]
+        );
+
+        zone_sport = new ymaps.Polyline(
+            [
+                [55.019225, 73.339457],
+                [55.018637, 73.339640],
+                [55.018533, 73.339205],
+                [55.018745, 73.338910],
+                [55.018856, 73.339227],
+                [55.019169, 73.339211],
+                [55.019225, 73.339457]
+            ]
+        );
+
+        zone_vistavka = new ymaps.Polyline(
+            [
+                [55.018379, 73.339693],
+                [55.018250, 73.339726],
+                [55.018130, 73.339731],
+                [55.017912, 73.339597],
+                [55.017838, 73.339431],
+                [55.017912, 73.339216],
+                [55.018234, 73.339060],
+                [55.018321, 73.339286],
+                [55.018379, 73.339693]
+            ]
+        );
+
+        zone_theatre = new ymaps.Polyline(
+            [
+                [55.017721, 73.339323],
+                [55.017647, 73.338982],
+                [55.017764, 73.338653],
+                [55.017998, 73.339039],
+                [55.017721, 73.339323]
+            ]
+        );
+
+        zone_market = new ymaps.Polyline(
+            [
+                [55.018028, 73.339039],
+                [55.018333, 73.338444],
+                [55.018234, 73.338336],
+                [55.018139, 73.338342],
+                [55.017924, 73.338867],
+                [55.018028, 73.339039]
+            ]
+        );
+
+        zone_art = new ymaps.Polyline(
+            [
+                [55.017927, 73.338867],
+                [55.018145, 73.338347],
+                [55.018204, 73.338288],
+                [55.018318, 73.337875],
+                [55.018136, 73.337537],
+                [55.017764, 73.338583],
+                [55.017927, 73.338867]
+            ]
+        );
+
+        zone_study = new ymaps.Polyline(
+            [
+                [55.018401, 73.337939],
+                [55.018321, 73.337848],
+                [55.018148, 73.337505],
+                [55.018296, 73.337060],
+                [55.018631, 73.337279],
+                [55.018401, 73.337939]
+            ]
+        );
+
+        zone_food = new ymaps.Polyline(
+            [
+                [55.018419, 73.337939],
+                [55.018653, 73.337296],
+                [55.019289, 73.337950],
+                [55.019148, 73.338181],
+                [55.018911, 73.338020],
+                [55.018696, 73.337982],
+                [55.018542, 73.338047],
+                [55.018419, 73.337939]
             ]
         );
 
@@ -95,7 +180,14 @@ $(function() {
         picnicMap.geoObjects.add(picnic_dom);
         picnicMap.geoObjects.add(free_bike);
         picnicMap.geoObjects.add(priyut_drug);
-//        picnicMap.geoObjects.add(border);
+        picnicMap.geoObjects.add(zone_intellect);
+        picnicMap.geoObjects.add(zone_sport);
+        picnicMap.geoObjects.add(zone_vistavka);
+        picnicMap.geoObjects.add(zone_theatre);
+        picnicMap.geoObjects.add(zone_market);
+        picnicMap.geoObjects.add(zone_art);
+        picnicMap.geoObjects.add(zone_study);
+        picnicMap.geoObjects.add(zone_food);
     }
     if (typeof(ymaps) !== "undefined") {
         ymaps.ready(init);
