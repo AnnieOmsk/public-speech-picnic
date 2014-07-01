@@ -71,7 +71,7 @@ $(function(){
             zoomMax: 7000000,
             orientation: 'top',
             showCurrentTime: true,
-            showMajorLabels: false,
+            showMajorLabels: true,
             height: 610
         };
         timeline.setGroups(groups);
