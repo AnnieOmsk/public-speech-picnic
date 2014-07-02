@@ -166,14 +166,14 @@ $(function() {
 
         zone_deti = new ymaps.Polygon(
             [[
-                [55.01786758976499, 73.33869568717179],
-                [55.01796974294226, 73.33839528836049],
-                [55.01794503853519, 73.33829878902428],
-                [55.017886330837506, 73.33826119643399],
-                [55.017723447784725, 73.3386930013275],
-                [55.01774550585363, 73.33878148346706],
-                [55.01780062376069, 73.3388187202377],
-                [55.01786758976499, 73.33869568717179]
+                [55.01792654446738, 73.33837925529467],
+                [55.01788324846592, 73.33834702712242],
+                [55.01771420070585, 73.33872518783566],
+                [55.01773934113094, 73.33879757672115],
+                [55.017779047278175, 73.33881872023765],
+                [55.017861425066464, 73.33867959391766],
+                [55.01795124889124, 73.3384489325407],
+                [55.01792654446738, 73.33837925529467]
             ]], {
                 hintContent: "Дети"
             }, {
@@ -288,6 +288,7 @@ $(function() {
         picnicMap.geoObjects.add(zone_study);
         picnicMap.geoObjects.add(zone_food);
         picnicMap.geoObjects.add(zone_all);
+        picnicMap.geoObjects.add(zone_deti);
 
         var alertCoordinates = function (obj) {
             var coordinates = obj.geometry.getCoordinates()[0];
@@ -309,7 +310,7 @@ $(function() {
             });
 
         };
-//        createDrawingHandler(zone_all);
+//        createDrawingHandler(zone_deti);
 
 //        createDrawingHandler(zone_sport);
 //        createDrawingHandler(zone_art);
