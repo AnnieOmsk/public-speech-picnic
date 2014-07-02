@@ -98,7 +98,10 @@ $(function(){
             $(oldContainerSelector).animate({
                 opacity: 1,
                 marginLeft: "+=50px"
-            }, 500)
+            }, 500);
+            $(oldContainerSelector).css({ marginLeft: "auto" });
+            $(oldContainerSelector).css({ marginRight: "auto" });
+
         });
         $(oldContainerSelector).css({ marginLeft: "" });
         $(this).hide();
@@ -120,7 +123,7 @@ $(function(){
             $(newContainerSelector).animate({
                 opacity: 1,
                 marginRight: "-=50px"
-            }, 500)
+            }, 500);
         });
         $(newContainerSelector).css({ marginRight: "" });
         $(this).hide();

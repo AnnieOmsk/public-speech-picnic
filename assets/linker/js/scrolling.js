@@ -23,24 +23,24 @@ $(document).ready(function(){
 });
 
 // jQuery(function ($) {
-//     var $doc = $(document),
-//         ratio = $doc.height() / $(window).height()*1, //отношение окна к общей ширене блока, чтобы тянуть весь блок.
+//     var $doc = $('.js-scrolling-container'),
+//         ratio = $('.js-scrolling-container').width() / $('.js-table-2').width()*6, //отношение окна к общей ширене блока, чтобы тянуть весь блок.
 //         mousepos, to;
-//     $doc.on('mousedown', '.js-content-timeline', dragstart);
+//     $doc.on('mousedown', '.js-scrolling-container', dragstart);
 
 //     function dragstart(e) {
 //         e.preventDefault();
-//         mousepos = e.screenY;
+//         mousepos = e.screenX;
 //         $doc.on('mousemove.drag', drag);
 //         $doc.on('mouseup.drag mouseout.drag', dragstop);
 //     }
 
 //     function drag(e) {
 //         clearTimeout(to);
-//         var delta = (e.screenY - mousepos) * ratio;
+//         var delta = (e.screenX - mousepos) * ratio;
 //         to = setTimeout(function () { // таймаут чтобы события от мыши не перекрывали друг друга, 
-//             $doc.scrollTop($doc.scrollTop() - delta);
-//             mousepos = e.screenY;
+//             $('.js-scrolling-container').scroLeft($('.js-scrolling-container').scrollLeft() - delta);
+//             mousepos = e.screenx;
 //         }, 0);
 //     }
 
@@ -48,3 +48,31 @@ $(document).ready(function(){
 //         $doc.off('mousemove.drag mouseup.drag mouseout.drag');
 //     }
 // });
+
+$(document).ready(function () {
+  $('.js-scrolling-container').mousedown(function (event) {
+  $(this)
+    .data('down', true)
+    .data('x', event.clientX)
+    .data('scrollLeft', this.scrollLeft);
+    return false;})
+      .mouseup(function (event) {
+        $(this).data('down', false);})
+          .hover(function() {}, function() {
+            $(this).data('down', false);
+        }).mousemove(function (event) {
+          if ($(this).data('down') == true) {
+            this.scrollLeft = $(this).data('scrollLeft') + $(this).data('x') - event.clientX;
+          }
+        })
+});
+
+$(window).mouseout(function (event) {
+  if ($('.js-scrolling-container').data('down')) {
+    try {
+    if (event.originalTarget.nodeName == 'BODY' || event.originalTarget.nodeName == 'HTML') {
+      $('.js-scrolling-container').data('down', false);
+      }
+    } catch (e) {}
+  }
+});
