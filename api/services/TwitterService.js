@@ -40,3 +40,20 @@ exports.findFavoriteTweets = function(username, count) {
     return deferred.promise;
 };
 
+/**
+ * Finds all twitter blacklists in database
+ */
+exports.findBlacklist = function() {
+    var deferred = q.defer();
+    console.log("Searching for twitter blacklists");
+    TwitterBlacklist.find({}).done(function(err, twitterBlacklists){
+        if (err) {
+            console.log("Error finding all twitter blacklists:" + err);
+            deferred.reject(err);
+        } else {
+            deferred.resolve(twitterBlacklists);
+        }
+    });
+    return deferred.promise;
+};
+

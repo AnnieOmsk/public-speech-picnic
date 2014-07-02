@@ -14,7 +14,7 @@
         "q": "1.0.1",
         "moment": "2.7.0",
         "twitter": "git+https://github.com/zilm13/node-twitter.git",
-        "instagram-node": "0.4.1"
+        "instagram-node": "git+https://github.com/zilm13/instagram-node.git"
     },
     "scripts": {
         "start": "node app.js",
