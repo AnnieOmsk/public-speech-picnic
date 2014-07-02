@@ -86,8 +86,6 @@ $(function(){
     var toOld = function(event) {
         var oldContainerSelector = "." + $(this).attr(CONTAINER_DIV);
         var newContainerSelector = "." + $(this).attr(HIDE_CONTAINER_DIV);
-//        var marginLeft = $(newContainerSelector).css("marginLeft");
-//        $(newContainerSelector).css({marginLeft: marginLeft});
         $(newContainerSelector).animate({
             opacity: 0,
             marginLeft: "-=50px"
@@ -100,9 +98,9 @@ $(function(){
             $(oldContainerSelector).animate({
                 opacity: 1,
                 marginLeft: "+=50px"
-            }, 500);
-            $(oldContainerSelector).css({ marginLeft: "auto" });
-            $(oldContainerSelector).css({ marginRight: "auto" });
+            }, 500, function () {
+                $(oldContainerSelector).css({ position: "", marginLeft: "", left: "" });
+            })
         });
 
         $(this).hide();
@@ -124,7 +122,9 @@ $(function(){
             $(newContainerSelector).animate({
                 opacity: 1,
                 marginRight: "-=50px"
-            }, 500);
+            }, 500, function() {
+                $(newContainerSelector).css({ position: "", marginRight: "", right: "" });
+            })
         });
         $(this).hide();
         $(LEFT_ARROW_SELECTOR).show();
