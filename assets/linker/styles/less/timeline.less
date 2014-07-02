@@ -113,6 +113,11 @@
         margin-bottom: 5px;
         color: @color-dark;
       }
+      .active {
+        td {
+          background-color: @color-gray-translucent;
+        }
+      }
       tr {
             height: 80px;
             // font-size: 12px;
@@ -229,17 +234,92 @@
 
 @media (min-width:1366px) {
   .timeline {
+    .arrows {
+      top: 40%;
+      width: 70px;
+      height:auto;
+      font-size: 18px;
+      .img {
+        .social-ico(50px,94px);
+        float:none;
+      }
+      p {
+        margin-top: 10px;
+        position: relative;
+      }
+    }
+    .arrow-left {
+      p {
+        top: 0px;
+        left: 0px;
+      }
+    }
+    .arrow-right {
+      p {
+        top: 0px;
+        right: 0px;
+      }
+    }
+    .container-timeline {
+      height: 610px;
+      font-size: 20px;
+    }
+    .content-timeline {
+      margin-left: auto;
+      margin-right: auto;
+      width:85%;
+      .vis.timeline.rootpanel.top {
+        .vpanel.side {
+          width: 115px !important;
+          .vpanel.side-content {
+            .labelset {
+              .vlabel {
+                .inner {
+                  font-size: 16px;
+                }
+              }
+            }
+          }
+        }
+        .vpanel.main {
+          left: 120px !important;
+          .vpanel.content {
+            font-size: 20px;
+            .itemset {
+              .foreground {
+                .group {
+                  .item.range {
+                    .content {
+                      p{
+                        span{
+                          font-size: 14px;
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+
+    }
     .content-timeline-2 {
+      margin-left: auto;
+      margin-right: auto;
+      width:85%;
+      height: 500px;
       .scrolling-container {
         left:155px;
         top:0;
         width: 90%;
-        height: 380px;
+        height: 580px;
       }
       .table {
         font-size: 18px;
         tr {
-          height: 80px;
+          height: 100px;
           &:first-child {
           font-size: 14px;
             height: 20px;
@@ -248,10 +328,10 @@
             }
           }
           &:last-child {
-            height: 70px;
+            height: 100px;
           }
           &:nth-child(4) {
-            height: 75px;
+            height: 100px;
           }
         }
       }
