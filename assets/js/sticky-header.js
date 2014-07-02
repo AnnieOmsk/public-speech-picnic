@@ -16,7 +16,7 @@ $(document).ready(function () {
                 if( $(window).scrollTop() > stickyTop-80 ) {
                         // $('.js-nav-static').addClass('hide');
                         $('.js-nav-fixed').removeClass('un-visible');
-                        if ($(window).scrollTop() > stickyNav ) {
+                        if ($(window).scrollTop() > stickyNav-18 ) {
                           $('.js-nav-fixed').addClass('fixed');
                           $('.js-nav-fixed').addClass('nav-shadow');
                           $('.js-social-news').addClass('padding-top');

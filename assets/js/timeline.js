@@ -100,9 +100,9 @@ $(function(){
             $(oldContainerSelector).animate({
                 opacity: 1,
                 marginLeft: "+=50px"
-            }, 500, function () {
-                $(oldContainerSelector).css({ position: "", marginLeft: "", left: "" });
-            })
+            }, 500);
+            $(oldContainerSelector).css({ marginLeft: "auto" });
+            $(oldContainerSelector).css({ marginRight: "auto" });
         });
 
         $(this).hide();
@@ -124,9 +124,7 @@ $(function(){
             $(newContainerSelector).animate({
                 opacity: 1,
                 marginRight: "-=50px"
-            }, 500, function() {
-                $(newContainerSelector).css({ position: "", marginRight: "", right: "" });
-            })
+            }, 500);
         });
         $(this).hide();
         $(LEFT_ARROW_SELECTOR).show();
