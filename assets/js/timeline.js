@@ -86,6 +86,8 @@ $(function(){
     var toOld = function(event) {
         var oldContainerSelector = "." + $(this).attr(CONTAINER_DIV);
         var newContainerSelector = "." + $(this).attr(HIDE_CONTAINER_DIV);
+//        var marginLeft = $(newContainerSelector).css("marginLeft");
+//        $(newContainerSelector).css({marginLeft: marginLeft});
         $(newContainerSelector).animate({
             opacity: 0,
             marginLeft: "-=50px"
@@ -93,14 +95,16 @@ $(function(){
             $(newContainerSelector).hide();
             $(newContainerSelector).css({ marginLeft: "" });
             $(oldContainerSelector).css({ opacity: 0 });
-            $(oldContainerSelector).css({ marginLeft: "-50px" });
+            $(oldContainerSelector).css({ position: "relative", left: "-50px" });
             $(oldContainerSelector).show();
             $(oldContainerSelector).animate({
                 opacity: 1,
                 marginLeft: "+=50px"
-            }, 500)
+            }, 500, function () {
+                $(oldContainerSelector).css({ position: "", marginLeft: "", left: "" });
+            })
         });
-        $(oldContainerSelector).css({ marginLeft: "" });
+
         $(this).hide();
         $(RIGHT_ARROW_SELECTOR).show();
     };
@@ -110,19 +114,20 @@ $(function(){
         var oldContainerSelector = "." + $(this).attr(HIDE_CONTAINER_DIV);
         $(oldContainerSelector).animate({
             opacity: 0,
-            marginLeft: "+=50px"
+            marginRight: "+=50px"
         }, 500, function() {
             $(oldContainerSelector).hide();
             $(oldContainerSelector).css({ marginRight: "" });
             $(newContainerSelector).css({ opacity: 0 });
-            $(newContainerSelector).css({ marginRight: "50px" });
+            $(newContainerSelector).css({ position: "relative", right: "50px" });
             $(newContainerSelector).show();
             $(newContainerSelector).animate({
                 opacity: 1,
                 marginRight: "-=50px"
-            }, 500)
+            }, 500, function() {
+                $(newContainerSelector).css({ position: "", marginRight: "", right: "" });
+            })
         });
-        $(newContainerSelector).css({ marginRight: "" });
         $(this).hide();
         $(LEFT_ARROW_SELECTOR).show();
     };
