@@ -44,39 +44,76 @@ module.exports = {
       });
     },
 
+    //TODO: needs refactoring
     instagramList: function (req, res) {
-        var serviceCalls = [instagramService.findInstagramsByGeo(configuration.INSTAGRAM_GEO_LAT, configuration.INSTAGRAM_GEO_LNG,
-                configuration.INSTAGRAM_GEO_DISTANCE, configuration.INSTAGRAM_GEO_COUNT)];
-        for(var j=0; j<configuration.INSTAGRAM_SEARCH_KEYWORD.length; j++) {
-            serviceCalls.push(instagramService.findInstagrams(configuration.INSTAGRAM_SEARCH_KEYWORD[j], configuration.INSTAGRAM_SEARCH_COUNT));
-        }
-        var instagramPromises = q.all(serviceCalls);
-        instagramPromises.then(function(data) {
-            var instagramsArray = [];
-            // Concat input arrays
-            for (i=0; i<data.length; i++) {
-                instagramsArray = instagramsArray.concat(data[i]);
+        var whitelistPromise = instagramService.findWhitelist();
+        var serviceCalls;
+        var instagramPromises;
+        whitelistPromise.then(function(whitelist) {
+            var whitelistArray = [];
+            for (i=0; i<whitelist.length; i++) {
+                var url = whitelist[i].mediaUrl;
+                var shortcode;
+                var lastSlash = url.lastIndexOf("/");
+                shortcode = url.substring(url.lastIndexOf("/", lastSlash-1)+1, lastSlash);
+                whitelistArray.push(shortcode);
             }
-            // Sort by time descending
-            instagramsArray.sort(function(a, b) {
-                return b.created_time - a.created_time;
+            serviceCalls = [instagramService.findInstagramsByGeo(configuration.INSTAGRAM_GEO_LAT, configuration.INSTAGRAM_GEO_LNG,
+                configuration.INSTAGRAM_GEO_DISTANCE, configuration.INSTAGRAM_GEO_COUNT)];
+            for(var j=0; j<configuration.INSTAGRAM_SEARCH_KEYWORD.length; j++) {
+                serviceCalls.push(instagramService.findInstagrams(configuration.INSTAGRAM_SEARCH_KEYWORD[j], configuration.INSTAGRAM_SEARCH_COUNT));
+            }
+            for(var k=0; k<whitelistArray.length; k++) {
+                serviceCalls.push(instagramService.findInstagramsByCode(whitelistArray[k]));
+            }
+            serviceCalls.push(instagramService.findBlacklist());
+            instagramPromises = q.all(serviceCalls);
+            instagramPromises.then(function(data) {
+                var instagramsArray = [];
+                // Concat input arrays. Last one is with blacklist
+                for (i=0; i<(data.length-1); i++) {
+                    instagramsArray = instagramsArray.concat(data[i]);
+                }
+                // Remove medias that are in blacklist
+                var blacklist = data[data.length-1];
+                var blacklistArray = [];
+                for (i=0; i<blacklist.length; i++) {
+                    blacklistArray.push(blacklist[i].mediaUrl);
+                }
+                instagramsArray = instagramsArray.filter(function(item) {
+                    return blacklistArray.indexOf(item.link) == -1;
+                });
+                // Sort by time descending
+                instagramsArray.sort(function(a, b) {
+                    return b.created_time - a.created_time;
+                });
+                return res.send(presenterService.presentInstagrams(instagramsArray.slice(0, configuration.INSTAGRAM_COUNT)));
+            }, function(err) {
+                console.error("Instagram promise error:" + err);
+                return res.serverError(err);
             });
-            return res.send(presenterService.presentInstagrams(instagramsArray.slice(0, configuration.INSTAGRAM_COUNT)));
-        }, function(err) {
-            console.error("Instagram promise error:" + err);
-            return res.serverError(err);
         });
     },
 
     twitterList: function (req, res) {
         var twitterPromises = q.all([twitterService.findTweets(configuration.TWITTER_SEARCH_KEYWORD, configuration.TWITTER_SEARCH_COUNT),
-        twitterService.findFavoriteTweets(configuration.TWITTER_FAVORITES_USER, configuration.TWITTER_FAVORITES_COUNT)]);
+            twitterService.findFavoriteTweets(configuration.TWITTER_FAVORITES_USER, configuration.TWITTER_FAVORITES_COUNT),
+            twitterService.findBlacklist()]);
         twitterPromises.then(function(data) {
             var tweetsArray = [];
-            // Concat input arrays
-            for (i=0; i<data.length; i++) {
+            // Concat input arrays, last one is with blacklist
+            for (i=0; i<(data.length-1); i++) {
                 tweetsArray = tweetsArray.concat(data[i]);
             }
+            // Remove tweets that are in blacklist
+            var blacklist = data[data.length-1];
+            var blacklistArray = [];
+            for (i=0; i<blacklist.length; i++) {
+                blacklistArray.push(blacklist[i].messageId);
+            }
+            tweetsArray = tweetsArray.filter(function(item) {
+                return blacklistArray.indexOf(item.id_str) == -1;
+            });
             // Sort by time descending
             tweetsArray.sort(function(a, b) {
                 return new Date(b.created_at) > new Date(a.created_at);

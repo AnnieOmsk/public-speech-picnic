@@ -8,20 +8,20 @@ $(function() {
             behaviors: ['drag']
         });
 
-        picnicMap.setType('yandex#satellite');
 
-        zone_intellect = new ymaps.Polyline(
-            [
-                [55.020396, 73.339098],
-                [55.019723, 73.339339],
-                [55.019219, 73.338454],
-                [55.019391, 73.337998],
-                [55.020396, 73.339098]
-            ], {
-                hintContent: "Polyline"
+        zone_intellect = new ymaps.Polygon(
+            [[
+                [55.019271398074345, 73.33847545767206],
+                [55.01940949336274, 73.33803018650815],
+                [55.02044223223458, 73.33914627976225],
+                [55.01967984911755, 73.3393872797622],
+                [55.019271398074345, 73.33847545767206]
+            ]], {
+                hintContent: "Интеллект"
             }, {
                 strokeColor: '#53B93A',
-                strokeWidth: 2,
+                fill: false,
+                strokeWidth: 1,
                 // The first number sets the stroke length. The second number sets the length of the gap.
                 strokeStyle: '6 6'
             }
@@ -29,97 +29,178 @@ $(function() {
 
         zone_sport = new ymaps.Polygon(
             [[
-                [55.019225, 73.339457],
-                [55.018637, 73.339640],
-                [55.018533, 73.339205],
-                [55.018745, 73.338910],
-                [55.018856, 73.339227],
-                [55.019169, 73.339211],
-                [55.019225, 73.339457]
-
+                [55.01870801262898, 73.33896900859827],
+                [55.01881284819088, 73.3392699153442],
+                [55.01918132897622, 73.33924318650818],
+                [55.0192311644773, 73.33948382209012],
+                [55.01858151878578, 73.33972583068844],
+                [55.018468271737085, 73.3393069239425],
+                [55.01870801262898, 73.33896900859827]
             ]], {
-                hintContent: "Polygon"
+                hintContent: "Спорт"
             }, {
                 strokeColor: '#53B93A',
-                fill: true,
-                fillOpacity: 0.2,
-                fillColor: '#53B93A',
-                strokeWidth: 2,
+                fill: false,
+                strokeWidth: 1,
                 // The first number sets the stroke length. The second number sets the length of the gap.
                 strokeStyle: '6 6'
             }
         );
 
-        zone_vistavka = new ymaps.Polyline(
-            [
-                [55.018379, 73.339693],
-                [55.018250, 73.339726],
-                [55.018130, 73.339731],
-                [55.017912, 73.339597],
-                [55.017838, 73.339431],
-                [55.017912, 73.339216],
-                [55.018234, 73.339060],
+        zone_vistavka = new ymaps.Polygon(
+            [[
+                [55.01787501186237, 73.33925355092616],
+                [55.018234, 73.33906],
                 [55.018321, 73.339286],
-                [55.018379, 73.339693]
-            ]
-        );
+                [55.01835633669006, 73.33947670569606],
+                [55.018368665922615, 73.33957326522064],
+                [55.018379, 73.339693],
+                [55.01825, 73.339726],
+                [55.01813, 73.339731],
+                [55.017912, 73.339597],
+                [55.01780101179378, 73.33944172883604],
+                [55.01787501186237, 73.33925355092616]
+            ]], {
+            hintContent: "Выставка"
+        }, {
+            strokeColor: '#53B93A',
+                fill: false,
+                strokeWidth: 1,
+                // The first number sets the stroke length. The second number sets the length of the gap.
+                strokeStyle: '6 6'
+        });
 
-        zone_theatre = new ymaps.Polyline(
-            [
-                [55.017721, 73.339323],
-                [55.017647, 73.338982],
-                [55.017764, 73.338653],
+        zone_theatre = new ymaps.Polygon(
+            [[
+                [55.017600764511684, 73.33900345767206],
+                [55.0177393411522, 73.33863690674588],
                 [55.017998, 73.339039],
-                [55.017721, 73.339323]
-            ]
-        );
+                [55.01767476460271, 73.33931763558193],
+                [55.017600764511684, 73.33900345767206]
+            ]], {
+                hintContent: "Театр"
+            }, {
+                strokeColor: '#53B93A',
+                fill: false,
+                strokeWidth: 1,
+                // The first number sets the stroke length. The second number sets the length of the gap.
+                strokeStyle: '6 6'
+            });
 
-        zone_market = new ymaps.Polyline(
-            [
+        zone_market = new ymaps.Polygon(
+            [[
                 [55.018028, 73.339039],
                 [55.018333, 73.338444],
-                [55.018234, 73.338336],
-                [55.018139, 73.338342],
-                [55.017924, 73.338867],
+                [55.01816310661621, 73.33822334722134],
+                [55.018098929733725, 73.338358093254],
+                [55.01791167061418, 73.33877580489354],
                 [55.018028, 73.339039]
-            ]
-        );
+            ]], {
+                hintContent: "Маркет"
+            }, {
+                strokeColor: '#53B93A',
+                fill: false,
+                strokeWidth: 1,
+                // The first number sets the stroke length. The second number sets the length of the gap.
+                strokeStyle: '6 6'
+            });
 
-        zone_art = new ymaps.Polyline(
-            [
-                [55.017927, 73.338867],
-                [55.018145, 73.338347],
-                [55.018204, 73.338288],
-                [55.018318, 73.337875],
+        zone_art = new ymaps.Polygon(
+            [[
+                [55.01790542359114, 73.33879189814758],
+                [55.01795081304057, 73.33889417063892],
+                [55.01819167070065, 73.33828799999992],
+                [55.01832724692307, 73.33790182209012],
                 [55.018136, 73.337537],
                 [55.017764, 73.338583],
-                [55.017927, 73.338867]
-            ]
-        );
+                [55.01790542359114, 73.33879189814758]
+            ]], {
+                hintContent: "Искусство"
+            }, {
+                strokeColor: '#53B93A',
+                fill: false,
+                strokeWidth: 1,
+                // The first number sets the stroke length. The second number sets the length of the gap.
+                strokeStyle: '6 6'
+            });
 
-        zone_study = new ymaps.Polyline(
-            [
+        zone_study = new ymaps.Polygon(
+            [[
                 [55.018401, 73.337939],
-                [55.018321, 73.337848],
+                [55.018330246922346, 73.3379070085983],
                 [55.018148, 73.337505],
-                [55.018296, 73.337060],
+                [55.01833298773688, 73.33697416931147],
                 [55.018631, 73.337279],
                 [55.018401, 73.337939]
-            ]
-        );
+            ]], {
+                hintContent: "Учёба"
+            }, {
+                strokeColor: '#53B93A',
+                fill: false,
+                strokeWidth: 1,
+                // The first number sets the stroke length. The second number sets the length of the gap.
+                strokeStyle: '6 6'
+            });
 
-        zone_food = new ymaps.Polyline(
-            [
+        zone_food = new ymaps.Polygon(
+            [[
+                [55.01897264526284, 73.3380468220901],
+                [55.0188558987619, 73.33808951289744],
+                [55.018763620348935, 73.3380679429569],
+                [55.01868983542943, 73.3380571018524],
+                [55.018542, 73.338047],
                 [55.018419, 73.337939],
                 [55.018653, 73.337296],
-                [55.019289, 73.337950],
+                [55.01925509537771, 73.33790708465574],
                 [55.019148, 73.338181],
-                [55.018911, 73.338020],
-                [55.018696, 73.337982],
-                [55.018542, 73.338047],
-                [55.018419, 73.337939]
-            ]
-        );
+                [55.01897264526284, 73.3380468220901]
+            ]], {
+                hintContent: "Домашняя еда"
+            }, {
+                strokeColor: '#53B93A',
+                fill: false,
+                strokeWidth: 1,
+                // The first number sets the stroke length. The second number sets the length of the gap.
+                strokeStyle: '6 6'
+            });
+
+        zone_deti = new ymaps.Polygon(
+            [[
+                [55.01786758976499, 73.33869568717179],
+                [55.01796974294226, 73.33839528836049],
+                [55.01794503853519, 73.33829878902428],
+                [55.017886330837506, 73.33826119643399],
+                [55.017723447784725, 73.3386930013275],
+                [55.01774550585363, 73.33878148346706],
+                [55.01780062376069, 73.3388187202377],
+                [55.01786758976499, 73.33869568717179]
+            ]], {
+                hintContent: "Дети"
+            }, {
+                strokeColor: '#53B93A',
+                fill: false,
+                strokeWidth: 1,
+                // The first number sets the stroke length. The second number sets the length of the gap.
+                strokeStyle: '6 6'
+            });
+
+        zone_all = new ymaps.Polyline(
+            [
+                [55.01756860102698, 73.3390443743436],
+                [55.01764917844328, 73.33936624802388],
+                [55.01791269678068, 73.33966132110969],
+                [55.01810610190345, 73.33976594230836],
+                [55.018595222960656, 73.3397518644727],
+                [55.020477491801124, 73.33915842948994],
+                [55.01939930159542, 73.33799636619597],
+                [55.01832724689651, 73.33694159126269],
+                [55.01756860102698, 73.3390443743436]
+            ], {
+                hintContent: "Общая граница"
+            }, {
+                strokeColor: '#53B93A',
+                strokeWidth: 2
+            });
 
         cafe = new ymaps.Placemark([55.018344, 73.33375], {
                 balloonContent: 'Тут можно поесть'
@@ -206,6 +287,39 @@ $(function() {
         picnicMap.geoObjects.add(zone_art);
         picnicMap.geoObjects.add(zone_study);
         picnicMap.geoObjects.add(zone_food);
+        picnicMap.geoObjects.add(zone_all);
+
+        var alertCoordinates = function (obj) {
+            var coordinates = obj.geometry.getCoordinates()[0];
+            var result = "";
+            for (var i=0; i<coordinates.length; i++) {
+                result+= "[" + coordinates[i]['0'] + ", " + coordinates[i]['1'] + "],\n";
+            }
+            result = result.substr(0, result.length-2);
+            alert(result);
+        };
+
+        var createDrawingHandler = function(obj) {
+            obj.editor.startDrawing();
+            var stateMonitor = new ymaps.Monitor(obj.editor.state);
+            stateMonitor.add("drawing", function (started) {
+                if (!started) {
+                    alertCoordinates(obj);
+                }
+            });
+
+        };
+//        createDrawingHandler(zone_all);
+
+//        createDrawingHandler(zone_sport);
+//        createDrawingHandler(zone_art);
+//        createDrawingHandler(zone_food);
+//        createDrawingHandler(zone_intellect);
+//        createDrawingHandler(zone_market);
+//        createDrawingHandler(zone_sport);
+//        createDrawingHandler(zone_study);
+//        createDrawingHandler(zone_theatre);
+//        createDrawingHandler(zone_vistavka);
     }
     if (typeof(ymaps) !== "undefined") {
         ymaps.ready(init);

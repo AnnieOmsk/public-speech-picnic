@@ -46,3 +46,55 @@ exports.findInstagramsByGeo = function(lat, lng, distance, count) {
     });
     return deferred.promise;
 };
+
+/**
+ * Finds instagram medias by its shortcode
+ * @param shortcode  Shortcode
+ * @returns Array of instagram medias from Instagram API
+ */
+exports.findInstagramsByCode = function(shortcode) {
+    var deferred = q.defer();
+    console.log("Searching for instagram media by shortcode");
+    ig.media_shortcode(shortcode, function(err, result, limit) {
+        if (err) {
+            deferred.reject(err);
+            console.error("Cannot retrieve instagram media by shortcode:" + err);
+        }
+        deferred.resolve(result);
+    });
+    return deferred.promise;
+};
+
+/**
+ * Finds instagram blacklist in database
+ */
+exports.findBlacklist = function() {
+    var deferred = q.defer();
+    console.log("Searching for instagram blacklist");
+    InstagramBlacklist.find({}).done(function(err, instagramBlacklists){
+        if (err) {
+            console.log("Error finding all instagram blacklist:" + err);
+            deferred.reject(err);
+        } else {
+            deferred.resolve(instagramBlacklists);
+        }
+    });
+    return deferred.promise;
+};
+
+/**
+ * Finds instagram whitelist in database
+ */
+exports.findWhitelist = function() {
+    var deferred = q.defer();
+    console.log("Searching for instagram whitelist");
+    InstagramWhitelist.find({}).done(function(err, instagramWhitelist){
+        if (err) {
+            console.log("Error finding all instagram whitelist:" + err);
+            deferred.reject(err);
+        } else {
+            deferred.resolve(instagramWhitelist);
+        }
+    });
+    return deferred.promise;
+};
