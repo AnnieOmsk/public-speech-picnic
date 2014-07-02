@@ -4,12 +4,12 @@
         "table": {
             "name": "broadcast",
             "pk": "id",
-            "verbose": "broadcast"
+            "verbose": "Трансляции"
         },
         "columns": [
             {
                 "name": "id",
-                "verbose": "id",
+                "verbose": "Идентификатор",
                 "control": {
                     "text": true
                 },
@@ -25,7 +25,7 @@
             },
             {
                 "name": "time",
-                "verbose": "time",
+                "verbose": "Время публикации",
                 "control": {
                     "datetime": true
                 },
@@ -41,7 +41,7 @@
             },
             {
                 "name": "title",
-                "verbose": "title",
+                "verbose": "Заголовок",
                 "control": {
                     "text": true
                 },
@@ -57,7 +57,7 @@
             },
             {
                 "name": "lead",
-                "verbose": "lead",
+                "verbose": "Краткое описание",
                 "control": {
                     "text": true
                 },
@@ -73,7 +73,7 @@
             },
             {
                 "name": "content",
-                "verbose": "content",
+                "verbose": "Текст",
                 "control": {
                     "textarea": true
                 },
@@ -89,7 +89,7 @@
             },
             {
                 "name": "likes",
-                "verbose": "likes",
+                "verbose": "Лайки",
                 "control": {
                     "text": true
                 },
@@ -105,7 +105,7 @@
             },
             {
                 "name": "accepted",
-                "verbose": "accepted",
+                "verbose": "Опубликовано",
                 "control": {
                     "radio": true,
                     "options": [
@@ -125,7 +125,7 @@
             },
             {
                 "name": "journalist_id",
-                "verbose": "journalist",
+                "verbose": "Журналист",
                 "control": {
                     "select": true
                 },
@@ -149,7 +149,7 @@
             },
             {
                 "name": "images",
-                "verbose": "images",
+                "verbose": "Идентфикатор изображений",
                 "control": {
                     "text": true
                 },
@@ -165,7 +165,7 @@
             },
             {
                 "name": "images_link",
-                "verbose": "images link",
+                "verbose": "Ссылка на изображения",
                 "control": {
                     "text": true
                 },
@@ -181,7 +181,7 @@
             },
             {
                 "name": "direct_url",
-                "verbose": "direct url",
+                "verbose": "Ссылка на трансляцию",
                 "control": {
                     "text": true
                 },
@@ -214,12 +214,12 @@
         "table": {
             "name": "journalist",
             "pk": "id",
-            "verbose": "journalist"
+            "verbose": "Журналисты"
         },
         "columns": [
             {
                 "name": "id",
-                "verbose": "id",
+                "verbose": "Идентификатор",
                 "control": {
                     "text": true
                 },
@@ -235,7 +235,7 @@
             },
             {
                 "name": "login",
-                "verbose": "Login",
+                "verbose": "Логин",
                 "control": {
                     "text": true
                 },
@@ -251,7 +251,7 @@
             },
             {
                 "name": "password",
-                "verbose": "Password",
+                "verbose": "Пароль",
                 "control": {
                     "text": true
                 },
@@ -267,7 +267,7 @@
             },
             {
                 "name": "first_name",
-                "verbose": "First name",
+                "verbose": "Имя",
                 "control": {
                     "text": true
                 },
@@ -283,7 +283,7 @@
             },
             {
                 "name": "last_name",
-                "verbose": "Last name",
+                "verbose": "Фамилия",
                 "control": {
                     "text": true
                 },
@@ -314,12 +314,12 @@
         "table": {
             "name": "organizer",
             "pk": "id",
-            "verbose": "organizer"
+            "verbose": "Организатор"
         },
         "columns": [
             {
                 "name": "id",
-                "verbose": "id",
+                "verbose": "Идентификатор",
                 "control": {
                     "text": true
                 },
@@ -335,7 +335,7 @@
             },
             {
                 "name": "name",
-                "verbose": "name",
+                "verbose": "Название",
                 "control": {
                     "text": true
                 },
@@ -366,12 +366,12 @@
         "table": {
             "name": "timeline",
             "pk": "id",
-            "verbose": "timeline"
+            "verbose": "Расписание"
         },
         "columns": [
             {
                 "name": "id",
-                "verbose": "id",
+                "verbose": "Идентификатор",
                 "control": {
                     "text": true
                 },
@@ -387,7 +387,7 @@
             },
             {
                 "name": "title",
-                "verbose": "title",
+                "verbose": "Название",
                 "control": {
                     "text": true
                 },
@@ -403,7 +403,7 @@
             },
             {
                 "name": "start",
-                "verbose": "start",
+                "verbose": "Начало",
                 "control": {
                     "datetime": true
                 },
@@ -419,7 +419,7 @@
             },
             {
                 "name": "end",
-                "verbose": "end",
+                "verbose": "Окончание",
                 "control": {
                     "datetime": true
                 },
@@ -435,7 +435,7 @@
             },
             {
                 "name": "organizer_id",
-                "verbose": "organizer",
+                "verbose": "Организатор",
                 "control": {
                     "select": true
                 },
@@ -458,7 +458,7 @@
             },
             {
                 "name": "zone_id",
-                "verbose": "zone",
+                "verbose": "Зона",
                 "control": {
                     "select": true
                 },
@@ -481,7 +481,7 @@
             },
             {
                 "name": "description",
-                "verbose": "description",
+                "verbose": "Описание",
                 "control": {
                     "text": true
                 },
@@ -512,12 +512,12 @@
         "table": {
             "name": "zone",
             "pk": "id",
-            "verbose": "zone"
+            "verbose": "Зоны"
         },
         "columns": [
             {
                 "name": "id",
-                "verbose": "id",
+                "verbose": "Идентификатор",
                 "control": {
                     "text": true
                 },
@@ -533,7 +533,163 @@
             },
             {
                 "name": "name",
-                "verbose": "name",
+                "verbose": "Название",
+                "control": {
+                    "text": true
+                },
+                "type": "varchar(255)",
+                "allowNull": false,
+                "defaultValue": null,
+                "listview": {
+                    "show": true
+                },
+                "editview": {
+                    "show": true
+                }
+            }
+        ],
+        "mainview": {
+            "show": true
+        },
+        "listview": {
+            "order": {},
+            "page": 25
+        },
+        "editview": {
+            "readonly": false
+        }
+    },
+    "instagram_blacklist": {
+        "slug": "instagram_blacklist",
+        "table": {
+            "name": "instagram_blacklist",
+            "pk": "id",
+            "verbose": "Чёрный список Instagram"
+        },
+        "columns": [
+            {
+                "name": "id",
+                "verbose": "Идентификатор",
+                "control": {
+                    "text": true
+                },
+                "type": "int(11)",
+                "allowNull": false,
+                "defaultValue": null,
+                "listview": {
+                    "show": true
+                },
+                "editview": {
+                    "show": false
+                }
+            },
+            {
+                "name": "media_url",
+                "verbose": "Адрес типа http://instagram.com/p/ABC/",
+                "control": {
+                    "text": true
+                },
+                "type": "varchar(255)",
+                "allowNull": false,
+                "defaultValue": null,
+                "listview": {
+                    "show": true
+                },
+                "editview": {
+                    "show": true
+                }
+            }
+        ],
+        "mainview": {
+            "show": true
+        },
+        "listview": {
+            "order": {},
+            "page": 25
+        },
+        "editview": {
+            "readonly": false
+        }
+    },
+    "instagram_whitelist": {
+        "slug": "instagram_whitelist",
+        "table": {
+            "name": "instagram_whitelist",
+            "pk": "id",
+            "verbose": "Белый список Instagram"
+        },
+        "columns": [
+            {
+                "name": "id",
+                "verbose": "Идентификатор",
+                "control": {
+                    "text": true
+                },
+                "type": "int(11)",
+                "allowNull": false,
+                "defaultValue": null,
+                "listview": {
+                    "show": true
+                },
+                "editview": {
+                    "show": false
+                }
+            },
+            {
+                "name": "media_url",
+                "verbose": "Адрес типа http://instagram.com/p/ABC/",
+                "control": {
+                    "text": true
+                },
+                "type": "varchar(255)",
+                "allowNull": false,
+                "defaultValue": null,
+                "listview": {
+                    "show": true
+                },
+                "editview": {
+                    "show": true
+                }
+            }
+        ],
+        "mainview": {
+            "show": true
+        },
+        "listview": {
+            "order": {},
+            "page": 25
+        },
+        "editview": {
+            "readonly": false
+        }
+    },
+    "twitter_blacklist": {
+        "slug": "twitter_blacklist",
+        "table": {
+            "name": "twitter_blacklist",
+            "pk": "id",
+            "verbose": "Чёрный список Twitter"
+        },
+        "columns": [
+            {
+                "name": "id",
+                "verbose": "Идентификатор",
+                "control": {
+                    "text": true
+                },
+                "type": "int(11)",
+                "allowNull": false,
+                "defaultValue": null,
+                "listview": {
+                    "show": true
+                },
+                "editview": {
+                    "show": false
+                }
+            },
+            {
+                "name": "message_id",
+                "verbose": "Идентификатор сообщения (цифра в урле)",
                 "control": {
                     "text": true
                 },
