@@ -157,9 +157,6 @@ a {
 
 .wide-container {
   max-width: 1160px;
-  // min-width: 1160px; /*delete to responsive*/
-  // height: 490px;
-  // margin-top: 45px;
   position: relative;
   -webkit-touch-callout: none;
   -webkit-user-select: none;
@@ -182,10 +179,14 @@ a {
 }
 
 .visible {
-  visibility: visible;
+  .transition (all, 0.3s, linear);
+  // visibility: visible;
+  opacity:1;
 }
 .un-visible {
-  visibility: hidden;
+  .transition (all, 0.3s, linear);
+  opacity:0;
+  // visibility: hidden;
 }
 
 .fixed {
@@ -284,6 +285,12 @@ a {
   width:50px;
   height: 94px;
   display: block;
+  .img {
+    
+
+    .social-ico(100%,100%);
+    float:none;
+  }
 }
 .arrows {
   cursor:pointer;
@@ -294,10 +301,22 @@ a {
 }
 .arrow-left {
   .transition(all,0.3s, linear);
-  background-image: url('../../images/left-arrow.png');
+  .img {
+    .transition(all,0.3s, linear);
+    background: url('../../images/arrows.png');
+    background-position: 0 0;
+    background-repeat: no-repeat;
+    background-size:cover;
+  }
   &:hover {
     .transition(all,0.3s, linear);
-    background-image: url('../../images/left-arrow-hover.png');
+    .img {
+      .transition(all,0.3s, linear);
+      background: url('../../images/arrows-hover.png');
+      background-position: 0 0;
+      background-repeat: no-repeat;
+      background-size:cover;
+    }
   }
 }
 
@@ -306,10 +325,22 @@ a {
 }
 .arrow-right {
   .transition(all,0.3s, linear);
-  background-image: url('../../images/right-arrow.png');
+  .img {
+    .transition(all,0.3s, linear);
+    background: url('../../images/arrows.png');
+    background-position: 100% 0;
+    background-repeat: no-repeat;
+    background-size:cover;
+  }
   &:hover {
     .transition(all,0.3s, linear);
-    background-image: url('../../images/right-arrow-hover.png');
+    .img {
+      .transition(all,0.3s, linear);
+      background: url('../../images/arrows-hover.png');
+      background-position: 100% 0;
+      background-repeat: no-repeat;
+      background-size:cover;
+    }
   }
 }
 

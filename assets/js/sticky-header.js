@@ -36,10 +36,10 @@ $(document).ready(function () {
                         } else {
                           $('.js-nav-fixed').removeClass('fixed');
                           $('.js-social-news').removeClass('padding-top');
+                          $('.js-nav-fixed').removeClass('nav-shadow');
                         }
                 } else {
                         $('.js-nav-fixed').addClass('un-visible');
-                        $('.js-nav-fixed').addClass('nav-shadow');
                 }
 
 
