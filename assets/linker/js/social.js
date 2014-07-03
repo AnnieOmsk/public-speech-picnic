@@ -125,23 +125,13 @@ $(function(){
     $(RELOAD_BUTTON).trigger("click");
 
     // on resize behavior
-    var rtime = new Date(1, 1, 2000, 12,00,00);
-    var timeout = false;
-    var delta = 200;
-    $(window).resize(function(event) {
-        rtime = new Date();
-        if (timeout === false) {
-            timeout = true;
-            setTimeout(resizeend(event), delta);
-        }
-    });
-
-    function resizeend(event) {
-        if (new Date() - rtime < delta) {
-            setTimeout(resizeend(event), delta);
-        } else {
-            timeout = false;
-            reload(event);
-        }
+    function resizedw(){
+        $(RELOAD_BUTTON).trigger("click");
     }
+
+    var doit;
+    window.onresize = function(){
+        clearTimeout(doit);
+        doit = setTimeout(resizedw, 100);
+    };
 });
