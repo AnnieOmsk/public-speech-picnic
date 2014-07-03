@@ -13,6 +13,23 @@ $(function(){
     var OFFICIAL_CLASS = ".js-social-official";
     var INSTAGRAM_OFFICIAL_LINK = "http://instagram.com/picnicomsk";
     var TWITTER_OFFICIAL_LINK = "https://twitter.com/picnicomsk";
+    var ITEMS_COUNT_REPSONSIVE = [{
+        start: 0,
+        end:540,
+        count: 1
+    },{
+        start: 541,
+        end: 1000,
+        count: 2
+    }, {
+        start: 1001,
+        end: 1200,
+        count: 3
+    }, {
+        start: 1201,
+        end: 9999,
+        count: 4
+    }];
 
     var reload = function(event) {
         event.preventDefault();
@@ -30,7 +47,15 @@ $(function(){
         }).retry({times:3, timeout:3000}).then(function(data){
             console.log("done social");
             fillContainer(data, container, templateSelector);
-            $(document).trigger("slider-reload", {containerSelector: '.js-social-container', itemSelector: itemsSelector, itemsCount:4});
+            var itemsCount = 4;
+            for (var i=0; i<ITEMS_COUNT_REPSONSIVE.length; i++) {
+                var currentSet = ITEMS_COUNT_REPSONSIVE[i];
+                var width = $(window).width();
+                if (width >= currentSet.start && width <= currentSet.end) {
+                    itemsCount = currentSet.count;
+                }
+            }
+            $(document).trigger("slider-reload", {containerSelector: '.js-social-container', itemSelector: itemsSelector, itemsCount:itemsCount});
         }).always(function(){
             $(document).find(".js-loader[data-container='social']").hide();
         });
@@ -98,4 +123,15 @@ $(function(){
     $(document).on("click", INSTAGRAM_BUTTON, toggleInstagram);
     $(document).on("click", TWITTER_BUTTON, toggleTwitter);
     $(RELOAD_BUTTON).trigger("click");
+
+    // on resize behavior
+    function resizedw(){
+        $(RELOAD_BUTTON).trigger("click");
+    }
+
+    var doit;
+    window.onresize = function(){
+        clearTimeout(doit);
+        doit = setTimeout(resizedw, 100);
+    };
 });
