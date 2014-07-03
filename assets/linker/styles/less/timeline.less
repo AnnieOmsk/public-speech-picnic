@@ -1,14 +1,16 @@
 .timeline {
   h1 {
-    margin-bottom: 50px;
+    // margin-bottom: 50px;
+    margin-bottom: 60px;
   }
   .container-timeline {
-    height: 610px;
+    // height: 610px;
+    height: 450px;
     font-size: 12px;
 
   }
   .arrows {
-    top:-50px;
+    top:-55px;
     // width: 70px;
     //height:auto;
     width: 25px;
@@ -66,7 +68,7 @@
     }
     p {
       top:18px;
-      right: 30px;
+      right: 40px;
     }
   }
 
@@ -269,6 +271,50 @@
       margin-right: auto;
       width:85%;
       .vis.timeline.rootpanel.top {
+        height: 610px !important;
+        .vpanel.side {
+          width: 115px !important;
+          .vpanel.side-content {
+            .labelset {
+              .vlabel {
+                height:110px !important;
+                .inner {
+                  font-size: 16px;
+                }
+              }
+            }
+          }
+        }
+        .vpanel.main {
+          left: 120px !important;
+          .vpanel.content {
+            font-size: 20px;
+            .itemset {
+              .foreground {
+                .group {
+                  height: 110px !important;
+                  .item.range {
+                    height: 100px;
+                    .content {
+                      p{
+                        span{
+                          font-size: 14px;
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    .content-timeline {
+      margin-left: auto;
+      margin-right: auto;
+      width:85%;
+      .vis.timeline.rootpanel.top {
         .vpanel.side {
           width: 115px !important;
           .vpanel.side-content {
@@ -348,7 +394,83 @@
 @media (min-width : 1025px) 
 and (max-width : 1365px) {
   .timeline {
+    .arrows {
+      top: 40%;
+      width: 70px;
+      height:auto;
+      font-size: 18px;
+      .img {
+        .social-ico(50px,94px);
+        float:none;
+      }
+      p {
+        margin-top: 10px;
+        position: relative;
+      }
+    }
+    .arrow-left {
+      p {
+        top: 0px;
+        left: 0px;
+      }
+    }
+    .arrow-right {
+      p {
+        top: 0px;
+        right: 0px;
+      }
+    }
+    .container-timeline {
+      height: 610px;
+      font-size: 20px;
+    }
+    .content-timeline {
+      margin-left: auto;
+      margin-right: auto;
+      width:85%;
+      .vis.timeline.rootpanel.top {
+        height: 610px !important;
+        .vpanel.side {
+          width: 115px !important;
+          .vpanel.side-content {
+            .labelset {
+              .vlabel {
+                height:110px !important;
+                .inner {
+                  font-size: 16px;
+                }
+              }
+            }
+          }
+        }
+        .vpanel.main {
+          left: 120px !important;
+          .vpanel.content {
+            font-size: 20px;
+            .itemset {
+              .foreground {
+                .group {
+                  height: 110px !important;
+                  .item.range {
+                    height: 100px;
+                    .content {
+                      p{
+                        span{
+                          font-size: 14px;
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
     .content-timeline-2 {
+      width: 85%;
+      margin-right: auto;
       .scrolling-container {
         left:155px;
         top:0;
@@ -388,37 +510,103 @@ and (max-width : 1365px) {
 @media (min-width : 768px) 
 and (max-width : 1024px) {
   .timeline {
-    .content-timeline-2 {
-      .scrolling-container {
-        left:155px;
-        top:0;
-        width: 75%;
-        height: 380px;
+    .arrows {
+      top:-55px;
+      width: 35px;
+      height:65px;
+      font-size: 16px;
+      .img {
+        .social-ico(100%,100%);
+        float:none;
       }
-      .table {
-        font-size: 16px;
-        tr {
-          height: 80px;
-          &:first-child {
-          font-size: 12px;
-            height: 20px;
-            .year {
-              font-size: 18px;
+    }
+    .arrow-left {
+      p {
+        top: 16px;
+        left: 45px;
+        width: 74px;
+      }
+    }
+    .arrow-right {
+      p {
+        top:26px;
+        right: 40px;
+      }
+    }
+    font-size: 18px;
+    .content-timeline {
+      .vis.timeline.rootpanel.top {
+        .vpanel.side {
+          width: 175px !important;
+          .vpanel.side-content {
+            .labelset {
+              .vlabel {
+                .inner {
+                  font-size: 18px;
+                }
+              }
             }
           }
-          &:last-child {
-            height: 70px;
-          }
-          &:nth-child(4) {
-            height: 75px;
+        }
+        .vpanel.main {
+          left: 180px !important;
+          .vpanel.content {
+              font-size: 16px;
+            .itemset {
+              .foreground {
+                .group {
+                  .item.range {
+                    .content {
+                      p{
+                        span{
+                          font-size: 14px;
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
           }
         }
       }
-      .table-1 {
-        width: 140px;
-      }
-      .table-2 {
-        width: 800px;
+    }
+    .container-timeline {
+      margin-right: 0px;
+      margin-left: 0px;
+      width: 100%;
+      .content-timeline-2 {
+        .scrolling-container {
+          left:155px;
+          top:0;
+          width: 82%;
+          height: 380px;
+        }
+        .table {
+          font-size: 16px;
+          tr {
+            height: 80px;
+            &:first-child {
+            font-size: 12px;
+              height: 20px;
+              .year {
+                font-size: 18px;
+              }
+            }
+            &:last-child {
+              height: 70px;
+            }
+            &:nth-child(4) {
+              height: 75px;
+            }
+          }
+        }
+        .table-1 {
+          width: 140px;
+        }
+        .table-2 {
+          width: 800px;
+        }
       }
     }
   }
@@ -427,11 +615,52 @@ and (max-width : 1024px) {
 @media (min-width : 640px) 
 and (max-width : 767px) {
   .timeline {
+    font-size: 16px;
+    .content-timeline {
+      // margin-left: auto;
+      // margin-right: auto;
+      // width:85%;
+      .vis.timeline.rootpanel.top {
+        .vpanel.side {
+          width: 115px !important;
+          .vpanel.side-content {
+            .labelset {
+              .vlabel {
+                .inner {
+                  font-size: 16px;
+                }
+              }
+            }
+          }
+        }
+        .vpanel.main {
+          left: 120px !important;
+          .vpanel.content {
+              font-size: 14px;
+            .itemset {
+              .foreground {
+                .group {
+                  .item.range {
+                    .content {
+                      p{
+                        span{
+                          font-size: 12px;
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
     .content-timeline-2 {
       .scrolling-container {
         left:155px;
         top:0;
-        width: 70%;
+        width: 77%;
         height: 380px;
       }
       .table {
@@ -466,11 +695,52 @@ and (max-width : 767px) {
 @media (min-width : 540px) 
 and (max-width : 639px) {
   .timeline {
+    font-size: 16px;
+    .content-timeline {
+      // margin-left: auto;
+      // margin-right: auto;
+      // width:85%;
+      .vis.timeline.rootpanel.top {
+        .vpanel.side {
+          width: 115px !important;
+          .vpanel.side-content {
+            .labelset {
+              .vlabel {
+                .inner {
+                  font-size: 16px;
+                }
+              }
+            }
+          }
+        }
+        .vpanel.main {
+          left: 120px !important;
+          .vpanel.content {
+              font-size: 14px;
+            .itemset {
+              .foreground {
+                .group {
+                  .item.range {
+                    .content {
+                      p{
+                        span{
+                          font-size: 12px;
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
     .content-timeline-2 {
       .scrolling-container {
         left:125px;
         top:0;
-        width: 65%;
+        width: 77%;
         height: 380px;
       }
       .table {
@@ -513,11 +783,12 @@ and (max-width : 639px) {
 @media (min-width : 440px) 
 and (max-width : 539px) {
   .timeline {
+    font-size: 14px;
     .content-timeline-2 {
       .scrolling-container {
         left:125px;
         top:0;
-        width: 65%;
+        width: 72%;
         height: 380px;
       }
       .table {
