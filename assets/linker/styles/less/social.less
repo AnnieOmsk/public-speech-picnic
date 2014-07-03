@@ -6,17 +6,22 @@
     margin-bottom: 60px;
   }
 }
-
-.social-switch {
-  a {
-    margin-bottom: 30px;
-  }
-  .social-buttons {
-    margin-bottom: 30px;
+.container-social-switch {
+  margin-bottom: 30px;
+  .social-switch {
+    a {
+      margin-bottom: 30px;
+    }
+    .social-buttons {
+      margin-bottom: 30px;
+    }
   }
 }
-  
+
 .social-container {
+  .arrows {
+    top: 200px;
+  }
   .item {
     .point(24%, 3.8px);
   }
@@ -25,7 +30,7 @@
   height: 430px;
 }
 .content-twitter {
-  height: 550px;
+  height: 600px; /*590*/
   .item {
     .point(23%, 9.3px);
   }
@@ -66,12 +71,17 @@
 }
 
 .twitter-item {
-  height:250px;
-  margin-bottom: 50px;
+  min-height:260px; 
+  max-height:300px; 
+  margin-bottom: 20px;
+  &:nth-child(2) {
+    margin-bottom: 100px;
+  }
   .user {
     .avatar {
       float: left;
       margin-right: 10px;
+      margin-bottom: 10px;
     }
     .nic {
       margin-bottom: 5px;
@@ -115,8 +125,8 @@
 
 /*  view: ;*/
 .social-news {
-  // padding-top: 80px;
 }
+
 .social-switch {
   padding-top:60px;
   padding-bottom: 45px;
@@ -164,9 +174,6 @@
     letter-spacing: 0.03em;
     span {
       color: @color-main;
-      // &:hover {
-      //   text-decoration: none;
-      // }
     }
   }
   .like {
@@ -205,3 +212,199 @@
     .social-action ('../../images/twitte.png', '../../images/twitte-hover.png');
   }
 }
+
+@media (max-width:1200px) {
+  .row-social-news {
+    margin-bottom: 40px;
+  }
+  .content-twitter {
+    height: 600px; /*590*/
+    .item {
+      width: 30%;
+      margin-left: 16.3px;
+      margin-right: 10.3px;
+    }
+  }
+  .content-instagram {
+    height: 470px;
+    .item {
+      width: 30%;
+      margin-left: 2.5%;
+    }
+  }
+  .instagram-item {
+    margin-bottom: 200px;
+  }
+}
+
+@media (max-width:1000px) {
+  .row-social-news {
+    margin-bottom: 40px;
+  }
+  .content-twitter {
+    height: 540px; /*590*/
+    .item {
+      width: 38%;
+      margin-left: 8.5%;
+    }
+  }
+  .twitter-item {
+    min-height: 240px;
+    max-height: 270px;
+    .user {
+      .avatar {
+        margin-right: 5px;
+      }
+    }
+    .post {
+      margin-top: 10px;
+    }
+  }
+  .content-instagram {
+    height: 470px;
+    .item {
+      width: 38%;
+      margin-left: 7.5%;
+    }
+  }
+  .instagram-item {
+    margin-bottom: 200px;
+  }
+}
+@media (max-width:990px) {
+  .row-social-news {
+    margin-bottom: 40px;
+  }
+  .content-twitter {
+    height: 540px; /*590*/
+    .item {
+      width: 45%;
+      margin-left: 19.6px;
+    }
+  }
+  .twitter-item {
+    min-height: 240px;
+    max-height: 270px;
+    .user {
+      .avatar {
+        margin-right: 5px;
+      }
+    }
+    .post {
+      margin-top: 10px;
+    }
+  }
+  .content-instagram {
+    height: 450px;
+    .item {
+      width: 45%;
+      margin-left: 3.5%;
+    }
+  }
+  .instagram-item {
+    margin-bottom: 200px;
+  }
+}
+
+@media (max-width:760px) {
+  .content-twitter {
+    height: 740px; /*590*/
+    .item {
+      width: 40%;
+      margin-left: 7%;
+    }
+  }
+  .twitter-item {
+
+    max-height: 370px;
+    min-height: 320px;
+  }
+  .content-instagram {
+    height: 420px;
+    .item {
+      width: 40%;
+      margin-left: 7.5%;
+    }
+  }
+  .instagram-item {
+    margin-bottom: 200px;
+  }
+  
+}
+
+@media (max-width:540px) {
+  .social-container {
+    .arrows {
+      top: 120px;
+    }
+    .loader {
+      margin: 140px 43%;
+
+    }
+  }
+  .content-twitter {
+    height: 470px; /*590*/
+    .item {
+      width: 87%;
+      margin-left: 10%;
+    }
+  }
+  .twitter-item {
+    &:nth-child(2) {
+      margin-bottom: 300px;
+    }
+    margin-bottom: 30px;
+    max-height: none;
+    min-height: 0px;
+  }
+  .content-instagram {
+    height: 450px;
+    .item {
+      width: 70%;
+      margin-left: 15.5%;
+    }
+  }
+  .instagram-item {
+    margin-bottom: 200px;
+  }
+  
+  
+}
+
+@media (max-width:440px) {
+  .social-container {
+    .arrows {
+      top: 120px;
+    }
+    .loader {
+      margin: 140px 43%;
+
+    }
+  }
+  .content-twitter {
+    height: 590px; /*590*/
+    .item {
+      width: 87%;
+    }
+  }
+  .twitter-item {
+    &:nth-child(2) {
+      margin-bottom: 300px;
+    }
+    margin-bottom: 30px;
+    max-height: none;
+    min-height: 0px;
+  }  
+  .content-instagram {
+    height: 450px;
+    .item {
+      width: 85%;
+      margin-left: 7.5%;
+    }
+  }
+  .instagram-item {
+    margin-bottom: 200px;
+  }
+  
+}
+
