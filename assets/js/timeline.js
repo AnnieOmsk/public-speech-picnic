@@ -87,20 +87,14 @@ $(function(){
         var oldContainerSelector = "." + $(this).attr(CONTAINER_DIV);
         var newContainerSelector = "." + $(this).attr(HIDE_CONTAINER_DIV);
         $(newContainerSelector).animate({
-            opacity: 0,
-            marginLeft: "-=50px"
+            opacity: 0
         }, 500, function() {
             $(newContainerSelector).hide();
-            $(newContainerSelector).css({ marginLeft: "" });
             $(oldContainerSelector).css({ opacity: 0 });
-            $(oldContainerSelector).css({ position: "relative", left: "-50px" });
             $(oldContainerSelector).show();
             $(oldContainerSelector).animate({
-                opacity: 1,
-                marginLeft: "+=50px"
-            }, 500, function () {
-                $(oldContainerSelector).css({ position: "", marginLeft: "", left: "" });
-            })
+                opacity: 1
+            }, 500)
         });
 
         $(this).hide();
@@ -111,20 +105,14 @@ $(function(){
         var newContainerSelector = "." + $(this).attr(CONTAINER_DIV);
         var oldContainerSelector = "." + $(this).attr(HIDE_CONTAINER_DIV);
         $(oldContainerSelector).animate({
-            opacity: 0,
-            marginRight: "+=50px"
+            opacity: 0
         }, 500, function() {
             $(oldContainerSelector).hide();
-            $(oldContainerSelector).css({ marginRight: "" });
             $(newContainerSelector).css({ opacity: 0 });
-            $(newContainerSelector).css({ position: "relative", right: "50px" });
             $(newContainerSelector).show();
             $(newContainerSelector).animate({
-                opacity: 1,
-                marginRight: "-=50px"
-            }, 500, function() {
-                $(newContainerSelector).css({ position: "", marginRight: "", right: "" });
-            })
+                opacity: 1
+            }, 500)
         });
         $(this).hide();
         $(LEFT_ARROW_SELECTOR).show();
