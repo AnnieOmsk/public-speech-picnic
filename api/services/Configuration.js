@@ -6,7 +6,7 @@ exports.INSTAGRAM_SEARCH_COUNT = 10;
 // Instagram search by geo location
 exports.INSTAGRAM_GEO_LAT = 55.018737;
 exports.INSTAGRAM_GEO_LNG = 73.338377;
-exports.INSTAGRAM_GEO_DISTANCE = 1000; // Distance in metres, ~200 for production
+exports.INSTAGRAM_GEO_DISTANCE = 200; // Distance in metres, ~200 for production
 exports.INSTAGRAM_GEO_COUNT = 10;
 // Instagram total count limit
 exports.INSTAGRAM_COUNT = 30;

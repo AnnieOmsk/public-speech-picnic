@@ -91,6 +91,7 @@ Install NVM and node (look above). All actions below from nvm's node.
 Install sails and forever (look above).
 Install mysql and run create_db.sql, init.sql.
 Install redis and create local.js file by local.js.template.
+Change mysql credentials in admin/config/config.json
 Run app and admin with forever (look above). Create log folder for forever if you need.
 Check that there are no errors in log files.
 Install nginx and configure virtual host (see example from test server).
