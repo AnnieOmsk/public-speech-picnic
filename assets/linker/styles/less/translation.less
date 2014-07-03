@@ -24,7 +24,7 @@
         position: relative;
         .circle {
           position: absolute;
-          top:27px;
+          top:29px;
           right:-11px;
           width: 21px;
           height: 21px;
@@ -149,3 +149,50 @@ ul {
   }
 }
 
+@media (max-width:680px) {
+  .translation {
+    ul {
+      padding-left: 0px;
+    }
+    .reload {
+      margin-bottom: 40px;
+    }
+    ul {
+      li {
+        .news-info {
+          padding-right: 0px;
+          width: 25%;
+          .news-time {
+            padding-right: 15px;
+          
+            margin-bottom: 10px;
+          }
+          .news-author {
+            padding-right: 10px;
+            margin-bottom: 15px;
+            font-size: 12px;
+          }
+          .news-likes {
+            padding-right: 10px;
+          }
+        }
+        .news-content {
+          width: 75%;
+          .news-title {
+            margin-bottom: 15px;
+          }
+          .news-description {
+            margin-bottom: 10px;
+            .href {
+              margin-top: 10px;
+            }
+            .news-full {
+              margin-top: 10px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+}

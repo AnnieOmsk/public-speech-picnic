@@ -3,11 +3,11 @@
 .social-news {
   margin-bottom: 95px;
   h1 {
-    margin-bottom: 60px;
+    margin-bottom: 30px; /*60*/
   }
 }
 .container-social-switch {
-  margin-bottom: 30px;
+  // margin-bottom: 30px;
   .social-switch {
     a {
       margin-bottom: 30px;
@@ -16,6 +16,10 @@
       margin-bottom: 30px;
     }
   }
+}
+
+.social-btn-row {
+  margin-bottom: 30px;
 }
 
 .social-container {
@@ -129,7 +133,7 @@
 
 .social-switch {
   padding-top:60px;
-  padding-bottom: 45px;
+  // padding-bottom: 45px;
 }
 .hash-tag{
   color: @color-main;
@@ -307,6 +311,9 @@
 }
 
 @media (max-width:760px) {
+  .social-news {
+    padding-top: 40px;
+  }
   .content-twitter {
     height: 740px; /*590*/
     .item {
@@ -405,6 +412,17 @@
   .instagram-item {
     margin-bottom: 200px;
   }
-  
+  .social-switch {
+    padding-top: 20px;
+  }
+  .social-buttons {
+    // .pull-left;
+  }
+  .social-btn-row {
+    margin-top: 20px;
+    // .pull-right;
+  }
 }
 
+@media (max-width:360px) {
+}

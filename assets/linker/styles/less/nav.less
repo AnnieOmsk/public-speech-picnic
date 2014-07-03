@@ -15,6 +15,7 @@
           margin-left: -15px;
           // margin-right: -15px;
           .fixed-navbar {
+            margin-top: 15px;
             margin-bottom: 0px;
             height: inherit;
             .nav {
@@ -35,7 +36,7 @@
                     .img {
                       // margin: auto;
                       margin-left: auto;
-                      margin-right: auto:
+                      margin-right: auto;
                       float:none;
                     }
                   }
@@ -78,6 +79,7 @@
     .fixed-navbar {
       // .transition (all, 0.3s, linear);
       .navbar-nav{
+        padding-top: 10px;
         li {
           .text-center;
           a {
@@ -100,6 +102,7 @@
         }
       }
       .collapse.in, .collapsing {
+        margin-top: -35px;
         background-color: @color-light;
         .nav-shadow;
         padding-left: 15px;
@@ -118,14 +121,26 @@
   border: @color-main 2px solid;
 }
 
-@media (max-width:768px) {
+@media (max-width:767px) {
   .fixed-navbar-row {
-    height: 55px;
+    // height: 55px;
+    height: 5px;
     .navbar {
+      .navbar-header {
+        margin-top: -15px;
+      }
       margin-top: 5px;
       .navbar-toggle {
-        margin-top: 4px !important;
-        margin-bottom: 10px !important; 
+        // margin-top: 4px !important;
+        // margin-bottom: 10px !important; 
+        display: block;
+        width: 45px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: -10px !important;
+        float: none;
+        background-color: white;
+        z-index: 9999;
       }
     }
   }
