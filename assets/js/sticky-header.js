@@ -35,10 +35,11 @@ $(document).ready(function () {
                             .filter("[href=#"+id+"]").addClass("active-link");
                         } else {
                           $('.js-nav-fixed').removeClass('fixed');
-                          $('.js-social-news').removeClass('padding-top');
                           $('.js-nav-fixed').removeClass('nav-shadow');
+                          $('.js-social-news').removeClass('padding-top');
                         }
                 } else {
+                        $('.js-nav-fixed').removeClass('nav-shadow');
                         $('.js-nav-fixed').addClass('un-visible');
                 }
 

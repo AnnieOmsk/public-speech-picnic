@@ -180,19 +180,19 @@ a {
 
 .visible {
   .transition (all, 0.3s, linear);
-  // visibility: visible;
+  visibility: visible;
   opacity:1;
 }
 .un-visible {
   .transition (all, 0.3s, linear);
   opacity:0;
-  // visibility: hidden;
+  visibility: hidden;
 }
 
 .fixed {
   position: fixed;
   z-index: 9999;
-  width: 100%;
+  // width: 100%;
   top: 0;
 }
 
@@ -354,7 +354,21 @@ a {
   .padding-top {
     padding-top: 40px;
   }
-  
+  h1 {
+    font-size: 28px;
+  }
+
+  .main-font-size {
+    font-size: 20px;
+  }
+  .reload {
+    .reload-btn {
+      font-size: 13px;
+    }
+  }
+  .help {
+    font-size: 20px;
+  }
 }
 @media (max-width:768px) {
   .arrow-left {
@@ -363,4 +377,5 @@ a {
   .arrow-right {
     right: 10px;
   }
+
 }

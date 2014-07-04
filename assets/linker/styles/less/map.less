@@ -1,5 +1,5 @@
 .title-map {
-	font-size: 36px;
+	// font-size: 36px;
 	position: relative;
 	z-index: 999;
 	margin-bottom: 10px;
@@ -20,5 +20,30 @@
       font-size: 19px;
 
     }
+  }
+}
+
+@media (min-width : 768px) 
+and (max-width : 1024px) { 
+  .map-row {
+    padding-top: 70px;
+  }
+  .map-content {
+    height: 465px !important;
+  }
+}
+
+@media (min-width : 320px) 
+and (max-width : 767px) { 
+  .map-row {
+    padding-top: 70px;
+  }
+  .map-content {
+    height: 365px !important;
+  }
+}
+@media (max-height : 600px) { 
+  .map-content {
+    height: 265px !important;
   }
 }

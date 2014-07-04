@@ -74,12 +74,16 @@
   top:0px;
   height: 90px;
   width:155px;
+  .vk {
+    margin-left: 6px;
+  }
   .tw {
-    margin-left: 15px;
-    margin-right: 15px;
+    margin-left: 8px;
+    margin-right: 10px;
+    margin-top: -1px;
   }
   .fb {
-    margin-top: -3px;
+    margin-top: -5px;
   }
 }
 
@@ -224,7 +228,7 @@
   .img.fb {
     .social-ico(14px, 26px);
     background: url('../../images/social.png');
-    background-position: -93px 0;
+    background-position: -92px 0;
     background-repeat: no-repeat;
     background-size:cover;
   }
@@ -275,7 +279,7 @@
 @media (max-width:1024px) {
   .social-link-block {
     .title {
-      font-size: 14px;
+      font-size: 15px;
     }
   }
   
@@ -302,16 +306,49 @@
       margin-top: 20px;
       margin-bottom: 60px;
   }
+  .logo {
+    .parthners {
+      .sevenbits {
+        img {
+         margin-left: -20px;
+        }
+      }
+    }
+  }
 
 }
 @media (max-width: 600px) {
+    .promo {
+      .navbar {
+        margin-bottom: 10px;
+      }
+    }
     .logo {
       .event-title {
         margin-bottom: 140px;
+      }
+      .parthners {
+        .sevenbits {
+          img {
+            margin-left: auto;
+          }
+        }
       }
     }
     .social-link-block {
       left: 15px;
       top: 150px;
     }
+}
+
+@media (max-width:540px) {
+  .logo {
+    .parthners {
+      .sevenbits {
+        img {
+          width: 95%;
+        }
+      }
+    }
+  }
 }
