@@ -69,10 +69,12 @@
     .img {
       .transition (all, 0.3s, linear);
       .social-ico(37px,37px);
-      background-image: url('../../images/up-arrow.png');
+      background-size: cover;
+      background-image: url('../../images/up-arrow@2.png');
       &:hover {
         .transition (all, 0.3s, linear);
-        background-image: url('../../images/up-arrow-hovered.png');
+        background-size: cover;
+        background-image: url('../../images/up-arrow-hovered@2.png');
       }
     }
   }
@@ -174,3 +176,19 @@ and (max-width : 1365px) {
   }
 
 }
+
+// @media only screen and (-webkit-min-device-pixel-ratio: 1.5),
+//   only screen and (min-resolution: 2dppx) {
+//     .fixed-navbar-row {
+//       .up-arrow {
+//         .img {
+//           background-size: cover;
+//           background-image: url('../../images/up-arrow@2.png');
+//           &:hover {
+//             background-size: cover;
+//             background-image: url('../../images/up-arrow-hovered@2.png');
+//           }
+//         }
+//       }
+//     }
+//   }
