@@ -1,5 +1,5 @@
 $(function() {
-    var picnicMap, border, cafe;
+    var picnicMap;
     function init() {
         picnicMap = new ymaps.Map("map", {
             center: [55.018737, 73.338377],
@@ -202,83 +202,213 @@ $(function() {
                 strokeWidth: 2
             });
 
-        cafe = new ymaps.Placemark([55.018344, 73.33375], {
-                balloonContent: 'Тут можно поесть'
-            },
-            {
-                iconLayout: 'default#image',
-                iconImageHref: 'images/map/cafe.png',
-                iconImageSize: [43, 30],
-                hideIconOnBalloonOpen: false,
-                iconImageOffset: [-21, -15]
-            });
-
-        big_music_scene = new ymaps.Placemark([55.018685, 73.338088], {
-                balloonContent: '<span class="title">Большая музыкальная сцена</span>'
-            });
-
-        sign_picnic = new ymaps.Placemark([55.018771, 73.338549], {
-                balloonContent: '<span class="title">Надпись Пикник</span>'
-            });
-
-        souvenirs = new ymaps.Placemark([55.018404, 73.338721], {
-            balloonContent: 'Здесь выдают сувениры :)'
-        });
-
-        zmei_om1 = new ymaps.Placemark([55.018537, 73.338377], {
-            balloonContent: '<span class="title">Воздушные змеи Ом1</span>'
-        });
-
-        fresbie = new ymaps.Placemark([55.018873, 73.338318], {
-            balloonContent: '<span class="title">Фрисби</span><br/>Кидать диск – это искусство. Командная игра алтимат.'
-        });
-
-        plenair = new ymaps.Placemark([55.019095, 73.338372], {
-            balloonContent: '<span class="title">Пленэр</span>'
-        });
-
-        doublegis = new ymaps.Placemark([55.019227, 73.338318], {
+        doublegis = new ymaps.Placemark([55.01938419369829, 73.33849502579444], {
             balloonContent: '<span class="title">Дубльгис</span>'
+        }, {
+            draggable: false,
+            iconLayout: 'default#image',
+            iconImageHref: 'images/map/2gis.png',
+            iconImageSize: [55, 23],
+            hideIconOnBalloonOpen: false,
+            iconImageOffset: [-27, -12]
         });
 
-        interactive_map = new ymaps.Placemark([55.018414, 73.338141], {
-            balloonContent: '<span class="title">Интерактивная карта Омска</span>'
+        aiesec = new ymaps.Placemark([55.01850879778436, 73.3373638022367], {
+            balloonContent: '<span class="title">Aiesec</span>'
+        }, {
+            draggable: false,
+            iconLayout: 'default#image',
+            iconImageHref: 'images/map/aiesec.png',
+            iconImageSize: [64, 16],
+            hideIconOnBalloonOpen: false,
+            iconImageOffset: [-32, -8]
         });
 
-        bubbles = new ymaps.Placemark([55.018264, 73.338528], {
+        avangard = new ymaps.Placemark([55.01922434546349, 73.33828580489288], {
+            balloonContent: '<span class="title">Авангард</span>'
+        }, {
+            draggable: false,
+            iconLayout: 'default#image',
+            iconImageHref: 'images/map/avangard.png',
+            iconImageSize: [43, 36],
+            hideIconOnBalloonOpen: false,
+            iconImageOffset: [-21, -18]
+        });
+
+        bike = new ymaps.Placemark([55.01846613816848, 73.33961082474424], {
+            balloonContent: '<span class="title">Велосипед</span>'
+        }, {
+            draggable: false,
+            iconLayout: 'default#image',
+            iconImageHref: 'images/map/bike.png',
+            iconImageSize: [44, 29],
+            hideIconOnBalloonOpen: false,
+            iconImageOffset: [-22, -14]
+        });
+
+        book = new ymaps.Placemark([55.018127160893364, 73.33889771296607], {
+            balloonContent: '<span class="title">Книга</span>'
+        }, {
+            draggable: false,
+            iconLayout: 'default#image',
+            iconImageHref: 'images/map/book.png',
+            iconImageSize: [27, 24],
+            hideIconOnBalloonOpen: false,
+            iconImageOffset: [-13, -12]
+        });
+
+        brain = new ymaps.Placemark([55.01976710786561, 73.33863452645697], {
+            balloonContent: '<span class="title">Мозги</span>'
+        }, {
+            draggable: false,
+            iconLayout: 'default#image',
+            iconImageHref: 'images/map/brain.png',
+            iconImageSize: [32, 28],
+            hideIconOnBalloonOpen: false,
+            iconImageOffset: [-16, -14]
+        });
+
+        bubble = new ymaps.Placemark([55.01828865841217, 73.3386299239425], {
             balloonContent: '<span class="title">Баблы</span>'
+        }, {
+            draggable: false,
+            iconLayout: 'default#image',
+            iconImageHref: 'images/map/bubble.png',
+            iconImageSize: [25, 25],
+            hideIconOnBalloonOpen: false,
+            iconImageOffset: [-12, -12]
         });
 
-        fremarket = new ymaps.Placemark([55.018147, 73.338791], {
-            balloonContent: '<span class="title">Фримаркет и Буккроссинг</span>'
+        coffee = new ymaps.Placemark([55.01833193873482, 73.33962248479394], {
+            balloonContent: '<span class="title">Кофе</span>'
+        }, {
+            draggable: false,
+            iconLayout: 'default#image',
+            iconImageHref: 'images/map/coffee.png',
+            iconImageSize: [30, 38],
+            hideIconOnBalloonOpen: false,
+            iconImageOffset: [-15, -19]
         });
 
-        picnic_dom = new ymaps.Placemark([55.018517, 73.339155], {
-            balloonContent: '<span class="title">Пикник с «Домашним»</span>'
+        dance = new ymaps.Placemark([55.01870501929139, 73.33920327976189], {
+            balloonContent: '<span class="title">Танцы</span>'
+        }, {
+            draggable: false,
+            iconLayout: 'default#image',
+            iconImageHref: 'images/map/dance.png',
+            iconImageSize: [45, 52],
+            hideIconOnBalloonOpen: false,
+            iconImageOffset: [-22, -26]
         });
 
-        free_bike = new ymaps.Placemark([55.018668, 73.339515], {
-            balloonContent: '<span class="title">Бесплатный Велопрокат</span>'
+        dance_exotic = new ymaps.Placemark([55.018874512217515, 73.33945599140127], {
+            balloonContent: '<span class="title">Экзотические танцы</span>'
+        }, {
+            draggable: false,
+            iconLayout: 'default#image',
+            iconImageHref: 'images/map/dance_exotic.png',
+            iconImageSize: [25, 51],
+            hideIconOnBalloonOpen: false,
+            iconImageOffset: [-12, -25]
         });
 
-        priyut_drug = new ymaps.Placemark([55.018021, 73.338962], {
-            balloonContent: '<span class="title">Приют «Друг»</span>'
+        dance_hand = new ymaps.Placemark([55.018588144868275, 73.33938042460522], {
+            balloonContent: '<span class="title">Танец руки</span>'
+        }, {
+            draggable: false,
+            iconLayout: 'default#image',
+            iconImageHref: 'images/map/dance_hand.png',
+            iconImageSize: [37, 39],
+            hideIconOnBalloonOpen: false,
+            iconImageOffset: [-18, -19]
         });
 
-//        picnicMap.geoObjects.add(cafe);
-        picnicMap.geoObjects.add(big_music_scene);
-        picnicMap.geoObjects.add(sign_picnic);
-        picnicMap.geoObjects.add(souvenirs);
-        picnicMap.geoObjects.add(zmei_om1);
-        picnicMap.geoObjects.add(fresbie);
-        picnicMap.geoObjects.add(plenair);
+        dance_stepball = new ymaps.Placemark([55.01908747302719, 73.33941109458064], {
+            balloonContent: '<span class="title">Танец ноги-мяч</span>'
+        }, {
+            draggable: true,
+            iconLayout: 'default#image',
+            iconImageHref: 'images/map/dance_stepball.png',
+            iconImageSize: [28, 44],
+            hideIconOnBalloonOpen: false,
+            iconImageOffset: [-14, -22]
+        });
+
+        food = new ymaps.Placemark([55.01831073795223, 73.3392110945804], {
+            balloonContent: '<span class="title">Еда</span>'
+        }, {
+            draggable: false,
+            iconLayout: 'default#image',
+            iconImageHref: 'images/map/food.png',
+            iconImageSize: [43, 30],
+            hideIconOnBalloonOpen: false,
+            iconImageOffset: [-21, -15]
+        });
+
+        freesby = new ymaps.Placemark([55.018985758645265, 73.3385658478846], {
+            balloonContent: '<span class="title">Фрисби</span>'
+        }, {
+            draggable: false,
+            iconLayout: 'default#image',
+            iconImageHref: 'images/map/freesby.png',
+            iconImageSize: [46, 47],
+            hideIconOnBalloonOpen: false,
+            iconImageOffset: [-23, -23]
+        });
+
+        friend = new ymaps.Placemark([55.018054905208565, 73.33905785780956], {
+            balloonContent: '<span class="title">Приют "Друг"</span>'
+        }, {
+            draggable: false,
+            iconLayout: 'default#image',
+            iconImageHref: 'images/map/friend.png',
+            iconImageSize: [26, 25],
+            hideIconOnBalloonOpen: false,
+            iconImageOffset: [-13, -12]
+        });
+
+        iskusstvo = new ymaps.Placemark([55.01802846788301, 73.33806654232743], {
+                balloonContent: '<span class="title">искусство</span><br/>' +
+                    'Выставка музея искусств Омска "Новый год круглый год"<br/>' +
+                    'Бабушка Ия и её клоуны<br/>' +
+                    'Инсталляция Сергея Баранова "Черви"<br/>' +
+                    'Выставка Сергея Баранова "Улица Либкнехта"<br/>' +
+                    'Фотовыставка Рената Латышева "Smena8"<br/>' +
+                    'Выставка Вышки "Медиа через призму искусства"'
+            }, {
+            draggable: false,
+            iconLayout: 'default#image',
+            iconImageHref: 'images/map/gallery.png',
+            iconImageSize: [44, 37],
+            hideIconOnBalloonOpen: false,
+            iconImageOffset: [-21, -15]
+        });
+
+        picnic_sign = new ymaps.Placemark([55.01875558855035, 73.33862946627025], {}, {
+            draggable: false,
+            iconLayout: 'default#image',
+            iconImageHref: 'images/map/picnic.png',
+            iconImageSize: [85, 91],
+            hideIconOnBalloonOpen: false
+        });
+
+        picnicMap.geoObjects.add(iskusstvo);
+        picnicMap.geoObjects.add(picnic_sign);
+        picnicMap.geoObjects.add(aiesec);
+        picnicMap.geoObjects.add(avangard);
+        picnicMap.geoObjects.add(bike);
+        picnicMap.geoObjects.add(book);
         picnicMap.geoObjects.add(doublegis);
-        picnicMap.geoObjects.add(interactive_map);
-        picnicMap.geoObjects.add(bubbles);
-        picnicMap.geoObjects.add(fremarket);
-        picnicMap.geoObjects.add(picnic_dom);
-        picnicMap.geoObjects.add(free_bike);
-        picnicMap.geoObjects.add(priyut_drug);
+        picnicMap.geoObjects.add(brain);
+        picnicMap.geoObjects.add(bubble);
+        picnicMap.geoObjects.add(dance);
+        picnicMap.geoObjects.add(dance_exotic);
+        picnicMap.geoObjects.add(coffee);
+        picnicMap.geoObjects.add(dance_hand);
+        picnicMap.geoObjects.add(dance_stepball);
+        picnicMap.geoObjects.add(food);
+        picnicMap.geoObjects.add(freesby);
+        picnicMap.geoObjects.add(friend);
         picnicMap.geoObjects.add(zone_intellect);
         picnicMap.geoObjects.add(zone_sport);
         picnicMap.geoObjects.add(zone_vistavka);
@@ -289,6 +419,17 @@ $(function() {
         picnicMap.geoObjects.add(zone_food);
         picnicMap.geoObjects.add(zone_all);
         picnicMap.geoObjects.add(zone_deti);
+
+        var placemarkCoords = function(event){
+            var coords = event.originalEvent.target.geometry.getCoordinates();
+            alert('[' + coords['0'] + ', ' + coords['1'] + ']');
+        };
+
+        dance_hand.events.add("dragend", placemarkCoords);
+        dance_stepball.events.add("dragend", placemarkCoords);
+        food.events.add("dragend", placemarkCoords);
+        freesby.events.add("dragend", placemarkCoords);
+        friend.events.add("dragend", placemarkCoords);
 
         var alertCoordinates = function (obj) {
             var coordinates = obj.geometry.getCoordinates()[0];
