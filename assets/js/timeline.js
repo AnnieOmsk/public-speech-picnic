@@ -81,6 +81,7 @@ $(function(){
         timeline.setGroups(groups);
         timeline.setItems(items);
         timeline.setOptions(options);
+        addPopovers();
         timeline.on('rangechanged', addPopovers);
     };
 
