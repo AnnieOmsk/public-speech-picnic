@@ -367,21 +367,175 @@ $(function() {
             iconImageOffset: [-13, -12]
         });
 
-        iskusstvo = new ymaps.Placemark([55.01802846788301, 73.33806654232743], {
-                balloonContent: '<span class="title">искусство</span><br/>' +
-                    'Выставка музея искусств Омска "Новый год круглый год"<br/>' +
-                    'Бабушка Ия и её клоуны<br/>' +
-                    'Инсталляция Сергея Баранова "Черви"<br/>' +
-                    'Выставка Сергея Баранова "Улица Либкнехта"<br/>' +
-                    'Фотовыставка Рената Латышева "Smena8"<br/>' +
-                    'Выставка Вышки "Медиа через призму искусства"'
-            }, {
+        gallery = new ymaps.Placemark([55.01802846788301, 73.33806654232743], {
+            balloonContent: '<span class="title">искусство</span><br/>' +
+                'Выставка музея искусств Омска "Новый год круглый год"<br/>' +
+                'Бабушка Ия и её клоуны<br/>' +
+                'Инсталляция Сергея Баранова "Черви"<br/>' +
+                'Выставка Сергея Баранова "Улица Либкнехта"<br/>' +
+                'Фотовыставка Рената Латышева "Smena8"<br/>' +
+                'Выставка Вышки "Медиа через призму искусства"'
+        }, {
             draggable: false,
             iconLayout: 'default#image',
             iconImageHref: 'images/map/gallery.png',
             iconImageSize: [44, 37],
             hideIconOnBalloonOpen: false,
             iconImageOffset: [-21, -15]
+        });
+
+        gallery_small = new ymaps.Placemark([55.018357548981605, 73.33769603900792], {
+            balloonContent: '<span class="title">Галлерея маленькая</span>'
+        }, {
+            draggable: false,
+            iconLayout: 'default#image',
+            iconImageHref: 'images/map/gallery_small.png',
+            iconImageSize: [34, 29],
+            hideIconOnBalloonOpen: false,
+            iconImageOffset: [-17, -14]
+        });
+
+        game = new ymaps.Placemark([55.01963976870082, 73.33848076057302], {
+            balloonContent: '<span class="title">Игра</span>'
+        }, {
+            draggable: false,
+            iconLayout: 'default#image',
+            iconImageHref: 'images/map/game.png',
+            iconImageSize: [43, 25],
+            hideIconOnBalloonOpen: false,
+            iconImageOffset: [-21, -12]
+        });
+
+        home = new ymaps.Placemark([55.01843460673185, 73.33921183795884], {
+            balloonContent: '<span class="title">Домашний</span>'
+        }, {
+            draggable: false,
+            iconLayout: 'default#image',
+            iconImageHref: 'images/map/home.png',
+            iconImageSize: [54, 32],
+            hideIconOnBalloonOpen: false,
+            iconImageOffset: [-27, -16]
+        });
+
+        jam = new ymaps.Placemark([55.02007127541803, 73.33895586242458], {
+            balloonContent: '<span class="title">Джэм</span>'
+        }, {
+            draggable: false,
+            iconLayout: 'default#image',
+            iconImageHref: 'images/map/jam.png',
+            iconImageSize: [28, 50],
+            hideIconOnBalloonOpen: false,
+            iconImageOffset: [-14, -25]
+        });
+
+        kids = new ymaps.Placemark([55.017849629541445, 73.3385675191869], {
+            balloonContent: '<span class="title">Дети</span>'
+        }, {
+            draggable: false,
+            iconLayout: 'default#image',
+            iconImageHref: 'images/map/kids.png',
+            iconImageSize: [36, 31],
+            hideIconOnBalloonOpen: false,
+            iconImageOffset: [-18, -15]
+        });
+
+        kite = new ymaps.Placemark([55.01853698714967, 73.33856367130157], {
+            balloonContent: '<span class="title">Воздушные Змеи</span>'
+        }, {
+            draggable: false,
+            iconLayout: 'default#image',
+            iconImageHref: 'images/map/kite.png',
+            iconImageSize: [36, 35],
+            hideIconOnBalloonOpen: false,
+            iconImageOffset: [-18, -17]
+        });
+
+        mafia = new ymaps.Placemark([55.01990550254291, 73.33876903572023], {
+            balloonContent: '<span class="title">Мафия</span>'
+        }, {
+            draggable: false,
+            iconLayout: 'default#image',
+            iconImageHref: 'images/map/mafia.png',
+            iconImageSize: [31, 30],
+            hideIconOnBalloonOpen: false,
+            iconImageOffset: [-15, -15]
+        });
+
+        map_icon = new ymaps.Placemark([55.018512328944, 73.33831994113856], {
+            balloonContent: '<span class="title">Карта</span>'
+        }, {
+            draggable: false,
+            iconLayout: 'default#image',
+            iconImageHref: 'images/map/map.png',
+            iconImageSize: [38, 32],
+            hideIconOnBalloonOpen: false,
+            iconImageOffset: [-19, -16]
+        });
+
+        market = new ymaps.Placemark([55.018139369039986, 73.33858967857257], {
+            balloonContent: '<span class="title">Рынок</span>'
+        }, {
+            draggable: false,
+            iconLayout: 'default#image',
+            iconImageHref: 'images/map/market.png',
+            iconImageSize: [37, 37],
+            hideIconOnBalloonOpen: false,
+            iconImageOffset: [-16, -16]
+        });
+
+        medic = new ymaps.Placemark([55.018347250772166, 73.33804028968605], {
+            balloonContent: '<span class="title">Медики</span>'
+        }, {
+            draggable: false,
+            iconLayout: 'default#image',
+            iconImageHref: 'images/map/medic.png',
+            iconImageSize: [25, 25],
+            hideIconOnBalloonOpen: false,
+            iconImageOffset: [-12, -12]
+        });
+
+        mobile = new ymaps.Placemark([55.01826847790539, 73.33738583068825], {
+            balloonContent: '<span class="title">Мобила</span>'
+        }, {
+            draggable: false,
+            iconLayout: 'default#image',
+            iconImageHref: 'images/map/mobile.png',
+            iconImageSize: [23, 34],
+            hideIconOnBalloonOpen: false,
+            iconImageOffset: [-11, -17]
+        });
+
+        mosgame = new ymaps.Placemark([55.019533574019704, 73.33845871429277], {
+            balloonContent: '<span class="title">Мосигра</span>'
+        }, {
+            draggable: false,
+            iconLayout: 'default#image',
+            iconImageHref: 'images/map/mosgame.png',
+            iconImageSize: [81, 10],
+            hideIconOnBalloonOpen: false,
+            iconImageOffset: [-40, -5]
+        });
+
+        music = new ymaps.Placemark([55.01877670881489, 73.33833533267871], {
+            balloonContent: '<span class="title">Музыка</span>'
+        }, {
+            draggable: false,
+            iconLayout: 'default#image',
+            iconImageHref: 'images/map/music.png',
+            iconImageSize: [45, 49],
+            hideIconOnBalloonOpen: false,
+            iconImageOffset: [-22, -24]
+        });
+
+        org = new ymaps.Placemark([55.01843902430899, 73.33797591667044], {
+            balloonContent: '<span class="title">Организаторы</span>'
+        }, {
+            draggable: false,
+            iconLayout: 'default#image',
+            iconImageHref: 'images/map/org.png',
+            iconImageSize: [29, 32],
+            hideIconOnBalloonOpen: false,
+            iconImageOffset: [-14, -16]
         });
 
         picnic_sign = new ymaps.Placemark([55.01875558855035, 73.33862946627025], {}, {
@@ -391,8 +545,16 @@ $(function() {
             iconImageSize: [85, 91],
             hideIconOnBalloonOpen: false
         });
-
-        picnicMap.geoObjects.add(iskusstvo);
+        picnicMap.geoObjects.add(zone_all);
+        picnicMap.geoObjects.add(zone_intellect);
+        picnicMap.geoObjects.add(zone_sport);
+        picnicMap.geoObjects.add(zone_vistavka);
+        picnicMap.geoObjects.add(zone_theatre);
+        picnicMap.geoObjects.add(zone_market);
+        picnicMap.geoObjects.add(zone_art);
+        picnicMap.geoObjects.add(zone_study);
+        picnicMap.geoObjects.add(zone_food);
+        picnicMap.geoObjects.add(zone_deti);
         picnicMap.geoObjects.add(picnic_sign);
         picnicMap.geoObjects.add(aiesec);
         picnicMap.geoObjects.add(avangard);
@@ -409,27 +571,31 @@ $(function() {
         picnicMap.geoObjects.add(food);
         picnicMap.geoObjects.add(freesby);
         picnicMap.geoObjects.add(friend);
-        picnicMap.geoObjects.add(zone_intellect);
-        picnicMap.geoObjects.add(zone_sport);
-        picnicMap.geoObjects.add(zone_vistavka);
-        picnicMap.geoObjects.add(zone_theatre);
-        picnicMap.geoObjects.add(zone_market);
-        picnicMap.geoObjects.add(zone_art);
-        picnicMap.geoObjects.add(zone_study);
-        picnicMap.geoObjects.add(zone_food);
-        picnicMap.geoObjects.add(zone_all);
-        picnicMap.geoObjects.add(zone_deti);
-
+        picnicMap.geoObjects.add(gallery);
+        picnicMap.geoObjects.add(gallery_small);
+        picnicMap.geoObjects.add(game);
+        picnicMap.geoObjects.add(home);
+        picnicMap.geoObjects.add(jam);
+        picnicMap.geoObjects.add(kids);
+        picnicMap.geoObjects.add(kite);
+        picnicMap.geoObjects.add(mafia);
+        picnicMap.geoObjects.add(map_icon);
+        picnicMap.geoObjects.add(market);
+        picnicMap.geoObjects.add(medic);
+        picnicMap.geoObjects.add(mobile);
+        picnicMap.geoObjects.add(mosgame);
+        picnicMap.geoObjects.add(music);
+        picnicMap.geoObjects.add(org);
         var placemarkCoords = function(event){
             var coords = event.originalEvent.target.geometry.getCoordinates();
             alert('[' + coords['0'] + ', ' + coords['1'] + ']');
         };
 
-        dance_hand.events.add("dragend", placemarkCoords);
-        dance_stepball.events.add("dragend", placemarkCoords);
-        food.events.add("dragend", placemarkCoords);
-        freesby.events.add("dragend", placemarkCoords);
-        friend.events.add("dragend", placemarkCoords);
+        medic.events.add("dragend", placemarkCoords);
+        mobile.events.add("dragend", placemarkCoords);
+        mosgame.events.add("dragend", placemarkCoords);
+        music.events.add("dragend", placemarkCoords);
+        org.events.add("dragend", placemarkCoords);
 
         var alertCoordinates = function (obj) {
             var coordinates = obj.geometry.getCoordinates()[0];
