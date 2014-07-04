@@ -88,8 +88,11 @@ $(function(){
         var obj = $('.timeline-popover');
         if (obj.length > 0) {
             obj.popover({
-                content: "test",
-                template: '<div class="popover" role="tooltip" style="z-index: 1001"><div class="arrow"></div><div class="popover-content"></div></div>',
+                content: function () {
+                    var descriptionId = $(this).attr('data-bubble');
+                    return $("#" + descriptionId).html();
+                },
+                template: '<div class="popover" role="tooltip"><div class="arrow"></div><div class="popover-content"></div></div>',
                 placement: 'top',
                 animation: true
             });
