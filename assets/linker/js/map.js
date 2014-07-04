@@ -1,5 +1,5 @@
 $(function() {
-    var picnicMap, border, cafe;
+    var picnicMap;
     function init() {
         picnicMap = new ymaps.Map("map", {
             center: [55.018737, 73.338377],
@@ -205,7 +205,7 @@ $(function() {
             });
 
         doublegis = new ymaps.Placemark([55.01938419369829, 73.33849502579444], {
-            balloonContent: '<span class="title">Дубльгис</span>'
+            balloonContent: '<span class="title">Дубль гис</span>'
         }, {
             draggable: false,
             iconLayout: 'default#image',
@@ -238,7 +238,7 @@ $(function() {
         });
 
         bike = new ymaps.Placemark([55.01846613816848, 73.33961082474424], {
-            balloonContent: '<span class="title">Велосипед</span>'
+            balloonContent: '<span class="title">Бесплатный велопрокат</span>'
         }, {
             draggable: false,
             iconLayout: 'default#image',
@@ -262,7 +262,7 @@ $(function() {
         });
 
         brain = new ymaps.Placemark([55.01976710786561, 73.33863452645697], {
-            balloonContent: '<span class="title">Мозги</span>'
+            balloonContent: '<span class="title">Интеллектуальные игры</span>'
         }, {
             draggable: false,
             iconLayout: 'default#image',
@@ -284,7 +284,7 @@ $(function() {
         });
 
         coffee_enter = new ymaps.Placemark([55.01833193873482, 73.33962248479394], {
-            balloonContent: '<span class="title">Кофе</span>'
+            balloonContent: '<span class="title">Кофемашина</span>'
         }, {
             draggable: false,
             iconLayout: 'default#image',
@@ -295,7 +295,7 @@ $(function() {
         });
 
         coffee_vistavka = new ymaps.Placemark([55.01800212975006, 73.33931183795806], {
-            balloonContent: '<span class="title">Кофе</span>'
+            balloonContent: '<span class="title">Кофемашина</span>'
         }, {
             draggable: false,
             iconLayout: 'default#image',
@@ -306,7 +306,7 @@ $(function() {
         });
 
         coffee_ps = new ymaps.Placemark([55.019339841171885, 73.33927580356493], {
-            balloonContent: '<span class="title">Кофе</span>'
+            balloonContent: '<span class="title">Кофемашина</span>'
         }, {
             draggable: false,
             iconLayout: 'default#image',
@@ -317,7 +317,7 @@ $(function() {
         });
 
         dance = new ymaps.Placemark([55.01870501929139, 73.33920327976189], {
-            balloonContent: '<span class="title">Танцы</span>'
+            balloonContent: '<span class="title">Танцевальная площадка</span>'
         }, {
             draggable: false,
             iconLayout: 'default#image',
@@ -328,7 +328,7 @@ $(function() {
         });
 
         dance_exotic = new ymaps.Placemark([55.018874512217515, 73.33945599140127], {
-            balloonContent: '<span class="title">Экзотические танцы</span>'
+            balloonContent: '<span class="title">Exotic dance hall</span>'
         }, {
             draggable: false,
             iconLayout: 'default#image',
@@ -339,7 +339,7 @@ $(function() {
         });
 
         dance_hand = new ymaps.Placemark([55.018588144868275, 73.33938042460522], {
-            balloonContent: '<span class="title">Танец руки</span>'
+            balloonContent: '<span class="title">Ноги в руки</span>'
         }, {
             draggable: false,
             iconLayout: 'default#image',
@@ -350,7 +350,7 @@ $(function() {
         });
 
         dance_stepball = new ymaps.Placemark([55.01908747302719, 73.33941109458064], {
-            balloonContent: '<span class="title">Танец ноги-мяч</span>'
+            balloonContent: '<span class="title">Слепбол</span>'
         }, {
             draggable: true,
             iconLayout: 'default#image',
@@ -376,7 +376,7 @@ $(function() {
         });
 
         food_iskusstvo = new ymaps.Placemark([55.018175115483274, 73.33815009059714], {
-            balloonContent: '<span class="title">Еда</span>'
+            balloonContent: '<span class="title">Печки-лавочки</span>'
         }, {
             draggable: false,
             iconLayout: 'default#image',
@@ -429,7 +429,7 @@ $(function() {
         });
 
         gallery = new ymaps.Placemark([55.01802846788301, 73.33806654232743], {
-            balloonContent: '<span class="title">искусство</span><br/>' +
+            balloonContent: '<span class="title">Искусство</span><br/>' +
                 'Выставка музея искусств Омска "Новый год круглый год"<br/>' +
                 'Бабушка Ия и её клоуны<br/>' +
                 'Инсталляция Сергея Баранова "Черви"<br/>' +
@@ -460,7 +460,7 @@ $(function() {
         });
 
         gallery_small = new ymaps.Placemark([55.018357548981605, 73.33769603900792], {
-            balloonContent: '<span class="title">Галлерея маленькая</span>'
+            balloonContent: '<span class="title">Фотовыставка семейной фотографии</span>'
         }, {
             draggable: false,
             iconLayout: 'default#image',
@@ -471,7 +471,7 @@ $(function() {
         });
 
         game = new ymaps.Placemark([55.01963976870082, 73.33848076057302], {
-            balloonContent: '<span class="title">Игра</span>'
+            balloonContent: '<span class="title">Игротека прайм тайм</span>'
         }, {
             draggable: false,
             iconLayout: 'default#image',
@@ -482,7 +482,7 @@ $(function() {
         });
 
         home = new ymaps.Placemark([55.01843460673185, 73.33921183795884], {
-            balloonContent: '<span class="title">Домашний</span>'
+            balloonContent: '<span class="title">Пикник с "Домашним"</span>'
         }, {
             draggable: false,
             iconLayout: 'default#image',
@@ -493,7 +493,7 @@ $(function() {
         });
 
         jam = new ymaps.Placemark([55.02007127541803, 73.33895586242458], {
-            balloonContent: '<span class="title">Джэм</span>'
+            balloonContent: '<span class="title">Джем-сцена</span>'
         }, {
             draggable: false,
             iconLayout: 'default#image',
@@ -519,7 +519,7 @@ $(function() {
         });
 
         kite = new ymaps.Placemark([55.01853698714967, 73.33856367130157], {
-            balloonContent: '<span class="title">Воздушные Змеи</span>'
+            balloonContent: '<span class="title">Змеи om1</span>'
         }, {
             draggable: false,
             iconLayout: 'default#image',
@@ -541,7 +541,8 @@ $(function() {
         });
 
         map_icon = new ymaps.Placemark([55.018512328944, 73.33831994113856], {
-            balloonContent: '<span class="title">Карта</span>'
+            balloonContent: '<span class="title">Карта</span><br/>' +
+                'Интерактивная карта от журнала класс и йополиса'
         }, {
             draggable: false,
             iconLayout: 'default#image',
@@ -552,7 +553,7 @@ $(function() {
         });
 
         market = new ymaps.Placemark([55.018139369039986, 73.33858967857257], {
-            balloonContent: '<span class="title">Рынок</span>'
+            balloonContent: '<span class="title">Маркет</span>'
         }, {
             draggable: false,
             iconLayout: 'default#image',
@@ -563,7 +564,7 @@ $(function() {
         });
 
         medic = new ymaps.Placemark([55.018347250772166, 73.33804028968605], {
-            balloonContent: '<span class="title">Медики</span>'
+            balloonContent: '<span class="title">Аптечка</span>'
         }, {
             draggable: false,
             iconLayout: 'default#image',
@@ -574,7 +575,7 @@ $(function() {
         });
 
         mobile = new ymaps.Placemark([55.01826847790539, 73.33738583068825], {
-            balloonContent: '<span class="title">Мобила</span>'
+            balloonContent: '<span class="title">Мобильные приложения</span>'
         }, {
             draggable: false,
             iconLayout: 'default#image',
@@ -585,7 +586,7 @@ $(function() {
         });
 
         mosgame = new ymaps.Placemark([55.019533574019704, 73.33845871429277], {
-            balloonContent: '<span class="title">Мосигра</span>'
+            balloonContent: '<span class="title">Игротека Мосигра</span>'
         }, {
             draggable: false,
             iconLayout: 'default#image',
@@ -596,7 +597,7 @@ $(function() {
         });
 
         music = new ymaps.Placemark([55.01877670881489, 73.33833533267871], {
-            balloonContent: '<span class="title">Музыка</span>'
+            balloonContent: '<span class="title">Большая музыкальная сцена</span>'
         }, {
             draggable: false,
             iconLayout: 'default#image',
@@ -607,7 +608,7 @@ $(function() {
         });
 
         org = new ymaps.Placemark([55.01843902430899, 73.33797591667044], {
-            balloonContent: '<span class="title">Организаторы</span>'
+            balloonContent: '<span class="title">Штаб организаторов</span>'
         }, {
             draggable: false,
             iconLayout: 'default#image',
@@ -626,7 +627,7 @@ $(function() {
         });
 
         plainair = new ymaps.Placemark([55.01916713678487, 73.33864646892374], {
-            balloonContent: '<span class="title">Акварель</span>'
+            balloonContent: '<span class="title">Пленэр</span>'
         }, {
             draggable: false,
             iconLayout: 'default#image',
@@ -637,7 +638,7 @@ $(function() {
         });
 
         poet = new ymaps.Placemark([55.01799106818339, 73.33835679035026], {
-            balloonContent: '<span class="title">Поэт</span>'
+            balloonContent: '<span class="title">Поэтические чтения</span>'
         }, {
             draggable: false,
             iconLayout: 'default#image',
@@ -670,7 +671,7 @@ $(function() {
         });
 
         ps_media = new ymaps.Placemark([55.01950618206012, 73.33928483466867], {
-            balloonContent: '<span class="title">Медиа Public Speech</span>'
+            balloonContent: '<span class="title">Медиа Центр Public Speech</span>'
         }, {
             draggable: false,
             iconLayout: 'default#image',
@@ -681,7 +682,7 @@ $(function() {
         });
 
         robot = new ymaps.Placemark([55.01914692818708, 73.33794909458102], {
-            balloonContent: '<span class="title">Робот</span>'
+            balloonContent: '<span class="title">Робобитва</span>'
         }, {
             draggable: false,
             iconLayout: 'default#image',
@@ -692,7 +693,7 @@ $(function() {
         });
 
         skate = new ymaps.Placemark([55.01929007832757, 73.33810466270404], {
-            balloonContent: '<span class="title">Скейт</span>'
+            balloonContent: '<span class="title">Скейт пирожковая</span>'
         }, {
             draggable: false,
             iconLayout: 'default#image',
@@ -703,7 +704,7 @@ $(function() {
         });
 
         skuratov = new ymaps.Placemark([55.01870889876149, 73.33779889087582], {
-            balloonContent: '<span class="title">Скуратов</span>'
+            balloonContent: '<span class="title">Skuratov coffee</span>'
         }, {
             draggable: false,
             iconLayout: 'default#image',
@@ -714,7 +715,7 @@ $(function() {
         });
 
         slot = new ymaps.Placemark([55.01902157545084, 73.33793836574435], {
-            balloonContent: '<span class="title">Слот-машины</span>'
+            balloonContent: '<span class="title">Игровой автомат</span>'
         }, {
             draggable: false,
             iconLayout: 'default#image',
@@ -725,7 +726,7 @@ $(function() {
         });
 
         souvenir = new ymaps.Placemark([55.01845580330378, 73.33880740146367], {
-            balloonContent: '<span class="title">Сувениры</span>'
+            balloonContent: '<span class="title">Выдача сувениров организаторами</span>'
         }, {
             draggable: false,
             iconLayout: 'default#image',
@@ -736,7 +737,7 @@ $(function() {
         });
 
         streetart = new ymaps.Placemark([55.01818035685596, 73.33759447221122], {
-            balloonContent: '<span class="title">Уличное искусство</span>'
+            balloonContent: '<span class="title">Стрит арт</span>'
         }, {
             draggable: false,
             iconLayout: 'default#image',
@@ -764,7 +765,7 @@ $(function() {
         });
 
         stuff = new ymaps.Placemark([55.01944990509864, 73.33821674470214], {
-            balloonContent: '<span class="title">Стафф</span>'
+            balloonContent: '<span class="title">Магазин Stuff</span>'
         }, {
             draggable: false,
             iconLayout: 'default#image',
@@ -775,7 +776,7 @@ $(function() {
         });
 
         sushka = new ymaps.Placemark([55.01857282882881, 73.33781977776782], {
-            balloonContent: '<span class="title">Сушка</span>'
+            balloonContent: '<span class="title">Фотосушка йополиса</span>'
         }, {
             draggable: false,
             iconLayout: 'default#image',
@@ -786,7 +787,7 @@ $(function() {
         });
 
         tea_iskusstvo = new ymaps.Placemark([55.01825671939233, 73.33792706612911], {
-            balloonContent: '<span class="title">Чай</span>'
+            balloonContent: '<span class="title">Иван чайная</span>'
         }, {
             draggable: false,
             iconLayout: 'default#image',
@@ -797,7 +798,7 @@ $(function() {
         });
 
         tea_game = new ymaps.Placemark([55.01992215128946, 73.33913406018394], {
-            balloonContent: '<span class="title">Чай</span>'
+            balloonContent: '<span class="title">Чайные дайверы</span>'
         }, {
             draggable: false,
             iconLayout: 'default#image',
@@ -808,7 +809,7 @@ $(function() {
         });
 
         tea_vistavka = new ymaps.Placemark([55.018282045352535, 73.33897312764381], {
-            balloonContent: '<span class="title">Чай</span>'
+            balloonContent: '<span class="title">Чайная поляна</span>'
         }, {
             draggable: false,
             iconLayout: 'default#image',
@@ -820,7 +821,7 @@ $(function() {
 
 
         theatre = new ymaps.Placemark([55.017783407543845, 73.3390214074068], {
-            balloonContent: '<span class="title">Театр</span>'
+            balloonContent: '<span class="title">Театральная площадка</span>'
         }, {
             draggable: false,
             iconLayout: 'default#image',

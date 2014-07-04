@@ -81,6 +81,19 @@ $(function(){
         timeline.setGroups(groups);
         timeline.setItems(items);
         timeline.setOptions(options);
+        timeline.on('rangechanged', addPopovers);
+    };
+
+    var addPopovers = function() {
+        var obj = $('.timeline-popover');
+        if (obj.length > 0) {
+            obj.popover({
+                content: "test",
+                template: '<div class="popover" role="tooltip" style="z-index: 1001"><div class="arrow"></div><div class="popover-content"></div></div>',
+                placement: 'top',
+                animation: true
+            });
+        }
     };
 
     var toOld = function(event) {
