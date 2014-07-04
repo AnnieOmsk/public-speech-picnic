@@ -249,7 +249,9 @@ $(function() {
         });
 
         book = new ymaps.Placemark([55.018127160893364, 73.33889771296607], {
-            balloonContent: '<span class="title">Книга</span>'
+            balloonContent: 'Фримаркет<br/>' +
+                'Буккроссинг<br/>' +
+                'Газеты Metro'
         }, {
             draggable: false,
             iconLayout: 'default#image',
@@ -359,7 +361,11 @@ $(function() {
         });
 
         food_enter = new ymaps.Placemark([55.01831073795223, 73.3392110945804], {
-            balloonContent: '<span class="title">Еда</span>'
+            balloonContent: '<span class="title">Коммерческая еда</span><br/>' +
+                'Фудкорт Кейтеринг Омск<br/>' +
+                'Мороженое<br/>' +
+                'Кантанелло<br/>' +
+                'Безалкогольные мохито'
         }, {
             draggable: false,
             iconLayout: 'default#image',
@@ -381,7 +387,16 @@ $(function() {
         });
 
         food_domeda = new ymaps.Placemark([55.01883780940232, 73.33788186969628], {
-            balloonContent: '<span class="title">Еда</span>'
+            balloonContent: '<span class="title">Домашняя еда</span><br/>' +
+                'Baking Bakers<br/>' +
+                'Блинки от блондинки<br/>' +
+                'Маффины<br/>' +
+                'Ярмарка специй<br/>' +
+                'Летние лакомства<br/>' +
+                'United Kitchen<br/>' +
+                'Фруктовая корзина<br/>' +
+                'Калифорнийские бургеры<br/>' +
+                'Глазунья<br/>'
         }, {
             draggable: false,
             iconLayout: 'default#image',
@@ -431,7 +446,10 @@ $(function() {
         });
 
         gallery_vistavka = new ymaps.Placemark([55.018161007581455, 73.33949241733457], {
-            balloonContent: '<span class="title">Выставка</span>'
+            balloonContent: '<span class="title">Выставка</span><br/>' +
+                'Выставка Антона Сорокина<br/>' +
+                'Перфоманс Василия Мельниченко "Рабочий день в Раю"<br/>' +
+                'Проект Василия Мельниченко "Нормальная выставка"'
         }, {
             draggable: false,
             iconLayout: 'default#image',
@@ -486,7 +504,11 @@ $(function() {
         });
 
         kids = new ymaps.Placemark([55.017849629541445, 73.3385675191869], {
-            balloonContent: '<span class="title">Дети</span>'
+            balloonContent: '<span class="title">Дети</span><br/>' +
+                'Игракот<br/>' +
+                'Отдыхай с "Би-лайн"<br/>' +
+                'Клоуны фестиваля<br/>' +
+                'Мастер-классы'
         }, {
             draggable: false,
             iconLayout: 'default#image',
@@ -725,7 +747,13 @@ $(function() {
         });
 
         study = new ymaps.Placemark([55.01840056811959, 73.3374389040884], {
-            balloonContent: '<span class="title">Учёба</span>'
+            balloonContent: '<span class="title">Учёба</span><br/>' +
+                'Fresh English Джей энд эс<br/>' +
+                'Игротека Априори лингва<br/>' +
+                'Workshop and Activities ABC Club<br/>' +
+                'Современный русский<br/>' +
+                'Немецкий больше, чем язык<br/>' +
+                'Omsk Linux Group'
         }, {
             draggable: false,
             iconLayout: 'default#image',
