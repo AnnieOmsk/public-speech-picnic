@@ -92,7 +92,7 @@ $(function(){
                     var descriptionId = $(this).attr('data-bubble');
                     return $("#" + descriptionId).html();
                 },
-                template: '<div class="popover" role="tooltip"><div class="arrow"></div><div class="popover-content"></div></div>',
+                template: '<div class="popover" role="tooltip" style="min-width: 480px;"><div class="arrow"></div><div class="popover-content"></div></div>',
                 placement: 'top',
                 animation: true
             });
