@@ -83,6 +83,14 @@ module.exports = {
                 instagramsArray = instagramsArray.filter(function(item) {
                     return blacklistArray.indexOf(item.link) == -1;
                 });
+                // Remove duplicates
+                instagramsArray = instagramsArray.filter(function(item, position) {
+                    return instagramsArray.indexOf(
+                        instagramsArray.filter(function(media){
+                            return media.id==item.id
+                        })[0]
+                    ) == position;
+                });
                 // Sort by time descending
                 instagramsArray.sort(function(a, b) {
                     return b.created_time - a.created_time;
