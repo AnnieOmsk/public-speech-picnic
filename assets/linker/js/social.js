@@ -124,14 +124,14 @@ $(function(){
     $(document).on("click", TWITTER_BUTTON, toggleTwitter);
     $(RELOAD_BUTTON).trigger("click");
 
-    // on resize behavior
-    function resizedw(){
-        $(RELOAD_BUTTON).trigger("click");
-    }
+    // // on resize behavior
+    // function resizedw(){
+    //     $(RELOAD_BUTTON).trigger("click");
+    // }
 
-    var doit;
-    window.onresize = function(){
-        clearTimeout(doit);
-        doit = setTimeout(resizedw, 100);
-    };
+    // var doit;
+    // window.onresize = function(){
+    //     clearTimeout(doit);
+    //     doit = setTimeout(resizedw, 100);
+    // };
 });
