@@ -6,7 +6,7 @@
   .container-timeline {
 
     position: relative;
-    
+
     // height: 610px;
     height: 450px;
     font-size: 14px;
@@ -437,7 +437,7 @@ and (max-width : 1365px) {
         .vpanel.main {
           left: 120px !important;
           .vpanel.content {
-            font-size: 20px;
+            font-size: 16px;
             .itemset {
               .foreground {
                 .group {
@@ -497,7 +497,14 @@ and (max-width : 1365px) {
   }
 
 }
-
+@media (max-width:1024px) {
+  .timeline {
+    .content-timeline {
+      max-height: 1400px;
+    }
+  }
+  
+}
 @media (min-width : 768px) 
 and (max-width : 1024px) {
   .timeline {
@@ -544,7 +551,7 @@ and (max-width : 1024px) {
         .vpanel.main {
           left: 180px !important;
           .vpanel.content {
-              font-size: 16px;
+              font-size: 14px;
             .itemset {
               .foreground {
                 .group {
@@ -552,7 +559,7 @@ and (max-width : 1024px) {
                     .content {
                       p{
                         span{
-                          font-size: 14px;
+                          font-size: 12px;
                         }
                       }
                     }
@@ -634,7 +641,7 @@ and (max-width : 767px) {
             .labelset {
               .vlabel {
                 .inner {
-                  font-size: 16px;
+                  font-size: 14px;
                 }
               }
             }
