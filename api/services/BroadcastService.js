@@ -107,7 +107,7 @@ exports.findAcceptedBroadcastsEarlier = function(time, n) {
     if (n != null && n != undefined) {
         query = query.limit(n);
     }
-    query.sort("time DESC").exec(function(err, broadcasts){
+    query.sort("time ASC").exec(function(err, broadcasts){
         if (err) {
             console.log("BroadcastService error:" + err);
             deferred.reject(err);
