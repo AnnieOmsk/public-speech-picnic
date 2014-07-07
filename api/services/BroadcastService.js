@@ -113,7 +113,7 @@ exports.findAcceptedBroadcastsEarlier = function(time, n) {
             deferred.reject(err);
         } else {
             if (broadcasts.length >0) {
-                deferred.resolve(broadcasts[0]);
+                deferred.resolve(broadcasts[broadcasts.length-1]);
             } else {
                 deferred.resolve(null);
             }
