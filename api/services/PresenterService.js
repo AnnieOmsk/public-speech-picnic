@@ -168,12 +168,17 @@ exports.presentTimelines = function(timelineArray, organizers) {
     return timelines;
 };
 
-exports.presentBroadcastsJournalists = function(broadcasts, journalists) {
+exports.presentBroadcastsJournalists = function(broadcasts, journalists, broadcastsNumber) {
     if (broadcasts == null) {
         return null;
     }
     var broadcastsPresented = [];
-    for (var i = 0; i < broadcasts.length; i++) {
+    var nextLink;
+    var displayBroadcasts = broadcastsNumber;
+    if (displayBroadcasts >= broadcasts.length) {
+        displayBroadcasts = broadcasts.length;
+    }
+    for (var i = 0; i < displayBroadcasts; i++) {
         var broadcast = broadcasts[i];
         broadcast.pptime = dateTimeUtils.dateTime(broadcast.time);
         broadcast.url = "/?from=" + dateTimeUtils.timeToString(broadcast.time) + "#translation";
@@ -181,7 +186,13 @@ exports.presentBroadcastsJournalists = function(broadcasts, journalists) {
         broadcast.journalist = journalists.filter(function(item){return item.id == broadcast.journalistId})[0];
         broadcastsPresented.push(broadcast);
     }
-    return broadcastsPresented;
+    if (displayBroadcasts == broadcastsNumber) {
+        nextLink = "/?from=" + dateTimeUtils.timeToString(broadcasts[displayBroadcasts].time) + "#translation";
+    }
+    return {
+        broadcasts: broadcastsPresented,
+        next: nextLink
+    };
 };
 
 var buildImagesLinks = function(guuid) {

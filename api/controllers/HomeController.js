@@ -136,10 +136,10 @@ module.exports = {
 
     broadcast: function(req, res) {
         var from = req.param('from');
-        var broadcastPromises = q.all([broadcastService.findAcceptedBroadcastsFrom(from, configuration.BROADCAST_SIZE),
+        var broadcastPromises = q.all([broadcastService.findAcceptedBroadcastsFrom(from, configuration.BROADCAST_SIZE+1),
         journalistService.findAll()]);
         broadcastPromises.then(function(data) {
-            return res.json(presenterService.presentBroadcastsJournalists(data[0], data[1]));
+            return res.json(presenterService.presentBroadcastsJournalists(data[0], data[1], configuration.BROADCAST_SIZE));
         });
     },
 

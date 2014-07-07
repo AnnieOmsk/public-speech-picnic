@@ -15,7 +15,7 @@
 
 <script id="broadcast-template" type="text/x-handlebars-template">
     <ul>
-    {{#each broadcast}}
+    {{#each broadcasts}}
         <li>
             <div class="news-info">
                 <span class="circle"></span>
@@ -49,4 +49,7 @@
         </li>
     {{/each}}
     </ul>
+    {{#if next}}
+    <a href="{{next}}">Далее</a>
+    {{/if}}
 </script>
