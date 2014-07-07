@@ -1,5 +1,5 @@
 /**
- * Broadcast
+ * Instagram Blacklist
  *
  * @module      :: Model
  * @description :: Instagram Blacklist entity

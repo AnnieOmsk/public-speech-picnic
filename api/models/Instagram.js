@@ -1,8 +1,8 @@
 /**
- * Broadcast
+ * Instagram
  *
  * @module      :: Model
- * @description :: Instagram Blacklist entity
+ * @description :: Instagram entity
  * @docs		:: http://sailsjs.org/#!documentation/models
  */
 

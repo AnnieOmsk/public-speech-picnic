@@ -72,7 +72,7 @@ exports.presentTweets = function(tweetsArray) {
     for(var i=0; i<tweetsArray.length; i++) {
         var item = {};
         var inputTweet = tweetsArray[i];
-        item.id = inputTweet.id_str;
+        item.tweetId = inputTweet.id_str;
         item.retweetUrl = 'https://twitter.com/intent/retweet?tweet_id=' + inputTweet.id_str;
         item.retweetsCount = inputTweet.retweet_count;
         item.favoriteUrl = 'https://twitter.com/intent/favorite?tweet_id=' + inputTweet.id_str;

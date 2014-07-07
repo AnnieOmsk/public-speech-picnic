@@ -53,9 +53,12 @@ module.exports = {
     },
 
     twitterList: function (req, res) {
-        var twitterPromises = q.all([twitterService.findTweets(configuration.TWITTER_SEARCH_KEYWORD, configuration.TWITTER_SEARCH_COUNT),
-            twitterService.findFavoriteTweets(configuration.TWITTER_FAVORITES_USER, configuration.TWITTER_FAVORITES_COUNT),
-            twitterService.findBlacklist()]);
+        var twitterPromisesList = [];
+        for (l=0; l<configuration.TWITTER_SEARCH_KEYWORD.length;l++) {
+            twitterPromisesList.push(twitterService.findTweets(configuration.TWITTER_SEARCH_KEYWORD[l], configuration.TWITTER_SEARCH_COUNT));
+        }
+        twitterPromisesList.push(twitterService.findBlacklist());
+        var twitterPromises = q.all(twitterPromisesList);
         twitterPromises.then(function(data) {
             var tweetsArray = [];
             // Concat input arrays, last one is with blacklist
@@ -71,11 +74,33 @@ module.exports = {
             tweetsArray = tweetsArray.filter(function(item) {
                 return blacklistArray.indexOf(item.id_str) == -1;
             });
+            // Remove duplicates
+            tweetsArray = tweetsArray.filter(function(item, position) {
+                return tweetsArray.indexOf(
+                    tweetsArray.filter(function(media){
+                        return media.id==item.id
+                    })[0]
+                ) == position;
+            });
             // Sort by time descending
             tweetsArray.sort(function(a, b) {
                 return new Date(b.created_at) > new Date(a.created_at);
             });
-            return res.send(presenterService.presentTweets(tweetsArray.slice(0, configuration.TWITTER_COUNT)));
+            var presentedTweets = presenterService.presentTweets(tweetsArray.slice(0, configuration.TWITTER_COUNT));
+            var checkTweetsPromise = twitterService.findTweetsInDB();
+            checkTweetsPromise.then(function(tweetsFromDB) {
+               if (tweetsFromDB.length == 0) {
+                   var savingTweetsPromises = [];
+                   for (o=0; o<presentedTweets.length;o++) {
+                       savingTweetsPromises.push(twitterService.save(presentedTweets[o]));
+                   }
+                   var savingTweetArray = q.all(savingTweetsPromises);
+                   savingTweetArray.then(function() {
+                       console.log("all tweets saved");
+                   });
+               }
+            });
+            return res.send(presentedTweets);
         }, function(err) {
             console.error("Twitter promise error:" + err);
             return res.serverError(err);

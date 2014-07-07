@@ -11,13 +11,13 @@ exports.INSTAGRAM_GEO_COUNT = 50;
 // Instagram total count limit
 exports.INSTAGRAM_COUNT = 300;
 // Twitter search by keyword, for hashtag use '#hastag'
-exports.TWITTER_SEARCH_KEYWORD = '%23picnicomsk OR picnicomsk OR %23городскойпикник OR %23пикникомск OR %23publicspeechomsk OR %23psomsk';
-exports.TWITTER_SEARCH_COUNT = 40;
+exports.TWITTER_SEARCH_KEYWORD = ['%23picnicomsk', 'picnicomsk', '%23городскойпикник', '%23пикникомск', '%23publicspeechomsk', '%23psomsk'];
+exports.TWITTER_SEARCH_COUNT = 200;
 // Twitter search by user's favorites
 exports.TWITTER_FAVORITES_USER = 1753309994; // Number id: 967638901 for @picnicomsk, 1753309994 for @public_speech
-exports.TWITTER_FAVORITES_COUNT = 20;
+exports.TWITTER_FAVORITES_COUNT = 200;
 // Twitter total count limit
-exports.TWITTER_COUNT = 40;
+exports.TWITTER_COUNT = 500;
 // Url of Teasers API
 exports.TEASERS_API_URL = 'http://ps.whereco.in/api/teasers';
 // Instagram application configuration

@@ -57,3 +57,39 @@ exports.findBlacklist = function() {
     return deferred.promise;
 };
 
+
+/**
+ * Creates and saves Twitter message
+ * @param tweetPresented     Twitter message, presented
+ * @returns created twitter message
+ */
+exports.save = function(tweetPresented) {
+    var deferred = q.defer();
+    console.log("Saving tweet");
+    Twitter.create(tweetPresented).done(function(err, instagram) {
+        if (err) {
+            console.log("Twitter saving Service error:" + err);
+            deferred.reject(err);
+        } else {
+            deferred.resolve(instagram);
+        }
+    });
+    return deferred.promise;
+};
+
+/**
+ * Finds tweets in database
+ */
+exports.findTweetsInDB = function() {
+    var deferred = q.defer();
+    console.log("Searching for tweets");
+    Twitter.find({}).done(function(err, tweets){
+        if (err) {
+            console.log("Error finding all tweets:" + err);
+            deferred.reject(err);
+        } else {
+            deferred.resolve(tweets);
+        }
+    });
+    return deferred.promise;
+};
