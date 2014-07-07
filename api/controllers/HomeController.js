@@ -31,32 +31,6 @@ var injectedScripts = '<script src="http://api-maps.yandex.ru/2.1/?lang=ru_RU" t
     '<script src="/js/timeline.js" type="text/javascript"></script>\n' +
     '<script src="/js/vis.min.js" type="text/javascript"></script>\n';
 
-
-var saveInstagrams = function(presentedInstagrams, start, end) {
-//    var limit = 40;
-//    if (start == null || end == null) {
-//        for (i=0; i<presentedInstagrams.length; i+=limit) {
-//            var to = i+limit;
-//            if (to > presentedInstagrams.length) {
-//                to = presentedInstagrams.length;
-//            }
-//            saveInstagrams(presentedInstagrams, i, to);
-//        }
-//    }
-//    var instagramPromises=[];
-//    for (var k=start; k<end; k++) {
-//        instagramPromises.push(instagramService.save(presentedInstagrams[k]));
-//    }
-    var instagramPromises = [];
-    for (var k=0; k<presentedInstagrams.length; k++) {
-        instagramPromises.push(instagramService.save(presentedInstagrams[k]));
-    }
-    var saveInstagramsPromise = q.all(instagramPromises);
-    saveInstagramsPromise.then(function(data) {
-        console.log("All ok");
-    })
-};
-
 module.exports = {
 
     /**
@@ -71,69 +45,10 @@ module.exports = {
       });
     },
 
-    //TODO: needs refactoring
     instagramList: function (req, res) {
-        var whitelistPromise = instagramService.findWhitelist();
-        var serviceCalls;
-        var instagramPromises;
-        whitelistPromise.then(function(whitelist) {
-            var whitelistArray = [];
-            for (i=0; i<whitelist.length; i++) {
-                var url = whitelist[i].mediaUrl;
-                var shortcode;
-                var lastSlash = url.lastIndexOf("/");
-                shortcode = url.substring(url.lastIndexOf("/", lastSlash-1)+1, lastSlash);
-                whitelistArray.push(shortcode);
-            }
-            serviceCalls = [instagramService.findInstagramsByGeo(configuration.INSTAGRAM_GEO_LAT, configuration.INSTAGRAM_GEO_LNG,
-                configuration.INSTAGRAM_GEO_DISTANCE, configuration.INSTAGRAM_GEO_COUNT)];
-            for(var j=0; j<configuration.INSTAGRAM_SEARCH_KEYWORD.length; j++) {
-                serviceCalls.push(instagramService.findInstagrams(configuration.INSTAGRAM_SEARCH_KEYWORD[j], configuration.INSTAGRAM_SEARCH_COUNT));
-            }
-            for(var k=0; k<whitelistArray.length; k++) {
-                serviceCalls.push(instagramService.findInstagramsByCode(whitelistArray[k]));
-            }
-            serviceCalls.push(instagramService.findBlacklist());
-            instagramPromises = q.all(serviceCalls);
-            instagramPromises.then(function(data) {
-                var instagramsArray = [];
-                // Concat input arrays. Last one is with blacklist
-                for (i=0; i<(data.length-1); i++) {
-                    instagramsArray = instagramsArray.concat(data[i]);
-                }
-                // Remove medias that are in blacklist
-                var blacklist = data[data.length-1];
-                var blacklistArray = [];
-                for (i=0; i<blacklist.length; i++) {
-                    blacklistArray.push(blacklist[i].mediaUrl);
-                }
-                instagramsArray = instagramsArray.filter(function(item) {
-                    return blacklistArray.indexOf(item.link) == -1;
-                });
-                // Remove duplicates
-                instagramsArray = instagramsArray.filter(function(item, position) {
-                    return instagramsArray.indexOf(
-                        instagramsArray.filter(function(media){
-                            return media.id==item.id
-                        })[0]
-                    ) == position;
-                });
-                // Sort by time descending
-                instagramsArray.sort(function(a, b) {
-                    return b.created_time - a.created_time;
-                });
-                var presentedInstagrams = presenterService.presentInstagrams(instagramsArray.slice(0, configuration.INSTAGRAM_COUNT));
-                var checkInstagramPromise = instagramService.findInstagramsInDB();
-                checkInstagramPromise.then(function(instagrams) {
-                   if (instagrams.length == 0) {
-                       saveInstagrams(presentedInstagrams);
-                   }
-                    return res.send(presentedInstagrams);
-                });
-            }, function(err) {
-                console.error("Instagram promise error:" + err);
-                return res.serverError(err);
-            });
+        var instagramPromise = instagramService.findInstagramsInDB();
+        instagramPromise.then(function(data) {
+            return res.json(data);
         });
     },
 
