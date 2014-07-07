@@ -31,6 +31,32 @@ var injectedScripts = '<script src="http://api-maps.yandex.ru/2.1/?lang=ru_RU" t
     '<script src="/js/timeline.js" type="text/javascript"></script>\n' +
     '<script src="/js/vis.min.js" type="text/javascript"></script>\n';
 
+
+var saveInstagrams = function(presentedInstagrams, start, end) {
+//    var limit = 40;
+//    if (start == null || end == null) {
+//        for (i=0; i<presentedInstagrams.length; i+=limit) {
+//            var to = i+limit;
+//            if (to > presentedInstagrams.length) {
+//                to = presentedInstagrams.length;
+//            }
+//            saveInstagrams(presentedInstagrams, i, to);
+//        }
+//    }
+//    var instagramPromises=[];
+//    for (var k=start; k<end; k++) {
+//        instagramPromises.push(instagramService.save(presentedInstagrams[k]));
+//    }
+    var instagramPromises = [];
+    for (var k=0; k<presentedInstagrams.length; k++) {
+        instagramPromises.push(instagramService.save(presentedInstagrams[k]));
+    }
+    var saveInstagramsPromise = q.all(instagramPromises);
+    saveInstagramsPromise.then(function(data) {
+        console.log("All ok");
+    })
+};
+
 module.exports = {
 
     /**
@@ -96,7 +122,14 @@ module.exports = {
                 instagramsArray.sort(function(a, b) {
                     return b.created_time - a.created_time;
                 });
-                return res.send(presenterService.presentInstagrams(instagramsArray.slice(0, configuration.INSTAGRAM_COUNT)));
+                var presentedInstagrams = presenterService.presentInstagrams(instagramsArray.slice(0, configuration.INSTAGRAM_COUNT));
+                var checkInstagramPromise = instagramService.findInstagramsInDB();
+                checkInstagramPromise.then(function(instagrams) {
+                   if (instagrams.length == 0) {
+                       saveInstagrams(presentedInstagrams);
+                   }
+                    return res.send(presentedInstagrams);
+                });
             }, function(err) {
                 console.error("Instagram promise error:" + err);
                 return res.serverError(err);

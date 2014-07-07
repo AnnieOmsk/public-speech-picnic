@@ -2,14 +2,14 @@
 exports.BROADCAST_SIZE = 6;
 // Instagram search by hastag, w/o #
 exports.INSTAGRAM_SEARCH_KEYWORD = ['picnicomsk', 'городскойпикник', 'пикникомск', 'publicspeechomsk', 'psomsk'];
-exports.INSTAGRAM_SEARCH_COUNT = 10;
+exports.INSTAGRAM_SEARCH_COUNT = 50;
 // Instagram search by geo location
 exports.INSTAGRAM_GEO_LAT = 55.018737;
 exports.INSTAGRAM_GEO_LNG = 73.338377;
 exports.INSTAGRAM_GEO_DISTANCE = 200; // Distance in metres, ~200 for production
-exports.INSTAGRAM_GEO_COUNT = 10;
+exports.INSTAGRAM_GEO_COUNT = 50;
 // Instagram total count limit
-exports.INSTAGRAM_COUNT = 30;
+exports.INSTAGRAM_COUNT = 300;
 // Twitter search by keyword, for hashtag use '#hastag'
 exports.TWITTER_SEARCH_KEYWORD = '%23picnicomsk OR picnicomsk OR %23городскойпикник OR %23пикникомск OR %23publicspeechomsk OR %23psomsk';
 exports.TWITTER_SEARCH_COUNT = 40;

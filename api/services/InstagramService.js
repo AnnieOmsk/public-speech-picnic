@@ -98,3 +98,49 @@ exports.findWhitelist = function() {
     });
     return deferred.promise;
 };
+
+/**
+ * Creates and saves Instagram
+ * @param instagramPresented     Instagram
+ * @returns created instagram
+ */
+exports.save = function(instagramPresented) {
+    var deferred = q.defer();
+    console.log("Saving instagram");
+    var instagram = {
+        commentsCount: instagramPresented.commentsCount,
+        likesCount: instagramPresented.likesCount,
+        mediaId: instagramPresented.id,
+        imageUrl: instagramPresented.imageUrl,
+        text: instagramPresented.text,
+        time: instagramPresented.time,
+        url: instagramPresented.url,
+        username: instagramPresented.username
+    };
+    Instagram.create(instagram).done(function(err, instagram) {
+        if (err) {
+            console.log("InstagramService error:" + err);
+            deferred.reject(err);
+        } else {
+            deferred.resolve(instagram);
+        }
+    });
+    return deferred.promise;
+};
+
+/**
+ * Finds instagrams in database
+ */
+exports.findInstagramsInDB = function() {
+    var deferred = q.defer();
+    console.log("Searching for instagrams");
+    Instagram.find({}).done(function(err, instagram){
+        if (err) {
+            console.log("Error finding all instagram:" + err);
+            deferred.reject(err);
+        } else {
+            deferred.resolve(instagram);
+        }
+    });
+    return deferred.promise;
+};
