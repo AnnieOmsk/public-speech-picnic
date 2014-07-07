@@ -168,12 +168,13 @@ exports.presentTimelines = function(timelineArray, organizers) {
     return timelines;
 };
 
-exports.presentBroadcastsJournalists = function(broadcasts, journalists, broadcastsNumber) {
+exports.presentBroadcastsJournalists = function(broadcasts, earlierBroadcast, journalists, broadcastsNumber) {
     if (broadcasts == null) {
         return null;
     }
     var broadcastsPresented = [];
     var nextLink;
+    var prevLink;
     var displayBroadcasts = broadcastsNumber;
     if (displayBroadcasts >= broadcasts.length) {
         displayBroadcasts = broadcasts.length;
@@ -181,18 +182,26 @@ exports.presentBroadcastsJournalists = function(broadcasts, journalists, broadca
     for (var i = 0; i < displayBroadcasts; i++) {
         var broadcast = broadcasts[i];
         broadcast.pptime = dateTimeUtils.dateTime(broadcast.time);
-        broadcast.url = "/?from=" + dateTimeUtils.timeToString(broadcast.time) + "#translation";
+        broadcast.url = buildTimeUrl(broadcast.time);
         broadcast.imagesLinks = buildImagesLinks(broadcast.images);
         broadcast.journalist = journalists.filter(function(item){return item.id == broadcast.journalistId})[0];
         broadcastsPresented.push(broadcast);
     }
     if (displayBroadcasts == broadcastsNumber) {
-        nextLink = "/?from=" + dateTimeUtils.timeToString(broadcasts[displayBroadcasts].time) + "#translation";
+        nextLink = buildTimeUrl(broadcasts[displayBroadcasts].time);
+    }
+    if (earlierBroadcast != null) {
+        prevLink = buildTimeUrl(earlierBroadcast.time);
     }
     return {
         broadcasts: broadcastsPresented,
-        next: nextLink
+        next: nextLink,
+        prev: prevLink
     };
+};
+
+var buildTimeUrl = function(date) {
+    return "/?from=" + dateTimeUtils.timeToString(date) + "#translation";
 };
 
 var buildImagesLinks = function(guuid) {

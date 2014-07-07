@@ -18,7 +18,7 @@ $(document).ready(function () {
         $.get(url, params, 'json')
             .retry({times:3, timeout:3000}).then(function(data){
                 $(CONTAINER).empty();
-                drawBroadcast({broadcasts: data.broadcasts, next: data.next}, CONTAINER, template);
+                drawBroadcast({broadcasts: data.broadcasts, next: data.next, prev: data.prev}, CONTAINER, template);
             })
             .fail(function(jqXHR, textStatus) {
                 console.log("fail:" + textStatus);

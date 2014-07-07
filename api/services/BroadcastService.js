@@ -89,6 +89,39 @@ exports.findAcceptedBroadcastsFrom = function(time, n) {
     return deferred.promise;
 };
 
+
+/**
+ * Finds n broadcast earlier from given time
+ * @param time string in format yyyy-mm-dd[ hh:mm:ss]
+ * @param n offest
+ */
+exports.findAcceptedBroadcastsEarlier = function(time, n) {
+    var deferred = q.defer();
+    console.log("Searching for earlier broadcasts");
+    var query = Broadcast.find().where({accepted: 1});
+    if (time != null) {
+        query = query.where({time: {'>': time}});
+    } else {
+        deferred.resolve(null);
+    }
+    if (n != null && n != undefined) {
+        query = query.limit(n);
+    }
+    query.sort("time DESC").exec(function(err, broadcasts){
+        if (err) {
+            console.log("BroadcastService error:" + err);
+            deferred.reject(err);
+        } else {
+            if (broadcasts.length >0) {
+                deferred.resolve(broadcasts[0]);
+            } else {
+                deferred.resolve(null);
+            }
+        }
+    });
+    return deferred.promise;
+};
+
 exports.like = function(id) {
     var deferred = q.defer();
     Broadcast.findOne(id).done(function(err, broadcast) {

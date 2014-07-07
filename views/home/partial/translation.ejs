@@ -14,6 +14,9 @@
 </div>
 
 <script id="broadcast-template" type="text/x-handlebars-template">
+    {{#if prev}}
+    <a href="{{prev}}">Ранее</a>
+    {{/if}}
     <ul>
     {{#each broadcasts}}
         <li>
