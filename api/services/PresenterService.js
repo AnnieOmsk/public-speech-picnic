@@ -176,7 +176,7 @@ exports.presentBroadcastsJournalists = function(broadcasts, journalists) {
     for (var i = 0; i < broadcasts.length; i++) {
         var broadcast = broadcasts[i];
         broadcast.pptime = dateTimeUtils.dateTime(broadcast.time);
-        broadcast.url = "/?from=" + dateTimeUtils.timeToString(broadcast.time) + "#social";
+        broadcast.url = "/?from=" + dateTimeUtils.timeToString(broadcast.time) + "#translation";
         broadcast.imagesLinks = buildImagesLinks(broadcast.images);
         broadcast.journalist = journalists.filter(function(item){return item.id == broadcast.journalistId})[0];
         broadcastsPresented.push(broadcast);
