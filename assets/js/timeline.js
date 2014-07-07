@@ -31,10 +31,6 @@ $(function(){
     var drawTimeline = function(data, containerSelector) {
         var timelines = [];
         var start = new Date(data.timelines[0].start);
-        var current = new Date();
-        if (start == null || current > start) {
-            start = current;
-        }
         for (var i = 0; i < data.timelines.length; i++) {
             var currentTimeline = data.timelines[i];
             timelines.push({
