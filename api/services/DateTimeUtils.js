@@ -72,4 +72,14 @@ exports.dateMonthTS = function(timestamp) {
 exports.now = function() {
     var date = moment().format();
     return date;
-}
+};
+
+/**
+ * Converts time to human readable format like
+ * "2014-07-01 13:20:00"
+ * @param date javascript date
+ */
+exports.timeToString = function(date) {
+    var timeFormat = "YYYY-MM-DD HH:mm:ss";
+    return moment(date).format(timeFormat);
+};

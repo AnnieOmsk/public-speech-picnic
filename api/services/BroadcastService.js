@@ -70,6 +70,7 @@ exports.save = function(journalistId, title, lead, content, images) {
  */
 exports.findAcceptedBroadcastsFrom = function(time, n) {
     var deferred = q.defer();
+    console.log("Searching for broadcasts");
     var query = Broadcast.find().where({accepted: 1});
     if (time != null && time != undefined) {
         query = query.where({time: {'<=': time}});
@@ -82,40 +83,10 @@ exports.findAcceptedBroadcastsFrom = function(time, n) {
             console.log("BroadcastService error:" + err);
             deferred.reject(err);
         } else {
-            var journalistsPromises = [];
-            for (var i = 0; i < broadcasts.length; i++) {
-                var broadcast = broadcasts[i];
-                broadcast.pptime = dateTime.dateTime(broadcast.time);
-                broadcast.imagesLinks = buildImagesLinks(broadcast.images);
-                journalistsPromises[i] = journalistService.findJournalistById(broadcast.journalistId);
-
-            }
-            q.all(journalistsPromises).then(function(data) {
-                for(var i = 0; i < broadcasts.length; i++) {
-                    delete data[i].login;
-                    delete data[i].password;
-                    broadcasts[i].journalist = data[i];
-                }
-                deferred.resolve(broadcasts);
-            });
+            deferred.resolve(broadcasts);
         }
     });
     return deferred.promise;
-};
-
-var buildImagesLinks = function(guuid) {
-    var links = [];
-    if (guuid != null && guuid != undefined) {
-        var imagesCountStr = guuid.substr(guuid.lastIndexOf('~') + 1, guuid.length);
-        var imagesCount = parseInt(imagesCountStr);
-        for (var i = 0; i < imagesCount; i++) {
-            links[i] = {
-                preview: 'http://ucarecdn.com/' + guuid + '/nth/' + i + '/-/preview/306x204/',
-                original: 'http://ucarecdn.com/' + guuid + '/nth/' + i + '/'
-            };
-        }
-    }
-    return links;
 };
 
 exports.like = function(id) {

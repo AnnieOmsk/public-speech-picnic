@@ -20,6 +20,7 @@ var teaserService = require('../services/TeaserService');
 var timelineService = require('../services/TimelineService');
 var zoneService = require('../services/ZoneService');
 var organizerService = require('../services/OrganizerService');
+var journalistService = require('../services/JournalistService');
 var broadcastService = require('../services/BroadcastService');
 var twitterService = require('../services/TwitterService');
 var instagramService = require('../services/InstagramService');
@@ -135,9 +136,10 @@ module.exports = {
 
     broadcast: function(req, res) {
         var from = req.param('from');
-        var broadcastPromise = broadcastService.findAcceptedBroadcastsFrom(from, configuration.BROADCAST_SIZE);
-        broadcastPromise.then(function(data) {
-            return res.json(data);
+        var broadcastPromises = q.all([broadcastService.findAcceptedBroadcastsFrom(from, configuration.BROADCAST_SIZE),
+        journalistService.findAll()]);
+        broadcastPromises.then(function(data) {
+            return res.json(presenterService.presentBroadcastsJournalists(data[0], data[1]));
         });
     },
 

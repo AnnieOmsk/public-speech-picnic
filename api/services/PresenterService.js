@@ -167,3 +167,34 @@ exports.presentTimelines = function(timelineArray, organizers) {
     }
     return timelines;
 };
+
+exports.presentBroadcastsJournalists = function(broadcasts, journalists) {
+    if (broadcasts == null) {
+        return null;
+    }
+    var broadcastsPresented = [];
+    for (var i = 0; i < broadcasts.length; i++) {
+        var broadcast = broadcasts[i];
+        broadcast.pptime = dateTimeUtils.dateTime(broadcast.time);
+        broadcast.url = "/?from=" + dateTimeUtils.timeToString(broadcast.time) + "#social";
+        broadcast.imagesLinks = buildImagesLinks(broadcast.images);
+        broadcast.journalist = journalists.filter(function(item){return item.id == broadcast.journalistId})[0];
+        broadcastsPresented.push(broadcast);
+    }
+    return broadcastsPresented;
+};
+
+var buildImagesLinks = function(guuid) {
+    var links = [];
+    if (guuid != null && guuid != undefined) {
+        var imagesCountStr = guuid.substr(guuid.lastIndexOf('~') + 1, guuid.length);
+        var imagesCount = parseInt(imagesCountStr);
+        for (var i = 0; i < imagesCount; i++) {
+            links[i] = {
+                preview: 'http://ucarecdn.com/' + guuid + '/nth/' + i + '/-/preview/306x204/',
+                original: 'http://ucarecdn.com/' + guuid + '/nth/' + i + '/'
+            };
+        }
+    }
+    return links;
+};

@@ -43,4 +43,20 @@ exports.findJournalistById = function(id) {
         }
     });
     return deferred.promise;
-}
+};
+
+exports.findAll = function() {
+    var deferred = q.defer();
+    console.log("Searching for organizers");
+    Journalist.find({}).done(function(err, journalists){
+        if (err) {
+            console.log("JournalistService error:" + err);
+            deferred.reject(err);
+        } else {
+            deferred.resolve(journalists);
+        }
+    });
+    return deferred.promise;
+};
+
+
