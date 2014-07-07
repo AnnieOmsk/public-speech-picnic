@@ -352,7 +352,7 @@ $(function() {
         dance_stepball = new ymaps.Placemark([55.01908747302719, 73.33941109458064], {
             balloonContent: '<span class="title">Слепбол</span>'
         }, {
-            draggable: true,
+            draggable: false,
             iconLayout: 'default#image',
             iconImageHref: 'images/map/dance_stepball.png',
             iconImageSize: [28, 44],
@@ -922,7 +922,7 @@ $(function() {
         picnicMap.geoObjects.add(souvenir);
         picnicMap.geoObjects.add(streetart);
         picnicMap.geoObjects.add(study);
-        picnicMap.geoObjects.add(stuff);
+       // picnicMap.geoObjects.add(stuff);
         picnicMap.geoObjects.add(sushka);
         picnicMap.geoObjects.add(tea_iskusstvo);
         picnicMap.geoObjects.add(tea_game);
