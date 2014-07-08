@@ -5,7 +5,7 @@ $(function(){
     var ITEMS_CLASS = "data-items";
     var SHOWED_CLASS = "js-active";
     var TRANSITION_CLASS = "js-animating";
-    var ANIMATION_TIME = 100;
+    var ANIMATION_TIME = 140;
     var STEPS = 25;
 
     var scrollLeft = function(event) {
