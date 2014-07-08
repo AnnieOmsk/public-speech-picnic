@@ -36,7 +36,7 @@ exports.findBroadcasts = function(journalistId) {
  * @param imagesCount      count of images in group
  * @returns created broadcast
  */
-exports.save = function(journalistId, title, lead, content, images) {
+exports.save = function(journalistId, title, lead, content) {
     var deferred = q.defer();
     console.log("Saving broadcast with following params. JournalistId:" + journalistId + " title:" + title +
         " lead:" + lead + " content:" + content);
@@ -45,13 +45,9 @@ exports.save = function(journalistId, title, lead, content, images) {
         journalistId: journalistId,
         title: title,
         content: content,
-        lead: lead,
-        images: images
+        lead: lead
     };
     broadcast.directUrl = '?from=' + dateTime.dateFullTime(broadcast.time) + '#translation';
-    if (images != undefined && images != null && images != '') {
-        broadcast.imagesLink = 'http://ucarecdn.com/' + images + '/gallery/-/nav/thumbs/-/fit/cover/-/loop/true/-/allowfullscreen/native/-/thumbwidth/100/';
-    }
     Broadcast.create(broadcast).done(function(err, broadcast) {
         if (err) {
             console.log("BroadcastService error:" + err);

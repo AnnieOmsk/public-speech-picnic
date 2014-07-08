@@ -3,9 +3,7 @@
  */
 var broadcastService = require('../services/BroadcastService');
 var presenterService = require('../services/PresenterService');
-var injectedScripts = '<script src="http://cdn.ckeditor.com/4.4.1/standard/ckeditor.js" type="text/javascript"></script>\n' +
-    '<script src="http://ucarecdn.com/widget/1.2.2/uploadcare/uploadcare-1.2.2.min.js" charset="utf-8" type="text/javascript"></script>' +
-    '<script src="/js/uploader.js" charset="utf-8" type="text/javascript"></script>';
+var injectedScripts = '<script src="http://cdn.ckeditor.com/4.4.1/standard/ckeditor.js" type="text/javascript"></script>';
 
 module.exports = {
 
@@ -78,9 +76,8 @@ module.exports = {
         var title = req.param('title');
         var lead = req.param('lead');
         var content = req.param('content');
-        var images = req.param('group-uuid');
         var journalistId = req.session.user.id;
-        var savePromise = BroadcastService.save(journalistId, title, lead, content, images);
+        var savePromise = BroadcastService.save(journalistId, title, lead, content);
         savePromise.then(
             function(broadcast) {
                 console.log("Broadcast saved:" + broadcast);

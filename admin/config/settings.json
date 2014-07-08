@@ -189,7 +189,7 @@
                 "allowNull": false,
                 "defaultValue": "#",
                 "listview": {
-                    "show": true
+                    "show": false
                 },
                 "editview": {
                     "show": false
