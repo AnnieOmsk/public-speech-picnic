@@ -183,7 +183,6 @@ exports.presentBroadcastsJournalists = function(broadcasts, earlierBroadcast, jo
         var broadcast = broadcasts[i];
         broadcast.pptime = dateTimeUtils.dateTime(broadcast.time);
         broadcast.url = buildTimeUrl(broadcast.time);
-        broadcast.imagesLinks = buildImagesLinks(broadcast.images);
         broadcast.journalist = journalists.filter(function(item){return item.id == broadcast.journalistId})[0];
         broadcastsPresented.push(broadcast);
     }
@@ -202,19 +201,4 @@ exports.presentBroadcastsJournalists = function(broadcasts, earlierBroadcast, jo
 
 var buildTimeUrl = function(date) {
     return "/?from=" + dateTimeUtils.timeToString(date) + "#translation";
-};
-
-var buildImagesLinks = function(guuid) {
-    var links = [];
-    if (guuid != null && guuid != undefined) {
-        var imagesCountStr = guuid.substr(guuid.lastIndexOf('~') + 1, guuid.length);
-        var imagesCount = parseInt(imagesCountStr);
-        for (var i = 0; i < imagesCount; i++) {
-            links[i] = {
-                preview: 'http://ucarecdn.com/' + guuid + '/nth/' + i + '/-/preview/306x204/',
-                original: 'http://ucarecdn.com/' + guuid + '/nth/' + i + '/'
-            };
-        }
-    }
-    return links;
 };

@@ -148,8 +148,8 @@
                 }
             },
             {
-                "name": "images",
-                "verbose": "Идентфикатор изображений",
+                "name": "image",
+                "verbose": "Ссылка на изображение",
                 "control": {
                     "text": true
                 },
@@ -164,8 +164,8 @@
                 }
             },
             {
-                "name": "images_link",
-                "verbose": "Ссылка на изображения",
+                "name": "preview",
+                "verbose": "Ссылка на превью",
                 "control": {
                     "text": true
                 },

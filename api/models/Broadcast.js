@@ -35,14 +35,13 @@ module.exports = {
         type: 'string',
         required: true
     },
-    images: {
+    image: {
       type: 'string',
       required: false
     },
-    imagesLink: {
+    preview: {
       type: 'string',
-      required: false,
-      columnName: 'images_link'
+      required: false
     },
     directUrl: {
       type: 'string',
