@@ -7,6 +7,19 @@
   .reload {
     margin-bottom: 40px;
   }
+  .translation-feed {
+    position: relative;
+    .href-next, .ref-prev {
+      position: absolute;
+      left:0;
+    }
+    .href-next {
+      bottom:0;
+    }
+    .href-prev {
+      top:0;
+    }
+  }
   ul {
     li {
       clear: both;
@@ -78,7 +91,14 @@
   }
 }
 
-
+.translation {
+  a {
+    color:@color-main;
+    &:hover {
+      color:@color-main;
+    }
+  }
+}
 ul {
   list-style-type:none;
   li {
@@ -89,6 +109,7 @@ ul {
       .news-time {
         .subheader-font;
         font-size: 24px;
+        color: @color-dark;
       }
       .news-author {
         font-size: 16px;
