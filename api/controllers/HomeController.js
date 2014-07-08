@@ -49,60 +49,18 @@ module.exports = {
         var instagramPromise = instagramService.findInstagramsInDB();
         instagramPromise.then(function(data) {
             return res.json(data);
+        }, function(err) {
+            console.error("Instragram list retrieving error:" + err);
+            return res.serverError(err);
         });
     },
 
     twitterList: function (req, res) {
-        var twitterPromisesList = [];
-        for (l=0; l<configuration.TWITTER_SEARCH_KEYWORD.length;l++) {
-            twitterPromisesList.push(twitterService.findTweets(configuration.TWITTER_SEARCH_KEYWORD[l], configuration.TWITTER_SEARCH_COUNT));
-        }
-        twitterPromisesList.push(twitterService.findBlacklist());
-        var twitterPromises = q.all(twitterPromisesList);
-        twitterPromises.then(function(data) {
-            var tweetsArray = [];
-            // Concat input arrays, last one is with blacklist
-            for (i=0; i<(data.length-1); i++) {
-                tweetsArray = tweetsArray.concat(data[i]);
-            }
-            // Remove tweets that are in blacklist
-            var blacklist = data[data.length-1];
-            var blacklistArray = [];
-            for (i=0; i<blacklist.length; i++) {
-                blacklistArray.push(blacklist[i].messageId);
-            }
-            tweetsArray = tweetsArray.filter(function(item) {
-                return blacklistArray.indexOf(item.id_str) == -1;
-            });
-            // Remove duplicates
-            tweetsArray = tweetsArray.filter(function(item, position) {
-                return tweetsArray.indexOf(
-                    tweetsArray.filter(function(media){
-                        return media.id==item.id
-                    })[0]
-                ) == position;
-            });
-            // Sort by time descending
-            tweetsArray.sort(function(a, b) {
-                return new Date(b.created_at) > new Date(a.created_at);
-            });
-            var presentedTweets = presenterService.presentTweets(tweetsArray.slice(0, configuration.TWITTER_COUNT));
-            var checkTweetsPromise = twitterService.findTweetsInDB();
-            checkTweetsPromise.then(function(tweetsFromDB) {
-               if (tweetsFromDB.length == 0) {
-                   var savingTweetsPromises = [];
-                   for (o=0; o<presentedTweets.length;o++) {
-                       savingTweetsPromises.push(twitterService.save(presentedTweets[o]));
-                   }
-                   var savingTweetArray = q.all(savingTweetsPromises);
-                   savingTweetArray.then(function() {
-                       console.log("all tweets saved");
-                   });
-               }
-            });
-            return res.send(presentedTweets);
+        var twitterPromise = twitterService.findTweetsInDB();
+        twitterPromise.then(function(data) {
+            return res.json(data);
         }, function(err) {
-            console.error("Twitter promise error:" + err);
+            console.error("Twitter list retrieving error:" + err);
             return res.serverError(err);
         });
     },
