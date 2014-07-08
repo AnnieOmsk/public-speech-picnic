@@ -83,3 +83,14 @@ exports.timeToString = function(date) {
     var timeFormat = "YYYY-MM-DD HH:mm:ss";
     return moment(date).format(timeFormat);
 };
+
+
+/**
+ * Converts time to human readable format like
+ * "Wed, 09 Aug 1995 00:00:00"
+ * @param date javascript date
+ */
+exports.timeToFullString = function(date) {
+    var timeFormat = "ddd, DD MMM YYYY HH:mm:ss";
+    return moment(date).format(timeFormat);
+};
