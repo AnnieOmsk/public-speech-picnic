@@ -155,8 +155,8 @@ exports.presentTimelines = function(timelineArray, organizers) {
         var item = {};
         var inputTimeline = timelineArray[i];
         item.id = inputTimeline.id;
-        item.start = dateTimeUtils.timeToString(inputTimeline.start);
-        item.end = dateTimeUtils.timeToString(inputTimeline.end);
+        item.start = dateTimeUtils.timeToFullString(inputTimeline.start);
+        item.end = dateTimeUtils.timeToFullString(inputTimeline.end);
         var id = "timeline-" + item.id;
         item.content = "<p class=\"timeline-popover\" data-bubble=\"" + id + "\" data-toggle=\"popover\">" + inputTimeline.title + "<span>" +
             organizers.filter(function(item) {return item.id == inputTimeline.organizerId})[0].name +
