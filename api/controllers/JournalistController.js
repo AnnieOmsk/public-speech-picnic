@@ -64,7 +64,7 @@ module.exports = {
      *    Shows form for new broadcast
     */
     create: function (req, res) {
-      return res.view({form:{}, injectedScripts: injectedScripts});
+      return res.view({form:{}, errors:{}, injectedScripts: injectedScripts});
     },
 
 
@@ -85,6 +85,14 @@ module.exports = {
             },
             function(err) {
                 console.log("Cannot save broadcast:" + err);
+                errors = {};
+                for (var key in err.ValidationError) {
+                    var currentError = err.ValidationError[key];
+                    for (i=0; i<currentError.length; i++) {
+                        errors[key] = [];
+                        errors[key].push(currentError[i].message);
+                    }
+                }
                 return res.view('journalist/create',{
                     error: 'Ошибка сервиса, невозможно сохранить данные',
                     form: {
@@ -92,6 +100,7 @@ module.exports = {
                         lead: lead,
                         content: content
                     },
+                    errors: errors,
                     injectedScripts: injectedScripts
                 });
             }
