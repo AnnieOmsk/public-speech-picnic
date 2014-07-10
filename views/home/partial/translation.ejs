@@ -15,7 +15,7 @@
 
 <script id="broadcast-template" type="text/x-handlebars-template">
     {{#if prev}}
-    <a href="{{prev}}" class="href-prev">Ранее</a>
+    <a href="{{prev}}" class="href-prev">Позднее</a>
     {{/if}}
     <ul>
     {{#each broadcasts}}
@@ -53,6 +53,6 @@
     {{/each}}
     </ul>
     {{#if next}}
-    <a href="{{next}}" class="href-next">Далее</a>
+    <a href="{{next}}" class="href-next">Ранее</a>
     {{/if}}
 </script>
