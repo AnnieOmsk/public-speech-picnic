@@ -176,7 +176,7 @@ exports.presentBroadcastsJournalists = function(broadcasts, earlierBroadcast, jo
     var nextLink;
     var prevLink;
     var displayBroadcasts = broadcastsNumber;
-    if (displayBroadcasts >= broadcasts.length) {
+    if (displayBroadcasts > broadcasts.length) {
         displayBroadcasts = broadcasts.length;
     }
     for (var i = 0; i < displayBroadcasts; i++) {
@@ -186,7 +186,7 @@ exports.presentBroadcastsJournalists = function(broadcasts, earlierBroadcast, jo
         broadcast.journalist = journalists.filter(function(item){return item.id == broadcast.journalistId})[0];
         broadcastsPresented.push(broadcast);
     }
-    if (displayBroadcasts == broadcastsNumber) {
+    if (broadcasts.length == broadcastsNumber + 1) {
         nextLink = buildTimeUrl(broadcasts[displayBroadcasts].time);
     }
     if (earlierBroadcast != null) {
